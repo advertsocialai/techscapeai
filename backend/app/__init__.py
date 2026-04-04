@@ -1,0 +1,1 @@
+# TechScape AI — FastAPI Application

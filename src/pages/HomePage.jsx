@@ -1,20 +1,24 @@
 import Hero from '../components/Hero'
-import Features from '../components/Features'
+import About from '../components/About'
+import Partners from '../components/Partners'
+import Services from '../components/Services'
+import Problem from '../components/Problem'
+import AIAgents from '../components/AIAgents'
 import HowItWorks from '../components/HowItWorks'
-import Stats from '../components/Stats'
-import Testimonials from '../components/Testimonials'
-import Pricing from '../components/Pricing'
+import Team from '../components/Team'
 import CTA from '../components/CTA'
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Stats />
-      <Features />
+      <About />
+      <Partners />
+      <Services />
+      <Problem />
+      <AIAgents />
       <HowItWorks />
-      <Testimonials />
-      <Pricing />
+      <Team />
       <CTA />
     </>
   )

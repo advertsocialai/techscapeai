@@ -1,80 +1,66 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Zap } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export default function CTA() {
   return (
-    <section className="relative py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className="relative rounded-3xl overflow-hidden px-8 py-16 lg:py-20 text-center"
-          style={{
-            background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.25) 0%, rgba(6, 182, 212, 0.12) 100%)',
-            border: '1px solid rgba(124, 58, 237, 0.3)',
-          }}
-        >
-          {/* Background glows inside card */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div
-              className="absolute top-[-30%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full"
-              style={{
-                background: 'radial-gradient(ellipse, rgba(124, 58, 237, 0.3) 0%, transparent 70%)',
-                filter: 'blur(60px)',
-              }}
-            />
-            <div
-              className="absolute bottom-[-20%] right-[10%] w-[300px] h-[300px] rounded-full"
-              style={{
-                background: 'radial-gradient(ellipse, rgba(6, 182, 212, 0.2) 0%, transparent 70%)',
-                filter: 'blur(60px)',
-              }}
-            />
+    <section id="get-started" className="relative bg-black py-20 lg:py-28">
+      <div className="max-w-[1440px] mx-auto px-[114px] lg:px-[114px] md:px-8 sm:px-5">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-start">
+
+          {/* Left — Main CTA */}
+          <div
+            className="rounded-2xl p-8 lg:p-10 flex flex-col items-center text-center"
+            style={{ background: '#0D0D0D', border: '1px solid #1A1A1A' }}
+          >
+            <p className="section-label mb-6">GET STARTED</p>
+            <h2 className="text-[28px] sm:text-[34px] font-bold text-white tracking-[-0.02em] leading-snug mb-4">
+              Every hour your team spends on manual work is an hour your competitor's AI is doing it faster.
+            </h2>
+            <p className="text-[14px] text-white/50 leading-relaxed mb-8">
+              Whether you're a business looking to automate, a student ready to upskill, or a partner exploring collaboration — the first conversation is always free.
+            </p>
+            <Link
+              to="/contact"
+              className="gradient-btn btn-transition inline-flex items-center gap-2 px-7 h-[44px] rounded-[4px] text-[14px] font-semibold text-white mb-4"
+            >
+              Book a Free Consultation
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <p className="text-[12px] text-white/30">See What We Can Build For You →</p>
           </div>
 
-          {/* Grid overlay */}
-          <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
-
-          <div className="relative">
-            {/* Icon */}
-            <div className="inline-flex w-16 h-16 rounded-2xl gradient-bg items-center justify-center mb-6 shadow-2xl shadow-purple-900/40 animate-glow">
-              <Zap className="w-8 h-8 text-white fill-white" />
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-5">
-              Ready to navigate the
-              <br />
-              <span className="gradient-text">future of technology?</span>
-            </h2>
-            <p className="text-lg text-[#9CA3AF] max-w-xl mx-auto leading-relaxed mb-10">
-              Join 12,000+ engineering teams using TechScape AI to make smarter technology decisions, faster. Free to start, no credit card required.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Right — "Got a project" card */}
+          <div className="flex flex-col gap-5">
+            <div
+              className="rounded-2xl p-8 flex flex-col items-center text-center card-hover"
+              style={{ background: '#0D0D0D', border: '1px solid #1A1A1A' }}
+            >
+              <h3 className="text-[26px] font-bold text-white mb-6">Got a project in mind?</h3>
               <Link
                 to="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-semibold text-white rounded-xl btn-primary shadow-xl shadow-purple-900/40"
+                className="gradient-btn btn-transition inline-flex items-center gap-2 px-6 h-[44px] rounded-[4px] text-[14px] font-semibold text-white"
               >
-                Start for Free Today
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Contact Us
               </Link>
-              <a
-                href="#features"
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-semibold text-white rounded-xl border border-white/20 hover:bg-white/[0.06] transition-all duration-200"
-              >
-                Learn More
-              </a>
             </div>
 
-            {/* Guarantee */}
-            <p className="text-sm text-[#6B7280] mt-8 flex items-center justify-center gap-2">
-              <svg className="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              14-day free trial · No credit card required · Cancel anytime
-            </p>
+            {/* Trust signals */}
+            <div
+              className="rounded-2xl p-6 grid grid-cols-2 gap-4"
+              style={{ background: '#0D0D0D', border: '1px solid #1A1A1A' }}
+            >
+              {[
+                { value: 'Free', label: 'First Consultation' },
+                { value: '2 Weeks', label: 'POC Delivery' },
+                { value: 'Global', label: 'Team Coverage' },
+                { value: '100%', label: 'Custom Solutions' },
+              ].map(({ value, label }) => (
+                <div key={label} className="text-center p-3 rounded-xl" style={{ background: '#111', border: '1px solid #1E1E1E' }}>
+                  <p className="text-[20px] font-bold gradient-text">{value}</p>
+                  <p className="text-[11px] text-white/35 mt-0.5">{label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,18 @@
 import { Link } from 'react-router-dom'
-import { Zap, Mail } from 'lucide-react'
 
-// SVG social icons (lucide-react v0.4+ removed Github/Twitter/Linkedin)
+// Logo icon
+function LogoIcon({ size = 36 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 44 44" fill="none">
+      <circle cx="28" cy="12" r="10" fill="#3D75F3" />
+      <circle cx="14" cy="30" r="8" fill="#F5A086" />
+      <circle cx="22" cy="22" r="6" fill="#FFFFFF" opacity="0.1" />
+      <circle cx="22" cy="22" r="3.5" fill="#FFFFFF" opacity="0.8" />
+    </svg>
+  )
+}
+
+// SVG social icons
 function GithubIcon({ className }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -26,33 +37,29 @@ function LinkedinIcon({ className }) {
   )
 }
 
-const LINKS = {
-  Product: [
-    { label: 'Features', href: '#features' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Changelog', href: '#' },
-    { label: 'Roadmap', href: '#' },
-  ],
+const FOOTER_LINKS = {
   Company: [
     { label: 'About', href: '#about' },
-    { label: 'Blog', href: '#' },
-    { label: 'Careers', href: '#' },
-    { label: 'Press', href: '#' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Our Team', href: '#team' },
+    { label: 'Partners', href: '#partners' },
+    { label: 'Careers', href: '/contact' },
   ],
-  Resources: [
-    { label: 'Documentation', href: '#' },
-    { label: 'API Reference', href: '#' },
-    { label: 'Guides', href: '#' },
-    { label: 'Status', href: '#' },
-    { label: 'Community', href: '#' },
+  Services: [
+    { label: 'AI Automation', href: '#services' },
+    { label: 'Digital Marketing', href: '#services' },
+    { label: 'Training & Education', href: '#services' },
+    { label: 'Digital Branding', href: '#services' },
   ],
-  Legal: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
-    { label: 'Cookie Policy', href: '#' },
-    { label: 'Security', href: '#' },
+  'AI Agents': [
+    { label: 'Sales Automation', href: '#ai-agents' },
+    { label: 'Reporting Agents', href: '#ai-agents' },
+    { label: 'Support Bots', href: '#ai-agents' },
+    { label: 'Custom POCs', href: '#ai-agents' },
+  ],
+  Contact: [
+    { label: 'Book a Consultation', href: '/contact' },
+    { label: 'Get in Touch', href: '/contact' },
+    { label: 'hello@techscapeai.com', href: '/contact' },
   ],
 }
 
@@ -60,11 +67,10 @@ const SOCIALS = [
   { icon: GithubIcon, href: '#', label: 'GitHub' },
   { icon: TwitterIcon, href: '#', label: 'Twitter' },
   { icon: LinkedinIcon, href: '#', label: 'LinkedIn' },
-  { icon: Mail, href: '#', label: 'Email' },
 ]
 
 export default function Footer() {
-  const handleAnchorClick = (e, href) => {
+  const handleAnchor = (e, href) => {
     if (href.startsWith('#')) {
       e.preventDefault()
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
@@ -72,42 +78,31 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative border-t border-white/[0.06]">
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px]"
-          style={{
-            background: 'radial-gradient(ellipse, rgba(124, 58, 237, 0.06) 0%, transparent 70%)',
-            filter: 'blur(40px)',
-          }}
-        />
-      </div>
+    <footer className="relative bg-black border-t border-white/[0.06]">
+      <div className="max-w-[1440px] mx-auto px-[114px] lg:px-[114px] md:px-8 sm:px-5">
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-        {/* Top Row */}
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 pb-12 border-b border-white/[0.06]">
-          {/* Brand Column */}
+        {/* Top section */}
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 py-14 border-b border-white/[0.06]">
+
+          {/* Brand */}
           <div className="col-span-2">
             <Link to="/" className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
-                <Zap className="w-4.5 h-4.5 text-white" fill="white" />
-              </div>
-              <span className="text-[17px] font-bold tracking-tight">
-                <span className="text-white">TechScape</span>
-                <span className="gradient-text"> AI</span>
+              <LogoIcon size={36} />
+              <span className="text-[15px] font-bold text-white leading-tight">
+                Tech<br />Scape AI
               </span>
             </Link>
-            <p className="text-sm text-[#6B7280] leading-relaxed max-w-xs mb-6">
-              AI-powered platform for navigating the technology landscape. Discover trends, analyze tools, and stay ahead.
+            <p className="text-[13px] text-white/40 leading-relaxed max-w-[220px] mb-6">
+              AI-powered solutions that move businesses forward — fast, affordable, and ready to deploy.
             </p>
-            {/* Social Links */}
-            <div className="flex items-center gap-2">
+            <div className="flex gap-2.5">
               {SOCIALS.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.07] flex items-center justify-center text-[#6B7280] hover:text-white hover:bg-white/[0.08] transition-all duration-200"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-white/30 hover:text-white hover:bg-white/[0.06] transition-all"
+                  style={{ border: '1px solid #1E1E1E' }}
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -115,25 +110,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Columns */}
-          {Object.entries(LINKS).map(([category, links]) => (
-            <div key={category} className="col-span-1">
-              <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-4">{category}</h4>
+          {/* Links */}
+          {Object.entries(FOOTER_LINKS).map(([cat, links]) => (
+            <div key={cat}>
+              <h4 className="text-[11px] font-semibold text-white/40 uppercase tracking-widest mb-4">{cat}</h4>
               <ul className="space-y-3">
                 {links.map(({ label, href }) => (
                   <li key={label}>
                     {href.startsWith('/') ? (
-                      <Link
-                        to={href}
-                        className="text-sm text-[#6B7280] hover:text-white transition-colors duration-200"
-                      >
+                      <Link to={href} className="text-[13px] text-white/40 hover:text-white transition-colors">
                         {label}
                       </Link>
                     ) : (
                       <a
                         href={href}
-                        onClick={(e) => handleAnchorClick(e, href)}
-                        className="text-sm text-[#6B7280] hover:text-white transition-colors duration-200"
+                        onClick={(e) => handleAnchor(e, href)}
+                        className="text-[13px] text-white/40 hover:text-white transition-colors"
                       >
                         {label}
                       </a>
@@ -145,16 +137,31 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8">
-          <p className="text-sm text-[#4B5563]">
-            © {new Date().getFullYear()} TechScape AI. All rights reserved.
+        {/* Large brand name — matching Figma footer */}
+        <div className="py-10 text-center overflow-hidden">
+          <h2
+            className="font-black leading-none select-none"
+            style={{
+              fontSize: 'clamp(48px, 10vw, 130px)',
+              letterSpacing: '-0.04em',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            TechScape AI
+          </h2>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 py-6 border-t border-white/[0.05]">
+          <p className="text-[12px] text-white/25">
+            © {new Date().getFullYear()} Tech Scape AI. All rights reserved.
           </p>
-          <div className="flex items-center gap-1 text-sm text-[#4B5563]">
-            <span>Built with</span>
-            <span className="text-red-500 mx-0.5">♥</span>
-            <span>using React, FastAPI & Supabase</span>
-          </div>
+          <p className="text-[12px] text-white/25">
+            Built with React · FastAPI · Supabase
+          </p>
         </div>
       </div>
     </footer>

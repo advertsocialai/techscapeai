@@ -1,37 +1,45 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Zap } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Menu, X } from 'lucide-react'
+
+// Logo icon: two coloured circles + gear shape, matching Figma
+function LogoIcon() {
+  return (
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Blue circle top-right */}
+      <circle cx="28" cy="12" r="10" fill="#3D75F3" />
+      {/* Pink/salmon circle bottom-left */}
+      <circle cx="14" cy="30" r="8" fill="#F5A086" />
+      {/* Gear / cog shape in center */}
+      <circle cx="22" cy="22" r="6" fill="#FFFFFF" opacity="0.15" />
+      <circle cx="22" cy="22" r="3.5" fill="#FFFFFF" opacity="0.9" />
+    </svg>
+  )
+}
 
 const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Features', href: '#features' },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
   { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'AI Agents', href: '#ai-agents' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Team', href: '#team' },
+  { label: 'Partners', href: '#partners' },
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    setIsOpen(false)
-  }, [location])
-
-  const handleAnchorClick = (e, href) => {
+  const handleAnchor = (e, href) => {
     if (href.startsWith('#')) {
       e.preventDefault()
-      const el = document.querySelector(href)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
       setIsOpen(false)
     }
   }
@@ -39,97 +47,81 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'nav-blur bg-[#060A14]/80 border-b border-white/[0.06]'
-          : 'bg-transparent'
+        scrolled ? 'nav-blur bg-black/80 border-b border-white/[0.05]' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="max-w-[1440px] mx-auto px-[114px] lg:px-[114px] md:px-8 sm:px-4">
+        <div className="flex items-center justify-between h-[72px]">
+
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center shadow-lg group-hover:shadow-purple-500/30 transition-all duration-300">
-              <Zap className="w-4.5 h-4.5 text-white" fill="white" />
-            </div>
-            <span className="text-[17px] font-bold tracking-tight">
-              <span className="text-white">TechScape</span>
-              <span className="gradient-text"> AI</span>
+            <LogoIcon />
+            <span className="text-[15px] font-bold leading-tight text-white">
+              Tech<br />Scape AI
             </span>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Desktop nav — hidden in Figma but included for usability */}
+          <div className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                onClick={(e) => handleAnchorClick(e, link.href)}
-                className="px-4 py-2 text-sm font-medium text-[#9CA3AF] hover:text-white rounded-lg hover:bg-white/[0.05] transition-all duration-200"
+                onClick={(e) => handleAnchor(e, link.href)}
+                className="text-[13px] font-medium text-white/60 hover:text-white transition-colors duration-200"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              to="/login"
-              className="px-4 py-2 text-sm font-medium text-[#9CA3AF] hover:text-white transition-colors duration-200"
+          {/* Right: hamburger + CTA */}
+          <div className="flex items-center gap-8">
+            {/* Hamburger icon */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white hover:text-white/70 transition-colors"
+              aria-label="Menu"
             >
-              Sign In
-            </Link>
+              {isOpen
+                ? <X className="w-6 h-6" />
+                : <Menu className="w-6 h-6" />
+              }
+            </button>
+
+            {/* Contact Us button */}
             <Link
               to="/contact"
-              className="px-5 py-2.5 text-sm font-semibold text-white rounded-lg btn-primary"
+              className="gradient-btn btn-transition inline-flex items-center justify-center px-[16px] h-[40px] rounded-[4px] text-[14px] font-medium text-white whitespace-nowrap"
             >
-              Get Started Free
+              Contact Us
             </Link>
           </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden p-2 rounded-lg text-[#9CA3AF] hover:text-white hover:bg-white/[0.05] transition-all"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+          className={`overflow-hidden transition-all duration-300 ${
+            isOpen ? 'max-h-[400px] pb-6' : 'max-h-0'
           }`}
         >
-          <div className="pb-4 pt-1 border-t border-white/[0.06] mt-1">
-            <div className="flex flex-col gap-1 mt-3">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleAnchorClick(e, link.href)}
-                  className="px-4 py-3 text-sm font-medium text-[#9CA3AF] hover:text-white rounded-lg hover:bg-white/[0.05] transition-all"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-white/[0.06]">
-                <Link
-                  to="/login"
-                  className="px-4 py-2.5 text-sm font-medium text-center text-[#9CA3AF] hover:text-white rounded-lg border border-white/[0.08] hover:bg-white/[0.05] transition-all"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  to="/contact"
-                  className="px-4 py-2.5 text-sm font-semibold text-center text-white rounded-lg btn-primary"
-                >
-                  Get Started Free
-                </Link>
-              </div>
-            </div>
+          <div className="border-t border-white/[0.06] pt-4 flex flex-col gap-1">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleAnchor(e, link.href)}
+                className="px-3 py-3 text-sm text-white/60 hover:text-white hover:bg-white/[0.04] rounded-lg transition-all"
+              >
+                {link.label}
+              </a>
+            ))}
+            <Link
+              to="/contact"
+              className="mt-3 gradient-btn inline-flex items-center justify-center py-3 px-4 rounded-[4px] text-sm font-medium text-white"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </div>

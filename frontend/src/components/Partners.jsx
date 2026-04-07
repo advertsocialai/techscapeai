@@ -1,48 +1,61 @@
-// Partner logos matching the Figma "In Partnership With" section
-const PARTNERS = [
-  { name: 'Red Wave', color: '#FF4444' },
-  { name: 'Net Wave', color: '#3D75F3' },
-  { name: 'ABS', color: '#FFFFFF' },
-  { name: 'TechCore', color: '#F5A086' },
-]
-
 export default function Partners() {
   return (
     <section id="partners" className="relative bg-black py-16 lg:py-20">
-      {/* Top border */}
-      <div className="max-w-[1440px] mx-auto px-[114px] lg:px-[114px] md:px-8 sm:px-5">
-        <div
-          className="rounded-2xl py-10 px-8 lg:px-14 text-center"
-          style={{ background: '#0A0A0A', border: '1px solid #1A1A1A' }}
-        >
-          <p className="section-label mb-8">In Partnership With</p>
+      <div className="wrap">
+        <div className="rounded-2xl py-10 px-8 lg:px-14 text-center"
+          style={{ background: '#0A0A0A', border: '1px solid #1A1A1A' }}>
+
+          <p className="label mb-10">In Partnership With</p>
 
           {/* Logo row */}
-          <div className="flex flex-wrap items-center justify-center gap-10 lg:gap-16 mb-8">
-            {PARTNERS.map(({ name, color }) => (
-              <div key={name} className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
-                {/* Coloured wave/shape icon */}
-                <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
-                  <path
-                    d="M2 18 C6 6, 10 2, 14 11 C18 20, 22 16, 26 8"
-                    stroke={color}
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </svg>
-                <span className="text-[15px] font-bold text-white/80 tracking-tight">{name}</span>
+          <div className="flex flex-wrap items-center justify-center gap-12 lg:gap-20 mb-10">
+
+            {/* nxt wave */}
+            <div className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
+              <svg width="32" height="26" viewBox="0 0 32 26" fill="none">
+                <path d="M2 20 C6 6 10 2 16 13 C22 24 26 20 30 8"
+                  stroke="#3D75F3" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                <path d="M2 14 C6 2 10 -1 16 9 C22 18 26 14 30 4"
+                  stroke="#F5A086" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5" />
+              </svg>
+              <span className="text-[17px] font-bold text-white tracking-tight">nxt <span className="text-white/50 font-normal">wave</span></span>
+            </div>
+
+            {/* ASG */}
+            <div className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #3D75F3, #1a3a8a)', border: '1px solid rgba(61,117,243,0.3)' }}>
+                <span className="text-[13px] font-black text-white">A</span>
               </div>
-            ))}
+              <span className="text-[17px] font-bold text-white tracking-tight">ASG</span>
+            </div>
+
+            {/* nxt wave (second instance) */}
+            <div className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
+              <svg width="32" height="26" viewBox="0 0 32 26" fill="none">
+                <path d="M2 20 C6 6 10 2 16 13 C22 24 26 20 30 8"
+                  stroke="#F5A086" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                <path d="M2 14 C6 2 10 -1 16 9 C22 18 26 14 30 4"
+                  stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5" />
+              </svg>
+              <span className="text-[17px] font-bold text-white tracking-tight">nxt <span className="text-white/50 font-normal">wave</span></span>
+            </div>
+
+            {/* ASG second */}
+            <div className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #F5A086, #c0624a)', border: '1px solid rgba(245,160,134,0.3)' }}>
+                <span className="text-[13px] font-black text-white">A</span>
+              </div>
+              <span className="text-[17px] font-bold text-white tracking-tight">ASG</span>
+            </div>
           </div>
 
-          {/* Tagline */}
-          <p
-            className="text-[14px] font-medium leading-relaxed max-w-xl mx-auto px-6 py-4 rounded-xl"
-            style={{ background: '#111', border: '1px solid #1E1E1E', color: 'rgba(255,255,255,0.55)' }}
-          >
+          {/* Tagline pill */}
+          <div className="inline-block px-6 py-3 rounded-full text-[13px] font-medium text-white/50 leading-relaxed"
+            style={{ background: '#111', border: '1px solid #1E1E1E' }}>
             This is not the future. This is happening now — and Tech Scape AI is leading it.
-          </p>
+          </div>
         </div>
       </div>
     </section>

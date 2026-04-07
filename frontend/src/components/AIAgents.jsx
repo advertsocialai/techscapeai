@@ -1,45 +1,54 @@
-// "AI AGENTS & POCs" section from Figma
 const AGENTS = [
   {
-    icon: '⚡',
-    title: 'Sales & Lead Automation',
-    description:
-      'Agents that qualify leads, follow up via email/WhatsApp, and keep your CRM updated — without lifting a finger.',
+    title: 'Customer Support Agent',
+    description: 'Intelligent bots trained on your knowledge base that handle queries 24/7, resolve issues instantly, and escalate complex cases to your team.',
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="10" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
+        <path d="M10 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        <path d="M10 16v2a2 2 0 004 0v-2" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        <path d="M22 16v2a2 2 0 01-4 0v-2" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      </svg>
+    ),
     color: '#3D75F3',
   },
   {
-    icon: '📊',
-    title: 'Data & Reporting Agents',
-    description:
-      'Agents that pull data from multiple sources, generate reports, and surface insights automatically — no manual Excel work.',
+    title: 'Data & Reporting Agent',
+    description: 'Pull from multiple sources, auto-generate reports, and surface insights on demand — no more manual Excel grind or waiting on the analytics team.',
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect x="6" y="18" width="4" height="8" rx="1" fill="#F5A086" opacity="0.8" />
+        <rect x="14" y="12" width="4" height="14" rx="1" fill="#F5A086" />
+        <rect x="22" y="6" width="4" height="20" rx="1" fill="#F5A086" opacity="0.6" />
+        <path d="M8 14L14 10L22 6" stroke="#F5A086" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
     color: '#F5A086',
   },
   {
-    icon: '🛎️',
-    title: 'Customer Support Bots',
-    description:
-      'Intelligent chatbots trained on your knowledge base that handle common queries 24/7 and escalate when needed.',
+    title: 'Outreach & Follow-Up Agent',
+    description: 'Automated lead nurturing via email and WhatsApp — personalised messages, timely follow-ups, and CRM sync, all without lifting a finger.',
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M6 8h20a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V10a2 2 0 012-2z" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
+        <path d="M4 10l12 8 12-8" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
     color: '#3D75F3',
   },
   {
-    icon: '🔄',
-    title: 'Workflow Orchestration',
-    description:
-      'End-to-end business process automation connecting your existing tools — Slack, Notion, Sheets, HubSpot and more.',
-    color: '#F5A086',
-  },
-  {
-    icon: '🎯',
-    title: 'Marketing AI Agents',
-    description:
-      'Content generation, A/B testing, audience segmentation, and campaign optimisation — all automated and data-driven.',
-    color: '#3D75F3',
-  },
-  {
-    icon: '🧠',
-    title: 'Custom POC Builds',
-    description:
-      'Proof-of-concept solutions scoped in 2 weeks, deployed in 4. We prove value before you commit to full scale.',
+    title: 'Operations & Workflow Agent',
+    description: 'End-to-end process automation connecting your tools — Slack, Notion, Sheets, HubSpot. Eliminate manual handoffs and keep work moving 24/7.',
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <circle cx="8" cy="8" r="3" stroke="#F5A086" strokeWidth="1.5" fill="none" />
+        <circle cx="24" cy="8" r="3" stroke="#F5A086" strokeWidth="1.5" fill="none" />
+        <circle cx="8" cy="24" r="3" stroke="#F5A086" strokeWidth="1.5" fill="none" />
+        <circle cx="24" cy="24" r="3" stroke="#F5A086" strokeWidth="1.5" fill="none" />
+        <path d="M11 8h10M8 11v10M24 11v10M11 24h10" stroke="#F5A086" strokeWidth="1.2" strokeLinecap="round" />
+        <circle cx="16" cy="16" r="2" fill="#F5A086" opacity="0.5" />
+      </svg>
+    ),
     color: '#F5A086',
   },
 ]
@@ -47,44 +56,39 @@ const AGENTS = [
 export default function AIAgents() {
   return (
     <section id="ai-agents" className="relative bg-black py-20 lg:py-28">
-      <div className="max-w-[1440px] mx-auto px-[114px] lg:px-[114px] md:px-8 sm:px-5">
+      <div className="wrap">
 
         {/* Header */}
-        <div className="mb-12 lg:mb-16 text-center">
-          <p className="section-label mb-4">AI AGENTS &amp; POCs</p>
-          <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold tracking-[-0.02em] text-white leading-tight mb-4">
-            Stop Reading About AI.<br />
-            <span className="gradient-text">Start Using It.</span>
-          </h2>
-          <p className="text-[15px] text-white/50 max-w-2xl mx-auto leading-relaxed">
-            Tech Scape AI builds small, powerful, purpose-built AI agents and proof-of-concept solutions that solve specific business problems fast — affordable, and ready to deploy.
-          </p>
+        <div className="mb-12 lg:mb-16">
+          <p className="label mb-4">AI Agents & POCs</p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+            <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.02em] text-white leading-tight">
+              Stop Reading About AI.<br />
+              <span className="blue-text">Start Using It.</span>
+            </h2>
+            <p className="text-[15px] text-white/50 max-w-sm leading-relaxed lg:text-right">
+              Purpose-built agents that solve specific problems fast — affordable, and ready to deploy in weeks.
+            </p>
+          </div>
         </div>
 
-        {/* 3-column grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        {/* 2×2 grid */}
+        <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
           {AGENTS.map((agent) => (
-            <div
-              key={agent.title}
-              className="card-hover rounded-2xl p-7"
-              style={{ background: '#0D0D0D', border: '1px solid #1A1A1A' }}
-            >
-              {/* Icon with colored dot border */}
-              <div className="flex items-center gap-3 mb-5">
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-xl"
-                  style={{ background: `${agent.color}15`, border: `1px solid ${agent.color}30` }}
-                >
-                  {agent.icon}
-                </div>
-                <div
-                  className="w-2 h-2 rounded-full"
-                  style={{ background: agent.color }}
-                />
+            <div key={agent.title} className="card-hover rounded-2xl p-7 lg:p-8">
+              {/* 3D-style icon area */}
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                style={{ background: `linear-gradient(135deg, ${agent.color}15 0%, #0a0a0a 100%)`, border: `1px solid ${agent.color}25` }}>
+                {agent.icon}
               </div>
+              <h3 className="text-[18px] font-bold text-white mb-3">{agent.title}</h3>
+              <p className="text-[14px] text-white/50 leading-relaxed">{agent.description}</p>
 
-              <h3 className="text-[16px] font-bold text-white mb-2.5">{agent.title}</h3>
-              <p className="text-[13px] text-white/50 leading-relaxed">{agent.description}</p>
+              {/* Accent dot */}
+              <div className="mt-5 flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full" style={{ background: agent.color }} />
+                <span className="text-[12px] text-white/30">Deployable in 2–4 weeks</span>
+              </div>
             </div>
           ))}
         </div>

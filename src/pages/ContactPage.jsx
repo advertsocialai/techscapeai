@@ -1,26 +1,36 @@
 import { useState } from 'react'
-import { Mail, MessageSquare, User, Building2, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { submitContact } from '../services/api'
 
-const INTEREST_OPTIONS = [
-  'Trend Discovery',
-  'Tool Analysis',
-  'Custom Reports',
-  'Enterprise Plan',
-  'API Integration',
+const SERVICES_OPTIONS = [
+  'AI Agents & Automation',
+  'Digital Marketing & SEO',
+  'Training & Education',
+  'CRM & Digital Branding',
+  'Custom POC Build',
   'General Inquiry',
+]
+
+const BUDGET_OPTIONS = [
+  'Under $5,000',
+  '$5,000 – $20,000',
+  '$20,000 – $50,000',
+  '$50,000+',
+  'Not sure yet',
+]
+
+const CHECKPOINTS = [
+  'Free first consultation — no commitment required',
+  'Response within 24 hours',
+  'Custom proposal scoped to your exact needs',
+  'Delivery timeline agreed upfront',
 ]
 
 export default function ContactPage() {
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    company: '',
-    interest: '',
-    message: '',
+    name: '', email: '', phone: '', service: '', budget: '', message: '',
   })
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
-  const [errorMessage, setErrorMessage] = useState('')
+  const [status, setStatus] = useState('idle')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -29,266 +39,162 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!form.name || !form.email || !form.message) return
-
+    if (!form.name || !form.email) return
     setStatus('loading')
-    setErrorMessage('')
-
     try {
       await submitContact(form)
       setStatus('success')
-      setForm({ name: '', email: '', company: '', interest: '', message: '' })
-    } catch (err) {
+      setForm({ name: '', email: '', phone: '', service: '', budget: '', message: '' })
+    } catch {
       setStatus('error')
-      setErrorMessage(err.message || 'Something went wrong. Please try again.')
     }
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-20">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full"
-          style={{
-            background: 'radial-gradient(ellipse, rgba(124, 58, 237, 0.15) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-          }}
-        />
-      </div>
-      <div className="absolute inset-0 grid-bg opacity-100 pointer-events-none" />
+    <div className="min-h-screen bg-black pt-24 pb-20">
+      {/* Ambient glow */}
+      <div className="fixed inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 50% 40% at 50% 0%, rgba(61,117,243,0.07) 0%, transparent 60%)' }} />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="wrap relative">
+
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 mb-5">
-            <span className="text-xs font-semibold text-purple-300 tracking-widest uppercase">Get in Touch</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-            Start your journey with
-            <br />
-            <span className="gradient-text">TechScape AI</span>
+        <div className="text-center mb-14">
+          <p className="label mb-4">Contact Us</p>
+          <h1 className="text-[36px] sm:text-[48px] lg:text-[58px] font-extrabold tracking-[-0.02em] text-white leading-tight mb-5">
+            Let&apos;s Build Something<br />
+            <span className="grad-text">Together</span>
           </h1>
-          <p className="text-lg text-[#9CA3AF] max-w-xl mx-auto leading-relaxed">
-            Ready to navigate the tech landscape smarter? Tell us about your goals and we'll get back to you within 24 hours.
+          <p className="text-[16px] text-white/45 max-w-md mx-auto leading-relaxed">
+            Tell us what you&apos;re working on. The first consultation is always free.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Left — Info Cards */}
-          <div className="lg:col-span-2 space-y-4">
-            {[
-              {
-                icon: Mail,
-                iconColor: 'text-purple-400',
-                iconBg: 'bg-purple-500/10',
-                title: 'Email Us',
-                value: 'hello@techscapeai.com',
-              },
-              {
-                icon: MessageSquare,
-                iconColor: 'text-cyan-400',
-                iconBg: 'bg-cyan-500/10',
-                title: 'Live Chat',
-                value: 'Available 9am–6pm UTC',
-              },
-              {
-                icon: Building2,
-                iconColor: 'text-emerald-400',
-                iconBg: 'bg-emerald-500/10',
-                title: 'Enterprise Sales',
-                value: 'enterprise@techscapeai.com',
-              },
-            ].map((item) => {
-              const Icon = item.icon
-              return (
-                <div
-                  key={item.title}
-                  className="rounded-2xl p-5 flex items-center gap-4"
-                  style={{
-                    background: 'rgba(17, 24, 39, 0.5)',
-                    border: '1px solid rgba(255,255,255,0.07)',
-                  }}
-                >
-                  <div className={`w-11 h-11 rounded-xl ${item.iconBg} flex items-center justify-center flex-shrink-0`}>
-                    <Icon className={`w-5 h-5 ${item.iconColor}`} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-[#6B7280] font-medium mb-0.5">{item.title}</p>
-                    <p className="text-sm font-semibold text-white">{item.value}</p>
-                  </div>
-                </div>
-              )
-            })}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start max-w-5xl mx-auto">
 
-            {/* Trust signals */}
-            <div
-              className="rounded-2xl p-5 mt-6"
-              style={{
-                background: 'rgba(17, 24, 39, 0.5)',
-                border: '1px solid rgba(255,255,255,0.07)',
-              }}
-            >
-              <p className="text-xs font-semibold text-[#6B7280] uppercase tracking-widest mb-4">You're in good company</p>
-              <div className="space-y-3">
-                {[
-                  '12,000+ teams trust TechScape AI',
-                  '48M+ insights generated',
-                  'SOC 2 Type II certified',
-                  '99.9% uptime SLA',
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-2.5 text-sm text-[#9CA3AF]">
-                    <div className="w-1.5 h-1.5 rounded-full gradient-bg flex-shrink-0" />
-                    {item}
-                  </div>
-                ))}
+          {/* Left — Form */}
+          <div>
+            {status === 'success' ? (
+              <div className="text-center py-16">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+                  style={{ background: 'rgba(61,117,243,0.15)', border: '1px solid rgba(61,117,243,0.3)' }}>
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M5 14l7 7 11-12" stroke="#3D75F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3 className="text-[22px] font-bold text-white mb-2">Message Sent!</h3>
+                <p className="text-[14px] text-white/50 mb-8 max-w-xs mx-auto">
+                  We&apos;ll get back to you within 24 hours with a clear plan of action.
+                </p>
+                <button onClick={() => setStatus('idle')}
+                  className="btn inline-flex items-center px-7 h-[44px] text-[14px] font-semibold text-white">
+                  Send Another Message
+                </button>
               </div>
-            </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-7">
+
+                {/* Full Name */}
+                <div>
+                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Full Name *</label>
+                  <input type="text" name="name" value={form.name} onChange={handleChange} required
+                    placeholder="Jane Smith"
+                    className="input-line" />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Email Address *</label>
+                  <input type="email" name="email" value={form.email} onChange={handleChange} required
+                    placeholder="jane@company.com"
+                    className="input-line" />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Phone Number</label>
+                  <input type="tel" name="phone" value={form.phone} onChange={handleChange}
+                    placeholder="+1 (555) 000-0000"
+                    className="input-line" />
+                </div>
+
+                {/* Service */}
+                <div className="relative">
+                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Service Interested In</label>
+                  <select name="service" value={form.service} onChange={handleChange} className="select-line">
+                    <option value="">Select a service...</option>
+                    {SERVICES_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+                  </select>
+                  <svg className="absolute right-0 bottom-3 w-4 h-4 text-white/30 pointer-events-none" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
+
+                {/* Budget */}
+                <div className="relative">
+                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Estimated Budget</label>
+                  <select name="budget" value={form.budget} onChange={handleChange} className="select-line">
+                    <option value="">Select budget range...</option>
+                    {BUDGET_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+                  </select>
+                  <svg className="absolute right-0 bottom-3 w-4 h-4 text-white/30 pointer-events-none" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Tell Us About Your Project</label>
+                  <textarea name="message" value={form.message} onChange={handleChange} rows={4}
+                    placeholder="Describe what you're trying to solve..."
+                    className="input-line resize-none" />
+                </div>
+
+                {status === 'error' && (
+                  <p className="text-[13px] text-red-400">Something went wrong. Please try again.</p>
+                )}
+
+                <button type="submit" disabled={status === 'loading'}
+                  className="btn w-full flex items-center justify-center gap-2 h-[50px] text-[15px] font-semibold text-white disabled:opacity-60">
+                  {status === 'loading' ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : 'Send Message'}
+                </button>
+              </form>
+            )}
           </div>
 
-          {/* Right — Form */}
-          <div className="lg:col-span-3">
-            <div
-              className="rounded-2xl p-7 lg:p-8"
-              style={{
-                background: 'rgba(17, 24, 39, 0.5)',
-                border: '1px solid rgba(255,255,255,0.07)',
-              }}
-            >
-              {status === 'success' ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mx-auto mb-5">
-                    <CheckCircle className="w-8 h-8 text-emerald-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                  <p className="text-sm text-[#9CA3AF] max-w-xs mx-auto">
-                    Thanks for reaching out. We'll get back to you within 24 hours.
-                  </p>
-                  <button
-                    onClick={() => setStatus('idle')}
-                    className="mt-6 px-6 py-2.5 text-sm font-semibold text-white rounded-lg btn-primary"
-                  >
-                    Send Another
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    {/* Name */}
-                    <div>
-                      <label className="block text-sm font-medium text-[#9CA3AF] mb-2">
-                        Full Name <span className="text-red-400">*</span>
-                      </label>
-                      <div className="relative">
-                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4B5563]" />
-                        <input
-                          type="text"
-                          name="name"
-                          value={form.name}
-                          onChange={handleChange}
-                          required
-                          placeholder="Jane Smith"
-                          className="w-full pl-10 pr-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-white placeholder-[#4B5563] focus:outline-none focus:border-purple-500/50 focus:bg-white/[0.06] transition-all duration-200"
-                        />
-                      </div>
+          {/* Right — Booking card */}
+          <div>
+            <div className="rounded-2xl p-8" style={{ background: '#0D0D0D', border: '1px solid #1C1C1C' }}>
+              <p className="label mb-4">What You Get</p>
+              <h3 className="text-[22px] font-bold text-white mb-6 leading-snug">
+                A Free Consultation, A Clear Plan, And A Team That Actually Delivers.
+              </h3>
+              <ul className="space-y-4 mb-8">
+                {CHECKPOINTS.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: 'rgba(61,117,243,0.15)', border: '1px solid rgba(61,117,243,0.3)' }}>
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path d="M2 5l2 2 4-4" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
                     </div>
+                    <span className="text-[14px] text-white/60 leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-                    {/* Email */}
-                    <div>
-                      <label className="block text-sm font-medium text-[#9CA3AF] mb-2">
-                        Work Email <span className="text-red-400">*</span>
-                      </label>
-                      <div className="relative">
-                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4B5563]" />
-                        <input
-                          type="email"
-                          name="email"
-                          value={form.email}
-                          onChange={handleChange}
-                          required
-                          placeholder="jane@company.com"
-                          className="w-full pl-10 pr-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-white placeholder-[#4B5563] focus:outline-none focus:border-purple-500/50 focus:bg-white/[0.06] transition-all duration-200"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Company */}
-                  <div>
-                    <label className="block text-sm font-medium text-[#9CA3AF] mb-2">Company</label>
-                    <div className="relative">
-                      <Building2 className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4B5563]" />
-                      <input
-                        type="text"
-                        name="company"
-                        value={form.company}
-                        onChange={handleChange}
-                        placeholder="Acme Corp"
-                        className="w-full pl-10 pr-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-white placeholder-[#4B5563] focus:outline-none focus:border-purple-500/50 focus:bg-white/[0.06] transition-all duration-200"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Interest */}
-                  <div>
-                    <label className="block text-sm font-medium text-[#9CA3AF] mb-2">I'm interested in</label>
-                    <select
-                      name="interest"
-                      value={form.interest}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-[#9CA3AF] focus:outline-none focus:border-purple-500/50 focus:bg-white/[0.06] transition-all duration-200 appearance-none"
-                    >
-                      <option value="" className="bg-[#111827]">Select an option...</option>
-                      {INTEREST_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt} className="bg-[#111827]">{opt}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="block text-sm font-medium text-[#9CA3AF] mb-2">
-                      Message <span className="text-red-400">*</span>
-                    </label>
-                    <textarea
-                      name="message"
-                      value={form.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      placeholder="Tell us about your goals and how TechScape AI can help..."
-                      className="w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-white placeholder-[#4B5563] focus:outline-none focus:border-purple-500/50 focus:bg-white/[0.06] transition-all duration-200 resize-none"
-                    />
-                  </div>
-
-                  {/* Error */}
-                  {status === 'error' && (
-                    <div className="flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20">
-                      <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-                      <p className="text-sm text-red-400">{errorMessage}</p>
-                    </div>
-                  )}
-
-                  {/* Submit */}
-                  <button
-                    type="submit"
-                    disabled={status === 'loading'}
-                    className="w-full flex items-center justify-center gap-2 py-4 text-[15px] font-semibold text-white rounded-xl btn-primary disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {status === 'loading' ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" />
-                        Send Message
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
+              <div className="border-t border-white/[0.07] pt-6">
+                <p className="text-[12px] text-white/30 uppercase tracking-widest font-semibold mb-3">Or reach us directly</p>
+                <a href="mailto:hello@techscapeai.com"
+                  className="text-[14px] text-white/60 hover:text-white transition-colors block">
+                  hello@techscapeai.com
+                </a>
+              </div>
             </div>
           </div>
         </div>

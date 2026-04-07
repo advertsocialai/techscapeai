@@ -1,54 +1,61 @@
 export default function About() {
   return (
     <section id="about" className="relative bg-black py-20 lg:py-28">
-      <div className="max-w-[1440px] mx-auto px-[114px] lg:px-[114px] md:px-8 sm:px-5">
+      {/* Subtle dark section bg */}
+      <div className="absolute inset-0" style={{ background: 'rgba(8,8,15,0.6)' }} />
 
-        {/* Headline */}
-        <div className="text-center mb-16">
-          <h2 className="text-[36px] sm:text-[44px] lg:text-[56px] font-bold tracking-[-0.02em] text-white leading-tight">
-            We Are Not Just Another<br />Tech Company
-          </h2>
+      <div className="wrap relative">
+        {/* Orange label + belief text — centered */}
+        <div className="text-center mb-12">
+          <p className="label mb-3">About</p>
+          <p className="text-[15px] text-white/45 max-w-md mx-auto leading-relaxed">
+            Tech Scape AI Was Built With One Belief — That Artificial Intelligence Should Work For People, Not Replace Them.
+          </p>
         </div>
 
-        {/* 2-col layout */}
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left card */}
-          <div
-            className="rounded-2xl p-8 card-hover"
-            style={{ background: '#0D0D0D', border: '1px solid #1A1A1A' }}
-          >
-            <p className="section-label mb-4">About</p>
-            <p className="text-[17px] text-white/70 leading-relaxed">
-              Tech Scape AI was built with one belief — that Artificial Intelligence should work for people, not replace them.
+        {/* Main about copy */}
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-5">
+          <p className="text-[16px] lg:text-[17px] text-white/80 leading-relaxed">
+            <span className="font-semibold text-white">We are a global AI services and training company,</span>{' '}
+            founded by technologists, business builders, and educators who have worked across the USA, Canada, and India.
+            We don't sell software. We solve problems with AI, with automation, and with the right people behind every solution.
+          </p>
+          <p className="text-[15px] text-white/45 leading-relaxed">
+            From building intelligent AI agents for small businesses to training the next generation of engineers and analysts,
+            everything we do is designed to create real, measurable impact.
+          </p>
+        </div>
+
+        {/* "We Are Not Just Another Tech Company" */}
+        <h2 className="text-[32px] sm:text-[40px] lg:text-[50px] font-extrabold text-center tracking-[-0.02em] text-white mb-12">
+          We Are Not Just Another<br />Tech Company
+        </h2>
+
+        {/* 3 value prop cards — slightly angled / fan layout */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-0 lg:items-stretch">
+
+          {/* Card 1 — left, slightly rotated ccw */}
+          <div className="card rounded-2xl p-7 max-w-[280px] w-full lg:rotate-[-3deg] lg:translate-y-4 lg:translate-x-4 z-10"
+            style={{ background: '#111', border: '1px solid #222' }}>
+            <p className="text-[17px] font-semibold text-white leading-snug">
+              We build solutions that reduce manual work and unlock human potential
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {['AI-First', 'People-Driven', 'Global'].map((tag) => (
-                <span key={tag} className="pill px-4 py-1.5 rounded-full text-[13px] font-medium">{tag}</span>
-              ))}
-            </div>
           </div>
 
-          {/* Right card */}
-          <div
-            className="rounded-2xl p-8 card-hover"
-            style={{ background: '#0D0D0D', border: '1px solid #1A1A1A' }}
-          >
-            <p className="text-[17px] text-white/70 leading-relaxed">
-              We are engineers, designers, educators, and business operators who build it every day across India, the USA, and Canada.
+          {/* Card 2 — center, elevated */}
+          <div className="card rounded-2xl p-7 max-w-[280px] w-full z-20 lg:scale-[1.04]"
+            style={{ background: '#151515', border: '1px solid #2a2a2a' }}>
+            <p className="text-[17px] font-semibold text-white leading-snug">
+              We train talent that is job-ready from day one
             </p>
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {[
-                { label: 'India', desc: 'Engineering & Dev' },
-                { label: 'USA', desc: 'Strategy & GTM' },
-                { label: 'Canada', desc: 'Education & Growth' },
-                { label: 'Global', desc: 'AI Deployment' },
-              ].map(({ label, desc }) => (
-                <div key={label} className="p-3 rounded-xl" style={{ background: '#111', border: '1px solid #222' }}>
-                  <p className="text-[14px] font-semibold text-white">{label}</p>
-                  <p className="text-[12px] text-white/40 mt-0.5">{desc}</p>
-                </div>
-              ))}
-            </div>
+          </div>
+
+          {/* Card 3 — right, rotated cw, blue gradient bg */}
+          <div className="rounded-2xl p-7 max-w-[280px] w-full lg:rotate-[3deg] lg:translate-y-4 lg:-translate-x-4 z-10"
+            style={{ background: 'linear-gradient(135deg, #1a2f6e 0%, #0a1a40 60%, #1a0a30 100%)', border: '1px solid rgba(61,117,243,0.3)' }}>
+            <p className="text-[17px] font-semibold text-white leading-snug">
+              We partner with businesses to make AI adoption simple, fast, and affordable
+            </p>
           </div>
         </div>
       </div>

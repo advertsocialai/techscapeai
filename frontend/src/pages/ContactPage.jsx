@@ -51,7 +51,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-20">
+    <div className="min-h-screen bg-black pt-12 pb-20">
       {/* Ambient glow */}
       <div className="fixed inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 50% 40% at 50% 0%, rgba(61,117,243,0.07) 0%, transparent 60%)' }} />

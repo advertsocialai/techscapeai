@@ -111,7 +111,7 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 60% 70% at 65% 45%, rgba(61,117,243,0.09) 0%, transparent 65%)' }} />
 
-      <div className="wrap w-full pt-24 pb-16">
+      <div className="wrap w-full pt-10 pb-16">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-6 items-center min-h-[calc(100vh-96px)]">
 
           {/* Left — Text */}

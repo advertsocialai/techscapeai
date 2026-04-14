@@ -1,3 +1,5 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
 const SERVICES = [
   {
     id: 1,
@@ -59,11 +61,12 @@ const SERVICES = [
 ]
 
 export default function Services() {
+  const { ref, isVisible } = useScrollAnimation()
   return (
     <section id="services" className="relative bg-black py-20 lg:py-28">
-      <div className="wrap">
+      <div className="wrap" ref={ref}>
         {/* Header */}
-        <div className="mb-12 lg:mb-16">
+        <div className={`mb-12 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="label mb-4">What We Build</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.02em] text-white leading-tight">
@@ -78,8 +81,10 @@ export default function Services() {
 
         {/* 2×2 grid */}
         <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
-          {SERVICES.map((svc) => (
-            <div key={svc.id} className="rounded-2xl p-7 lg:p-8 flex flex-col gap-5 card-hover">
+          {SERVICES.map((svc, i) => (
+            <div key={svc.id}
+              className={`rounded-2xl p-7 lg:p-8 flex flex-col gap-5 card-hover transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${i * 80}ms` }}>
 
               {/* Dark image area with icon */}
               <div className="w-full h-[100px] rounded-xl flex items-center justify-center"

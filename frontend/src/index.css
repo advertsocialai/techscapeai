@@ -124,7 +124,7 @@
   .chev { transition: transform 0.25s; }
   .chev.open { transform: rotate(180deg); }
 
-  /* Aliases for backwards-compat */
+  /* Aliases */
   .section-label { color: #F5A086; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
   .gradient-text {
     background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%);
@@ -133,22 +133,10 @@
     background-clip: text;
   }
   .gradient-bg { background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%); }
-  .gradient-btn {
-    background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%);
-    border-radius: 999px;
-  }
   .card-hover {
     background: #0D0D0D;
     border: 1px solid #1C1C1C;
     transition: border-color 0.2s, transform 0.2s;
   }
   .card-hover:hover { border-color: #2a2a2a; transform: translateY(-2px); }
-  .btn-transition { transition: opacity 0.2s, transform 0.2s; }
-  .btn-transition:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-primary {
-    background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%);
-    border-radius: 999px;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 }

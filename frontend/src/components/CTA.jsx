@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 export default function CTA() {
+  const { ref, isVisible } = useScrollAnimation()
   return (
     <section id="get-started" className="relative bg-black py-20 lg:py-28">
-      <div className="wrap">
+      <div className="wrap" ref={ref}>
         {/* Dark rounded CTA card */}
-        <div className="rounded-3xl p-10 lg:p-14 text-center relative overflow-hidden"
+        <div className={`rounded-3xl p-10 lg:p-14 text-center relative overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           style={{ background: 'linear-gradient(135deg, #0d0d1a 0%, #0a0a12 100%)', border: '1px solid #1a1a2e' }}>
 
           {/* Background glow */}

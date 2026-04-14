@@ -89,13 +89,13 @@ function Sphere() {
         <circle cx="112" cy="312" r="4" fill="#F5A086" opacity="0.9" />
       </svg>
 
-      {/* Floating tags matching Figma */}
+      {/* Floating tags matching Figma — hidden on xs to avoid overflow */}
       {[
         { label: '⚡ Performance Marketing', top: '12%', right: '2%' },
-        { label: '💻 Software Development', top: '38%', right: '-2%' },
+        { label: '💻 Software Development', top: '38%', right: '2%' },
         { label: '🤖 AI Solutions', bottom: '18%', right: '4%' },
       ].map(({ label, ...pos }) => (
-        <div key={label} className="absolute rounded-full px-3 py-1.5 text-[11px] font-medium text-white/80 whitespace-nowrap"
+        <div key={label} className="hidden sm:block absolute rounded-full px-3 py-1.5 text-[11px] font-medium text-white/80 whitespace-nowrap"
           style={{ ...pos, background: 'rgba(15,15,20,0.85)', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)' }}>
           {label}
         </div>

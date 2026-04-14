@@ -1,12 +1,15 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
 export default function About() {
+  const { ref, isVisible } = useScrollAnimation()
   return (
     <section id="about" className="relative bg-black py-20 lg:py-28">
       {/* Subtle dark section bg */}
       <div className="absolute inset-0" style={{ background: 'rgba(8,8,15,0.6)' }} />
 
-      <div className="wrap relative">
+      <div className="wrap relative" ref={ref}>
         {/* Orange label + belief text — centered */}
-        <div className="text-center mb-12">
+        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="label mb-3">About</p>
           <p className="text-[15px] text-white/45 max-w-md mx-auto leading-relaxed">
             Tech Scape AI Was Built With One Belief — That Artificial Intelligence Should Work For People, Not Replace Them.
@@ -14,7 +17,7 @@ export default function About() {
         </div>
 
         {/* Main about copy */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-5">
+        <div className={`text-center max-w-2xl mx-auto mb-16 space-y-5 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-[16px] lg:text-[17px] text-white/80 leading-relaxed">
             <span className="font-semibold text-white">We are a global AI services and training company,</span>{' '}
             founded by technologists, business builders, and educators who have worked across the USA, Canada, and India.

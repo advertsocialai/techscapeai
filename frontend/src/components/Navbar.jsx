@@ -58,7 +58,7 @@ export default function Navbar() {
 
           {/* Right: hamburger + Contact Us */}
           <div className="flex items-center gap-5">
-            <button onClick={() => setOpen(!open)} className="text-white/70 hover:text-white transition-colors">
+            <button onClick={() => setOpen(!open)} className="lg:hidden text-white/70 hover:text-white transition-colors" aria-label="Toggle menu">
               {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
             <Link to="/contact"

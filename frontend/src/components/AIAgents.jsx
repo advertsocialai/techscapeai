@@ -1,3 +1,5 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
 const AGENTS = [
   {
     title: 'Customer Support Agent',
@@ -54,12 +56,13 @@ const AGENTS = [
 ]
 
 export default function AIAgents() {
+  const { ref, isVisible } = useScrollAnimation()
   return (
     <section id="ai-agents" className="relative bg-black py-20 lg:py-28">
-      <div className="wrap">
+      <div className="wrap" ref={ref}>
 
         {/* Header */}
-        <div className="mb-12 lg:mb-16">
+        <div className={`mb-12 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="label mb-4">AI Agents & POCs</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.02em] text-white leading-tight">
@@ -74,8 +77,10 @@ export default function AIAgents() {
 
         {/* 2×2 grid */}
         <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
-          {AGENTS.map((agent) => (
-            <div key={agent.title} className="card-hover rounded-2xl p-7 lg:p-8">
+          {AGENTS.map((agent, i) => (
+            <div key={agent.title}
+              className={`card-hover rounded-2xl p-7 lg:p-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${i * 80}ms` }}>
               {/* 3D-style icon area */}
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
                 style={{ background: `linear-gradient(135deg, ${agent.color}15 0%, #0a0a0a 100%)`, border: `1px solid ${agent.color}25` }}>

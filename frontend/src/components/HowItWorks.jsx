@@ -1,3 +1,5 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
 const STEPS = [
   {
     step: '01',
@@ -38,12 +40,13 @@ const STEPS = [
 ]
 
 export default function HowItWorks() {
+  const { ref, isVisible } = useScrollAnimation()
   return (
     <section id="how-it-works" className="relative bg-black py-20 lg:py-28">
-      <div className="wrap">
+      <div className="wrap" ref={ref}>
 
         {/* Header */}
-        <div className="mb-12 lg:mb-16">
+        <div className={`mb-12 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="label mb-4">How It Works</p>
           <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.02em] text-white leading-tight">
             From Idea to Deployed AI<br />
@@ -57,8 +60,10 @@ export default function HowItWorks() {
           <div className="hidden lg:block absolute top-[54px] left-[calc(33.33%+12px)] right-[calc(33.33%+12px)] h-px"
             style={{ background: 'linear-gradient(90deg, rgba(245,160,134,0.5), rgba(61,117,243,0.5), rgba(245,160,134,0.5))' }} />
 
-          {STEPS.map((step) => (
-            <div key={step.step} className="card-hover rounded-2xl p-8">
+          {STEPS.map((step, i) => (
+            <div key={step.step}
+              className={`card-hover rounded-2xl p-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${i * 100}ms` }}>
               {/* Icon circle */}
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 relative z-10"
                 style={{ background: `linear-gradient(135deg, ${step.accent}15 0%, #0d0d0d 100%)`, border: `1px solid ${step.accent}25` }}>

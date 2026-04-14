@@ -71,23 +71,38 @@ const SERVICES = [
   },
 ]
 
-function ServiceCard({ svc, delay, isVisible }) {
+/* Card for showcase row (left/center/right) */
+function ShowcaseCard({ svc, variant, delay, isVisible }) {
+  const isCenter = variant === 'center'
+  const isLeft   = variant === 'left'
+  const isRight  = variant === 'right'
+
+  const cardStyle = isCenter
+    ? { background: '#000000', border: '1px solid #1a1a1a' }
+    : { background: 'rgba(175,136,114,0.10)', border: '1px solid rgba(175,136,114,0.15)' }
+
+  const wrapperCls = [
+    'rounded-[32px] flex-shrink-0 p-8 flex flex-col gap-5 transition-all duration-700',
+    /* desktop sizing + bleed */
+    'lg:w-[422px] lg:h-[477px]',
+    isLeft  ? 'lg:ml-[-55px]' : '',
+    isRight ? 'lg:mr-[-55px]' : '',
+    isCenter ? 'lg:mt-[-9px]' : '',
+    /* mobile: full width, auto height, no bleed */
+    'w-full',
+    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10',
+  ].join(' ')
+
   return (
-    <div
-      className={`card-hover rounded-2xl p-7 lg:p-8 flex flex-col gap-5 transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
+    <div className={wrapperCls} style={{ ...cardStyle, transitionDelay: `${delay}ms` }}>
       {/* Icon area */}
       <div
-        className="w-full h-[100px] rounded-xl flex items-center justify-center relative overflow-hidden"
+        className="w-full h-[90px] rounded-xl flex items-center justify-center relative overflow-hidden"
         style={{
           background: `linear-gradient(135deg, ${svc.accent}10 0%, #080808 100%)`,
           border: `1px solid ${svc.accent}20`,
         }}
       >
-        {/* Subtle corner glow */}
         <div
           className="absolute top-0 left-0 w-24 h-24 rounded-full pointer-events-none"
           style={{
@@ -127,11 +142,17 @@ function ServiceCard({ svc, delay, isVisible }) {
 export default function Services() {
   const { ref, isVisible } = useScrollAnimation()
 
+  const svc4 = SERVICES[3]
+
   return (
-    <section id="services" className="relative bg-black py-20 lg:py-28">
+    <section id="services" className="relative bg-black py-20 lg:py-28 overflow-hidden">
       <div className="wrap" ref={ref}>
         {/* Header */}
-        <div className={`mb-12 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div
+          className={`mb-12 lg:mb-16 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <p className="label mb-4">What We Build</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] text-white leading-tight">
@@ -143,15 +164,62 @@ export default function Services() {
             </p>
           </div>
         </div>
+      </div>
 
-        {/* 3-column grid — last card centered */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-          {SERVICES.slice(0, 3).map((svc, i) => (
-            <ServiceCard key={svc.id} svc={svc} delay={i * 90} isVisible={isVisible} />
-          ))}
-          {/* 4th card: spans middle column on lg */}
-          <div className="sm:col-span-2 lg:col-span-1 lg:col-start-2">
-            <ServiceCard svc={SERVICES[3]} delay={3 * 90} isVisible={isVisible} />
+      {/* 3-card horizontal showcase — overflow-visible inner div, overflow-hidden on section */}
+      <div className="overflow-visible">
+        {/* Mobile: stack vertically with wrap padding; Desktop: flex row with bleed */}
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-start gap-4 lg:gap-0 px-[5%] lg:px-[7.9%] lg:justify-center">
+          <ShowcaseCard svc={SERVICES[0]} variant="left"   delay={0}   isVisible={isVisible} />
+          <ShowcaseCard svc={SERVICES[1]} variant="center" delay={90}  isVisible={isVisible} />
+          <ShowcaseCard svc={SERVICES[2]} variant="right"  delay={180} isVisible={isVisible} />
+        </div>
+      </div>
+
+      {/* 4th service: full-width featured strip */}
+      <div className="wrap mt-10">
+        <div
+          className={`rounded-[24px] p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{
+            transitionDelay: '270ms',
+            background: 'rgba(175,136,114,0.07)',
+            border: '1px solid rgba(175,136,114,0.15)',
+          }}
+        >
+          {/* Icon */}
+          <div
+            className="w-[72px] h-[72px] rounded-2xl flex-shrink-0 flex items-center justify-center"
+            style={{
+              background: `linear-gradient(135deg, ${svc4.accent}15 0%, #080808 100%)`,
+              border: `1px solid ${svc4.accent}20`,
+            }}
+          >
+            {svc4.icon}
+          </div>
+
+          {/* Text */}
+          <div className="flex-1">
+            <h3
+              className="text-[20px] font-bold mb-2 leading-snug"
+              style={{
+                background: `linear-gradient(97.97deg, ${svc4.accent} 0%, ${svc4.accentEnd} 100%)`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {svc4.title}
+            </h3>
+            <p className="text-[14px] text-white/50 leading-relaxed max-w-2xl">{svc4.description}</p>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2">
+            {svc4.tags.map(tag => (
+              <span key={tag} className="tag">{tag}</span>
+            ))}
           </div>
         </div>
       </div>

@@ -79,7 +79,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative bg-black border-t border-white/[0.06]">
+    <footer className="relative min-h-[610px] border-t border-white/[0.06]" style={{ background: '#020101' }}>
       <div className="wrap">
 
         {/* Top grid */}

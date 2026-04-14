@@ -167,11 +167,18 @@ export default function Hero() {
         style={{ background: 'linear-gradient(to bottom, transparent, #000)' }}
       />
 
-      <div className="wrap w-full pt-8 pb-14" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-6 items-center min-h-[calc(100vh-120px)]">
+      {/*
+        Figma frame: 1274×474px, leading: 112px, top: 149px
+        → top-[149px] = navbar(48px) + section pt(101px)
+        → width 1274px handled by .wrap (max-w + padding: 112px)
+        → height 474px = lg:h-[474px] on the grid
+      */}
+      <div className="wrap w-full pt-[101px] pb-16" ref={ref}>
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-6 items-center lg:h-[474px]">
 
           {/* Left — Text */}
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+
             {/* Eyebrow label */}
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full text-[12px] font-semibold text-white/70"
               style={{ background: 'rgba(61,117,243,0.1)', border: '1px solid rgba(61,117,243,0.25)' }}>
@@ -179,20 +186,20 @@ export default function Hero() {
               AI-Powered Solutions
             </div>
 
-            <h1 className="text-[40px] sm:text-[50px] lg:text-[58px] font-extrabold leading-[1.05] tracking-[-0.025em] mb-5">
+            <h1 className="text-[36px] sm:text-[46px] lg:text-[52px] font-extrabold leading-[1.05] tracking-[-0.025em] mb-5">
               We Build{' '}
               <span className="grad-text">AI Solutions</span>{' '}
               That Move Your Business Forward
             </h1>
 
-            <p className="text-[15px] lg:text-[16px] text-white/50 leading-relaxed max-w-[500px] mb-8">
+            <p className="text-[14px] lg:text-[15px] text-white/50 leading-relaxed max-w-[500px] mb-7">
               TechScape AI is a global AI services company delivering intelligent automation, custom AI agents, digital transformation, and world-class technology training — trusted by businesses across the USA, Canada, and India.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
               <Link
                 to="/contact"
-                className="btn inline-flex items-center gap-2 px-7 h-[48px] text-[14px] font-semibold text-white"
+                className="btn inline-flex items-center gap-2 px-7 h-[46px] text-[14px] font-semibold text-white"
               >
                 Book A Free Consultation
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -202,7 +209,7 @@ export default function Hero() {
               <a
                 href="#services"
                 onClick={e => { e.preventDefault(); document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' }) }}
-                className="inline-flex items-center gap-2 px-7 h-[48px] text-[14px] font-semibold text-white/50 hover:text-white transition-colors rounded-full"
+                className="inline-flex items-center gap-2 px-7 h-[46px] text-[14px] font-semibold text-white/50 hover:text-white transition-colors rounded-full"
                 style={{ border: '1px solid rgba(255,255,255,0.12)' }}
               >
                 See What We Build
@@ -210,19 +217,19 @@ export default function Hero() {
             </div>
 
             {/* Stats row */}
-            <div className="grid grid-cols-4 gap-4 mt-10 pt-8 border-t border-white/[0.07]">
+            <div className="grid grid-cols-4 gap-4 mt-8 pt-6 border-t border-white/[0.07]">
               {STATS.map(({ value, label }) => (
                 <div key={label}>
-                  <p className="text-[22px] sm:text-[26px] font-extrabold grad-text leading-none mb-1">{value}</p>
+                  <p className="text-[20px] sm:text-[24px] font-extrabold grad-text leading-none mb-1">{value}</p>
                   <p className="text-[11px] text-white/35 leading-tight">{label}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right — Sphere */}
+          {/* Right — Sphere — fills the 474px column height */}
           <div
-            className={`relative h-[380px] sm:h-[460px] lg:h-[540px] transition-all duration-700 delay-200 ${
+            className={`relative h-[340px] sm:h-[420px] lg:h-[474px] transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >

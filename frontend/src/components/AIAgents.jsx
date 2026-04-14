@@ -3,73 +3,91 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 const AGENTS = [
   {
     title: 'Customer Support Agent',
-    description: 'Intelligent bots trained on your knowledge base that handle queries 24/7, resolve issues instantly, and escalate complex cases to your team.',
+    description:
+      'Intelligent bots trained on your knowledge base that handle queries 24/7, resolve issues instantly, and escalate complex cases to your team — no downtime, no wait time.',
+    color: '#3D75F3',
     icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="10" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
-        <path d="M10 16c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-        <path d="M10 16v2a2 2 0 004 0v-2" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-        <path d="M22 16v2a2 2 0 01-4 0v-2" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <circle cx="17" cy="17" r="11" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
+        <path d="M10.5 17c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        <path d="M10.5 17v2.2a2.2 2.2 0 004.4 0V17" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        <path d="M23.5 17v2.2a2.2 2.2 0 01-4.4 0V17" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        <circle cx="17" cy="26" r="1.2" fill="#3D75F3" opacity="0.6" />
       </svg>
     ),
-    color: '#3D75F3',
   },
   {
     title: 'Data & Reporting Agent',
-    description: 'Pull from multiple sources, auto-generate reports, and surface insights on demand — no more manual Excel grind or waiting on the analytics team.',
+    description:
+      'Pull from multiple sources, auto-generate reports, and surface insights on demand — no more manual Excel grind or waiting on the analytics team for weekly numbers.',
+    color: '#F5A086',
     icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect x="6" y="18" width="4" height="8" rx="1" fill="#F5A086" opacity="0.8" />
-        <rect x="14" y="12" width="4" height="14" rx="1" fill="#F5A086" />
-        <rect x="22" y="6" width="4" height="20" rx="1" fill="#F5A086" opacity="0.6" />
-        <path d="M8 14L14 10L22 6" stroke="#F5A086" strokeWidth="1.5" strokeLinecap="round" />
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <rect x="5" y="20" width="5" height="9" rx="1.5" fill="#F5A086" opacity="0.7" />
+        <rect x="14" y="13" width="5" height="16" rx="1.5" fill="#F5A086" />
+        <rect x="23" y="7" width="5" height="22" rx="1.5" fill="#F5A086" opacity="0.55" />
+        <path d="M7.5 16L16.5 11L25.5 6" stroke="#F5A086" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="7.5" cy="16" r="2" fill="#F5A086" />
+        <circle cx="16.5" cy="11" r="2" fill="#F5A086" />
+        <circle cx="25.5" cy="6" r="2" fill="#F5A086" />
       </svg>
     ),
-    color: '#F5A086',
   },
   {
     title: 'Outreach & Follow-Up Agent',
-    description: 'Automated lead nurturing via email and WhatsApp — personalised messages, timely follow-ups, and CRM sync, all without lifting a finger.',
+    description:
+      'Automated lead nurturing via email and WhatsApp — personalised messages, timely follow-ups, and CRM sync, all without lifting a finger or losing a prospect.',
+    color: '#3D75F3',
     icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <path d="M6 8h20a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V10a2 2 0 012-2z" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
-        <path d="M4 10l12 8 12-8" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" />
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <rect x="4" y="8" width="26" height="18" rx="3" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
+        <path d="M4 11l13 9 13-9" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M25 22l3-3M25 22l-3-3" stroke="#3D75F3" strokeWidth="1.3" strokeLinecap="round" opacity="0.5" />
       </svg>
     ),
-    color: '#3D75F3',
   },
   {
     title: 'Operations & Workflow Agent',
-    description: 'End-to-end process automation connecting your tools — Slack, Notion, Sheets, HubSpot. Eliminate manual handoffs and keep work moving 24/7.',
+    description:
+      'End-to-end process automation connecting your tools — Slack, Notion, Sheets, HubSpot. Eliminate manual handoffs and keep work moving 24/7 across departments.',
+    color: '#F5A086',
     icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <circle cx="8" cy="8" r="3" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <circle cx="24" cy="8" r="3" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <circle cx="8" cy="24" r="3" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <circle cx="24" cy="24" r="3" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <path d="M11 8h10M8 11v10M24 11v10M11 24h10" stroke="#F5A086" strokeWidth="1.2" strokeLinecap="round" />
-        <circle cx="16" cy="16" r="2" fill="#F5A086" opacity="0.5" />
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <circle cx="8" cy="8" r="3.5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
+        <circle cx="26" cy="8" r="3.5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
+        <circle cx="8" cy="26" r="3.5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
+        <circle cx="26" cy="26" r="3.5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
+        <path d="M11.5 8h11M8 11.5v11M26 11.5v11M11.5 26h11" stroke="#F5A086" strokeWidth="1.3" strokeLinecap="round" />
+        <circle cx="17" cy="17" r="2.5" fill="#F5A086" opacity="0.45" />
+        <circle cx="17" cy="17" r="1" fill="#F5A086" />
       </svg>
     ),
-    color: '#F5A086',
   },
 ]
 
 export default function AIAgents() {
   const { ref, isVisible } = useScrollAnimation()
+
   return (
     <section id="ai-agents" className="relative bg-black py-20 lg:py-28">
-      <div className="wrap" ref={ref}>
+      {/* Subtle section glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 70% 50% at 30% 50%, rgba(61,117,243,0.05) 0%, transparent 60%)',
+        }}
+      />
 
+      <div className="wrap relative" ref={ref}>
         {/* Header */}
         <div className={`mb-12 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="label mb-4">AI Agents & POCs</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-            <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.02em] text-white leading-tight">
+            <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] text-white leading-tight">
               Stop Reading About AI.<br />
               <span className="blue-text">Start Using It.</span>
             </h2>
-            <p className="text-[15px] text-white/50 max-w-sm leading-relaxed lg:text-right">
+            <p className="text-[15px] text-white/45 max-w-sm leading-relaxed lg:text-right">
               Purpose-built agents that solve specific problems fast — affordable, and ready to deploy in weeks.
             </p>
           </div>
@@ -78,21 +96,45 @@ export default function AIAgents() {
         {/* 2×2 grid */}
         <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
           {AGENTS.map((agent, i) => (
-            <div key={agent.title}
-              className={`card-hover rounded-2xl p-7 lg:p-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${i * 80}ms` }}>
-              {/* 3D-style icon area */}
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
-                style={{ background: `linear-gradient(135deg, ${agent.color}15 0%, #0a0a0a 100%)`, border: `1px solid ${agent.color}25` }}>
-                {agent.icon}
+            <div
+              key={agent.title}
+              className={`card-hover rounded-2xl p-7 lg:p-8 flex flex-col gap-5 transition-all duration-700 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${i * 90}ms` }}
+            >
+              {/* Icon box */}
+              <div
+                className="w-[68px] h-[68px] rounded-2xl flex items-center justify-center relative overflow-hidden flex-shrink-0"
+                style={{
+                  background: `linear-gradient(135deg, ${agent.color}18 0%, #090909 100%)`,
+                  border: `1px solid ${agent.color}28`,
+                }}
+              >
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at 30% 30%, ${agent.color}20 0%, transparent 65%)`,
+                  }}
+                />
+                <div className="relative z-10">{agent.icon}</div>
               </div>
-              <h3 className="text-[18px] font-bold text-white mb-3">{agent.title}</h3>
-              <p className="text-[14px] text-white/50 leading-relaxed">{agent.description}</p>
 
-              {/* Accent dot */}
-              <div className="mt-5 flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full" style={{ background: agent.color }} />
-                <span className="text-[12px] text-white/30">Deployable in 2–4 weeks</span>
+              {/* Text */}
+              <div>
+                <h3 className="text-[18px] font-bold text-white mb-3 leading-snug">{agent.title}</h3>
+                <p className="text-[14px] text-white/50 leading-relaxed">{agent.description}</p>
+              </div>
+
+              {/* Deploy badge */}
+              <div className="mt-auto flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
+                <div
+                  className="w-2 h-2 rounded-full flex-shrink-0"
+                  style={{ background: agent.color, boxShadow: `0 0 6px ${agent.color}80` }}
+                />
+                <span className="text-[12px] font-medium" style={{ color: agent.color }}>
+                  Deployable in 2–4 weeks
+                </span>
               </div>
             </div>
           ))}

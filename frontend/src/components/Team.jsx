@@ -163,7 +163,7 @@ export default function Team() {
 
           {/* Center — SVG character */}
           <div className="relative h-[280px] lg:h-[340px]">
-            <Character />
+            <img src="/middle.svg" alt="" />
           </div>
 
           {/* Right — accordion */}

@@ -84,7 +84,7 @@ export default function Navbar() {
         {/* Navbar row — 48px height matching Figma */}
         <div className="flex items-center justify-between h-[48px]">
 
-          <Logo />
+          <img src="/logotechscapeai.svg" alt="" />
 
           {/* Desktop nav links — centered */}
           <div className="hidden lg:flex items-center gap-7">

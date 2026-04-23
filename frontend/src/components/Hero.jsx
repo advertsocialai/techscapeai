@@ -233,7 +233,7 @@ export default function Hero() {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <Sphere />
+            <img src="/globe.svg" alt="" />
           </div>
         </div>
       </div>

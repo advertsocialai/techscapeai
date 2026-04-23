@@ -62,25 +62,12 @@ export default function About() {
 
         {/* Fan-layout cards */}
         <div
-          className={`flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-0 lg:items-stretch transition-all duration-700 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-0 lg:items-stretch transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
-          {FAN_CARDS.map(({ text, bg, border, rotate, translate, z, scale }, i) => (
-            <div
-              key={i}
-              className="rounded-2xl p-7 max-w-[290px] w-full"
-              style={{
-                background: bg,
-                border: `1px solid ${border}`,
-                zIndex: z,
-                transform: `rotate(${rotate}) translateY(${translate.y}) translateX(${translate.x}) ${scale ? `scale(${scale})` : ''}`,
-                transition: 'transform 0.3s ease',
-              }}
-            >
-              <p className="text-[16px] font-semibold text-white leading-snug">{text}</p>
-            </div>
-          ))}
+          <img src="/frame1.svg" alt="" />
+          <img src="/frame2.svg" alt="" />
+          <img src="/frame3.svg" alt="" />
         </div>
       </div>
     </section>

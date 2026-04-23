@@ -87,7 +87,7 @@ export default function Footer() {
 
           {/* Brand col */}
           <div className="col-span-2">
-            <Logo />
+           <img src="/logotechscapeai.svg" alt="" />
             <p className="text-[13px] text-white/38 leading-relaxed max-w-[220px] mt-5 mb-6">
               AI-powered solutions that move businesses forward — fast, affordable, and ready to deploy.
             </p>
@@ -137,19 +137,7 @@ export default function Footer() {
 
         {/* Large ghost wordmark */}
         <div className="py-8 text-center overflow-hidden select-none">
-          <p
-            className="font-black leading-none"
-            style={{
-              fontSize: 'clamp(44px, 10vw, 130px)',
-              letterSpacing: '-0.04em',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.018) 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            TechScape AI
-          </p>
+          <img src="/TechScape AI.svg" alt="" />
         </div>
 
         {/* Bottom bar */}

@@ -72,58 +72,11 @@ export default function HowItWorks() {
         <div className="grid lg:grid-cols-3 gap-5 lg:gap-6 relative">
 
           {/* Horizontal connector line — desktop only */}
-          <div
-            className="hidden lg:block absolute top-[52px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px pointer-events-none"
-            style={{
-              background: 'linear-gradient(90deg, rgba(245,160,134,0.6) 0%, rgba(61,117,243,0.6) 50%, rgba(245,160,134,0.6) 100%)',
-            }}
-          >
-            {/* Connector dots */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#F5A086]" />
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#F5A086]" />
-          </div>
+          
 
-          {STEPS.map((step, i) => (
-            <div
-              key={step.step}
-              className={`card-hover rounded-2xl p-8 relative transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${i * 110}ms` }}
-            >
-              {/* Step number badge */}
-              <div className="flex items-center gap-3 mb-5">
-                {/* Numbered icon circle */}
-                <div
-                  className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center relative z-10 flex-shrink-0"
-                  style={{
-                    background: `linear-gradient(135deg, ${step.accent}18 0%, #0d0d0d 100%)`,
-                    border: `1px solid ${step.accent}28`,
-                  }}
-                >
-                  {step.icon}
-                </div>
-
-                <span
-                  className="text-[40px] font-black leading-none select-none"
-                  style={{ color: 'rgba(255,255,255,0.06)', letterSpacing: '-0.04em' }}
-                >
-                  {step.step}
-                </span>
-              </div>
-
-              <h3 className="text-[18px] font-bold text-white mb-3 leading-snug">{step.title}</h3>
-              <p className="text-[14px] text-white/50 leading-relaxed">{step.description}</p>
-
-              {/* Bottom accent line */}
-              <div
-                className="absolute bottom-0 left-8 right-8 h-[1px] rounded-full"
-                style={{
-                  background: `linear-gradient(90deg, ${step.accent}40, transparent)`,
-                }}
-              />
-            </div>
-          ))}
+          <img src="/Safer.svg" alt="" />
+          <img src="/Faster.svg" alt="" />
+          <img src="/On-cloud.svg" alt="" />
         </div>
       </div>
     </section>

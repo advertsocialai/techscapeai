@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import heroIllustration from '../assets/hero-illustration.svg'
+import heroSphere from '../assets/hero-sphere.png'
 import heroTagIcon from '../assets/hero-tag-icon.png'
 import heroTagIcon2 from '../assets/hero-tag-icon2.png'
 
@@ -87,9 +87,9 @@ export default function Hero() {
               />
 
               <img
-                src={heroIllustration}
+                src={heroSphere}
                 alt="AI sphere illustration"
-                className="relative z-10 w-full max-w-[546px] h-auto object-contain float"
+                className="relative z-10 w-full max-w-[516px] h-auto object-contain float"
                 style={{ filter: 'drop-shadow(0 0 70px rgba(61,117,243,0.35))' }}
               />
 

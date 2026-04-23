@@ -1,67 +1,33 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
+/* Figma 137:932 + 189:426 / 189:428 / 189:432 / 189:444
+   Exact agent copy, 2×2 grid of Frame 79/120/121 cards with gradient bg.
+   Image placeholders use a gradient box with Gemini-style blue→peach glow.      */
+
 const AGENTS = [
   {
-    title: 'Customer Support Agent',
-    description:
-      'Intelligent bots trained on your knowledge base that handle queries 24/7, resolve issues instantly, and escalate complex cases to your team — no downtime, no wait time.',
-    color: '#3D75F3',
-    icon: (
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-        <circle cx="17" cy="17" r="11" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
-        <path d="M10.5 17c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-        <path d="M10.5 17v2.2a2.2 2.2 0 004.4 0V17" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-        <path d="M23.5 17v2.2a2.2 2.2 0 01-4.4 0V17" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-        <circle cx="17" cy="26" r="1.2" fill="#3D75F3" opacity="0.6" />
-      </svg>
-    ),
+    title: 'Customer Support Agents',
+    body:
+      'AI agents that handle FAQs, ticket routing, and first-level customer interactions 24/7, without a team.',
+    glow: 'radial-gradient(circle at 30% 30%, #6EB2FF 0%, #3D75F3 35%, #0A1F5C 75%, #000 100%)',
   },
   {
-    title: 'Data & Reporting Agent',
-    description:
-      'Pull from multiple sources, auto-generate reports, and surface insights on demand — no more manual Excel grind or waiting on the analytics team for weekly numbers.',
-    color: '#F5A086',
-    icon: (
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-        <rect x="5" y="20" width="5" height="9" rx="1.5" fill="#F5A086" opacity="0.7" />
-        <rect x="14" y="13" width="5" height="16" rx="1.5" fill="#F5A086" />
-        <rect x="23" y="7" width="5" height="22" rx="1.5" fill="#F5A086" opacity="0.55" />
-        <path d="M7.5 16L16.5 11L25.5 6" stroke="#F5A086" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="7.5" cy="16" r="2" fill="#F5A086" />
-        <circle cx="16.5" cy="11" r="2" fill="#F5A086" />
-        <circle cx="25.5" cy="6" r="2" fill="#F5A086" />
-      </svg>
-    ),
+    title: 'Data & Reporting Agents',
+    body:
+      'Agents that pull data from multiple sources, generate reports, and surface insights automatically — no manual Excel work.',
+    glow: 'radial-gradient(circle at 60% 40%, #FAD4BF 0%, #F5A086 40%, #6A2F22 80%, #000 100%)',
   },
   {
-    title: 'Outreach & Follow-Up Agent',
-    description:
-      'Automated lead nurturing via email and WhatsApp — personalised messages, timely follow-ups, and CRM sync, all without lifting a finger or losing a prospect.',
-    color: '#3D75F3',
-    icon: (
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-        <rect x="4" y="8" width="26" height="18" rx="3" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
-        <path d="M4 11l13 9 13-9" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M25 22l3-3M25 22l-3-3" stroke="#3D75F3" strokeWidth="1.3" strokeLinecap="round" opacity="0.5" />
-      </svg>
-    ),
+    title: 'Outreach & Follow-Up Agents',
+    body:
+      'Intelligent agents that manage lead outreach, email follow-ups, and CRM updates so your sales team focuses only on closing.',
+    glow: 'radial-gradient(circle at 40% 50%, #A3B8FF 0%, #3D75F3 35%, #152B66 75%, #000 100%)',
   },
   {
-    title: 'Operations & Workflow Agent',
-    description:
-      'End-to-end process automation connecting your tools — Slack, Notion, Sheets, HubSpot. Eliminate manual handoffs and keep work moving 24/7 across departments.',
-    color: '#F5A086',
-    icon: (
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-        <circle cx="8" cy="8" r="3.5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <circle cx="26" cy="8" r="3.5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <circle cx="8" cy="26" r="3.5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <circle cx="26" cy="26" r="3.5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <path d="M11.5 8h11M8 11.5v11M26 11.5v11M11.5 26h11" stroke="#F5A086" strokeWidth="1.3" strokeLinecap="round" />
-        <circle cx="17" cy="17" r="2.5" fill="#F5A086" opacity="0.45" />
-        <circle cx="17" cy="17" r="1" fill="#F5A086" />
-      </svg>
-    ),
+    title: 'Operations & Workflow Agents',
+    body:
+      'Custom automation agents that connect your tools, eliminate handoffs, and keep your business moving without manual intervention.',
+    glow: 'radial-gradient(circle at 50% 50%, #FFC7A8 0%, #F5A086 30%, #3D75F3 65%, #0A1A40 100%)',
   },
 ]
 
@@ -70,69 +36,69 @@ export default function AIAgents() {
 
   return (
     <section id="ai-agents" className="relative bg-black py-20 lg:py-28">
-      {/* Subtle section glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 70% 50% at 30% 50%, rgba(61,117,243,0.05) 0%, transparent 60%)',
-        }}
-      />
-
       <div className="wrap relative" ref={ref}>
-        {/* Header */}
-        <div className={`mb-12 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-[40px] sm:text-[60px] lg:text-[80px] font-semibold tracking-[-2.4px] text-white leading-[1.1]">
-            What{' '}
-            <span className="grad-text">We Build</span>
-          </h2>
-          <p className="text-[20px] sm:text-[26px] lg:text-[32px] tracking-[-0.96px] mt-2" style={{ color: '#e8e8e8' }}>
+        {/* Header — Figma Frame 93 (137:932) */}
+        <div
+          className={`mb-14 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <p className="text-[40px] sm:text-[60px] lg:text-[80px] font-semibold tracking-[-2.4px] leading-[77px]">
+            <span className="text-white">What </span>
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  'conic-gradient(from 90deg, #077afd 0%, #0e7ffb 4.48%, #2385f6 8.95%, #408fee 17.91%, #5c9ae7 26.86%, #79a4e0 35.82%, #b1b9d1 53.73%, #eacec2 71.64%, #b1b9d1 78.73%, #79a4e0 85.82%, #5c9ae7 89.36%, #408fee 92.91%, #2385f6 96.45%, #0e7ffb 98.23%, #077afd 100%)',
+              }}
+            >
+              We Build
+            </span>
+          </p>
+          <p
+            className="text-[24px] sm:text-[28px] lg:text-[32px] font-semibold tracking-[-0.96px] mt-2"
+            style={{ color: '#e8e8e8', lineHeight: '77px' }}
+          >
             Design System with AI
           </p>
         </div>
 
-        {/* 2×2 grid */}
-        <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
+        {/* 2×2 grid — Figma Frame 79/120/121: gradient bg, rounded-16, p-24 */}
+        <div className="grid sm:grid-cols-2 gap-[30px]">
           {AGENTS.map((agent, i) => (
             <div
               key={agent.title}
-              className={`card-hover rounded-2xl p-7 lg:p-8 flex flex-col gap-5 transition-all duration-700 ${
+              className={`flex items-center justify-center gap-4 rounded-[16px] p-6 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${i * 90}ms` }}
+              style={{
+                background:
+                  'linear-gradient(to right, rgba(255,122,0,0.1) 0%, rgba(27,43,74,0.1) 100%)',
+                transitionDelay: `${i * 90}ms`,
+              }}
             >
-              {/* Icon box */}
+              {/* Text column — Figma 316–344px text block, capitalize, tracking -0.72 */}
+              <div className="flex-1 min-w-0 capitalize tracking-[-0.72px]">
+                <p
+                  className="text-[20px] lg:text-[24px] font-medium leading-[25px] mb-2"
+                  style={{ color: '#fad4bf' }}
+                >
+                  {agent.title}
+                </p>
+                <p className="text-[14px] lg:text-[16px] font-medium leading-[25px] text-white">
+                  {agent.body}
+                </p>
+              </div>
+
+              {/* Image placeholder — Gemini-style gradient sphere (Figma 132–208px) */}
               <div
-                className="w-[68px] h-[68px] rounded-2xl flex items-center justify-center relative overflow-hidden flex-shrink-0"
+                className="shrink-0 w-[120px] h-[120px] lg:w-[154px] lg:h-[140px] rounded-[18px]"
                 style={{
-                  background: `linear-gradient(135deg, ${agent.color}18 0%, #090909 100%)`,
-                  border: `1px solid ${agent.color}28`,
+                  background: agent.glow,
+                  boxShadow:
+                    '0 10px 30px rgba(61,117,243,0.25), inset 0 0 40px rgba(0,0,0,0.4)',
                 }}
-              >
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle at 30% 30%, ${agent.color}20 0%, transparent 65%)`,
-                  }}
-                />
-                <div className="relative z-10">{agent.icon}</div>
-              </div>
-
-              {/* Text */}
-              <div>
-                <h3 className="text-[18px] font-bold text-white mb-3 leading-snug">{agent.title}</h3>
-                <p className="text-[14px] text-white/50 leading-relaxed">{agent.description}</p>
-              </div>
-
-              {/* Deploy badge */}
-              <div className="mt-auto flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
-                <div
-                  className="w-2 h-2 rounded-full flex-shrink-0"
-                  style={{ background: agent.color, boxShadow: `0 0 6px ${agent.color}80` }}
-                />
-                <span className="text-[12px] font-medium" style={{ color: agent.color }}>
-                  Deployable in 2–4 weeks
-                </span>
-              </div>
+              />
             </div>
           ))}
         </div>

@@ -49,8 +49,24 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative border-t border-white/[0.06]" style={{ background: '#020101' }}>
-      <div className="px-6 sm:px-10 lg:px-[90px] mx-auto max-w-[1440px]">
+    <footer
+      className="relative border-t border-white/[0.06] overflow-hidden"
+      style={{ background: '#020101' }}
+    >
+      {/* Giant "TechScape AI" wordmark — Figma 183:973 positions it absolute at bottom */}
+      <div
+        className="absolute left-0 right-0 bottom-0 pointer-events-none select-none flex items-end justify-center"
+        style={{ height: '180px' }}
+      >
+        <img
+          src={footerWordmark}
+          alt=""
+          className="w-[94%] max-w-[1243px] object-contain opacity-70"
+          draggable="false"
+        />
+      </div>
+
+      <div className="relative px-6 sm:px-10 lg:px-[90px] mx-auto max-w-[1440px] pb-[220px]">
 
         {/* Top grid */}
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 py-14 border-b border-white/[0.06]">
@@ -107,16 +123,6 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-        </div>
-
-        {/* Ghost wordmark */}
-        <div className="py-8 overflow-hidden select-none">
-          <img
-            src={footerWordmark}
-            alt=""
-            className="w-full max-w-[800px] mx-auto object-contain opacity-60"
-            draggable="false"
-          />
         </div>
 
         {/* Bottom bar */}

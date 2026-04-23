@@ -63,39 +63,25 @@ export default function Navbar() {
             <img src={navbarBrand} alt="Tech Scape AI" className="h-[48px] w-auto" />
           </Link>
 
-          {/* Desktop nav links — centered */}
-          <div className="hidden lg:flex items-center gap-7">
-            {NAV_LINKS.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                onClick={e => navigate(e, href)}
-                className="relative text-[13px] text-white/55 hover:text-white transition-colors duration-200 after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-px after:grad hover:after:w-full after:transition-all after:duration-300"
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-
-          {/* Right — hamburger + Contact Us */}
-          <div className="flex items-center gap-3">
+          {/* Right — hamburger + Contact us (Figma: no desktop links, all go in drawer) */}
+          <div className="flex items-center gap-8">
             <button
               onClick={() => setOpen(v => !v)}
-              className="lg:hidden p-1.5 text-white/60 hover:text-white transition-colors"
+              className="p-1.5 text-white/60 hover:text-white transition-colors"
               aria-label={open ? 'Close menu' : 'Open menu'}
             >
               {open ? <CloseIcon /> : <MenuIcon />}
             </button>
 
-            {/* "Contact Us" — gradient button matching Figma (107×40, 4px radius) */}
+            {/* "Contact us" — gradient button matching Figma (h-40, 4px radius, px-16 py-8) */}
             <Link
               to="/contact"
-              className="hidden sm:inline-flex items-center justify-center px-4 h-[40px] text-[14px] font-medium text-white rounded-[4px] capitalize"
+              className="inline-flex items-center justify-center px-4 h-[40px] text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap"
               style={{
-                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 48.08%, #F5A186 100%)',
+                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 58.744%, #F5A186 117.01%)',
               }}
             >
-              Contact Us
+              Contact us
             </Link>
           </div>
         </div>

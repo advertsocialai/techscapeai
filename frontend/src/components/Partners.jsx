@@ -24,34 +24,28 @@ export default function Partners() {
     <section id="partners" className="relative bg-black py-16 lg:py-20">
       <div className="wrap" ref={ref}>
         <div
-          className={`rounded-2xl py-12 text-center overflow-hidden transition-all duration-700 ${
+          className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
-          style={{ background: '#080808', border: '1px solid #181818' }}
         >
-          {/* Header */}
-          <p className="label mb-2">Partners</p>
-          <p className="text-[14px] text-white/35 mb-2 px-6">
+          {/* Heading — 24px salmon, medium, capitalize */}
+          <p className="capitalize text-[24px] font-medium leading-[25px] text-center tracking-[-0.72px]"
+            style={{ color: '#f7bfa0' }}>
             In Partnership With
           </p>
-          <p className="text-[14px] text-white/35 mb-10 px-6">
-            Tech Scape AI operates at the intersection of global technology ecosystems. Our partnerships give our clients and students access to world-class networks, validated technology, and market-ready opportunities.
-          </p>
 
-          {/* Marquee ticker — matches Figma Frame 72 single-row layout */}
-          <div className="relative overflow-hidden mb-10">
-            {/* Left fade */}
+          {/* Marquee ticker — 120px gap between logos */}
+          <div className="relative overflow-hidden w-full">
             <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-              style={{ background: 'linear-gradient(90deg, #080808 0%, transparent 100%)' }} />
-            {/* Right fade */}
+              style={{ background: 'linear-gradient(90deg, #000 0%, transparent 100%)' }} />
             <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-              style={{ background: 'linear-gradient(270deg, #080808 0%, transparent 100%)' }} />
+              style={{ background: 'linear-gradient(270deg, #000 0%, transparent 100%)' }} />
 
             <div className="flex items-center gap-[120px] marquee-track" style={{ width: 'max-content' }}>
               {MARQUEE.map(({ key, src, alt, w, h }, i) => (
                 <div
                   key={`${key}-${i}`}
-                  className="flex items-center justify-center shrink-0 opacity-40 hover:opacity-90 transition-opacity duration-300 cursor-default"
+                  className="flex items-center justify-center shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300 cursor-default"
                   style={{ minHeight: '56px' }}
                 >
                   <img
@@ -67,14 +61,16 @@ export default function Partners() {
             </div>
           </div>
 
-          {/* Tagline pill */}
+          {/* Tagline pill — gradient bg (rgba(255,122,0,0.1) → rgba(27,43,74,0.1)), rounded-999, p-24 */}
           <div
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-medium text-white/45"
-            style={{ background: '#101010', border: '1px solid #1E1E1E' }}
+            className="inline-flex items-center justify-center rounded-full p-6"
+            style={{
+              background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
+            }}
           >
-            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-              style={{ background: 'linear-gradient(135deg, #3D75F3, #F5A086)' }} />
-            This is not the future. This is happening now — and TechScape AI is leading it.
+            <p className="text-[16px] font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px] whitespace-nowrap">
+              This is not the future. This is happening now and Tech Scape AI is leading it.
+            </p>
           </div>
         </div>
       </div>

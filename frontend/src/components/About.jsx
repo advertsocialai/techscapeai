@@ -43,10 +43,11 @@ export default function About() {
           <p className="text-[24px] text-[#F5A086] tracking-[-0.72px] mb-4">About</p>
         </div>
 
-        {/* About copy */}
-        <div className={`text-center max-w-2xl mx-auto mb-14 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-[16px] text-[#e5e7eb] tracking-[-0.48px] leading-relaxed">
-            Tech Scape AI was built with one belief — that Artificial Intelligence should work for people, not replace them.
+        {/* About copy — Figma 129:467: 32px, tracking -0.96, leading 45, first clause white, rest #5b5b5b */}
+        <div className={`text-center max-w-[1054px] mx-auto mb-14 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-[22px] sm:text-[28px] lg:text-[32px] tracking-[-0.96px]" style={{ lineHeight: '45px' }}>
+            <span className="text-white">We are a global AI services and training company, </span>
+            <span style={{ color: '#5b5b5b' }}>founded by technologists, business builders, and educators who have worked across the USA, Canada, and India. We don&apos;t sell software. We solve problems with AI, with automation, and with the right people behind every solution.</span>
           </p>
         </div>
 

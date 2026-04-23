@@ -45,29 +45,31 @@ export default function CTA() {
     <section id="get-started" className="relative bg-black py-20 lg:py-28">
       <div className="wrap" ref={ref}>
 
-        {/* ── Top banner card ── */}
+        {/* ── Top banner card (Figma Frame 122) ── */}
         <div
-          className={`rounded-[24px] py-[48px] px-[24px] text-center mb-8 transition-all duration-700 ${
+          className={`flex flex-col items-center justify-center gap-[32px] rounded-[24px] px-[24px] py-[48px] text-center mb-8 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{
-            background: 'linear-gradient(135deg, rgba(255,122,0,0.1) 0%, rgba(27,43,74,0.1) 100%)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'linear-gradient(to right, rgba(255,122,0,0.1) 0%, rgba(27,43,74,0.1) 100%)',
           }}
         >
-          <p className="text-[18px] sm:text-[22px] lg:text-[26px] font-extrabold text-white leading-snug max-w-3xl mx-auto mb-6">
+          <p className="text-[16px] font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px]">
             Every hour your team spends on manual work is an hour your competitor&apos;s AI is doing it faster. Let&apos;s fix that.
           </p>
           <Link
             to="/contact"
-            className="btn inline-flex items-center gap-2 px-8 h-[52px] text-[15px] font-semibold text-white rounded-[8px] mb-4"
+            className="inline-flex items-center justify-center gap-2 px-6 h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
+            style={{
+              backgroundImage: 'linear-gradient(104.54deg, #3D75F3 58.744%, #F5A186 117.01%)',
+              boxShadow: '0px 4px 4px 0px rgba(78,157,255,0.22)',
+            }}
           >
-            Book a Free Consultation
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            Book a Free consultation
           </Link>
-          <p className="text-[14px] text-white/45">See What We Can Build For You</p>
+          <p className="text-[16px] font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px]">
+            See What We Can Build For You
+          </p>
         </div>
 
         {/* ── Two panels ── */}

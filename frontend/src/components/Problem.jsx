@@ -32,12 +32,11 @@ export default function Problem() {
           }`}>
             {/* Left — big heading */}
             <div className="lg:w-[470px] shrink-0">
-              <h2 className="text-[48px] sm:text-[64px] lg:text-[80px] font-semibold tracking-[-2.4px] text-white leading-[1.05]">
-                The Problem
-                <br />
+              <h2 className="text-[48px] sm:text-[64px] lg:text-[80px] font-semibold tracking-[-2.4px] text-white leading-[77px]">
+                The Problem{' '}
                 <span
                   style={{
-                    background: 'linear-gradient(90deg, #07f, #fad4bf)',
+                    backgroundImage: 'linear-gradient(90deg, #07f 0%, #fad4bf 66.351%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -48,20 +47,18 @@ export default function Problem() {
               </h2>
             </div>
 
-            {/* Right — explanation */}
-            <div className="lg:w-[696px] flex flex-col justify-end">
-              <p className="text-[16px] text-[#888] font-medium leading-[25px] tracking-[-0.48px] capitalize mb-5">
+            {/* Right — explanation (Figma 137:907: 696px, #888, medium 16, leading 25, tracking -0.48, capitalize, gap 17) */}
+            <div className="lg:w-[696px] flex flex-col gap-[17px]">
+              <p className="text-[16px] text-[#888] font-medium leading-[25px] tracking-[-0.48px] capitalize">
                 Most businesses know AI can help them. Very few know where to start. Fewer still can afford a six-month enterprise implementation.
               </p>
-              <p className="text-[16px] text-[#888] font-medium leading-[25px] tracking-[-0.48px] capitalize mb-5">
+              <p className="text-[16px] text-[#888] font-medium leading-[25px] tracking-[-0.48px] capitalize">
                 We built a different model.
               </p>
-              <p className="text-[16px] text-[#888] font-medium leading-[25px] tracking-[-0.48px] capitalize mb-5">
-                We identify one high-impact problem in your business, build a focused AI agent around it, prove it works — and then scale it. No bloated projects. No wasted budgets.
-              </p>
-              <p className="text-[16px] text-[#888] font-medium leading-[25px] tracking-[-0.48px] capitalize">
-                Just results you can see.
-              </p>
+              <div className="text-[16px] text-[#888] font-medium leading-[25px] tracking-[-0.48px] capitalize lg:w-[640px]">
+                <p>We identify one high-impact problem in your business, build a focused AI agent around it, prove it works and then scale it. No bloated projects. No wasted budgets.</p>
+                <p>Just results you can see.</p>
+              </div>
             </div>
           </div>
 

@@ -34,7 +34,7 @@ export default function Hero() {
           {/* Left — Text */}
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
-            <h1 className="capitalize text-[36px] sm:text-[42px] lg:text-[48px] font-semibold tracking-[-1.44px] mb-5 max-w-[667px]">
+            <h1 className="capitalize text-[36px] sm:text-[46px] lg:text-[52px] font-semibold tracking-[-1.56px] leading-[1.1] mb-5 max-w-[667px]">
               We Build{' '}
               <span
                 className="bg-clip-text text-transparent font-bold"

@@ -1,8 +1,7 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
-/* Figma 137:932 + 189:426 / 189:428 / 189:432 / 189:444
-   Exact agent copy, 2×2 grid of Frame 79/120/121 cards with gradient bg.
-   Image placeholders use a gradient box with Gemini-style blue→peach glow.      */
+/* Figma 137:900 (eyebrow) + 137:902 (heading) + 137:903 (body)
+   + 137:932 (section title) + 189:426 / 189:428 / 189:432 / 189:444 (4 cards 2×2) */
 
 const AGENTS = [
   {
@@ -37,9 +36,25 @@ export default function AIAgents() {
   return (
     <section id="ai-agents" className="relative bg-black py-20 lg:py-28">
       <div className="wrap relative" ref={ref}>
-        {/* Header — Figma Frame 93 (137:932) */}
+
+        {/* Figma 137:900 / 137:902 / 137:903 — eyebrow + heading + body */}
         <div
-          className={`mb-14 transition-all duration-700 ${
+          className={`text-center max-w-[900px] mx-auto mb-16 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <p className="label mb-4">AI Agents &amp; POCs</p>
+          <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] font-semibold tracking-[-1.32px] text-white leading-[1.2] mb-6">
+            AI That Actually Does the Work
+          </h2>
+          <p className="text-[15px] lg:text-[16px] text-white/55 leading-[25px] tracking-[-0.48px] max-w-[865px] mx-auto">
+            Stop reading about AI. Start using it. Tech Scape AI builds small, powerful, purpose-built AI agents and proof-of-concept solutions that solve specific business problems — fast, affordable, and ready to deploy.
+          </p>
+        </div>
+
+        {/* Figma 137:932 — "What We Build / Design System with AI" section title */}
+        <div
+          className={`mb-12 transition-all duration-700 delay-150 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -57,13 +72,13 @@ export default function AIAgents() {
           </p>
           <p
             className="text-[24px] sm:text-[28px] lg:text-[32px] font-semibold tracking-[-0.96px] mt-2"
-            style={{ color: '#e8e8e8', lineHeight: '77px' }}
+            style={{ color: '#e8e8e8', lineHeight: '1.2' }}
           >
             Design System with AI
           </p>
         </div>
 
-        {/* 2×2 grid — Figma Frame 79/120/121: gradient bg, rounded-16, p-24 */}
+        {/* 2×2 grid of agent cards */}
         <div className="grid sm:grid-cols-2 gap-[30px]">
           {AGENTS.map((agent, i) => (
             <div
@@ -77,7 +92,6 @@ export default function AIAgents() {
                 transitionDelay: `${i * 90}ms`,
               }}
             >
-              {/* Text column — Figma 316–344px text block, capitalize, tracking -0.72 */}
               <div className="flex-1 min-w-0 capitalize tracking-[-0.72px]">
                 <p
                   className="text-[20px] lg:text-[24px] font-medium leading-[25px] mb-2"
@@ -90,7 +104,6 @@ export default function AIAgents() {
                 </p>
               </div>
 
-              {/* Image placeholder — Gemini-style gradient sphere (Figma 132–208px) */}
               <div
                 className="shrink-0 w-[120px] h-[120px] lg:w-[154px] lg:h-[140px] rounded-[18px]"
                 style={{

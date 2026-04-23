@@ -5,9 +5,12 @@ import Services from '../components/Services'
 import Problem from '../components/Problem'
 import AIAgents from '../components/AIAgents'
 import HowItWorks from '../components/HowItWorks'
+import CTABand from '../components/CTABand'
 import Team from '../components/Team'
-import CTA from '../components/CTA'
+import PartnersDetailed from '../components/PartnersDetailed'
+import GetStarted from '../components/GetStarted'
 
+// Page flow mirrors Figma canvas 124:306 top-to-bottom.
 export default function HomePage() {
   return (
     <>
@@ -18,8 +21,10 @@ export default function HomePage() {
       <Problem />
       <AIAgents />
       <HowItWorks />
+      <CTABand />
       <Team />
-      <CTA />
+      <PartnersDetailed />
+      <GetStarted />
     </>
   )
 }

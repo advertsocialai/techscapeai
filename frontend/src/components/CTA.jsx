@@ -8,11 +8,34 @@ const STATS = [
   { value: '100%',    label: 'Custom Built' },
 ]
 
-const CHECKLIST = [
-  'Custom-built AI agents tailored to your workflow',
-  'POC delivered in as little as 2 weeks',
-  'Ongoing support and iterative improvement',
-  'Transparent pricing — no hidden fees, ever',
+const CHECKLIST_RIGHT = [
+  {
+    text: '30-Minute Discovery Call',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="#3D75F3" strokeWidth="1.5" />
+        <path d="M12 6v6l4 2" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    text: 'No Commitment Required',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M9 12l2 2 4-4" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="12" r="10" stroke="#3D75F3" strokeWidth="1.5" />
+      </svg>
+    ),
+  },
+  {
+    text: 'Get A Clear Action Plan On The Call',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M9 12l2 2 4-4" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="12" r="10" stroke="#3D75F3" strokeWidth="1.5" />
+      </svg>
+    ),
+  },
 ]
 
 export default function CTA() {
@@ -21,8 +44,35 @@ export default function CTA() {
   return (
     <section id="get-started" className="relative bg-black py-20 lg:py-28">
       <div className="wrap" ref={ref}>
+
+        {/* ── Top banner card ── */}
         <div
-          className={`flex flex-col lg:flex-row gap-0 rounded-[20px] overflow-hidden transition-all duration-700 ${
+          className={`rounded-[24px] py-[48px] px-[24px] text-center mb-8 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,122,0,0.1) 0%, rgba(27,43,74,0.1) 100%)',
+            border: '1px solid rgba(255,255,255,0.08)',
+          }}
+        >
+          <p className="text-[18px] sm:text-[22px] lg:text-[26px] font-extrabold text-white leading-snug max-w-3xl mx-auto mb-6">
+            Every hour your team spends on manual work is an hour your competitor&apos;s AI is doing it faster. Let&apos;s fix that.
+          </p>
+          <Link
+            to="/contact"
+            className="btn inline-flex items-center gap-2 px-8 h-[52px] text-[15px] font-semibold text-white rounded-[8px] mb-4"
+          >
+            Book a Free Consultation
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+          <p className="text-[14px] text-white/45">See What We Can Build For You</p>
+        </div>
+
+        {/* ── Two panels ── */}
+        <div
+          className={`flex flex-col lg:flex-row gap-0 rounded-[20px] overflow-hidden transition-all duration-700 delay-150 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{ border: '1px solid rgba(255,255,255,0.08)' }}
@@ -53,7 +103,7 @@ export default function CTA() {
               </Link>
             </div>
 
-            {/* Bottom: stats 2×2 */}
+            {/* Bottom: stats 2x2 */}
             <div className="grid grid-cols-2 gap-3">
               {STATS.map(({ value, label }) => (
                 <div
@@ -70,45 +120,52 @@ export default function CTA() {
 
           {/* ── Right panel ── */}
           <div
-            className="flex-1 rounded-b-[16px] lg:rounded-b-none lg:rounded-r-[16px] p-10 lg:p-12 flex flex-col justify-center gap-8"
+            className="flex-1 rounded-b-[16px] lg:rounded-b-none lg:rounded-r-[16px] p-10 lg:p-12 flex flex-col justify-center relative overflow-hidden"
             style={{ background: '#080810' }}
           >
-            {/* Subtitle */}
-            <div>
+            {/* Gradient glow background (Hero 6 style) */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(61,117,243,0.08) 0%, transparent 70%)',
+              }}
+            />
+
+            <div className="relative z-10">
               <p className="label mb-4">Why TechScape AI</p>
-              <p className="text-[15px] text-white/45 leading-relaxed max-w-md">
+              <p className="text-[15px] text-white/45 leading-relaxed max-w-md mb-10">
                 Whether you&apos;re a business looking to automate, a student ready to upskill, or a partner exploring collaboration — the first conversation is always free.
               </p>
-            </div>
 
-            {/* Checklist */}
-            <ul className="flex flex-col gap-4">
-              {CHECKLIST.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span
-                    className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5"
-                    style={{ background: 'rgba(61,117,243,0.15)', border: '1px solid rgba(61,117,243,0.35)' }}
-                  >
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path d="M2 5l2.5 2.5L8 3" stroke="#3D75F3" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                  <span className="text-[14px] text-white/60 leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Outline button */}
-            <div>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-8 h-[52px] text-[15px] font-semibold text-white/70 hover:text-white transition-colors rounded-full"
-                style={{ border: '1px solid rgba(255,255,255,0.15)' }}
-              >
-                See What We Can Build →
-              </Link>
+              {/* Checklist items with 41px gap */}
+              <div className="flex flex-col gap-[41px]">
+                {CHECKLIST_RIGHT.map((item) => (
+                  <div key={item.text} className="flex items-center gap-4">
+                    <span className="flex-shrink-0">{item.icon}</span>
+                    <span className="text-[16px] text-[#888]">{item.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* ── Got A Project In Mind ── */}
+        <div
+          className={`mt-10 rounded-[20px] p-10 lg:p-12 text-center transition-all duration-700 delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{ background: '#0D0D0D', border: '1px solid #1C1C1C' }}
+        >
+          <h3 className="text-[28px] sm:text-[34px] lg:text-[40px] font-extrabold text-white tracking-[-0.025em] leading-tight mb-6">
+            Got A Project In Mind
+          </h3>
+          <Link
+            to="/contact"
+            className="btn inline-flex items-center gap-2 px-8 h-[48px] text-[14px] font-semibold text-white rounded-[8px]"
+          >
+            Contact Us
+          </Link>
         </div>
       </div>
     </section>

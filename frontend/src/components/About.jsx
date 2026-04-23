@@ -40,24 +40,22 @@ export default function About() {
 
         {/* Label */}
         <div className={`text-center mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="label mb-4">About</p>
-          <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] text-white leading-tight">
-            We Are Not Just<br />
-            <span className="grad-text">Another Tech Company</span>
-          </h2>
+          <p className="text-[24px] text-[#F5A086] tracking-[-0.72px] mb-4">About</p>
         </div>
 
         {/* About copy */}
-        <div className={`text-center max-w-2xl mx-auto mb-14 space-y-5 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-[16px] lg:text-[17px] text-white/78 leading-relaxed">
-            <span className="font-semibold text-white">We are a global AI services and training company,</span>{' '}
-            founded by technologists, business builders, and educators who have worked across the USA, Canada, and India.
-            We don't sell software. We solve problems with AI, with automation, and with the right people behind every solution.
+        <div className={`text-center max-w-2xl mx-auto mb-14 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-[16px] text-[#e5e7eb] tracking-[-0.48px] leading-relaxed">
+            Tech Scape AI was built with one belief — that Artificial Intelligence should work for people, not replace them.
           </p>
-          <p className="text-[15px] text-white/42 leading-relaxed">
-            From building intelligent AI agents for small businesses to training the next generation of engineers and analysts,
-            everything we do is designed to create real, measurable impact — not just demos.
-          </p>
+        </div>
+
+        {/* "We Are Not Just Another Tech Company" heading */}
+        <div className={`text-center mb-14 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="text-[40px] sm:text-[52px] lg:text-[64px] font-semibold text-[#888] leading-[1.2] tracking-[-3.84px]">
+            We Are Not Just Another<br />
+            Tech Company
+          </h2>
         </div>
 
         {/* Fan-layout cards */}
@@ -81,6 +79,13 @@ export default function About() {
               <p className="text-[16px] font-semibold text-white leading-snug">{text}</p>
             </div>
           ))}
+        </div>
+
+        {/* Description */}
+        <div className={`text-center max-w-3xl mx-auto mt-14 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-[15px] text-white/45 leading-relaxed">
+            From intelligent automation to digital growth — Tech Scape AI brings four core capabilities to every business we work with.
+          </p>
         </div>
       </div>
     </section>

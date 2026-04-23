@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import teamCharacter from '../assets/team-character.svg'
 
 const ACCORDION = [
   {
     title: 'Founders & Leadership',
     content:
-      'Technologists and business builders with experience across USA, Canada, and India — united by a belief that AI should create opportunity for everyone.',
+      'A cross-functional founding team with deep expertise across AI engineering, business development, digital marketing, and technology education. Our founders have built products, run agencies, trained talent, and delivered solutions for clients globally.',
   },
   {
     title: 'Design & Creative',
@@ -33,22 +34,24 @@ function AccordionItem({ title, content, open, onToggle }) {
   return (
     <div className="border-b border-white/[0.07] last:border-0">
       <button
-        className="w-full flex items-center justify-between py-4 text-left group"
+        className="w-full flex items-center justify-between gap-[18px] py-5 text-left group"
         onClick={onToggle}
       >
-        <span className="text-[14px] font-semibold text-white/75 group-hover:text-white transition-colors pr-4">
+        <span className="text-[24px] font-semibold text-white/75 group-hover:text-white transition-colors">
           {title}
         </span>
         <svg
-          className={`w-4 h-4 text-white/30 flex-shrink-0 transition-transform duration-250 ${open ? 'rotate-180' : ''}`}
-          viewBox="0 0 16 16"
+          className={`w-6 h-6 text-white/30 flex-shrink-0 transition-transform duration-250 ${open ? 'rotate-180' : ''}`}
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
           fill="none"
         >
-          <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
-      <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-40 pb-4' : 'max-h-0'}`}>
-        <p className="text-[13px] text-white/42 leading-relaxed">{content}</p>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-48 pb-5' : 'max-h-0'}`}>
+        <p className="text-[14px] text-white/42 leading-relaxed">{content}</p>
       </div>
     </div>
   )
@@ -64,46 +67,11 @@ function Character() {
           filter: 'blur(30px)',
         }}
       />
-      <svg viewBox="0 0 200 260" className="w-full max-w-[190px] relative z-10 float">
-        <defs>
-          <radialGradient id="tBodyGrad" cx="50%" cy="40%" r="60%">
-            <stop offset="0%" stopColor="#6B8AF7" />
-            <stop offset="100%" stopColor="#2a4db0" />
-          </radialGradient>
-          <radialGradient id="tFaceGrad" cx="40%" cy="35%" r="65%">
-            <stop offset="0%" stopColor="#F5C6A0" />
-            <stop offset="100%" stopColor="#D4935A" />
-          </radialGradient>
-        </defs>
-        {/* Body */}
-        <rect x="60" y="130" width="80" height="90" rx="20" fill="url(#tBodyGrad)" />
-        {/* Head */}
-        <circle cx="100" cy="105" r="35" fill="url(#tFaceGrad)" />
-        {/* Eyes */}
-        <circle cx="88" cy="102" r="4.5" fill="#1a1a2e" />
-        <circle cx="112" cy="102" r="4.5" fill="#1a1a2e" />
-        <circle cx="89.5" cy="100.5" r="1.8" fill="white" opacity="0.85" />
-        <circle cx="113.5" cy="100.5" r="1.8" fill="white" opacity="0.85" />
-        {/* Smile */}
-        <path d="M90 114 Q100 123 110 114" stroke="#1a1a2e" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-        {/* Arms */}
-        <rect x="22" y="135" width="42" height="18" rx="9" fill="url(#tBodyGrad)" />
-        <rect x="136" y="135" width="42" height="18" rx="9" fill="url(#tBodyGrad)" />
-        {/* Laptop body */}
-        <rect x="54" y="155" width="92" height="57" rx="5" fill="#0d0d1a" />
-        <rect x="57" y="158" width="86" height="47" rx="3" fill="#111133" />
-        {/* Screen lines */}
-        <rect x="63" y="164" width="52" height="3" rx="1.5" fill="#3D75F3" opacity="0.75" />
-        <rect x="63" y="171" width="36" height="2.5" rx="1" fill="#F5A086" opacity="0.55" />
-        <rect x="63" y="177" width="46" height="2.5" rx="1" fill="#3D75F3" opacity="0.45" />
-        <rect x="63" y="183" width="28" height="2.5" rx="1" fill="#6B8AF7" opacity="0.4" />
-        <rect x="63" y="189" width="38" height="2.5" rx="1" fill="#F5A086" opacity="0.3" />
-        {/* Keyboard */}
-        <rect x="44" y="212" width="112" height="8" rx="4" fill="#1a1a2e" />
-        {/* Hair */}
-        <ellipse cx="100" cy="74" rx="36" ry="13" fill="#1a1a2e" />
-        <path d="M64 85 Q60 64 80 58 Q100 53 120 58 Q140 64 136 85" fill="#1a1a2e" />
-      </svg>
+      <img
+        src={teamCharacter}
+        alt="Team character illustration"
+        className="w-full max-w-[154px] relative z-10 float"
+      />
     </div>
   )
 }

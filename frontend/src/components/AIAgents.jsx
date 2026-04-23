@@ -81,16 +81,13 @@ export default function AIAgents() {
       <div className="wrap relative" ref={ref}>
         {/* Header */}
         <div className={`mb-12 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="label mb-4">AI Agents & POCs</p>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-            <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] text-white leading-tight">
-              Stop Reading About AI.<br />
-              <span className="blue-text">Start Using It.</span>
-            </h2>
-            <p className="text-[15px] text-white/45 max-w-sm leading-relaxed lg:text-right">
-              Purpose-built agents that solve specific problems fast — affordable, and ready to deploy in weeks.
-            </p>
-          </div>
+          <h2 className="text-[40px] sm:text-[60px] lg:text-[80px] font-semibold tracking-[-2.4px] text-white leading-[1.1]">
+            What{' '}
+            <span className="grad-text">We Build</span>
+          </h2>
+          <p className="text-[20px] sm:text-[26px] lg:text-[32px] tracking-[-0.96px] mt-2" style={{ color: '#e8e8e8' }}>
+            Design System with AI
+          </p>
         </div>
 
         {/* 2×2 grid */}

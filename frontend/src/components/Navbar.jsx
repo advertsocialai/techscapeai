@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import navbarBrand from '../assets/navbar-brand.svg'
 
 function MenuIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-      <line x1="3" y1="5" x2="17" y2="5"/>
-      <line x1="3" y1="10" x2="17" y2="10"/>
-      <line x1="3" y1="15" x2="17" y2="15"/>
+    <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="#D1D5DB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="0" y1="1" x2="17" y2="1"/>
+      <line x1="0" y1="7" x2="17" y2="7"/>
+      <line x1="0" y1="13" x2="17" y2="13"/>
     </svg>
   )
 }
@@ -28,33 +29,6 @@ const NAV_LINKS = [
   { label: 'Team',         href: '#team' },
   { label: 'Partners',     href: '#partners' },
 ]
-
-/* Figma logo — exact two-circle mark in a rounded box + "Tech\nScape AI" */
-function Logo() {
-  return (
-    <Link to="/" className="flex items-center gap-2.5 group">
-      {/* Logo mark — white rounded box with two overlapping circles (matches Figma) */}
-      <div className="w-[42px] h-[42px] rounded-[10px] flex items-center justify-center flex-shrink-0 overflow-hidden"
-        style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
-        <svg width="30" height="28" viewBox="0 0 30 28" fill="none">
-          {/* Salmon circle — bottom left */}
-          <circle cx="10" cy="18" r="10" fill="#F5A086" />
-          {/* Blue circle — top right */}
-          <circle cx="20" cy="10" r="10" fill="#3D75F3" />
-          {/* Overlap blend */}
-          <circle cx="15" cy="14" r="4" fill="#fff" opacity="0.15" />
-        </svg>
-      </div>
-
-      {/* Text — "Tech" line 1, "Scape AI" line 2 — matches Figma exactly */}
-      <span className="text-[13px] font-bold text-white leading-[1.25] tracking-tight">
-        Tech<br />
-        <span>Scape </span>
-        <span className="grad-text">AI</span>
-      </span>
-    </Link>
-  )
-}
 
 export default function Navbar() {
   const [open, setOpen]         = useState(false)
@@ -84,7 +58,10 @@ export default function Navbar() {
         {/* Navbar row — 48px height matching Figma */}
         <div className="flex items-center justify-between h-[48px]">
 
-          <Logo />
+          {/* Logo — Figma-exact SVG brand mark */}
+          <Link to="/" className="flex-shrink-0">
+            <img src={navbarBrand} alt="Tech Scape AI" className="h-[48px] w-auto" />
+          </Link>
 
           {/* Desktop nav links — centered */}
           <div className="hidden lg:flex items-center gap-7">
@@ -110,10 +87,13 @@ export default function Navbar() {
               {open ? <CloseIcon /> : <MenuIcon />}
             </button>
 
-            {/* "Contact Us" — matches Figma button label */}
+            {/* "Contact Us" — gradient button matching Figma (107×40, 4px radius) */}
             <Link
               to="/contact"
-              className="btn hidden sm:inline-flex items-center px-5 h-[36px] text-[13px] font-semibold text-white rounded-lg"
+              className="hidden sm:inline-flex items-center justify-center px-4 h-[40px] text-[14px] font-medium text-white rounded-[4px] capitalize"
+              style={{
+                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 48.08%, #F5A186 100%)',
+              }}
             >
               Contact Us
             </Link>

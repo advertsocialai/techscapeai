@@ -1,70 +1,17 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import partnerAsg from '../assets/partner-asg.png'
+import partnerAbstudioz from '../assets/partner-abstudioz.png'
+import partnerNxtwave from '../assets/partner-nxtwave.png'
+import partnerMmw from '../assets/partner-mmw.png'
+import partnerGogaga from '../assets/partner-gogaga.png'
 
 /* ── Client logos matching Figma Frame 72 ── */
 const CLIENTS = [
-  {
-    key: 'asg',
-    logo: (
-      <div className="flex items-center gap-2.5">
-        {/* ASG triangle icon */}
-        <svg width="36" height="32" viewBox="0 0 36 32" fill="none">
-          <polygon points="18,2 34,30 2,30" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" fill="none" />
-          <polygon points="18,10 28,28 8,28" fill="currentColor" opacity="0.25" />
-        </svg>
-        <div className="flex flex-col leading-none">
-          <span className="text-[18px] font-black tracking-tight">ASG</span>
-          <span className="text-[8px] tracking-[0.15em] uppercase opacity-60">American Synthesis Group</span>
-        </div>
-      </div>
-    ),
-  },
-  {
-    key: 'abstudioz',
-    logo: (
-      <div className="flex items-center gap-2.5">
-        {/* abstudioz circular icon */}
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.8" fill="none" />
-          <circle cx="14" cy="14" r="7" stroke="currentColor" strokeWidth="1.4" fill="none" opacity="0.6" />
-          <circle cx="14" cy="14" r="2.5" fill="currentColor" />
-        </svg>
-        <span className="text-[17px] font-semibold tracking-tight">
-          ab<span className="font-bold">studioz</span>
-        </span>
-      </div>
-    ),
-  },
-  {
-    key: 'nxtwave',
-    logo: (
-      <div className="flex items-center gap-1.5">
-        {/* nxt wave wavy text style */}
-        <span className="text-[22px] font-black tracking-[-0.02em]">nxt</span>
-        <span className="text-[22px] font-black tracking-[-0.02em] relative">
-          w
-          <span className="inline-block" style={{ fontStyle: 'italic' }}>a</span>
-          ve
-        </span>
-      </div>
-    ),
-  },
-  {
-    key: 'nmw',
-    logo: (
-      <div className="flex items-center gap-0.5">
-        <span className="text-[22px] font-black tracking-[-0.03em]">nmw</span>
-        <sup className="text-[10px] font-bold mt-1 opacity-70">®</sup>
-      </div>
-    ),
-  },
-  {
-    key: 'gogaga',
-    logo: (
-      <span className="text-[22px] font-black tracking-[-0.02em]">
-        go<span className="opacity-70">ga</span>ga
-      </span>
-    ),
-  },
+  { key: 'asg', src: partnerAsg, alt: 'ASG', w: 103, h: 54 },
+  { key: 'abstudioz', src: partnerAbstudioz, alt: 'abstudioz', w: 236, h: 56 },
+  { key: 'nxtwave', src: partnerNxtwave, alt: 'NXT Wave', w: 235, h: 44 },
+  { key: 'mmw', src: partnerMmw, alt: 'MMW', w: 178, h: 42 },
+  { key: 'gogaga', src: partnerGogaga, alt: 'GoGaGa', w: 259, h: 52 },
 ]
 
 /* Duplicate for seamless marquee loop */
@@ -83,9 +30,12 @@ export default function Partners() {
           style={{ background: '#080808', border: '1px solid #181818' }}
         >
           {/* Header */}
-          <p className="label mb-2">Our Clients</p>
+          <p className="label mb-2">Partners</p>
+          <p className="text-[14px] text-white/35 mb-2 px-6">
+            In Partnership With
+          </p>
           <p className="text-[14px] text-white/35 mb-10 px-6">
-            Trusted by leading organizations across education, technology and business.
+            Tech Scape AI operates at the intersection of global technology ecosystems. Our partnerships give our clients and students access to world-class networks, validated technology, and market-ready opportunities.
           </p>
 
           {/* Marquee ticker — matches Figma Frame 72 single-row layout */}
@@ -97,14 +47,21 @@ export default function Partners() {
             <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
               style={{ background: 'linear-gradient(270deg, #080808 0%, transparent 100%)' }} />
 
-            <div className="flex items-center marquee-track" style={{ width: 'max-content' }}>
-              {MARQUEE.map(({ key, logo }, i) => (
+            <div className="flex items-center gap-[120px] marquee-track" style={{ width: 'max-content' }}>
+              {MARQUEE.map(({ key, src, alt, w, h }, i) => (
                 <div
                   key={`${key}-${i}`}
-                  className="flex items-center text-white/40 hover:text-white/90 transition-colors duration-300 cursor-default px-10 lg:px-14 border-r border-white/[0.07] last:border-r-0"
+                  className="flex items-center justify-center shrink-0 opacity-40 hover:opacity-90 transition-opacity duration-300 cursor-default"
                   style={{ minHeight: '56px' }}
                 >
-                  {logo}
+                  <img
+                    src={src}
+                    alt={alt}
+                    width={w}
+                    height={h}
+                    className="object-contain"
+                    style={{ width: `${w}px`, height: `${h}px` }}
+                  />
                 </div>
               ))}
             </div>

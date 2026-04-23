@@ -3,20 +3,21 @@ import { Link } from 'react-router-dom'
 import navbarBrand from '../assets/navbar-brand.svg'
 
 function MenuIcon() {
+  // Figma 129:333 — 24×24 menu icon next to "Contact us"
   return (
-    <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="#D1D5DB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="0" y1="1" x2="17" y2="1"/>
-      <line x1="0" y1="7" x2="17" y2="7"/>
-      <line x1="0" y1="13" x2="17" y2="13"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="4" y1="7"  x2="20" y2="7"/>
+      <line x1="4" y1="12" x2="20" y2="12"/>
+      <line x1="4" y1="17" x2="20" y2="17"/>
     </svg>
   )
 }
 
 function CloseIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-      <line x1="4" y1="4" x2="16" y2="16"/>
-      <line x1="16" y1="4" x2="4" y2="16"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <line x1="6" y1="6" x2="18" y2="18"/>
+      <line x1="18" y1="6" x2="6" y2="18"/>
     </svg>
   )
 }
@@ -67,18 +68,18 @@ export default function Navbar() {
           <div className="flex items-center gap-8">
             <button
               onClick={() => setOpen(v => !v)}
-              className="p-1.5 text-white/60 hover:text-white transition-colors"
+              className="w-[24px] h-[24px] flex items-center justify-center text-white/70 hover:text-white transition-colors"
               aria-label={open ? 'Close menu' : 'Open menu'}
             >
               {open ? <CloseIcon /> : <MenuIcon />}
             </button>
 
-            {/* "Contact us" — gradient button matching Figma (h-40, 4px radius, px-16 py-8) */}
+            {/* "Contact us" — Figma button primary (129:328): 107×40, radius 4px */}
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-4 h-[40px] text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap"
+              className="inline-flex items-center justify-center px-4 w-[107px] h-[40px] text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap"
               style={{
-                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 58.744%, #F5A186 117.01%)',
+                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
               }}
             >
               Contact us

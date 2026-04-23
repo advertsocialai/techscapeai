@@ -71,7 +71,7 @@ export default function GetStarted() {
         </div>
 
         <div
-          className={`grid lg:grid-cols-2 gap-6 lg:gap-8 transition-all duration-700 delay-150 ${
+          className={`grid lg:grid-cols-2 gap-6 lg:gap-8 max-w-[1216px] mx-auto transition-all duration-700 delay-150 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
@@ -79,7 +79,7 @@ export default function GetStarted() {
           {/* ── Left: Figma Frame 120 (189:436) — contact form, 592×822 ── */}
           <div
             className="rounded-[20px] p-8 lg:p-10"
-            style={{ background: '#0D0D0D', border: '1px solid #1C1C1C' }}
+            style={{ background: '#0D0D0D', border: '1px solid #1C1C1C', maxWidth: '592px', minHeight: '822px' }}
           >
             <h3 className="text-[28px] sm:text-[32px] lg:text-[36px] font-semibold text-white leading-[1.2] tracking-[-1.08px] mb-8">
               Send Us a Message
@@ -168,7 +168,7 @@ export default function GetStarted() {
                 type="submit"
                 className="w-full inline-flex items-center justify-center gap-2 h-[44px] text-[14px] font-medium text-white rounded-[8px] mt-2"
                 style={{
-                  backgroundImage: 'linear-gradient(104.54deg, #3D75F3 58.744%, #F5A186 117.01%)',
+                  backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
                   boxShadow: '0px 4px 4px 0px rgba(78,157,255,0.22)',
                 }}
               >
@@ -177,11 +177,11 @@ export default function GetStarted() {
             </form>
           </div>
 
-          {/* ── Right: Book directly + Hero 6 consultation panel ── */}
-          <div className="flex flex-col gap-6">
+          {/* ── Right: Book directly (Frame 135: 592×377) + Hero 6 consultation panel ── */}
+          <div className="flex flex-col gap-6" style={{ maxWidth: '592px' }}>
             <div
               className="rounded-[20px] p-8 lg:p-10"
-              style={{ background: '#0D0D0D', border: '1px solid #1C1C1C' }}
+              style={{ background: '#0D0D0D', border: '1px solid #1C1C1C', minHeight: '377px' }}
             >
               <h3 className="text-[28px] sm:text-[32px] lg:text-[36px] font-semibold text-white leading-[1.2] tracking-[-1.08px] mb-4">
                 Book a Free Consultation Directly
@@ -194,7 +194,7 @@ export default function GetStarted() {
                 to="/contact"
                 className="w-full inline-flex items-center justify-center gap-2 h-[44px] text-[14px] font-medium text-white rounded-[8px] mb-8"
                 style={{
-                  backgroundImage: 'linear-gradient(104.54deg, #3D75F3 58.744%, #F5A186 117.01%)',
+                  backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
                   boxShadow: '0px 4px 4px 0px rgba(78,157,255,0.22)',
                 }}
               >

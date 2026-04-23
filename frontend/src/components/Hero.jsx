@@ -4,36 +4,36 @@ import heroSphere from '../assets/hero-sphere.png'
 import heroTagIcon from '../assets/hero-tag-icon.png'
 import heroTagIcon2 from '../assets/hero-tag-icon2.png'
 
+/* Figma Frame 28988 (228:418) — 1274×474 at (112, 149).
+   Right panel Group 218 (205:500) is 546×474.
+   Inside the right panel:
+     - performance marketing (163:486)  → left 49, top  32  (9.0%, 6.75%)
+     - Software development  (163:493)  → left 409, top 66  (74.9%, 13.92%)
+     - Ai Solutions          (159:481)  → left 346, top 409 (63.4%, 86.29%) */
+
 const TAGS = [
-  { lines: ['performance', 'marketing'], icon: heroTagIcon2, top: '7%',  left: '9%'  },
-  { lines: ['Software',    'development'], icon: heroTagIcon,  top: '14%', right: '2%' },
-  { lines: ['Ai Solutions'],              icon: heroTagIcon,  bottom: '14%', right: '14%' },
+  { key: 'perf',  lines: ['performance', 'marketing'],  icon: heroTagIcon2, style: { top: '6.75%',  left: '9%'   } },
+  { key: 'soft',  lines: ['Software',    'development'], icon: heroTagIcon,  style: { top: '13.92%', left: '74.9%' } },
+  { key: 'ai',    lines: ['Ai Solutions'],               icon: heroTagIcon,  style: { top: '86.29%', left: '63.4%' } },
 ]
 
 export default function Hero() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.05 })
 
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden flex items-center grid-bg">
-      {/* Radial blue glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 65% 75% at 68% 45%, rgba(61,117,243,0.12) 0%, transparent 60%)',
-        }}
-      />
-      {/* Bottom fade */}
+    <section className="relative bg-black overflow-hidden flex items-center">
+      {/* Subtle bottom fade */}
       <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{ background: 'linear-gradient(to bottom, transparent, #000)' }}
       />
 
-      <div className="wrap w-full pt-[101px] pb-16" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-6 items-center lg:h-[474px]">
+      <div className="wrap w-full pt-[149px] pb-20" ref={ref}>
+        {/* Figma 228:418: 1274 wide, 474 tall on desktop */}
+        <div className="grid lg:grid-cols-[667px_546px] gap-10 lg:gap-[61px] items-center lg:h-[474px] max-w-[1274px] mx-auto">
 
-          {/* Left — Text */}
+          {/* Left column — Figma Frame 104 (150:422), 667×291 */}
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-
             <h1 className="capitalize text-[36px] sm:text-[46px] lg:text-[52px] font-semibold tracking-[-1.56px] leading-[1.1] mb-5 max-w-[667px]">
               We Build{' '}
               <span
@@ -52,71 +52,64 @@ export default function Hero() {
               Tech Scape AI is a global AI services company delivering intelligent automation, custom AI agents, digital transformation, and world-class technology training trusted by businesses across the USA, Canada, and India.
             </p>
 
-            <div className="flex items-start">
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(104.54deg, #3D75F3 58.744%, #F5A186 117.01%)',
-                  boxShadow: '0px 4px 4px 0px rgba(78,157,255,0.22)',
-                }}
-              >
-                Book a Free consultation
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-            </div>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
+              style={{
+                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
+                boxShadow: '0 4px 4px 0 rgba(78,157,255,0.22)',
+              }}
+            >
+              Book a Free consultation
+            </Link>
           </div>
 
-          {/* Right — Hero sphere image with floating tags */}
+          {/* Right column — Group 218 (205:500) 546×474 with sphere + 3 floating tags */}
           <div
-            className={`relative h-[340px] sm:h-[420px] lg:h-[474px] transition-all duration-700 delay-200 ${
+            className={`relative w-full aspect-[546/474] lg:w-[546px] lg:h-[474px] transition-all duration-700 delay-200 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-              {/* Ambient glow */}
+            {/* Ambient glow behind sphere */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 75% 75% at 50% 50%, rgba(61,117,243,0.2) 0%, transparent 70%)',
+                filter: 'blur(40px)',
+              }}
+            />
+
+            {/* Sphere image — Figma 159:478 (516×474) at left 0, top 0 of the 546 panel */}
+            <img
+              src={heroSphere}
+              alt="AI orb illustration"
+              className="absolute left-0 top-0 w-[516px] max-w-full h-auto lg:h-[474px] object-contain float"
+              style={{ filter: 'drop-shadow(0 0 70px rgba(61,117,243,0.35))' }}
+            />
+
+            {/* 3 floating tags pinned to Figma coordinates */}
+            {TAGS.map(({ key, lines, icon, style }) => (
               <div
-                className="absolute inset-0 pointer-events-none"
+                key={key}
+                className="hidden sm:flex absolute items-center gap-2 rounded-[56px] p-2 capitalize text-[14px] font-medium text-[#fad4bf] z-20"
                 style={{
-                  background: 'radial-gradient(ellipse 75% 75% at 50% 50%, rgba(61,117,243,0.2) 0%, transparent 70%)',
-                  filter: 'blur(40px)',
+                  ...style,
+                  background:
+                    'linear-gradient(103.93deg, rgba(250,212,191,0.2) 1.126%, rgba(255,255,255,0.2) 98.874%)',
+                  border: '1px solid rgba(255,255,255,0.13)',
+                  backdropFilter: 'blur(10px)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  letterSpacing: '-0.42px',
                 }}
-              />
-
-              <img
-                src={heroSphere}
-                alt="AI sphere illustration"
-                className="relative z-10 w-full max-w-[516px] h-auto object-contain float"
-                style={{ filter: 'drop-shadow(0 0 70px rgba(61,117,243,0.35))' }}
-              />
-
-              {/* Floating feature tags — hidden on mobile */}
-              {TAGS.map(({ lines, icon, ...pos }, i) => (
-                <div
-                  key={i}
-                  className="hidden sm:flex absolute items-center gap-2 rounded-[56px] p-2 capitalize text-[14px] font-medium text-[#fad4bf] z-20"
-                  style={{
-                    ...pos,
-                    background:
-                      'linear-gradient(103.93deg, rgba(250,212,191,0.2) 1.126%, rgba(255,255,255,0.2) 98.874%)',
-                    border: '1px solid rgba(255,255,255,0.13)',
-                    backdropFilter: 'blur(10px)',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                    letterSpacing: '-0.42px',
-                  }}
-                >
-                  <img src={icon} alt="" className="w-[28px] h-[27px] flex-shrink-0" />
-                  <span className="leading-[14px] whitespace-nowrap">
-                    {lines.map((line, j) => (
-                      <span key={j} className="block">{line}</span>
-                    ))}
-                  </span>
-                </div>
-              ))}
-            </div>
+              >
+                <img src={icon} alt="" className="w-[28px] h-[27px] flex-shrink-0" />
+                <span className="leading-[14px] whitespace-nowrap">
+                  {lines.map((line, j) => (
+                    <span key={j} className="block">{line}</span>
+                  ))}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

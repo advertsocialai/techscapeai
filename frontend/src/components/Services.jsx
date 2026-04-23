@@ -83,15 +83,15 @@ export default function Services() {
           </p>
         </div>
 
-        {/* 2×2 grid of service cards */}
-        <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
+        {/* 2×2 grid of service cards — Figma Frame 73/105/106/107: 592×437 each */}
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-8 max-w-[1216px] mx-auto">
           {SERVICES.map((svc, i) => (
             <div
               key={svc.title}
-              className={`card-hover rounded-[20px] p-7 lg:p-9 flex flex-col transition-all duration-700 ${
+              className={`card-hover rounded-[20px] p-8 lg:p-10 flex flex-col transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${i * 90}ms`, minHeight: '437px' }}
+              style={{ transitionDelay: `${i * 90}ms`, minHeight: '437px', maxWidth: '592px' }}
             >
               {/* Icon + accent glow */}
               <div

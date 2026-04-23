@@ -1,21 +1,23 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import partnerAsg from '../assets/partner-asg.png'
-import partnerAbstudioz from '../assets/partner-abstudioz.png'
 import partnerNxtwave from '../assets/partner-nxtwave.png'
-import partnerMmw from '../assets/partner-mmw.png'
-import partnerGogaga from '../assets/partner-gogaga.png'
+import partnerAsg from '../assets/partner-asg.png'
 
-/* ── Client logos matching Figma Frame 72 ── */
-const CLIENTS = [
-  { key: 'asg', src: partnerAsg, alt: 'ASG', w: 103, h: 54 },
-  { key: 'abstudioz', src: partnerAbstudioz, alt: 'abstudioz', w: 236, h: 56 },
-  { key: 'nxtwave', src: partnerNxtwave, alt: 'NXT Wave', w: 235, h: 44 },
-  { key: 'mmw', src: partnerMmw, alt: 'MMW', w: 178, h: 42 },
-  { key: 'gogaga', src: partnerGogaga, alt: 'GoGaGa', w: 259, h: 52 },
+/* Figma Frame 80 (129:834) — "In Partnership With" + Frame 72 (129:575) logo row + tagline.
+   Frame 72 has exactly 4 logo slots with 120px gaps:
+     Group (129:497)  — NXT Wave   234×44
+     Group 2 (129:545) — ASG        103×54
+     Group (129:634)  — NXT Wave   234×44
+     Group 3 (129:576) — ASG        103×54
+   Frame 79 (129:833) — 591×73 tagline pill. */
+
+const LOGOS = [
+  { key: 'nxt-1', src: partnerNxtwave, alt: 'NXT Wave',              w: 234, h: 44 },
+  { key: 'asg-1', src: partnerAsg,     alt: 'American Software Group', w: 103, h: 54 },
+  { key: 'nxt-2', src: partnerNxtwave, alt: 'NXT Wave',              w: 234, h: 44 },
+  { key: 'asg-2', src: partnerAsg,     alt: 'American Software Group', w: 103, h: 54 },
 ]
 
-/* Duplicate for seamless marquee loop */
-const MARQUEE = [...CLIENTS, ...CLIENTS]
+const MARQUEE = [...LOGOS, ...LOGOS]
 
 export default function Partners() {
   const { ref, isVisible } = useScrollAnimation()
@@ -28,13 +30,13 @@ export default function Partners() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          {/* Heading — 24px salmon, medium, capitalize */}
+          {/* Figma 129:448 — 24px salmon label */}
           <p className="capitalize text-[24px] font-medium leading-[25px] text-center tracking-[-0.72px]"
             style={{ color: '#f7bfa0' }}>
             In Partnership With
           </p>
 
-          {/* Marquee ticker — 120px gap between logos */}
+          {/* Figma Frame 72 (129:575) — 1216×56, 4 logos, 120px gaps */}
           <div className="relative overflow-hidden w-full">
             <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
               style={{ background: 'linear-gradient(90deg, #000 0%, transparent 100%)' }} />
@@ -45,7 +47,7 @@ export default function Partners() {
               {MARQUEE.map(({ key, src, alt, w, h }, i) => (
                 <div
                   key={`${key}-${i}`}
-                  className="flex items-center justify-center shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300 cursor-default"
+                  className="flex items-center justify-center shrink-0"
                   style={{ minHeight: '56px' }}
                 >
                   <img
@@ -53,7 +55,7 @@ export default function Partners() {
                     alt={alt}
                     width={w}
                     height={h}
-                    className="object-contain"
+                    className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                     style={{ width: `${w}px`, height: `${h}px` }}
                   />
                 </div>
@@ -61,14 +63,18 @@ export default function Partners() {
             </div>
           </div>
 
-          {/* Tagline pill — gradient bg (rgba(255,122,0,0.1) → rgba(27,43,74,0.1)), rounded-999, p-24 */}
+          {/* Figma Frame 79 (129:833) — 591×73 tagline pill */}
           <div
-            className="inline-flex items-center justify-center rounded-full p-6"
+            className="inline-flex items-center justify-center rounded-full max-w-[591px]"
             style={{
+              width: '591px',
+              maxWidth: '100%',
+              minHeight: '73px',
+              padding: '24px',
               background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
             }}
           >
-            <p className="text-[16px] font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px] whitespace-nowrap">
+            <p className="text-[16px] font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px] text-center">
               This is not the future. This is happening now and Tech Scape AI is leading it.
             </p>
           </div>

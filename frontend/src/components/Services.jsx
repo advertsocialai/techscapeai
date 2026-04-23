@@ -1,226 +1,132 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
+/* Figma Frames 73 / 105 / 106 / 107 — 4-card 2×2 grid, each 592×437
+   with title (369×29), subtitle (369×19), body (524×75), and 3 tags. */
+
 const SERVICES = [
   {
-    id: 1,
-    title: 'AI Agents & Automation',
-    description:
-      'We build custom AI agents and automation pipelines that eliminate repetitive work and free your team for high-value tasks — delivering real ROI from day one.',
-    tags: ['Fewer manual hours', 'Faster operations', 'Real ROI'],
+    title: 'AI Agents & Intelligent Automation',
+    subtitle: 'For businesses that want to work smarter',
+    body: "We design and deploy custom AI agents that handle repetitive workflows, automate operations, and free your team to focus on what matters. From customer interactions to back-office automation — if it's manual, we can make it intelligent.",
+    tags: ['Fewer manual hours', 'Faster operations', 'Real ROI.'],
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <rect x="6" y="6" width="20" height="20" rx="6" stroke="#3D75F3" strokeWidth="1.5" />
+        <circle cx="12" cy="14" r="1.5" fill="#3D75F3" />
+        <circle cx="20" cy="14" r="1.5" fill="#3D75F3" />
+        <path d="M12 20c1.2 1.2 2.8 2 4 2s2.8-.8 4-2" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
     accent: '#3D75F3',
-    accentEnd: '#60A5FA',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect x="4" y="9" width="24" height="17" rx="4" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
-        <circle cx="16" cy="7" r="3" stroke="#3D75F3" strokeWidth="1.5" fill="none" />
-        <path d="M10 18h2.5M15.5 18h6M10 22h12" stroke="#3D75F3" strokeWidth="1.3" strokeLinecap="round" />
-        <circle cx="11" cy="18" r="0.8" fill="#3D75F3" />
-      </svg>
-    ),
   },
   {
-    id: 2,
-    title: 'Digital Services & Marketing',
-    description:
-      'Data-driven digital campaigns powered by AI — from content generation to ad optimisation and analytics-backed strategy that converts.',
-    tags: ['More visibility', 'Better leads', 'Higher conversion'],
+    title: 'Digital Services & Transformation',
+    subtitle: 'For businesses ready to grow online',
+    body: 'We deliver end-to-end digital solutions — web, content, SEO, social media, and marketing automation — built for businesses that want a strong digital presence and a system that keeps working.',
+    tags: ['More visibility', 'More leads', 'More revenue'],
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <path d="M4 20l6-6 5 5 8-8 5 5" stroke="#F5A086" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="4" cy="20" r="1.5" fill="#F5A086" />
+        <circle cx="28" cy="16" r="1.5" fill="#F5A086" />
+      </svg>
+    ),
     accent: '#F5A086',
-    accentEnd: '#ffb89e',
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <path d="M4 22L8 15L13 18.5L18 10L27 22" stroke="#F5A086" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <circle cx="8" cy="15" r="2" fill="#F5A086" />
-        <circle cx="13" cy="18.5" r="2" fill="#F5A086" />
-        <circle cx="18" cy="10" r="2" fill="#F5A086" />
-        <path d="M22 8l3 1-1 3" stroke="#F5A086" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
   },
   {
-    id: 3,
-    title: 'Training & Education',
-    description:
-      'Practical AI and tech training programs designed for professionals, students, and teams who want to stay ahead of the curve and land real opportunities.',
+    title: 'Technology Training & EdTech',
+    subtitle: 'For students and professionals ready to future-proof their careers',
+    body: 'We build and deliver industry-grade courses in Full Stack Development, AI & ML Engineering, Business Data Analytics, and Workflow Automation. Trained by practitioners. Designed for the real world.',
     tags: ['Job-ready skills', 'Global opportunities', 'Career acceleration'],
-    accent: '#3D75F3',
-    accentEnd: '#60A5FA',
     icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <path d="M4 12L16 6L28 12L16 18L4 12Z" stroke="#3D75F3" strokeWidth="1.5" strokeLinejoin="round" fill="none" />
-        <path d="M9 14.5V21C9 21 11.8 24 16 24C20.2 24 23 21 23 21V14.5" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-        <path d="M28 12V19" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="28" cy="21" r="1.5" fill="#3D75F3" />
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <path d="M4 12l12-6 12 6-12 6L4 12z" stroke="#3D75F3" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M9 15v5c0 2.2 3.1 4 7 4s7-1.8 7-4v-5" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M26 13v7" stroke="#3D75F3" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
+    accent: '#3D75F3',
   },
   {
-    id: 4,
-    title: 'CRM & Digital Branding',
-    description:
-      'From brand strategy to CRM implementation — we help businesses communicate their value and manage customer relationships with precision and clarity.',
-    tags: ['Stronger identity', 'Clear messaging', 'Market presence'],
-    accent: '#F5A086',
-    accentEnd: '#ffb89e',
+    title: 'CRM & SaaS for Small Business',
+    subtitle: 'For small businesses that need enterprise tools at startup prices',
+    body: 'We adapt and deploy ready-built CRM and business software solutions — customised for your workflow, priced for your budget. No bloat. No complexity. Just tools that work.',
+    tags: ['Organised operations', 'Better customer relationships', 'Business clarity'],
     icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
         <circle cx="16" cy="11" r="5" stroke="#F5A086" strokeWidth="1.5" fill="none" />
-        <path d="M6 27c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#F5A086" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-        <path d="M22 9.5l2.5 2.5-6 6" stroke="#F5A086" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M6 27c0-5.5 4.5-10 10-10s10 4.5 10 10" stroke="#F5A086" strokeWidth="1.5" strokeLinecap="round" fill="none" />
       </svg>
     ),
+    accent: '#F5A086',
   },
 ]
-
-/* Card for showcase row (left/center/right) */
-function ShowcaseCard({ svc, variant, delay, isVisible }) {
-  const isCenter = variant === 'center'
-  const isLeft   = variant === 'left'
-  const isRight  = variant === 'right'
-
-  const cardStyle = isCenter
-    ? { background: '#000000', border: '1px solid #1a1a1a' }
-    : { background: 'rgba(175,136,114,0.10)', border: '1px solid rgba(175,136,114,0.15)' }
-
-  const wrapperCls = [
-    'rounded-[32px] flex-shrink-0 p-8 flex flex-col gap-5 transition-all duration-700',
-    /* desktop sizing + bleed */
-    'lg:w-[422px] lg:h-[477px]',
-    isLeft  ? 'lg:ml-[-55px]' : '',
-    isRight ? 'lg:mr-[-55px]' : '',
-    isCenter ? 'lg:mt-[-9px]' : '',
-    /* mobile: full width, auto height, no bleed */
-    'w-full',
-    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10',
-  ].join(' ')
-
-  return (
-    <div className={wrapperCls} style={{ ...cardStyle, transitionDelay: `${delay}ms` }}>
-      {/* Icon area */}
-      <div
-        className="w-full h-[90px] rounded-xl flex items-center justify-center relative overflow-hidden"
-        style={{
-          background: `linear-gradient(135deg, ${svc.accent}10 0%, #080808 100%)`,
-          border: `1px solid ${svc.accent}20`,
-        }}
-      >
-        <div
-          className="absolute top-0 left-0 w-24 h-24 rounded-full pointer-events-none"
-          style={{
-            background: `radial-gradient(circle, ${svc.accent}15 0%, transparent 70%)`,
-            filter: 'blur(16px)',
-          }}
-        />
-        <div className="relative z-10">{svc.icon}</div>
-      </div>
-
-      {/* Content */}
-      <div>
-        <h3
-          className="text-[18px] font-bold mb-2.5 leading-snug"
-          style={{
-            background: `linear-gradient(97.97deg, ${svc.accent} 0%, ${svc.accentEnd} 100%)`,
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}
-        >
-          {svc.title}
-        </h3>
-        <p className="text-[14px] text-white/50 leading-relaxed">{svc.description}</p>
-      </div>
-
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2 mt-auto">
-        {svc.tags.map(tag => (
-          <span key={tag} className="tag">{tag}</span>
-        ))}
-      </div>
-    </div>
-  )
-}
 
 export default function Services() {
   const { ref, isVisible } = useScrollAnimation()
 
-  const svc4 = SERVICES[3]
-
   return (
     <section id="services" className="relative bg-black py-20 lg:py-28 overflow-hidden">
       <div className="wrap" ref={ref}>
-        {/* Header */}
+
+        {/* Header — Figma 129:653 + 129:652 */}
         <div
-          className={`mb-12 lg:mb-16 transition-all duration-700 ${
+          className={`text-center max-w-[900px] mx-auto mb-14 lg:mb-16 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <p className="label mb-4">What We Build</p>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-            <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] text-white leading-tight">
-              What We Build.<br className="hidden lg:block" />
-              <span className="grad-text">What We Deliver.</span>
-            </h2>
-            <p className="text-[15px] text-white/45 max-w-sm leading-relaxed lg:text-right">
-              Four core capabilities, one mission — make AI work for your business, fast.
-            </p>
-          </div>
+          <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] text-white leading-tight mb-5">
+            What We Build. <span className="grad-text">What We Deliver.</span>
+          </h2>
+          <p className="text-[16px] lg:text-[17px] text-white/55 leading-[26px] tracking-[-0.48px] max-w-[493px] mx-auto">
+            From intelligent automation to digital growth — Tech Scape AI brings four core capabilities to every business we work with.
+          </p>
         </div>
-      </div>
 
-      {/* 3-card horizontal showcase — overflow-visible inner div, overflow-hidden on section */}
-      <div className="overflow-visible">
-        {/* Mobile: stack vertically with wrap padding; Desktop: flex row with bleed */}
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-start gap-4 lg:gap-0 px-[5%] lg:px-[7.9%] lg:justify-center">
-          <ShowcaseCard svc={SERVICES[0]} variant="left"   delay={0}   isVisible={isVisible} />
-          <ShowcaseCard svc={SERVICES[1]} variant="center" delay={90}  isVisible={isVisible} />
-          <ShowcaseCard svc={SERVICES[2]} variant="right"  delay={180} isVisible={isVisible} />
-        </div>
-      </div>
-
-      {/* 4th service: full-width featured strip */}
-      <div className="wrap mt-10">
-        <div
-          className={`rounded-[24px] p-8 lg:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-          style={{
-            transitionDelay: '270ms',
-            background: 'rgba(175,136,114,0.07)',
-            border: '1px solid rgba(175,136,114,0.15)',
-          }}
-        >
-          {/* Icon */}
-          <div
-            className="w-[72px] h-[72px] rounded-2xl flex-shrink-0 flex items-center justify-center"
-            style={{
-              background: `linear-gradient(135deg, ${svc4.accent}15 0%, #080808 100%)`,
-              border: `1px solid ${svc4.accent}20`,
-            }}
-          >
-            {svc4.icon}
-          </div>
-
-          {/* Text */}
-          <div className="flex-1">
-            <h3
-              className="text-[20px] font-bold mb-2 leading-snug"
-              style={{
-                background: `linear-gradient(97.97deg, ${svc4.accent} 0%, ${svc4.accentEnd} 100%)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+        {/* 2×2 grid of service cards — Figma Frame 73/105/106/107: 592×437 each */}
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-8 max-w-[1216px] mx-auto">
+          {SERVICES.map((svc, i) => (
+            <div
+              key={svc.title}
+              className={`card-hover rounded-[20px] p-8 lg:p-10 flex flex-col transition-all duration-700 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${i * 90}ms`, minHeight: '437px', maxWidth: '592px' }}
             >
-              {svc4.title}
-            </h3>
-            <p className="text-[14px] text-white/50 leading-relaxed max-w-2xl">{svc4.description}</p>
-          </div>
+              {/* Icon + accent glow */}
+              <div
+                className="w-[56px] h-[56px] rounded-[14px] flex items-center justify-center mb-6"
+                style={{
+                  background: `linear-gradient(135deg, ${svc.accent}1a 0%, rgba(255,255,255,0.02) 100%)`,
+                  border: `1px solid ${svc.accent}33`,
+                }}
+              >
+                {svc.icon}
+              </div>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {svc4.tags.map(tag => (
-              <span key={tag} className="tag">{tag}</span>
-            ))}
-          </div>
+              {/* Title (369×29 in Figma) */}
+              <h3 className="text-[22px] lg:text-[24px] font-bold text-white leading-[1.25] mb-2">
+                {svc.title}
+              </h3>
+
+              {/* Subtitle (369×19) — salmon color */}
+              <p className="text-[14px] lg:text-[15px] font-medium mb-5" style={{ color: svc.accent }}>
+                {svc.subtitle}
+              </p>
+
+              {/* Body (524×75) */}
+              <p className="text-[14px] lg:text-[15px] text-white/55 leading-[25px] tracking-[-0.42px] flex-1">
+                {svc.body}
+              </p>
+
+              {/* Tag row (Frame 85) */}
+              <div className="flex flex-wrap gap-2 mt-6">
+                {svc.tags.map((tag) => (
+                  <span key={tag} className="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

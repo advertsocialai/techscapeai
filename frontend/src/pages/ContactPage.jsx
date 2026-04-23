@@ -2,21 +2,22 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { submitContact } from '../services/api'
 
-const SERVICES_OPTIONS = [
+const ROLE_OPTIONS = [
+  'Founder / CEO',
+  'CTO / Tech Lead',
+  'Product Manager',
+  'Marketing Lead',
+  'Operations Manager',
+  'Other',
+]
+
+const INTEREST_OPTIONS = [
   'AI Agents & Automation',
   'Digital Marketing & SEO',
   'Training & Education',
   'CRM & Digital Branding',
   'Custom POC Build',
   'General Inquiry',
-]
-
-const BUDGET_OPTIONS = [
-  'Under $5,000',
-  '$5,000 – $20,000',
-  '$20,000 – $50,000',
-  '$50,000+',
-  'Not sure yet',
 ]
 
 const CHECKPOINTS = [
@@ -28,7 +29,7 @@ const CHECKPOINTS = [
 
 export default function ContactPage() {
   const [form, setForm] = useState({
-    name: '', email: '', phone: '', service: '', budget: '', message: '',
+    name: '', email: '', phone: '', role: '', interest: '', message: '',
   })
   const [status, setStatus] = useState('idle')
 
@@ -44,7 +45,7 @@ export default function ContactPage() {
     try {
       await submitContact(form)
       setStatus('success')
-      setForm({ name: '', email: '', phone: '', service: '', budget: '', message: '' })
+      setForm({ name: '', email: '', phone: '', role: '', interest: '', message: '' })
     } catch {
       setStatus('error')
     }
@@ -72,7 +73,7 @@ export default function ContactPage() {
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start max-w-5xl mx-auto">
 
-          {/* Left — Form */}
+          {/* Left -- Form */}
           <div>
             {status === 'success' ? (
               <div className="text-center py-16">
@@ -92,70 +93,131 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-7">
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-7"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,122,0,0.1) 0%, rgba(27,43,74,0.1) 100%)',
+                  borderRadius: '16px',
+                  padding: '32px 24px',
+                }}
+              >
+                {/* Form heading */}
+                <h2 className="text-[33px] font-semibold text-white">Send Us a Message</h2>
 
                 {/* Full Name */}
                 <div>
-                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Full Name *</label>
-                  <input type="text" name="name" value={form.name} onChange={handleChange} required
-                    placeholder="Jane Smith"
-                    className="input-line" />
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Full Name *"
+                    className="w-full bg-transparent text-[24px] text-white placeholder-[#c5c5c5] pb-3 outline-none"
+                    style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+                    onFocus={e => e.target.style.borderBottomColor = 'rgba(61,117,243,0.5)'}
+                    onBlur={e => e.target.style.borderBottomColor = 'rgba(255,255,255,0.1)'}
+                  />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Email Address *</label>
-                  <input type="email" name="email" value={form.email} onChange={handleChange} required
-                    placeholder="jane@company.com"
-                    className="input-line" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="Email Address *"
+                    className="w-full bg-transparent text-[24px] text-white placeholder-[#c5c5c5] pb-3 outline-none"
+                    style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+                    onFocus={e => e.target.style.borderBottomColor = 'rgba(61,117,243,0.5)'}
+                    onBlur={e => e.target.style.borderBottomColor = 'rgba(255,255,255,0.1)'}
+                  />
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Phone Number</label>
-                  <input type="tel" name="phone" value={form.phone} onChange={handleChange}
-                    placeholder="+1 (555) 000-0000"
-                    className="input-line" />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="Phone Number"
+                    className="w-full bg-transparent text-[24px] text-white placeholder-[#c5c5c5] pb-3 outline-none"
+                    style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+                    onFocus={e => e.target.style.borderBottomColor = 'rgba(61,117,243,0.5)'}
+                    onBlur={e => e.target.style.borderBottomColor = 'rgba(255,255,255,0.1)'}
+                  />
                 </div>
 
-                {/* Service */}
+                {/* I am a (Role) */}
                 <div className="relative">
-                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Service Interested In</label>
-                  <select name="service" value={form.service} onChange={handleChange} className="select-line">
-                    <option value="">Select a service...</option>
-                    {SERVICES_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+                  <select
+                    name="role"
+                    value={form.role}
+                    onChange={handleChange}
+                    className="w-full bg-transparent text-[24px] text-white pb-3 outline-none appearance-none cursor-pointer"
+                    style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: form.role ? '#fff' : '#c5c5c5' }}
+                  >
+                    <option value="" disabled style={{ color: '#333', background: '#1a1a1a' }}>I am a</option>
+                    {ROLE_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt} style={{ color: '#fff', background: '#1a1a1a' }}>{opt}</option>
+                    ))}
                   </select>
-                  <svg className="absolute right-0 bottom-3 w-4 h-4 text-white/30 pointer-events-none" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <svg className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 pointer-events-none" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 7.5l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
 
-                {/* Budget */}
+                {/* I am interested in */}
                 <div className="relative">
-                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Estimated Budget</label>
-                  <select name="budget" value={form.budget} onChange={handleChange} className="select-line">
-                    <option value="">Select budget range...</option>
-                    {BUDGET_OPTIONS.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+                  <select
+                    name="interest"
+                    value={form.interest}
+                    onChange={handleChange}
+                    className="w-full bg-transparent text-[24px] text-white pb-3 outline-none appearance-none cursor-pointer"
+                    style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', color: form.interest ? '#fff' : '#c5c5c5' }}
+                  >
+                    <option value="" disabled style={{ color: '#333', background: '#1a1a1a' }}>I am interested in</option>
+                    {INTEREST_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt} style={{ color: '#fff', background: '#1a1a1a' }}>{opt}</option>
+                    ))}
                   </select>
-                  <svg className="absolute right-0 bottom-3 w-4 h-4 text-white/30 pointer-events-none" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <svg className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 pointer-events-none" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 7.5l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[12px] font-semibold text-white/35 uppercase tracking-widest mb-2">Tell Us About Your Project</label>
-                  <textarea name="message" value={form.message} onChange={handleChange} rows={4}
-                    placeholder="Describe what you're trying to solve..."
-                    className="input-line resize-none" />
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    rows={3}
+                    placeholder="Tell us about your need"
+                    className="w-full bg-transparent text-[24px] text-white placeholder-[#c5c5c5] pb-3 outline-none resize-none"
+                    style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+                    onFocus={e => e.target.style.borderBottomColor = 'rgba(61,117,243,0.5)'}
+                    onBlur={e => e.target.style.borderBottomColor = 'rgba(255,255,255,0.1)'}
+                  />
                 </div>
 
                 {status === 'error' && (
                   <p className="text-[13px] text-red-400">Something went wrong. Please try again.</p>
                 )}
 
-                <button type="submit" disabled={status === 'loading'}
-                  className="btn w-full flex items-center justify-center gap-2 h-[50px] text-[15px] font-semibold text-white disabled:opacity-60">
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="w-full flex items-center justify-center gap-2 h-[44px] text-[15px] font-semibold text-white disabled:opacity-60 transition-all"
+                  style={{
+                    background: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
+                    borderRadius: '8px',
+                  }}
+                >
                   {status === 'loading' ? (
                     <>
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -167,7 +229,7 @@ export default function ContactPage() {
             )}
           </div>
 
-          {/* Right — Booking card */}
+          {/* Right -- Booking card */}
           <div>
             <div className="rounded-2xl p-8" style={{ background: '#0D0D0D', border: '1px solid #1C1C1C' }}>
               <p className="label mb-4">What You Get</p>

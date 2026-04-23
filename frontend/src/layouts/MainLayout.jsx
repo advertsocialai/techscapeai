@@ -1,6 +1,5 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import TopBanner from '../components/TopBanner'
 
 export default function MainLayout({ children }) {
   return (

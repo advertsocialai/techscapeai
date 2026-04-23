@@ -1,74 +1,23 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import partnerNxtwave from '../assets/partner-nxtwave.png'
+import partnerAsg from '../assets/partner-asg.png'
 
-/* ── Client logos matching Figma Frame 72 ── */
-const CLIENTS = [
-  {
-    key: 'asg',
-    logo: (
-      <div className="flex items-center gap-2.5">
-        {/* ASG triangle icon */}
-        <svg width="36" height="32" viewBox="0 0 36 32" fill="none">
-          <polygon points="18,2 34,30 2,30" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" fill="none" />
-          <polygon points="18,10 28,28 8,28" fill="currentColor" opacity="0.25" />
-        </svg>
-        <div className="flex flex-col leading-none">
-          <span className="text-[18px] font-black tracking-tight">ASG</span>
-          <span className="text-[8px] tracking-[0.15em] uppercase opacity-60">American Synthesis Group</span>
-        </div>
-      </div>
-    ),
-  },
-  {
-    key: 'abstudioz',
-    logo: (
-      <div className="flex items-center gap-2.5">
-        {/* abstudioz circular icon */}
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.8" fill="none" />
-          <circle cx="14" cy="14" r="7" stroke="currentColor" strokeWidth="1.4" fill="none" opacity="0.6" />
-          <circle cx="14" cy="14" r="2.5" fill="currentColor" />
-        </svg>
-        <span className="text-[17px] font-semibold tracking-tight">
-          ab<span className="font-bold">studioz</span>
-        </span>
-      </div>
-    ),
-  },
-  {
-    key: 'nxtwave',
-    logo: (
-      <div className="flex items-center gap-1.5">
-        {/* nxt wave wavy text style */}
-        <span className="text-[22px] font-black tracking-[-0.02em]">nxt</span>
-        <span className="text-[22px] font-black tracking-[-0.02em] relative">
-          w
-          <span className="inline-block" style={{ fontStyle: 'italic' }}>a</span>
-          ve
-        </span>
-      </div>
-    ),
-  },
-  {
-    key: 'nmw',
-    logo: (
-      <div className="flex items-center gap-0.5">
-        <span className="text-[22px] font-black tracking-[-0.03em]">nmw</span>
-        <sup className="text-[10px] font-bold mt-1 opacity-70">®</sup>
-      </div>
-    ),
-  },
-  {
-    key: 'gogaga',
-    logo: (
-      <span className="text-[22px] font-black tracking-[-0.02em]">
-        go<span className="opacity-70">ga</span>ga
-      </span>
-    ),
-  },
+/* Figma Frame 80 (129:834) — "In Partnership With" + Frame 72 (129:575) logo row + tagline.
+   Frame 72 has exactly 4 logo slots with 120px gaps:
+     Group (129:497)  — NXT Wave   234×44
+     Group 2 (129:545) — ASG        103×54
+     Group (129:634)  — NXT Wave   234×44
+     Group 3 (129:576) — ASG        103×54
+   Frame 79 (129:833) — 591×73 tagline pill. */
+
+const LOGOS = [
+  { key: 'nxt-1', src: partnerNxtwave, alt: 'NXT Wave',              w: 234, h: 44 },
+  { key: 'asg-1', src: partnerAsg,     alt: 'American Software Group', w: 103, h: 54 },
+  { key: 'nxt-2', src: partnerNxtwave, alt: 'NXT Wave',              w: 234, h: 44 },
+  { key: 'asg-2', src: partnerAsg,     alt: 'American Software Group', w: 103, h: 54 },
 ]
 
-/* Duplicate for seamless marquee loop */
-const MARQUEE = [...CLIENTS, ...CLIENTS]
+const MARQUEE = [...LOGOS, ...LOGOS]
 
 export default function Partners() {
   const { ref, isVisible } = useScrollAnimation()
@@ -77,47 +26,57 @@ export default function Partners() {
     <section id="partners" className="relative bg-black py-16 lg:py-20">
       <div className="wrap" ref={ref}>
         <div
-          className={`rounded-2xl py-12 text-center overflow-hidden transition-all duration-700 ${
+          className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
-          style={{ background: '#080808', border: '1px solid #181818' }}
         >
-          {/* Header */}
-          <p className="label mb-2">Our Clients</p>
-          <p className="text-[14px] text-white/35 mb-10 px-6">
-            Trusted by leading organizations across education, technology and business.
+          {/* Figma 129:448 — 24px salmon label */}
+          <p className="capitalize text-[24px] font-medium leading-[25px] text-center tracking-[-0.72px]"
+            style={{ color: '#f7bfa0' }}>
+            In Partnership With
           </p>
 
-          {/* Marquee ticker — matches Figma Frame 72 single-row layout */}
-          <div className="relative overflow-hidden mb-10">
-            {/* Left fade */}
+          {/* Figma Frame 72 (129:575) — 1216×56, 4 logos, 120px gaps */}
+          <div className="relative overflow-hidden w-full">
             <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-              style={{ background: 'linear-gradient(90deg, #080808 0%, transparent 100%)' }} />
-            {/* Right fade */}
+              style={{ background: 'linear-gradient(90deg, #000 0%, transparent 100%)' }} />
             <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-              style={{ background: 'linear-gradient(270deg, #080808 0%, transparent 100%)' }} />
+              style={{ background: 'linear-gradient(270deg, #000 0%, transparent 100%)' }} />
 
-            <div className="flex items-center marquee-track" style={{ width: 'max-content' }}>
-              {MARQUEE.map(({ key, logo }, i) => (
+            <div className="flex items-center gap-[120px] marquee-track" style={{ width: 'max-content' }}>
+              {MARQUEE.map(({ key, src, alt, w, h }, i) => (
                 <div
                   key={`${key}-${i}`}
-                  className="flex items-center text-white/40 hover:text-white/90 transition-colors duration-300 cursor-default px-10 lg:px-14 border-r border-white/[0.07] last:border-r-0"
+                  className="flex items-center justify-center shrink-0"
                   style={{ minHeight: '56px' }}
                 >
-                  {logo}
+                  <img
+                    src={src}
+                    alt={alt}
+                    width={w}
+                    height={h}
+                    className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                    style={{ width: `${w}px`, height: `${h}px` }}
+                  />
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Tagline pill */}
+          {/* Figma Frame 79 (129:833) — 591×73 tagline pill */}
           <div
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-medium text-white/45"
-            style={{ background: '#101010', border: '1px solid #1E1E1E' }}
+            className="inline-flex items-center justify-center rounded-full max-w-[591px]"
+            style={{
+              width: '591px',
+              maxWidth: '100%',
+              minHeight: '73px',
+              padding: '24px',
+              background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
+            }}
           >
-            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-              style={{ background: 'linear-gradient(135deg, #3D75F3, #F5A086)' }} />
-            This is not the future. This is happening now — and TechScape AI is leading it.
+            <p className="text-[16px] font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px] text-center">
+              This is not the future. This is happening now and Tech Scape AI is leading it.
+            </p>
           </div>
         </div>
       </div>

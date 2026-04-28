@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-
+import Typewriter from './Typewriter';
 /* Figma Frames 73 / 105 / 106 / 107 — 4-card 2×2 grid, each 592×437
    with title (369×29), subtitle (369×19), body (524×75), and 3 tags. */
 
@@ -64,7 +64,7 @@ const SERVICES = [
 
 export default function Services() {
   const { ref, isVisible } = useScrollAnimation()
-
+const typewriterWords = ["What We Deliver."];
   return (
     <section id="services" className="relative bg-black py-20 lg:py-28 overflow-hidden">
       <div className="wrap" ref={ref}>
@@ -76,7 +76,7 @@ export default function Services() {
           }`}
         >
           <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] text-white leading-tight mb-5">
-            What We Build. <span className="grad-text">What We Deliver.</span>
+            What We Build. <span className="grad-text"><Typewriter words={typewriterWords} speed={100} delay={2500} /></span>
           </h2>
           <p className="text-[16px] lg:text-[17px] text-white/55 leading-[26px] tracking-[-0.48px] max-w-[493px] mx-auto">
             From intelligent automation to digital growth — Tech Scape AI brings four core capabilities to every business we work with.

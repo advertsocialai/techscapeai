@@ -2,7 +2,6 @@ import Hero from '../components/Hero'
 import About from '../components/About'
 import Partners from '../components/Partners'
 import Services from '../components/Services'
-import Problem from '../components/Problem'
 import AIAgents from '../components/AIAgents'
 import HowItWorks from '../components/HowItWorks'
 import CTABand from '../components/CTABand'
@@ -18,7 +17,6 @@ export default function HomePage() {
       <About />
       <Partners />
       <Services />
-      <Problem />
       <AIAgents />
       <HowItWorks />
       <CTABand />

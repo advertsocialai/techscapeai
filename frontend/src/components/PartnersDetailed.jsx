@@ -1,5 +1,5 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-
+import Typewriter from './Typewriter';
 /* Figma 204:497 (eyebrow) + 204:499 (heading) + 204:498 (body)
    + Frame 131 (206:504) + Frame 132 (208:507) + Frame 133 (208:510) */
 
@@ -23,7 +23,7 @@ const PARTNERS = [
 
 export default function PartnersDetailed() {
   const { ref, isVisible } = useScrollAnimation()
-
+const typewriterWords = ["Connected to the Right Markets."];
   return (
     <section id="partners-detailed" className="relative bg-black py-20 lg:py-28">
       <div className="wrap" ref={ref}>
@@ -37,7 +37,7 @@ export default function PartnersDetailed() {
           <p className="label mb-4">Partners</p>
           <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] font-semibold tracking-[-1.32px] text-white leading-[1.2] mb-6">
             Backed by the Right Partners.<br className="hidden sm:block" />
-            <span className="grad-text">Connected to the Right Markets.</span>
+            <span className="grad-text"><Typewriter words={typewriterWords} speed={100} delay={2500} /></span>
           </h2>
           <p className="text-[15px] lg:text-[16px] text-white/55 leading-[25px] tracking-[-0.48px] max-w-[813px] mx-auto">
             Tech Scape AI operates at the intersection of global technology ecosystems. Our partnerships give our clients and students access to world-class networks, validated technology, and market-ready opportunities.

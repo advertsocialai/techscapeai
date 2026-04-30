@@ -2,6 +2,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import howitStar from '../assets/howit-icon-star.svg'
 import howitCloud from '../assets/howit-icon-cloud.svg'
 import howitBolt from '../assets/howit-icon-bolt.svg'
+import Typewriter from './Typewriter';
 
 /* Figma Cards (163:503):
    - Each card: w-379 h-455, outer rounded-[37px], border 1.553px #232323
@@ -32,6 +33,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   const { ref, isVisible } = useScrollAnimation()
+   const typewriterWords = [" How It Work"];
 
   return (
     <section id="how-it-works" className="relative bg-black py-20 lg:py-28">
@@ -43,7 +45,7 @@ export default function HowItWorks() {
           }`}
         >
           <h2 className="text-[40px] sm:text-[60px] lg:text-[80px] font-semibold tracking-[-2.4px] text-white leading-[77px]">
-            How It Work
+            <Typewriter words={typewriterWords} speed={100} delay={2500} />
           </h2>
         </div>
 

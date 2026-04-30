@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import Typewriter from './Typewriter';
 
 /* Figma Frame 77 (509:780) + 129:467 + 129:468 + 129:667
    Fan cards: Frame 68 (-55,1707, 505×548) / Frame 74 (509,1617, 421×477) / Frame 75 (1502,1707, 505×548)
@@ -40,6 +41,7 @@ const FAN_CARDS = [
 
 export default function About() {
   const { ref, isVisible } = useScrollAnimation()
+   const typewriterWords = [" We Are Not Just Another Tech Company"];
 
   return (
     <section id="about" className="relative bg-black py-20 lg:py-28 overflow-hidden">
@@ -49,8 +51,8 @@ export default function About() {
         aria-hidden="true"
         className="absolute pointer-events-none"
         style={{
-          left: '-11.2%', top: '80px', width: '286px', height: '258px',
-          background: '#fad4bf',
+          right: '-11.2%', top: '80px', width: '286px', height: '258px',
+          background: '#3579CE',
           filter: 'blur(266.7px)',
           borderRadius: '254px 343px 129px 391px',
           opacity: 0.55,
@@ -95,9 +97,8 @@ export default function About() {
 
         {/* Figma Frame 77 (509:780) — eyebrow + belief statement, 422×87 */}
         <div
-          className={`text-center max-w-[422px] mx-auto mb-10 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`text-center max-w-[422px] mx-auto mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <p className="text-[24px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
             About
@@ -109,11 +110,10 @@ export default function About() {
 
         {/* Figma 129:467 — 1054×180, first clause white, rest muted */}
         <div
-          className={`text-center max-w-[1054px] mx-auto mb-6 transition-all duration-700 delay-150 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`text-center max-w-[1054px] mx-auto mb-6 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
-          <p className="text-[22px] sm:text-[28px] lg:text-[32px] tracking-[-0.96px] leading-[45px]">
+          <p className="text-[16px] sm:text-[22px] lg:text-[32px] tracking-[-0.96px] leading-[45px]">
             <span className="text-white">We are a global AI services and training company, </span>
             <span style={{ color: '#5b5b5b' }}>
               founded by technologists, business builders, and educators who have worked across the USA, Canada, and India. We don&apos;t sell software. We solve problems with AI, with automation, and with the right people behind every solution.
@@ -123,36 +123,74 @@ export default function About() {
 
         {/* Figma 129:468 — 932×135 second paragraph */}
         <div
-          className={`text-center max-w-[932px] mx-auto mb-14 transition-all duration-700 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`text-center max-w-[932px] mx-auto mb-14 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
-          <p className="text-[18px] sm:text-[22px] lg:text-[24px] tracking-[-0.72px] leading-[38px]" style={{ color: '#8a8a8a' }}>
+          <p className="text-[16px] sm:text-[22px] lg:text-[24px] tracking-[-0.72px] leading-[38px]" style={{ color: '#8a8a8a' }}>
             From building intelligent AI agents for small businesses to training the next generation of engineers and analysts, everything we do is designed to create real, measurable impact.
           </p>
         </div>
 
         {/* Figma 129:667 — 932×156 big heading, 64px */}
         <div
-          className={`flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-0 lg:items-stretch transition-all duration-700 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={` transition-all duration-700 text-center max-w-[932px] mx-auto mb-10 md:mb-14 transition-all duration-700 delay-200 
+    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          {FAN_CARDS.map(({ text, bg, border, rotate, translate, z, scale }, i) => (
-            <div
-              key={i}
-              className="rounded-2xl p-7 max-w-[290px] w-full"
-              style={{
-                background: bg,
-                border: `1px solid ${border}`,
-                zIndex: z,
-                transform: `rotate(${rotate}) translateY(${translate.y}) translateX(${translate.x}) ${scale ? `scale(${scale})` : ''}`,
-                transition: 'transform 0.3s ease',
-              }}
-            >
-              <p className="text-[16px] font-semibold text-white leading-snug">{text}</p>
-            </div>
-          ))}
+          <h2
+            className="
+      text-[32px]          
+      sm:text-[48px]        
+      lg:text-[64px]         
+      leading-[1.1]         
+      tracking-[-1px] 
+      lg:tracking-[-1.72px] 
+      lg:leading-[75px] 
+      font-bold
+    "
+            style={{ color: '#888888' }}
+          >
+           <Typewriter words={typewriterWords} speed={100} delay={2500} />
+          </h2>
+        </div>
+      </div>
+
+
+      <div
+        className={` transition-all duration-700
+    flex flex-row            
+    items-stretch 
+    justify-center 
+    transition-all duration-700 delay-300 
+    bg-[url('/bgframes.svg')] bg-no-repeat bg-center bg-cover 
+    w-full max-w-[1440px] mx-auto 
+    pt-8 pb-8 lg:pt-16 lg:pb-16
+  `}
+      >
+        {/* Frame 1 */}
+        <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
+          <img
+            src="/frame1.svg"
+            className="w-full h-full object-contain"
+            alt="Frame 1"
+          />
+        </div>
+
+        {/* Frame 2 */}
+        <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
+          <img
+            src="/frame2.svg"
+            className="w-full h-full object-contain"
+            alt="Frame 2"
+          />
+        </div>
+
+        {/* Frame 3 */}
+        <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
+          <img
+            src="/frame3.svg"
+            className="w-full h-full object-contain"
+            alt="Frame 3"
+          />
         </div>
       </div>
     </section>

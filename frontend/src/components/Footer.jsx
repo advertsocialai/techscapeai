@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import socialTwitter from '../assets/social-twitter.png'
-import socialLinkedin from '../assets/social-linkedin.png'
-import socialGithub from '../assets/social-github.png'
+import socialTwitter from '../assets/sociallogo1.svg'
+import socialLinkedin from '../assets/sociallogo2.svg'
+import socialGithub from '../assets/sociallogo3.svg'
 import footerWordmark from '../assets/footer-wordmark.svg'
 import logoIcon from '../assets/logo-icon.svg'
 
@@ -53,20 +53,9 @@ export default function Footer() {
       className="relative border-t border-white/[0.06] overflow-hidden"
       style={{ background: '#020101' }}
     >
-      {/* Giant "TechScape AI" wordmark — Figma 183:973 positions it absolute at bottom */}
-      <div
-        className="absolute left-0 right-0 bottom-0 pointer-events-none select-none flex items-end justify-center"
-        style={{ height: '180px' }}
-      >
-        <img
-          src={footerWordmark}
-          alt=""
-          className="w-[94%] max-w-[1243px] object-contain opacity-70"
-          draggable="false"
-        />
-      </div>
 
-      <div className="relative px-6 sm:px-10 lg:px-[90px] mx-auto max-w-[1440px] pb-[220px]">
+
+      <div className="relative px-6 sm:px-10 lg:px-[90px] mx-auto max-w-[1440px] pb-[20px]">
 
         {/* Top grid */}
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 py-14 border-b border-white/[0.06]">

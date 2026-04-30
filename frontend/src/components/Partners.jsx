@@ -1,6 +1,11 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import partnerNxtwave from '../assets/partner-nxtwave.png'
-import partnerAsg from '../assets/partner-asg.png'
+import partnerNxtwave from '../assets/nxtwave.svg'
+import partnerAsg from '../assets/asg.svg'
+import mmw from '../assets/mmw.svg'
+import goga from '../assets/goga.svg'
+import abs from '../assets/abs.svg'
+import bidqon_logo from '../assets/bidqon_logo.svg'
+
 
 /* Figma Frame 80 (129:834) — "In Partnership With" + Frame 72 (129:575) logo row + tagline.
    Frame 72 has exactly 4 logo slots with 120px gaps:
@@ -13,8 +18,10 @@ import partnerAsg from '../assets/partner-asg.png'
 const LOGOS = [
   { key: 'nxt-1', src: partnerNxtwave, alt: 'NXT Wave',              w: 234, h: 44 },
   { key: 'asg-1', src: partnerAsg,     alt: 'American Software Group', w: 103, h: 54 },
-  { key: 'nxt-2', src: partnerNxtwave, alt: 'NXT Wave',              w: 234, h: 44 },
-  { key: 'asg-2', src: partnerAsg,     alt: 'American Software Group', w: 103, h: 54 },
+  { key: 'nxt-2', src: mmw, alt: 'NXT Wave',              w: 234, h: 44 },
+  { key: 'asg-2', src: goga,     alt: 'American Software Group', w: 220, h: 54 },
+  { key: 'asg-3', src: abs,     alt: 'American Software Group', w: 230, h: 54 },
+  { key: 'asg-4', src: bidqon_logo,     alt: 'American Software Group', w: 230, h: 54 },
 ]
 
 const MARQUEE = [...LOGOS, ...LOGOS]
@@ -65,9 +72,9 @@ export default function Partners() {
 
           {/* Figma Frame 79 (129:833) — 591×73 tagline pill */}
           <div
-            className="inline-flex items-center justify-center rounded-full max-w-[591px]"
+            className="inline-flex items-center justify-center rounded-full max-w-[600px]"
             style={{
-              width: '591px',
+              width: '600px',
               maxWidth: '100%',
               minHeight: '73px',
               padding: '24px',

@@ -1,5 +1,10 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+// How long the cursor must linger on a nav item before we auto-navigate.
+// Short enough to feel "automatic"; long enough to avoid firing on every
+// mouse pass across the navbar.
+const HOVER_INTENT_MS = 250
 
 function MenuIcon() {
   return (
@@ -32,18 +37,47 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
+
+  // Single shared timer — only the most recent hover counts. Hovering a new
+  // link cancels the previous pending nav.
+  const hoverTimer = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (hoverTimer.current) clearTimeout(hoverTimer.current)
+    }
   }, [])
 
-  const navigate = (e, href) => {
+  // Resolves a nav link's target — anchor scroll or route push.
+  const goTo = (href) => {
     if (href.startsWith('#')) {
-      e.preventDefault()
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-      setOpen(false)
+    } else {
+      navigate(href)
+    }
+    setOpen(false)
+  }
+
+  const handleClick = (e, href) => {
+    // Cancel any pending hover-nav so we don't double-fire.
+    if (hoverTimer.current) clearTimeout(hoverTimer.current)
+    if (href.startsWith('#')) e.preventDefault()
+    goTo(href)
+  }
+
+  const handleMouseEnter = (href) => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current)
+    hoverTimer.current = setTimeout(() => goTo(href), HOVER_INTENT_MS)
+  }
+
+  const handleMouseLeave = () => {
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current)
+      hoverTimer.current = null
     }
   }
 
@@ -62,7 +96,9 @@ export default function Navbar() {
               <a
                 key={label}
                 href={href}
-                onClick={e => navigate(e, href)}
+                onClick={e => handleClick(e, href)}
+                onMouseEnter={() => handleMouseEnter(href)}
+                onMouseLeave={handleMouseLeave}
                 className="relative text-[13px] text-white/55 hover:text-white transition-colors duration-200 after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-px after:grad hover:after:w-full after:transition-all after:duration-300"
               >
                 {label}
@@ -73,6 +109,8 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               to="/contact"
+              onMouseEnter={() => handleMouseEnter('/contact')}
+              onMouseLeave={handleMouseLeave}
               className="hidden lg:inline-flex items-center justify-center px-4 w-[107px] h-[40px] text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap"
               style={{
                 backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
@@ -97,7 +135,7 @@ export default function Navbar() {
               <a
                 key={label}
                 href={href}
-                onClick={e => navigate(e, href)}
+                onClick={e => handleClick(e, href)}
                 className="px-3 py-3 text-[15px] text-white/55 hover:text-white hover:bg-white/[0.04] rounded-xl transition-all duration-200"
                 style={{ transitionDelay: `${i * 20}ms` }}
               >

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import socialTwitter from '../assets/sociallogo1.svg'
 import socialLinkedin from '../assets/sociallogo2.svg'
-import socialGithub from '../assets/sociallogo3.svg'
+import socialInstagram from '../assets/social-instagram.svg'
+import socialFacebook from '../assets/social-facebook.svg'
 import footerWordmark from '../assets/footer-wordmark.svg'
 import logoIcon from '../assets/logo-icon.svg'
 
@@ -35,9 +36,10 @@ const FOOTER_LINKS = {
 }
 
 const SOCIALS = [
-  { src: socialTwitter,  label: 'Twitter' },
-  { src: socialLinkedin, label: 'LinkedIn' },
-  { src: socialGithub,   label: 'GitHub' },
+  { src: socialTwitter,   label: 'Twitter',   href: 'https://x.com/techscapeai' },
+  { src: socialLinkedin,  label: 'LinkedIn',  href: 'https://in.linkedin.com/company/techscapeai' },
+  { src: socialInstagram, label: 'Instagram', href: 'https://www.instagram.com/techscapeai/' },
+  { src: socialFacebook,  label: 'Facebook',  href: 'https://www.facebook.com/people/Tech-Scape-AI/61582446062330/' },
 ]
 
 export default function Footer() {
@@ -67,16 +69,20 @@ export default function Footer() {
               AI-powered solutions that move businesses forward — fast, affordable, and ready to deploy.
             </p>
             <div className="flex gap-3">
-              {SOCIALS.map(({ src, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  className="w-[40px] h-[40px] rounded-[10px] bg-[#1e2939] flex items-center justify-center hover:bg-[#2a3a4f] transition-colors duration-200"
-                >
-                  <img src={src} alt={label} className="w-5 h-5 object-contain" />
-                </a>
-              ))}
+              {SOCIALS.map(({ src, label, href }) => {
+                const isExternal = href.startsWith('http')
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
+                    className="w-[40px] h-[40px] rounded-[10px] bg-[#1e2939] flex items-center justify-center hover:bg-[#2a3a4f] transition-colors duration-200"
+                  >
+                    <img src={src} alt={label} className="w-5 h-5 object-contain" />
+                  </a>
+                )
+              })}
             </div>
           </div>
 

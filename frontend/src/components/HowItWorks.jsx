@@ -33,7 +33,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   const { ref, isVisible } = useScrollAnimation()
-   const typewriterWords = [" How It Work"];
+  const typewriterWords = ["How It Works"];
 
   return (
     <section id="how-it-works" className="relative bg-black py-20 lg:py-28">

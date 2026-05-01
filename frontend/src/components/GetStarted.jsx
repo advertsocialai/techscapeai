@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import Typewriter from './Typewriter';
+import { submitContactForm } from '../lib/contact';
 
 const I_AM_OPTIONS = ['A Business', 'A Student', 'A Partner', 'Other']
 const INTEREST_OPTIONS = [
@@ -26,22 +27,43 @@ function CheckIcon() {
   )
 }
 
+const INITIAL_FORM = {
+  fullName: '',
+  email: '',
+  phone: '',
+  iAm: '',
+  interestedIn: '',
+  message: '',
+}
+
 export default function GetStarted() {
   const { ref, isVisible } = useScrollAnimation()
-  const [form, setForm] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    iAm: '',
-    interestedIn: '',
-    message: '',
-  })
+  const [form, setForm] = useState(INITIAL_FORM)
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('')
 
   const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form Submitted:', form)
+    if (status === 'loading') return
+    setStatus('loading')
+    setErrorMsg('')
+    try {
+      await submitContactForm({
+        full_name: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        i_am: form.iAm,
+        interested_in: form.interestedIn,
+        message: form.message,
+      })
+      setStatus('success')
+      setForm(INITIAL_FORM)
+    } catch (err) {
+      setStatus('error')
+      setErrorMsg(err?.message ?? 'Something went wrong. Please try again.')
+    }
   }
 
   const typewriterWords = ["Let's Build Something Together"];
@@ -76,7 +98,7 @@ export default function GetStarted() {
             backgroundRepeat: 'no-repeat'
           }}
         >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-center -mt-92 z-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start -mt-92 z-20">
             {/* Left: Glassmorphic Contact Form */}
             <div
               className="rounded-[16px] p-8 md:p-12 border border-white/10 backdrop-blur-xl shadow-2xl"
@@ -110,10 +132,9 @@ export default function GetStarted() {
                 <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
                   <label className="text-[16px] uppercase tracking-widest text-rgba(197, 197, 197, 1) block mb-1">Phone Number</label>
                   <input
-                    type="phone"
-                    required
+                    type="tel"
                     value={form.phone}
-                    onChange={update('email')}
+                    onChange={update('phone')}
                     className="bg-transparent w-full text-white outline-none py-1 placeholder:text-white/10 text-sm md:text-base"
                   />
                 </div>
@@ -123,16 +144,15 @@ export default function GetStarted() {
                   </label>
 
                   <select
-                    required
-                    value={form.role}
-                    onChange={update('role')}
+                    value={form.iAm}
+                    onChange={update('iAm')}
                     className="bg-transparent w-full text-white outline-none py-1 text-sm md:text-base"
                   >
                     <option value="" className="text-black">Select</option>
-                    <option value="student" className="text-black">Student</option>
-                    <option value="developer" className="text-black">Developer</option>
-                    <option value="designer" className="text-black">Designer</option>
-                    <option value="business" className="text-black">Business Owner</option>
+                    <option value="business" className="text-black">A Business</option>
+                    <option value="student" className="text-black">A Student</option>
+                    <option value="partner" className="text-black">A Partner</option>
+                    <option value="other" className="text-black">Other</option>
                   </select>
                 </div>
 
@@ -143,17 +163,16 @@ export default function GetStarted() {
                   </label>
 
                   <select
-                    required
-                    value={form.interest}
-                    onChange={update('interest')}
+                    value={form.interestedIn}
+                    onChange={update('interestedIn')}
                     className="bg-transparent w-full text-white outline-none py-1 text-sm md:text-base"
                   >
                     <option value="" className="text-black">Select</option>
-                    <option value="web" className="text-black">Web Development</option>
-                    <option value="app" className="text-black">App Development</option>
-                    <option value="ai" className="text-black">AI / Machine Learning</option>
-                    <option value="design" className="text-black">UI/UX Design</option>
-                    <option value="marketing" className="text-black">Digital Marketing</option>
+                    <option value="ai-agents" className="text-black">AI Agents &amp; Automation</option>
+                    <option value="digital-services" className="text-black">Digital Services &amp; Transformation</option>
+                    <option value="training" className="text-black">Technology Training &amp; EdTech</option>
+                    <option value="crm-saas" className="text-black">CRM &amp; SaaS for Small Business</option>
+                    <option value="other" className="text-black">Other</option>
                   </select>
                 </div>
 
@@ -167,44 +186,49 @@ export default function GetStarted() {
                   />
                 </div>
 
+                {status === 'success' && (
+                  <div className="rounded-xl px-4 py-3 text-sm text-emerald-300 bg-emerald-500/10 border border-emerald-500/30">
+                    Thanks — we received your message and will get back within 24 hours.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="rounded-xl px-4 py-3 text-sm text-red-300 bg-red-500/10 border border-red-500/30">
+                    {errorMsg}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl font-bold text-white shadow-lg transition-transform hover:scale-[1.01] active:scale-[0.98]"
+                  disabled={status === 'loading'}
+                  className="w-full py-4 rounded-xl font-bold text-white shadow-lg transition-transform hover:scale-[1.01] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #A396FF 50%, #F5A086 100%)' }}
                 >
-                  Send Message
+                  {status === 'loading' ? 'Sending…' : 'Send Message'}
                 </button>
               </form>
             </div>
 
             {/* Right: Booking Info Section */}
-            <div className="lg:pl-6 text-left lg:-mt-36">
+            <div className="lg:pl-6 text-left lg:pt-2">
               <h3 className="text-[33px] md:text-[36px] font-semibold text-white mb-6 leading-tight tracking-tight">
                 Book a Free Consultation Directly
               </h3>
-              <p className="text-white/40 mb-12 text-base md:text-lg leading-relaxed max-w-md">
+              <p className="text-white/40 mb-10 text-base md:text-lg leading-relaxed max-w-md">
                 Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
               </p>
 
-              <button
-                className="w-full md:w-auto px-10 py-4 rounded-xl font-bold text-white mb-16 border border-white/10 shadow-2xl transition-all hover:brightness-110"
-                style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #A396FF 50%, #F5A086 100%)' }}
-              >
-                Book Your Free Consultation
-              </button>
-
-              <div className="space-y-8">
+              <ul className="space-y-5">
                 {CHECK_ITEMS.map((item) => (
-                  <div key={item} className="flex items-center gap-5 group">
-                    <div className="flex-shrink-0 p-1 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
+                  <li key={item} className="flex items-center gap-4 group">
+                    <span className="flex-shrink-0 p-1 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
                       <CheckIcon />
-                    </div>
+                    </span>
                     <span className="text-white/70 group-hover:text-white transition-colors text-xs md:text-sm font-semibold uppercase tracking-widest">
                       {item}
                     </span>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
           </div>

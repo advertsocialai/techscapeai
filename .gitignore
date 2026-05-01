@@ -4,6 +4,14 @@
 .env.*.local
 !.env.example
 
+# ── Vercel CLI link state (per-clone, never commit) ──
+.vercel
+**/.vercel
+
+# ── Supabase CLI cache (per-clone, never commit) ──
+supabase/.temp/
+supabase/.branches/
+
 # ── Node / Frontend ──
 node_modules/
 frontend/node_modules/

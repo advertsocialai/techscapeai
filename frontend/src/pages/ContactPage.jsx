@@ -252,9 +252,9 @@ export default function ContactPage() {
 
               <div className="border-t border-white/[0.07] pt-6">
                 <p className="text-[12px] text-white/30 uppercase tracking-widest font-semibold mb-3">Or reach us directly</p>
-                <a href="mailto:hello@techscapeai.com"
+                <a href="mailto:info@techscapeai.in"
                   className="text-[14px] text-white/60 hover:text-white transition-colors block">
-                  hello@techscapeai.com
+                  info@techscapeai.in
                 </a>
               </div>
             </div>

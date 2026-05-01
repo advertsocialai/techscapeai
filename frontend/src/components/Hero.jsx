@@ -30,7 +30,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="wrap w-full pt-[149px] pb-20" ref={ref}>
+      <div className="wrap w-full pt-[88px] pb-20" ref={ref}>
         {/* Figma 228:418: 1274 wide, 474 tall on desktop */}
         <div className="grid lg:grid-cols-[667px_546px] gap-10 lg:gap-[61px] items-center lg:h-[474px] max-w-[1274px] mx-auto">
 
@@ -45,7 +45,12 @@ export default function Hero() {
                 }}
               >
                 <Typewriter words={typewriterWords} speed={100} delay={2500} />
-              </span>{' '}
+              </span>
+              {/* Force "That…" onto its own line so the headline shape stays
+                  stable while the typewriter cycles through words of varying
+                  length. Without this, short words like "Te" let "That" climb
+                  onto line 1; long words push it down — layout jitters. */}
+              <br />
               That Move Your Business Forward
             </h1>
 

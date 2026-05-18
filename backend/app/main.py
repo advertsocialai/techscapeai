@@ -1,7 +1,9 @@
 """
 TechScape AI — FastAPI Application Entry Point
 """
+import asyncio
 import logging
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -23,10 +25,27 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Application lifecycle handler — startup and shutdown."""
+    """Application lifecycle — startup launches the optional webhook worker."""
     logger.info(f"Starting {settings.APP_NAME} v{settings.APP_VERSION} [{settings.ENVIRONMENT}]")
-    yield
-    logger.info("Application shutdown complete.")
+    stop_event: asyncio.Event = asyncio.Event()
+    worker_task: asyncio.Task | None = None
+    if os.environ.get("ENABLE_WEBHOOK_WORKER") == "1":
+        try:
+            from app.services.techscape.webhook_worker import run_loop  # local import
+            worker_task = asyncio.create_task(run_loop(stop_event))
+            logger.info("TechScape webhook worker launched")
+        except Exception:
+            logger.exception("failed to start webhook worker")
+    try:
+        yield
+    finally:
+        stop_event.set()
+        if worker_task is not None:
+            try:
+                await asyncio.wait_for(worker_task, timeout=5)
+            except Exception:
+                pass
+        logger.info("Application shutdown complete.")
 
 
 app = FastAPI(

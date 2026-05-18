@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import Typewriter from './Typewriter';
 /* Figma Frames 73 / 105 / 106 / 107 — 4-card 2×2 grid, each 592×437
@@ -128,85 +127,6 @@ const typewriterWords = ["What We Deliver."];
               </div>
             </div>
           ))}
-        </div>
-
-        {/* ── Featured: AI Work Flow live product ───────── */}
-        <div
-          className={`max-w-[1216px] mx-auto mt-6 lg:mt-8 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-          style={{ transitionDelay: '380ms' }}
-        >
-          <div
-            className="relative rounded-[20px] p-8 lg:p-10 overflow-hidden"
-            style={{
-              background:
-                'linear-gradient(97.97deg, rgba(61,117,243,0.18) 0%, rgba(245,160,134,0.18) 100%)',
-              border: '1px solid rgba(255,255,255,0.10)',
-            }}
-          >
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  'radial-gradient(ellipse 60% 50% at 80% 30%, rgba(61,117,243,0.22) 0%, transparent 70%)',
-              }}
-            />
-
-            <div className="relative grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-10 items-center">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <span
-                    className="text-[11px] font-semibold uppercase tracking-[0.18em] px-3 py-1 rounded-full"
-                    style={{
-                      color: '#fad4bf',
-                      background: 'rgba(245,160,134,0.16)',
-                      border: '1px solid rgba(245,160,134,0.35)',
-                    }}
-                  >
-                    Live Product · /techscape
-                  </span>
-                </div>
-                <h3 className="text-[24px] lg:text-[30px] font-bold text-white leading-[1.2] mb-3">
-                  AI Work Flow
-                </h3>
-                <p className="text-[14px] lg:text-[16px] text-white/65 leading-[25px] tracking-[-0.42px] max-w-[720px] mb-5">
-                  Multi-channel client communications on autopilot — email, SMS, WhatsApp, voice, and voicemail
-                  routed through Wapi, Twilio, and SendGrid. AI-generated messages, conditional branching,
-                  TCPA-compliant scheduling, full audit trail, and per-message billing — all from a single dashboard.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    'Email · WhatsApp · SMS · Voice',
-                    'Conditional branching',
-                    'AI message generation',
-                    'TCPA + GDPR built-in',
-                    'Per-tier billing',
-                  ].map((tag) => (
-                    <span key={tag} className="tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3 shrink-0">
-                <Link
-                  to="/techscape"
-                  className="btn inline-flex items-center justify-center gap-2 px-6 h-[48px] text-[14px] font-semibold text-white rounded-[10px] whitespace-nowrap"
-                >
-                  Launch dashboard
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-6 h-[40px] text-[13px] font-medium text-white/70 hover:text-white rounded-[10px] border border-white/15 hover:border-white/30 transition-colors whitespace-nowrap"
-                >
-                  Book a demo
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

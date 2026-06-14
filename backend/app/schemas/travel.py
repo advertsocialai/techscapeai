@@ -239,3 +239,118 @@ class SupplierOut(SupplierIn):
     reliability_score: float
     is_active: bool
     created_at: datetime
+
+
+# ── On-Ground Companion (Attack Point 4) ─────────────────────────
+IncidentChannel = Literal["whatsapp", "sms", "voice", "email", "web"]
+IncidentType = Literal[
+    "cab_no_show", "hotel_change", "flight_delay", "lost_item", "language_help",
+    "payment_issue", "medical", "safety", "complaint", "request", "other",
+]
+IncidentSeverity = Literal["low", "normal", "high", "critical"]
+IncidentStatus = Literal["open", "in_progress", "resolved", "escalated"]
+
+
+class InTripIssueIn(_Base):
+    message:      str = Field(min_length=1, max_length=4000)
+    itinerary_id: Optional[UUID] = None
+    customer_id:  Optional[UUID] = None
+    customer_email: Optional[EmailStr] = None
+    customer_phone: Optional[str] = None
+    channel:      IncidentChannel = "whatsapp"
+    language:     str = "en"
+
+
+class InTripIssueOut(_Base):
+    id: UUID
+    business_id: UUID
+    itinerary_id: Optional[UUID] = None
+    customer_id:  Optional[UUID] = None
+    channel:      IncidentChannel
+    issue_type:   IncidentType
+    severity:     IncidentSeverity
+    customer_message: str
+    agent_response:   Optional[str] = None
+    status:       IncidentStatus
+    escalated_to: Optional[str] = None
+    resolved_at:  Optional[datetime] = None
+    metadata:     dict[str, Any] = {}
+    created_at:   datetime
+
+
+class IncidentResolveIn(_Base):
+    resolution_note: Optional[str] = None
+
+
+class IncidentEscalateIn(_Base):
+    escalate_to: str = Field(min_length=1, max_length=255)
+    note:        Optional[str] = None
+
+
+# ── Leads / Pre-Booking funnel ───────────────────────────────────
+LeadSource        = Literal[
+    "whatsapp", "website", "phone", "franchisee", "referral", "sms", "email", "other",
+]
+LeadQualification = Literal["cold", "warm", "hot", "converted", "lost"]
+LeadStatus        = Literal[
+    "new", "qualified", "itinerary_sent", "negotiating", "booked", "lost",
+]
+
+
+class LeadIn(_Base):
+    raw_message: str = Field(min_length=1)
+    source:      LeadSource = "whatsapp"
+    customer_email: Optional[EmailStr] = None
+    customer_name:  Optional[str] = None
+    customer_phone: Optional[str] = None
+    language:    str = "en"
+    franchisee_id: Optional[UUID] = None
+
+
+class LeadOut(_Base):
+    id: UUID
+    business_id: UUID
+    customer_id: Optional[UUID] = None
+    source:      LeadSource
+    raw_message: str
+    intent:      Optional[str] = None
+    destination_hint: Optional[str] = None
+    pax_count:   Optional[int] = None
+    budget_inr:  Optional[int] = None
+    duration_days: Optional[int] = None
+    score:       int
+    qualification: LeadQualification
+    status:      LeadStatus
+    itinerary_id: Optional[UUID] = None
+    franchisee_id: Optional[UUID] = None
+    metadata:    dict[str, Any] = {}
+    created_at:  datetime
+
+
+class LeadStatusUpdate(_Base):
+    status: LeadStatus
+
+
+# ── Inbound WhatsApp dispatcher ──────────────────────────────────
+class WhatsAppInboundIn(_Base):
+    """Body for the /travel/v1/inbound/whatsapp endpoint.
+
+    Designed so it can be called both by Wapi webhooks and by the demo UI.
+    """
+    from_number: str = Field(min_length=4, max_length=32,
+                              description="E.164 phone number of the sender")
+    text:        str = Field(min_length=1, max_length=4000)
+    customer_name: Optional[str] = None
+    customer_email: Optional[EmailStr] = None
+    language:    str = "en"
+    itinerary_id: Optional[UUID] = None
+
+
+class WhatsAppInboundOut(_Base):
+    intent:       Literal["new_lead", "in_trip_issue", "translate", "general"]
+    response_text: str
+    lead_id:      Optional[UUID] = None
+    itinerary_id: Optional[UUID] = None
+    incident_id:  Optional[UUID] = None
+    translated:   Optional[str] = None
+    customer_id:  Optional[UUID] = None

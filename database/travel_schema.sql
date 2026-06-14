@@ -191,6 +191,72 @@ CREATE INDEX IF NOT EXISTS idx_travel_bg_status   ON public.travel_booking_guara
 ALTER TABLE public.travel_booking_guarantees ENABLE ROW LEVEL SECURITY;
 CREATE TRIGGER trg_travel_bg_updated_at BEFORE UPDATE ON public.travel_booking_guarantees FOR EACH ROW EXECUTE FUNCTION public.set_updated_at();
 
+-- 9. In-trip incidents (Attack Point 4 — On-Ground Companion) ────
+CREATE TABLE IF NOT EXISTS public.travel_in_trip_incidents (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    business_id     UUID NOT NULL REFERENCES public.ts_businesses(id) ON DELETE CASCADE,
+    itinerary_id    UUID REFERENCES public.travel_itineraries(id) ON DELETE SET NULL,
+    customer_id     UUID REFERENCES public.travel_customer_profiles(id) ON DELETE SET NULL,
+    channel         VARCHAR(20) DEFAULT 'whatsapp' CHECK (channel IN (
+        'whatsapp','sms','voice','email','web'
+    )),
+    issue_type      VARCHAR(50) NOT NULL CHECK (issue_type IN (
+        'cab_no_show','hotel_change','flight_delay','lost_item','language_help',
+        'payment_issue','medical','safety','complaint','request','other'
+    )),
+    severity        VARCHAR(20) DEFAULT 'normal' CHECK (severity IN (
+        'low','normal','high','critical'
+    )),
+    customer_message TEXT NOT NULL,
+    agent_response  TEXT,
+    status          VARCHAR(20) DEFAULT 'open' CHECK (status IN (
+        'open','in_progress','resolved','escalated'
+    )),
+    escalated_to    VARCHAR(255),
+    resolved_at     TIMESTAMPTZ,
+    metadata        JSONB DEFAULT '{}',
+    created_at      TIMESTAMPTZ DEFAULT NOW(),
+    updated_at      TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_travel_incidents_business ON public.travel_in_trip_incidents(business_id);
+CREATE INDEX IF NOT EXISTS idx_travel_incidents_status   ON public.travel_in_trip_incidents(status);
+CREATE INDEX IF NOT EXISTS idx_travel_incidents_itin     ON public.travel_in_trip_incidents(itinerary_id);
+ALTER TABLE public.travel_in_trip_incidents ENABLE ROW LEVEL SECURITY;
+CREATE TRIGGER trg_travel_incidents_updated_at BEFORE UPDATE ON public.travel_in_trip_incidents FOR EACH ROW EXECUTE FUNCTION public.set_updated_at();
+
+-- 10. Leads (Pre-Booking funnel) ─────────────────────────────────
+CREATE TABLE IF NOT EXISTS public.travel_leads (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    business_id     UUID NOT NULL REFERENCES public.ts_businesses(id) ON DELETE CASCADE,
+    customer_id     UUID REFERENCES public.travel_customer_profiles(id) ON DELETE SET NULL,
+    source          VARCHAR(50) DEFAULT 'whatsapp' CHECK (source IN (
+        'whatsapp','website','phone','franchisee','referral','sms','email','other'
+    )),
+    raw_message     TEXT NOT NULL,
+    intent          TEXT,
+    destination_hint VARCHAR(255),
+    pax_count       INTEGER,
+    budget_inr      INTEGER,
+    duration_days   INTEGER,
+    score           INTEGER DEFAULT 0,
+    qualification   VARCHAR(20) DEFAULT 'cold' CHECK (qualification IN (
+        'cold','warm','hot','converted','lost'
+    )),
+    status          VARCHAR(20) DEFAULT 'new' CHECK (status IN (
+        'new','qualified','itinerary_sent','negotiating','booked','lost'
+    )),
+    itinerary_id    UUID REFERENCES public.travel_itineraries(id) ON DELETE SET NULL,
+    franchisee_id   UUID REFERENCES public.travel_franchisees(id) ON DELETE SET NULL,
+    metadata        JSONB DEFAULT '{}',
+    created_at      TIMESTAMPTZ DEFAULT NOW(),
+    updated_at      TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_travel_leads_business ON public.travel_leads(business_id);
+CREATE INDEX IF NOT EXISTS idx_travel_leads_status   ON public.travel_leads(status);
+CREATE INDEX IF NOT EXISTS idx_travel_leads_quality  ON public.travel_leads(qualification);
+ALTER TABLE public.travel_leads ENABLE ROW LEVEL SECURITY;
+CREATE TRIGGER trg_travel_leads_updated_at BEFORE UPDATE ON public.travel_leads FOR EACH ROW EXECUTE FUNCTION public.set_updated_at();
+
 -- Lock down anon/auth — only service-role accesses these via FastAPI
 DO $$
 DECLARE
@@ -199,7 +265,8 @@ BEGIN
     FOREACH t IN ARRAY ARRAY[
         'travel_wiki','travel_destinations','travel_packages',
         'travel_customer_profiles','travel_itineraries',
-        'travel_franchisees','travel_suppliers','travel_booking_guarantees'
+        'travel_franchisees','travel_suppliers','travel_booking_guarantees',
+        'travel_in_trip_incidents','travel_leads'
     ] LOOP
         EXECUTE format('REVOKE ALL ON TABLE public.%I FROM anon, authenticated', t);
     END LOOP;

@@ -1,13 +1,16 @@
 """
 TravelWorkflow OS endpoints — all 24 UCs (UC-001..UC-024).
 
-  GET  /playbooks                       — list all 24 use cases (metadata)
+Public (read-only spec catalogue — no auth):
+  GET  /playbooks                       — list all 24 use cases
   GET  /playbooks/{uc_id}                — full spec including templates
-  POST /playbooks/{uc_id}/render         — render templates with sample context
-  POST /playbooks/{uc_id}/dispatch       — render + actually send via providers
-  GET  /playbooks/runs                   — audit log of dispatches
-  GET  /playbooks/scheduled/due          — bookings due for a scheduled UC today
-  POST /playbooks/scheduled/run-due      — fire all due UCs (dry_run=true default)
+  POST /playbooks/{uc_id}/render         — render with caller-supplied context
+
+Auth-gated (tenant data + dispatch):
+  POST /playbooks/{uc_id}/dispatch       — send via providers + audit row
+  GET  /playbooks/runs                   — dispatch audit log
+  GET  /playbooks/scheduled/due          — bookings due today
+  POST /playbooks/scheduled/run-due      — fire all due UCs
 """
 from datetime import date
 from typing import Optional
@@ -26,8 +29,9 @@ from app.routers.techscape._deps import require_business
 router = APIRouter()
 
 
+# ── Public catalogue (no auth) ───────────────────────────────────
 @router.get("")
-def list_playbooks(biz: dict = Depends(require_business)):
+def list_playbooks():
     return pb_registry.use_case_summary()
 
 
@@ -68,7 +72,7 @@ async def scheduled_run_due(
 
 
 @router.get("/{uc_id}")
-def get_playbook(uc_id: str, biz: dict = Depends(require_business)):
+def get_playbook(uc_id: str):
     pb = pb_registry.get_playbook(uc_id)
     if not pb:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Use case not found")
@@ -79,7 +83,6 @@ def get_playbook(uc_id: str, biz: dict = Depends(require_business)):
 @router.post("/{uc_id}/render")
 def render_playbook(
     uc_id: str, body: PlaybookRender = Body(default=PlaybookRender()),
-    biz: dict = Depends(require_business),
 ):
     pb = pb_registry.get_playbook(uc_id)
     if not pb:

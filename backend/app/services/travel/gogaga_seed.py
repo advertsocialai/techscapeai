@@ -253,8 +253,9 @@ def seed_gogaga_demo(business_id: UUID) -> dict:
     bid = str(business_id)
 
     # Wipe
-    for t in ("travel_packages", "travel_destinations", "travel_franchisees",
-              "travel_suppliers", "travel_wiki"):
+    for t in ("travel_playbook_runs", "travel_bookings",
+              "travel_packages", "travel_destinations", "travel_franchisees",
+              "travel_suppliers", "travel_wiki", "travel_customer_profiles"):
         db.table(t).delete().eq("business_id", bid).execute()
 
     # Destinations
@@ -285,6 +286,57 @@ def seed_gogaga_demo(business_id: UUID) -> dict:
     sp_in = [{**s, "business_id": bid} for s in SUPPLIERS]
     sp_rows = db.table("travel_suppliers").insert(sp_in).execute().data or []
 
+    # Sample customers + bookings spanning the schedule anchors so the
+    # TravelWorkflow OS scheduler has real data to fire on.
+    today = datetime.now(timezone.utc).date()
+    customers = [
+        {"full_name": "Sarah Mehra",   "email": "sarah@example.com",
+         "phone": "+919999000001", "preferred_language": "en"},
+        {"full_name": "Arjun Kapoor",  "email": "arjun@example.com",
+         "phone": "+919999000002", "preferred_language": "en"},
+        {"full_name": "Priya Iyer",    "email": "priya@example.com",
+         "phone": "+919999000003", "preferred_language": "en"},
+    ]
+    cust_in = [{**c, "business_id": bid} for c in customers]
+    cust_rows = db.table("travel_customer_profiles").insert(cust_in).execute().data or []
+    by_email = {c["email"]: c["id"] for c in cust_rows}
+
+    bookings = [
+        # 1. Departing in 14 days → exercises UC-008/009/010/011
+        {"booking_ref": "TSAI-20260606-0001",
+         "customer_id": by_email.get("sarah@example.com"),
+         "destination": "Kerala", "trip_type": "Honeymoon",
+         "departure_date": (today + timedelta(days=14)).isoformat(),
+         "return_date":    (today + timedelta(days=21)).isoformat(),
+         "pax_count": 2, "grand_total_inr": 105000, "deposit_inr": 25000,
+         "balance_inr": 80000,
+         "balance_due_date": (today + timedelta(days=7)).isoformat(),
+         "visa_status": "not_required", "status": "confirmed",
+         "coordinator_name": "Arjun Mehta", "coordinator_phone": "+919999900001"},
+        # 2. Currently in-trip → exercises UC-012/013/014
+        {"booking_ref": "TSAI-20260606-0002",
+         "customer_id": by_email.get("arjun@example.com"),
+         "destination": "Thailand", "trip_type": "Family Holiday",
+         "departure_date": (today - timedelta(days=2)).isoformat(),
+         "return_date":    (today + timedelta(days=4)).isoformat(),
+         "pax_count": 4, "grand_total_inr": 240000, "deposit_inr": 240000,
+         "balance_inr": 0,
+         "visa_status": "approved", "status": "in_progress",
+         "coordinator_name": "Priya Sharma", "coordinator_phone": "+919999900002"},
+        # 3. Returned 2 days ago → exercises UC-015
+        {"booking_ref": "TSAI-20260606-0003",
+         "customer_id": by_email.get("priya@example.com"),
+         "destination": "Rajasthan", "trip_type": "Heritage Tour",
+         "departure_date": (today - timedelta(days=12)).isoformat(),
+         "return_date":    (today - timedelta(days=2)).isoformat(),
+         "pax_count": 2, "grand_total_inr": 88000, "deposit_inr": 88000,
+         "balance_inr": 0,
+         "visa_status": "not_required", "status": "completed",
+         "coordinator_name": "Rohit Verma", "coordinator_phone": "+919999900003"},
+    ]
+    bk_in = [{**b, "business_id": bid} for b in bookings]
+    bk_rows = db.table("travel_bookings").insert(bk_in).execute().data or []
+
     return {
         "business_id":  bid,
         "destinations": len(dest_rows),
@@ -292,4 +344,6 @@ def seed_gogaga_demo(business_id: UUID) -> dict:
         "wiki_entries": len(wiki_rows),
         "franchisees":  len(fr_rows),
         "suppliers":    len(sp_rows),
+        "customers":    len(cust_rows),
+        "bookings":     len(bk_rows),
     }

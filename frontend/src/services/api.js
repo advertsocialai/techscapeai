@@ -17,3 +17,14 @@ export const submitContact = (data) =>
 
 export const subscribeNewsletter = (data) =>
   request('/newsletter/subscribe', { method: 'POST', body: JSON.stringify(data) })
+
+// ── TravelWorkflow OS — public API helpers ──────────────────────
+// All 24 UCs are read-only for unauthenticated demos. Mutations
+// (dispatch, seed) require business auth and so are not exposed here.
+export const listPlaybooks    = ()     => request('/travel/v1/playbooks')
+export const getPlaybook      = (id)   => request(`/travel/v1/playbooks/${id}`)
+export const renderPlaybook   = (id, context, channels) =>
+  request(`/travel/v1/playbooks/${id}/render`, {
+    method: 'POST',
+    body: JSON.stringify({ context: context || {}, channels: channels || null }),
+  })

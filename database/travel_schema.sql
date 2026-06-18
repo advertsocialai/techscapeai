@@ -257,6 +257,69 @@ CREATE INDEX IF NOT EXISTS idx_travel_leads_quality  ON public.travel_leads(qual
 ALTER TABLE public.travel_leads ENABLE ROW LEVEL SECURITY;
 CREATE TRIGGER trg_travel_leads_updated_at BEFORE UPDATE ON public.travel_leads FOR EACH ROW EXECUTE FUNCTION public.set_updated_at();
 
+-- 11. Bookings (lightweight — full booking record for playbook triggers) ──
+CREATE TABLE IF NOT EXISTS public.travel_bookings (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    business_id     UUID NOT NULL REFERENCES public.ts_businesses(id) ON DELETE CASCADE,
+    booking_ref     VARCHAR(64) UNIQUE NOT NULL,
+    customer_id     UUID REFERENCES public.travel_customer_profiles(id) ON DELETE SET NULL,
+    itinerary_id    UUID REFERENCES public.travel_itineraries(id) ON DELETE SET NULL,
+    destination     VARCHAR(255),
+    trip_type       VARCHAR(50),
+    departure_date  DATE,
+    return_date     DATE,
+    pax_count       INTEGER DEFAULT 1,
+    grand_total_inr INTEGER DEFAULT 0,
+    deposit_inr     INTEGER DEFAULT 0,
+    balance_inr     INTEGER DEFAULT 0,
+    balance_due_date DATE,
+    visa_status     VARCHAR(20) DEFAULT 'not_required' CHECK (visa_status IN (
+        'not_required','pending','submitted','approved','rejected'
+    )),
+    status          VARCHAR(20) DEFAULT 'confirmed' CHECK (status IN (
+        'confirmed','in_progress','completed','cancelled'
+    )),
+    coordinator_name VARCHAR(255),
+    coordinator_phone VARCHAR(50),
+    metadata        JSONB DEFAULT '{}',
+    created_at      TIMESTAMPTZ DEFAULT NOW(),
+    updated_at      TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_travel_bookings_business ON public.travel_bookings(business_id);
+CREATE INDEX IF NOT EXISTS idx_travel_bookings_dates    ON public.travel_bookings(departure_date, return_date);
+CREATE INDEX IF NOT EXISTS idx_travel_bookings_status   ON public.travel_bookings(status);
+ALTER TABLE public.travel_bookings ENABLE ROW LEVEL SECURITY;
+CREATE TRIGGER trg_travel_bookings_updated_at BEFORE UPDATE ON public.travel_bookings FOR EACH ROW EXECUTE FUNCTION public.set_updated_at();
+
+-- 12. Playbook runs (UC dispatch audit log) ──────────────────────
+CREATE TABLE IF NOT EXISTS public.travel_playbook_runs (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    business_id     UUID NOT NULL REFERENCES public.ts_businesses(id) ON DELETE CASCADE,
+    use_case_id     VARCHAR(20) NOT NULL,
+    booking_id      UUID REFERENCES public.travel_bookings(id) ON DELETE CASCADE,
+    customer_id     UUID REFERENCES public.travel_customer_profiles(id) ON DELETE SET NULL,
+    lead_id         UUID REFERENCES public.travel_leads(id) ON DELETE SET NULL,
+    incident_id     UUID REFERENCES public.travel_in_trip_incidents(id) ON DELETE SET NULL,
+    trigger_kind    VARCHAR(50) DEFAULT 'manual' CHECK (trigger_kind IN (
+        'manual','schedule','event','webhook'
+    )),
+    channels        TEXT[] DEFAULT ARRAY[]::TEXT[],
+    status          VARCHAR(20) DEFAULT 'sent' CHECK (status IN (
+        'sent','failed','partial','skipped','queued'
+    )),
+    rendered        JSONB DEFAULT '{}',
+    delivery        JSONB DEFAULT '{}',
+    error_message   TEXT,
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_travel_pbrun_business ON public.travel_playbook_runs(business_id);
+CREATE INDEX IF NOT EXISTS idx_travel_pbrun_uc       ON public.travel_playbook_runs(use_case_id);
+CREATE INDEX IF NOT EXISTS idx_travel_pbrun_booking  ON public.travel_playbook_runs(booking_id);
+CREATE UNIQUE INDEX IF NOT EXISTS uniq_travel_pbrun_once
+    ON public.travel_playbook_runs(business_id, use_case_id, booking_id)
+    WHERE booking_id IS NOT NULL AND trigger_kind = 'schedule';
+ALTER TABLE public.travel_playbook_runs ENABLE ROW LEVEL SECURITY;
+
 -- Lock down anon/auth — only service-role accesses these via FastAPI
 DO $$
 DECLARE
@@ -266,7 +329,8 @@ BEGIN
         'travel_wiki','travel_destinations','travel_packages',
         'travel_customer_profiles','travel_itineraries',
         'travel_franchisees','travel_suppliers','travel_booking_guarantees',
-        'travel_in_trip_incidents','travel_leads'
+        'travel_in_trip_incidents','travel_leads',
+        'travel_bookings','travel_playbook_runs'
     ] LOOP
         EXECUTE format('REVOKE ALL ON TABLE public.%I FROM anon, authenticated', t);
     END LOOP;

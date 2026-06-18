@@ -1,6 +1,6 @@
 """Pydantic schemas for the Travel AI Operating Layer."""
 from __future__ import annotations
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any, Literal, Optional
 from uuid import UUID
 
@@ -354,3 +354,88 @@ class WhatsAppInboundOut(_Base):
     incident_id:  Optional[UUID] = None
     translated:   Optional[str] = None
     customer_id:  Optional[UUID] = None
+
+
+# ── Bookings (TravelWorkflow OS anchor) ──────────────────────────
+BookingStatus    = Literal["confirmed", "in_progress", "completed", "cancelled"]
+BookingVisaState = Literal["not_required", "pending", "submitted", "approved", "rejected"]
+
+
+class BookingIn(_Base):
+    booking_ref:        str = Field(min_length=3, max_length=64)
+    customer_id:        Optional[UUID] = None
+    itinerary_id:       Optional[UUID] = None
+    destination:        Optional[str] = None
+    trip_type:          Optional[str] = None
+    departure_date:     Optional[date] = None
+    return_date:        Optional[date] = None
+    pax_count:          int = 1
+    grand_total_inr:    int = 0
+    deposit_inr:        int = 0
+    balance_inr:        int = 0
+    balance_due_date:   Optional[date] = None
+    visa_status:        BookingVisaState = "not_required"
+    status:             BookingStatus = "confirmed"
+    coordinator_name:   Optional[str] = None
+    coordinator_phone:  Optional[str] = None
+    metadata:           dict[str, Any] = {}
+
+
+class BookingOut(BookingIn):
+    id: UUID
+    business_id: UUID
+    created_at: datetime
+
+
+class BookingPatch(_Base):
+    destination:        Optional[str] = None
+    trip_type:          Optional[str] = None
+    departure_date:     Optional[date] = None
+    return_date:        Optional[date] = None
+    pax_count:          Optional[int] = None
+    grand_total_inr:    Optional[int] = None
+    deposit_inr:        Optional[int] = None
+    balance_inr:        Optional[int] = None
+    balance_due_date:   Optional[date] = None
+    visa_status:        Optional[BookingVisaState] = None
+    status:             Optional[BookingStatus] = None
+    coordinator_name:   Optional[str] = None
+    coordinator_phone:  Optional[str] = None
+    metadata:           Optional[dict[str, Any]] = None
+
+
+# ── Playbook dispatch ────────────────────────────────────────────
+PlaybookChannel = Literal["email", "whatsapp", "sms", "voice"]
+
+
+class PlaybookRender(_Base):
+    context:  dict[str, Any] = {}
+    channels: Optional[list[PlaybookChannel]] = None
+
+
+class PlaybookDispatchIn(_Base):
+    context:     dict[str, Any] = {}
+    channels:    Optional[list[PlaybookChannel]] = None
+    to_email:    Optional[EmailStr] = None
+    to_phone:    Optional[str] = None
+    booking_id:  Optional[UUID] = None
+    booking_ref: Optional[str] = None
+    customer_id: Optional[UUID] = None
+    lead_id:     Optional[UUID] = None
+    incident_id: Optional[UUID] = None
+    dry_run:     bool = False
+
+
+class PlaybookRunOut(_Base):
+    id:            UUID
+    business_id:   UUID
+    use_case_id:   str
+    booking_id:    Optional[UUID] = None
+    customer_id:   Optional[UUID] = None
+    trigger_kind:  str
+    channels:      list[str]
+    status:        str
+    rendered:      dict[str, Any] = {}
+    delivery:      dict[str, Any] = {}
+    error_message: Optional[str] = None
+    created_at:    datetime

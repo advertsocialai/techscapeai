@@ -7,6 +7,7 @@ API key / JWT / X-Business-ID flow secures both surfaces.
 from fastapi import APIRouter
 
 from .booking     import router as booking_router
+from .bookings    import router as bookings_router
 from .catalog     import router as catalog_router
 from .customer    import router as customer_router
 from .demo        import router as demo_router
@@ -16,6 +17,7 @@ from .itinerary   import router as itinerary_router
 from .language    import router as language_router
 from .leads       import router as leads_router
 from .on_ground   import router as on_ground_router
+from .playbooks   import router as playbooks_router
 from .wiki        import router as wiki_router
 
 
@@ -31,6 +33,8 @@ travel_router.include_router(catalog_router,    prefix="/catalog",     tags=["Tr
 travel_router.include_router(on_ground_router,  prefix="/on-ground",   tags=["Travel · On-Ground Companion"])
 travel_router.include_router(leads_router,      prefix="/leads",       tags=["Travel · Leads"])
 travel_router.include_router(inbound_router,    prefix="/inbound",     tags=["Travel · Inbound Dispatcher"])
+travel_router.include_router(bookings_router,   prefix="/bookings",    tags=["Travel · Bookings"])
+travel_router.include_router(playbooks_router,  prefix="/playbooks",   tags=["Travel · TravelWorkflow OS (24 UCs)"])
 travel_router.include_router(demo_router,       prefix="/demo",        tags=["Travel · Demo"])
 
 __all__ = ["travel_router"]

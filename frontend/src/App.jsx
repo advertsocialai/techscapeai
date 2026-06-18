@@ -4,12 +4,9 @@ import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import NotFoundPage from './pages/NotFoundPage'
-<<<<<<< HEAD
 import TechScapePage from './pages/TechScapePage'
 import GoGagaDashboard from './pages/gogaga/GoGagaDashboard'
-=======
 import TravelWorkflowPage from './pages/TravelWorkflowPage'
->>>>>>> d1d7da171247a5899cd8569fb0c3f3e4fb1dcf16
 
 export default function App() {
   return (

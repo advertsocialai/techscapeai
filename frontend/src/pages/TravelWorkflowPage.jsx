@@ -1,15 +1,15 @@
-import { useEffect, useMemo, useState } from 'react'
+﻿import { useEffect, useMemo, useState } from 'react'
 import { listPlaybooks, getPlaybook, renderPlaybook } from '../services/api'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 const CATEGORY_BADGES = {
-  'Enquiry & Lead Management': { color: '#3D75F3', glyph: '◆' },
-  'Booking & Payment':         { color: '#3D75F3', glyph: '●' },
-  'Pre-Departure':             { color: '#F5A086', glyph: '▲' },
-  'In-Trip Support':           { color: '#F5A086', glyph: '◇' },
-  'Post-Trip':                 { color: '#3D75F3', glyph: '◊' },
-  'Visa & Documents':          { color: '#F5A086', glyph: '✱' },
-  'Upsell & Loyalty':          { color: '#3D75F3', glyph: '✦' },
+  'Enquiry & Lead Management': { color: '#3D75F3', glyph: 'â—†' },
+  'Booking & Payment':         { color: '#3D75F3', glyph: 'â—' },
+  'Pre-Departure':             { color: '#F5A086', glyph: 'â–²' },
+  'In-Trip Support':           { color: '#F5A086', glyph: 'â—‡' },
+  'Post-Trip':                 { color: '#3D75F3', glyph: 'â—Š' },
+  'Visa & Documents':          { color: '#F5A086', glyph: 'âœ±' },
+  'Upsell & Loyalty':          { color: '#3D75F3', glyph: 'âœ¦' },
 }
 
 const SAMPLE_CONTEXT = {
@@ -17,9 +17,9 @@ const SAMPLE_CONTEXT = {
   ref:  'TSAI-20260606-0001',
   destination: 'Kerala',
   destination_upper: 'KERALA',
-  dates: '12–22 Jan 2027',
+  dates: '12â€“22 Jan 2027',
   pax: '2 Adults',
-  budget_range: '₹50,000',
+  budget_range: 'â‚¹50,000',
   agent_name: 'Priya Sharma',
   agent: 'Priya',
   company_name: 'Gogaga Holidays',
@@ -36,11 +36,11 @@ const SAMPLE_CONTEXT = {
   departure_date: '12 Jan 2027',
   return_date: '22 Jan 2027',
   nights: '10',
-  deposit: '₹25,000',
-  balance: '₹80,000',
+  deposit: 'â‚¹25,000',
+  balance: 'â‚¹80,000',
   balance_due_date: '15 Dec 2026',
   payment_link: 'https://pay.gogaga.in/tsai-0001',
-  grand_total: '₹1,05,000',
+  grand_total: 'â‚¹1,05,000',
   emergency_line: '+91-80000-12345',
   insurance_hotline: '+91-1800-209-5858',
   flight_number: 'AI-302',
@@ -56,18 +56,18 @@ const SAMPLE_CONTEXT = {
   visa_status_banner: 'REQUIRED',
   visa_action_required: 'Apply within 7 days at gogaga.in/visa',
   visa_link: 'https://gogaga.in/visa',
-  visa_whatsapp_status: 'Pending — apply now',
+  visa_whatsapp_status: 'Pending â€” apply now',
   fourteen_day_date: '23 Dec 2026',
   three_day_date: '03 Jan 2027',
   passport_expiry_check: 'OK',
   trip_type: 'Honeymoon',
-  amount: '₹52,500',
+  amount: 'â‚¹52,500',
   quote_date: '06 Jun 2026',
   expiry_date: '20 Jun 2026',
   agent_phone: '+91-9999900001',
 }
 
-const CHANNEL_ICONS = { email: '✉', whatsapp: '💬', sms: '📱', voice: '📞' }
+const CHANNEL_ICONS = { email: 'âœ‰', whatsapp: 'ðŸ’¬', sms: 'ðŸ“±', voice: 'ðŸ“ž' }
 
 export default function TravelWorkflowPage() {
   const [items, setItems]       = useState([])
@@ -123,11 +123,11 @@ export default function TravelWorkflowPage() {
       >
         <span className="label">TravelWorkflow OS</span>
         <h1 className="mt-3 text-[36px] sm:text-[46px] lg:text-[52px] font-extrabold leading-tight">
-          All 24 Use Cases · <span className="grad-text">Live Templates</span>
+          All 24 Use Cases Â· <span className="grad-text">Live Templates</span>
         </h1>
         <p className="mt-5 max-w-[720px] text-[14px] lg:text-[15px] text-white/50">
           Every email, WhatsApp, SMS and phone script defined in the India
-          Travel Automation spec — rendered from the same registry that powers
+          Travel Automation spec â€” rendered from the same registry that powers
           dispatch in production. Click any card to preview the full templates
           with a sample customer profile.
         </p>
@@ -148,8 +148,14 @@ export default function TravelWorkflowPage() {
           ))}
         </div>
 
+        <div className="mt-6 flex items-center gap-4">
+          <a href="/gogaga/dashboard" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold text-white transition-all" style={{ background: "linear-gradient(135deg, #C87850, #DC6038)", border: "1px solid rgba(255,180,140,0.4)" }}>
+            GoGaga Command Center →
+          </a>
+          <span className="text-[12px] text-white/30">Powered by TechScape AI · Anthropic Partner</span>
+        </div>
         {err && (
-          <div className="mt-6 text-[13px] text-[#F5A086]">⚠ {err}</div>
+          <div className="mt-6 text-[13px] text-[#F5A086]">âš  {err}</div>
         )}
 
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -174,7 +180,7 @@ export default function TravelWorkflowPage() {
 
 function UseCaseCard({ uc, index, onOpen }) {
   const a = useScrollAnimation({ threshold: 0.05 })
-  const badge = CATEGORY_BADGES[uc.category] || { color: '#3D75F3', glyph: '●' }
+  const badge = CATEGORY_BADGES[uc.category] || { color: '#3D75F3', glyph: 'â—' }
   return (
     <article
       ref={a.ref}
@@ -212,7 +218,7 @@ function UseCaseCard({ uc, index, onOpen }) {
         <div className="flex gap-2 text-[14px]">
           {uc.channels.map((ch) => (
             <span key={ch} title={ch}>
-              {CHANNEL_ICONS[ch] || '·'}
+              {CHANNEL_ICONS[ch] || 'Â·'}
             </span>
           ))}
         </div>
@@ -235,13 +241,13 @@ function Drawer({ uc, detail, rendered, busy, onClose }) {
         <header className="sticky top-0 bg-[#0D0D0D]/95 backdrop-blur border-b border-[#1C1C1C] px-6 py-4 flex items-start justify-between gap-4">
           <div>
             <div className="text-[11px] tracking-wider text-[#F5A086] uppercase font-semibold">
-              {uc.id} · {uc.category}
+              {uc.id} Â· {uc.category}
             </div>
             <h2 className="mt-1 text-[20px] lg:text-[24px] font-extrabold leading-tight">
               {uc.title}
             </h2>
             <div className="mt-2 text-[12px] text-white/50">
-              SLA: {uc.sla} · Priority: {uc.priority}
+              SLA: {uc.sla} Â· Priority: {uc.priority}
             </div>
           </div>
           <button
@@ -249,12 +255,12 @@ function Drawer({ uc, detail, rendered, busy, onClose }) {
             className="text-white/60 hover:text-white text-[20px] leading-none"
             aria-label="Close"
           >
-            ✕
+            âœ•
           </button>
         </header>
 
         <div className="p-6 space-y-8">
-          {busy && <div className="text-[13px] text-white/50">Loading…</div>}
+          {busy && <div className="text-[13px] text-white/50">Loadingâ€¦</div>}
 
           {detail?.trigger && (
             <section>
@@ -269,7 +275,7 @@ function Drawer({ uc, detail, rendered, busy, onClose }) {
               <ul className="mt-2 space-y-1.5">
                 {detail.automation.map((a, i) => (
                   <li key={i} className="text-[13px] text-white/70 flex gap-2">
-                    <span className="text-[#3D75F3]">→</span>
+                    <span className="text-[#3D75F3]">â†’</span>
                     <span>{a}</span>
                   </li>
                 ))}
@@ -278,7 +284,7 @@ function Drawer({ uc, detail, rendered, busy, onClose }) {
           )}
 
           {channels.email && (
-            <ChannelBlock title="Email" icon="✉" accent="#3D75F3">
+            <ChannelBlock title="Email" icon="âœ‰" accent="#3D75F3">
               {channels.email.subject && (
                 <div className="mb-3 pb-3 border-b border-[#1C1C1C]">
                   <div className="text-[11px] text-white/40 uppercase tracking-wide mb-1">
@@ -296,7 +302,7 @@ function Drawer({ uc, detail, rendered, busy, onClose }) {
           )}
 
           {channels.whatsapp && (
-            <ChannelBlock title="WhatsApp" icon="💬" accent="#F5A086">
+            <ChannelBlock title="WhatsApp" icon="ðŸ’¬" accent="#F5A086">
               <pre className="whitespace-pre-wrap text-[13px] leading-relaxed text-white/80 font-sans">
                 {channels.whatsapp.content}
               </pre>
@@ -304,7 +310,7 @@ function Drawer({ uc, detail, rendered, busy, onClose }) {
           )}
 
           {channels.sms && (
-            <ChannelBlock title="SMS" icon="📱" accent="#3D75F3">
+            <ChannelBlock title="SMS" icon="ðŸ“±" accent="#3D75F3">
               <pre className="whitespace-pre-wrap text-[13px] leading-relaxed text-white/80 font-sans">
                 {channels.sms.content}
               </pre>
@@ -312,7 +318,7 @@ function Drawer({ uc, detail, rendered, busy, onClose }) {
           )}
 
           {channels.voice && (
-            <ChannelBlock title="Phone Script" icon="📞" accent="#F5A086">
+            <ChannelBlock title="Phone Script" icon="ðŸ“ž" accent="#F5A086">
               <pre className="whitespace-pre-wrap text-[13px] leading-relaxed text-white/80 font-sans">
                 {channels.voice.script}
               </pre>
@@ -356,3 +362,4 @@ function ChannelBlock({ title, icon, accent, children }) {
     </section>
   )
 }
+

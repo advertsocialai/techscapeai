@@ -1,21 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @layer base {
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
-  body {
-    background-color: #000000;
-    color: #FFFFFF;
-    font-family: 'Inter';
-    -webkit-font-smoothing: antialiased;
-  }
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
 
   ::selection { background: rgba(61,117,243,0.3); color: #fff; }
+
+  /* Global heading typography — consistent white color + a per-level
+     responsive scale, centralized here for uniformity & SEO. Components
+     may still override with explicit text-[..] / font-* utilities. */
+  h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  h1 { font-size: clamp(2.25rem, 1.5rem + 2.5vw, 3.25rem); } /* 36 → 52px */
+  h2 { font-size: clamp(2rem, 1.4rem + 2vw, 3.125rem); }     /* 32 → 50px */
+  h3 { font-size: 1.25rem; }                                  /* 20px */
+  h4 { font-size: 1.125rem; }                                 /* 18px */
+  h5 { font-size: 1rem; }                                     /* 16px */
+  h6 { font-size: 0.875rem; }                                 /* 14px */
 
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: #000; }
   ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
+}
+
+@layer components {
+  /* ── Standardized card ──
+     One reusable card style used across the whole project:
+     • background  → brand gradient (salmon → near-black)
+     • padding     → 24px (32px on lg)
+     • radius      → 16px, subtle border
+     • sizing      → fluid width (fills grid cell), equal height per row,
+                     min-height floor so short cards stay balanced
+     Placed in the components layer so Tailwind utilities can still
+     override individual cards when genuinely needed. */
+  .card,
+  .card-hover {
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    padding: 24px;
+    border-radius: 16px;
+    background: linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  @media (min-width: 1024px) {
+    .card,
+    .card-hover { padding: 32px; }
+  }
+  .card:hover,
+  .card-hover:hover {
+    border-color: rgba(255,255,255,0.14);
+    transform: translateY(-2px);
+  }
 }
 
 @layer utilities {
@@ -38,7 +87,7 @@
   }
 
   /* Orange label */
-  .label { color: #F5A086; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+  .label { color: #F5A086; font-size: 24px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
 
   /* CTA button (pill) */
   .btn {
@@ -55,14 +104,6 @@
     border-radius: 6px;
   }
   .btn-nav:hover { opacity: 0.88; }
-
-  /* Dark card */
-  .card {
-    background: #0D0D0D;
-    border: 1px solid #1C1C1C;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .card:hover { border-color: #2a2a2a; transform: translateY(-2px); }
 
   /* Tag pill on service cards */
   .tag {
@@ -133,12 +174,6 @@
     background-clip: text;
   }
   .gradient-bg { background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%); }
-  .card-hover {
-    background: #0D0D0D;
-    border: 1px solid #1C1C1C;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .card-hover:hover { border-color: #2a2a2a; transform: translateY(-2px); }
 
   /* Animated grid background */
   .grid-bg {
@@ -185,6 +220,26 @@
     animation: marquee 28s linear infinite;
   }
   .marquee-track:hover { animation-play-state: paused; }
+
+  /* City showcase — dual-row marquee (left + right) */
+  @keyframes marquee-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  .city-marquee {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  .city-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+  .city-track-left  { animation: marquee 40s linear infinite; }
+  .city-track-right { animation: marquee-right 40s linear infinite; }
+  .city-marquee:hover .city-track { animation-play-state: paused; }
 }
 
 @keyframes float {

@@ -1,15 +1,31 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
+import ServicesPage from './pages/ServicesPage'
+import Blog from './pages/Blog'
+import HowItWorksPage from './pages/HowItWorksPage'
+import TeamPage from './pages/TeamPage'
+import PartnersPage from './pages/PartnersPage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import NotFoundPage from './pages/NotFoundPage'
+import Brand from './pages/Brand'
+import Carrear from './pages/Carrear'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout><HomePage /></MainLayout>} />
+        <Route path="/about" element={<MainLayout><AboutPage /></MainLayout>} />
+        <Route path="/services" element={<MainLayout><ServicesPage /></MainLayout>} />
+        <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />
+        <Route path="/how-it-works" element={<MainLayout><HowItWorksPage /></MainLayout>} />
+        <Route path="/team" element={<MainLayout><TeamPage /></MainLayout>} />
+        <Route path="/brand" element={<MainLayout><Brand /></MainLayout>} />
+        <Route path="/carrear" element={<MainLayout><Carrear /></MainLayout>} />
+        <Route path="/partners" element={<MainLayout><PartnersPage /></MainLayout>} />
         <Route path="/contact" element={<MainLayout><ContactPage /></MainLayout>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<MainLayout><NotFoundPage /></MainLayout>} />

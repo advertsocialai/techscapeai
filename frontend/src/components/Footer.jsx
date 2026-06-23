@@ -109,10 +109,7 @@ export default function Footer() {
             alt="Tech Scape AI" 
             className="w-full h-auto object-contain max-h-[120px] sm:max-h-[180px]" 
           />
-          <h1 className="bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
-<Typewriter words={['TECH SCAPE AI']} speed={100} delay={2500} />
-          </h1>
+          
         </div>
 
       </div>

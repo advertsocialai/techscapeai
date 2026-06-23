@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import Typewriter from '../components/Typewriter'
-import GetStarted from '../components/GetStarted'
+import ContactForm from '../components/GetStarted'
 
 // Section logos (Partners marquee)
 import partnerNxtwave from '../assets/nxtwave.svg'
@@ -201,9 +201,8 @@ function HeroSection() {
 
           {/* Right column — floating globe */}
           <div
-            className={`relative w-full aspect-[546/474] lg:w-[546px] lg:h-[474px] transition-all duration-700 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
+            className={`relative w-full aspect-[546/474] lg:w-[546px] lg:h-[474px] transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
           >
             <img src="/globe.svg" alt="" className="animate-float" />
           </div>
@@ -560,7 +559,7 @@ function CTABandSection() {
           className={`card max-w-[1079px] flex flex-col items-center justify-center gap-8 py-12 text-center mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <p className="text-[16px] lg:text-[32px] font-medium line-h-[20px] text-[#e5e7eb] leading-[35px] tracking-[-0.48px] max-w-[768px]">
-            Every hour your team spends on manual work is an hour your competitor&apos;s  AI is doing it faster.<br/> Let&apos;s fix that.
+            Every hour your team spends on manual work is an hour your competitor&apos;s  AI is doing it faster.<br /> Let&apos;s fix that.
           </p>
 
           <Link
@@ -725,6 +724,131 @@ function PartnersDetailedSection() {
   )
 }
 
+
+const CHECK_ITEMS = [
+  'No commitment, no pressure',
+  '30-minute discovery call',
+  'Tailored AI roadmap for your business',
+  'Response within 24 hours',
+]
+
+function CheckIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F5A086" strokeWidth="2.5">
+      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function GetStartedSection() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 })
+
+  return (
+
+    <section id="get-started" className="relative overflow-hidden">
+      <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
+
+        {/* --- Header Section --- */}
+        <div
+          className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+        >
+          {/* Premium Capsule Badge (Matches image layout perfectly) */}
+          <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
+            <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] font-semibold">
+              Get Started
+            </span>
+          </div>
+
+          {/* Bold Section Heading */}
+          <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
+            Let's Build Something Together
+          </h2>
+
+          {/* Balanced Low-Opacity Description Subtext */}
+          <p className="text-white max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
+            Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
+            The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
+          </p>
+        </div>
+
+        {/* --- Main Content Wrapper with Background Image --- */}
+        <div
+          className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`}
+          style={{
+            backgroundColor: '#050505',
+            backgroundImage: "url('/bg2.svg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          {/* FIXED: Removed -mt-92 from the grid class list below */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
+            {/* Left: Glassmorphic Contact Form */}
+            <div>
+              <ContactForm />
+            </div>
+
+            {/* Right: Booking Info Section */}
+            <div className="lg:pl-6 text-left lg:pt-2">
+              <h3 className="text-[33px] md:text-[36px] font-semibold text-white mb-6 leading-tight tracking-tight">
+                Book a Free Consultation Directly
+              </h3>
+              <p className="text-white mb-10 text-base md:text-lg leading-relaxed max-w-md">
+                Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
+              </p>
+
+              <ul className="space-y-5">
+                {CHECK_ITEMS.map((item) => (
+                  <li key={item} className="flex items-center gap-4 group">
+                    <span className="flex-shrink-0 p-1 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
+                      <CheckIcon />
+                    </span>
+                    <span className="text-white/70 group-hover:text-white transition-colors text-xs md:text-sm font-semibold uppercase tracking-widest">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+          </div>
+
+          <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
+
+            {/* Premium Bold Image-Matched Heading */}
+            <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
+              Ready To put AI to work ?
+            </h2>
+            <p className="text-white mb-10 text-base md:text-lg leading-relaxed">
+
+              Your first discovery call is free. Let's find the workflow we can solve together
+            </p>
+
+            {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
+            <button
+              type="button"
+              className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
+              style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #7E85D4 55%, #E39994 100%)' }}
+            >
+              Request A Demo
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+
+      {/* Subtle Bottom Glows */}
+      <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+    </section>
+
+  )
+}
+
 /* ------------------------------------------------------------------ *
  * Home page — composes every inlined section. Navbar + Footer live in
  * MainLayout; GetStarted stays its own component (form logic + API).
@@ -742,7 +866,7 @@ export default function HomePage() {
       <CTABandSection />
       <TeamSection />
       <PartnersDetailedSection />
-      <GetStarted />
+      <GetStartedSection />
     </>
   )
 }

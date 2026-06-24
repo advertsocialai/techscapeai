@@ -13,6 +13,8 @@ import NotFoundPage from './pages/NotFoundPage'
 import Brand from './pages/Brand'
 import Carrear from './pages/Carrear'
 
+const SHOW_WIP_PAGES = import.meta.env.VITE_SHOW_WIP_PAGES === 'true'
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -20,14 +22,18 @@ export default function App() {
         <Route path="/" element={<MainLayout><HomePage /></MainLayout>} />
         <Route path="/about" element={<MainLayout><AboutPage /></MainLayout>} />
         <Route path="/services" element={<MainLayout><ServicesPage /></MainLayout>} />
-        <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />
         <Route path="/how-it-works" element={<MainLayout><HowItWorksPage /></MainLayout>} />
-        <Route path="/research" element={<MainLayout><Research /></MainLayout>} />
         <Route path="/brand" element={<MainLayout><Brand /></MainLayout>} />
         <Route path="/carrear" element={<MainLayout><Carrear /></MainLayout>} />
         <Route path="/partners" element={<MainLayout><PartnersPage /></MainLayout>} />
         <Route path="/contact" element={<MainLayout><ContactPage /></MainLayout>} />
         <Route path="/login" element={<LoginPage />} />
+        {SHOW_WIP_PAGES && (
+          <>
+            <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />
+            <Route path="/research" element={<MainLayout><Research /></MainLayout>} />
+          </>
+        )}
         <Route path="*" element={<MainLayout><NotFoundPage /></MainLayout>} />
       </Routes>
     </BrowserRouter>

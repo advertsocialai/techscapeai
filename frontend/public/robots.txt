@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block staging/dev pages
+Disallow: /blog
+Disallow: /research
+
+Sitemap: https://techscapeai.in/sitemap.xml

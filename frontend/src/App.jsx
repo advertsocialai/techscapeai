@@ -11,7 +11,7 @@ import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import NotFoundPage from './pages/NotFoundPage'
 import Brand from './pages/Brand'
-import Carrear from './pages/Carrear'
+import Careers from './pages/Careers'
 
 const SHOW_WIP_PAGES = import.meta.env.VITE_SHOW_WIP_PAGES === 'true'
 
@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/services" element={<MainLayout><ServicesPage /></MainLayout>} />
         <Route path="/how-it-works" element={<MainLayout><HowItWorksPage /></MainLayout>} />
         <Route path="/brand" element={<MainLayout><Brand /></MainLayout>} />
-        <Route path="/carrear" element={<MainLayout><Carrear /></MainLayout>} />
+        <Route path="/careers" element={<MainLayout><Careers /></MainLayout>} />
         <Route path="/partners" element={<MainLayout><PartnersPage /></MainLayout>} />
         <Route path="/contact" element={<MainLayout><ContactPage /></MainLayout>} />
         <Route path="/login" element={<LoginPage />} />

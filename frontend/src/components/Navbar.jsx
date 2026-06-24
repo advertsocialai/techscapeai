@@ -22,6 +22,11 @@ function CloseIcon() {
 
 const NAV_LINKS = [
   {
+    label: 'Home',
+    to: '/',
+    desc: 'A global AI services and training company, built on one belief — that Artificial Intelligence should work for people, not replace them.',
+  },
+  {
     label: 'About',
     to: '/about',
     desc: 'A global AI services and training company, built on one belief — that Artificial Intelligence should work for people, not replace them.',

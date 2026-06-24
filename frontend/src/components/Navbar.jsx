@@ -42,8 +42,8 @@ const NAV_LINKS = [
     desc: 'A simple path from idea to impact — a discovery call, a working POC in 2–4 weeks, then deploy and scale into your operations.',
   },
   {
-    label: 'Team',
-    to: '/team',
+    label: 'Research',
+    to: '/research',
     desc: 'Engineers, designers, educators, and business operators who build it every day across India, the USA, and Canada.',
   },
   {

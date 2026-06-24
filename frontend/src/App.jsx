@@ -5,7 +5,7 @@ import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
 import Blog from './pages/Blog'
 import HowItWorksPage from './pages/HowItWorksPage'
-import TeamPage from './pages/TeamPage'
+import Research from './pages/ResearchPage'
 import PartnersPage from './pages/PartnersPage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/services" element={<MainLayout><ServicesPage /></MainLayout>} />
         <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />
         <Route path="/how-it-works" element={<MainLayout><HowItWorksPage /></MainLayout>} />
-        <Route path="/team" element={<MainLayout><TeamPage /></MainLayout>} />
+        <Route path="/research" element={<MainLayout><Research /></MainLayout>} />
         <Route path="/brand" element={<MainLayout><Brand /></MainLayout>} />
         <Route path="/carrear" element={<MainLayout><Carrear /></MainLayout>} />
         <Route path="/partners" element={<MainLayout><PartnersPage /></MainLayout>} />

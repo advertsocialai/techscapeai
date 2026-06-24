@@ -12,6 +12,7 @@ import goga from '../assets/goga.svg'
 import abs from '../assets/abs.svg'
 import bidqon_logo from '../assets/bidqon_logo.svg'
 import teamCharacter from '../assets/team-character.svg'
+import SEO from '../components/SEO'
 
 const CHECK_ITEMS = [
   'No Commitment Required',
@@ -147,6 +148,11 @@ export default function BreakthroughSection() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 })
   return (
     <>
+      <SEO
+        title="About Us — TechScape AI"
+        description="Learn about TechScape AI — our mission, team, and vision to make AI work for people across India, USA, and Canada."
+        canonical="/about"
+      />
       <section
         ref={heroRef}
         className={`relative text-white py-20 px-6 sm:px-10 lg:px-[90px] overflow-hidden transition-all duration-700 ${heroSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}

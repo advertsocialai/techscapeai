@@ -12,6 +12,7 @@ import goga from '../assets/goga.svg'
 import abs from '../assets/abs.svg'
 import bidqon_logo from '../assets/bidqon_logo.svg'
 import teamCharacter from '../assets/team-character.svg'
+import SEO from '../components/SEO'
 
 /* ------------------------------------------------------------------ *
  * Section data
@@ -857,6 +858,11 @@ function GetStartedSection() {
 export default function HomePage() {
   return (
     <>
+      <SEO
+        title="TechScape AI — AI Solutions & Automation for Modern Businesses"
+        description="TechScape AI builds intelligent AI agents, automation systems, and data-driven solutions for businesses ready to scale with technology."
+        canonical="/"
+      />
       <HeroSection />
       <AboutSection />
       <PartnersSection />
@@ -870,3 +876,4 @@ export default function HomePage() {
     </>
   )
 }
+

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Typewriter from '../components/Typewriter'
 import GetStarted from '../components/GetStarted'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import SEO from '../components/SEO'
 
 const CHECK_ITEMS = [
   'No Commitment Required',
@@ -36,7 +37,13 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen text-white  selection:bg-blue-500/30 w-full overflow-x-hidden relative pt-12 md:pt-20 pb-24">
+    <>
+      <SEO
+        title="Contact Us — TechScape AI"
+        description="Get in touch with TechScape AI. Book a free consultation and start your AI transformation journey today."
+        canonical="/contact"
+      />
+      <div className="min-h-screen text-white selection:bg-blue-500/30 w-full overflow-x-hidden relative pt-12 md:pt-20 pb-24">
 
       <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
@@ -316,6 +323,7 @@ const ContactPage = () => {
         <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
       </section>
     </div>
+    </>
   );
 };
 

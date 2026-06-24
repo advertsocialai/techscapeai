@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Typewriter from '../components/Typewriter';
 import GetStarted from '../components/GetStarted';
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import SEO from '../components/SEO';
 const CHECK_ITEMS = [
   'No Commitment Required',
   'Response Within 24 Hours',
@@ -265,6 +266,11 @@ const CareerPage = () => {
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <>
+      <SEO
+        title="Careers — TechScape AI"
+        description="Join TechScape AI — we're building the future of AI with engineers, designers, and business operators across India, USA, and Canada."
+        canonical="/careers"
+      />
       {/* ── 1. Hero Section ─────────────────────────────────────────── */}
       <section style={styles.section}>
         <div style={styles.leftGlow} />

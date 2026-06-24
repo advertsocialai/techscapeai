@@ -1,9 +1,14 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 const HeroSection = () => {
   return (
-    // Main container with dark background
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-6">
+      <SEO
+        title="Careers — TechScape AI"
+        description="Join TechScape AI — we're building the future of AI with engineers, designers, and business operators across India, USA, and Canada."
+        canonical="/careers"
+      />
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12">
         
         {/* Left Content */}

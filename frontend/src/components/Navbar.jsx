@@ -43,7 +43,7 @@ const NAV_LINKS = [
   },
   {
     label: 'Careers ',
-    to: '/careers ',
+    to: '/careers',
     desc: 'A simple path from idea to impact — a discovery call, a working POC in 2–4 weeks, then deploy and scale into your operations.',
   },
   {

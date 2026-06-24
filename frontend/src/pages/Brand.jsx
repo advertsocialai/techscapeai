@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Typewriter from '../components/Typewriter';
 import GetStarted from '../components/GetStarted';
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import SEO from '../components/SEO';
 const CHECK_ITEMS = [
     'No Commitment Required',
     'Response Within 24 Hours',
@@ -18,9 +19,14 @@ const CheckIcon = () => (
 export default function Brand() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 })
     return (
-        <>
-            {/* ===================================================================
-                SECTION 1 — LOGO
+    <>
+        <SEO
+          title="Brand — TechScape AI"
+          description="Discover TechScape AI's brand story, identity, and the values that drive our AI-first approach to business."
+          canonical="/brand"
+        />
+        {/* ===================================================================
+            SECTION 1 — LOGO
                =================================================================== */}
             <section className="relative bg-black text-white py-20 lg:py-28 overflow-hidden">
                 <div

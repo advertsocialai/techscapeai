@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Typewriter from '../components/Typewriter'
 import GetStarted from '../components/GetStarted';
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import SEO from '../components/SEO';
+
 const CHECK_ITEMS = [
   'No Commitment Required',
   'Response Within 24 Hours',
@@ -15,7 +17,6 @@ const CheckIcon = () => (
 )
 
 export default function PartnerEcosystemPage() {
-
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -39,21 +40,21 @@ export default function PartnerEcosystemPage() {
       title: "Growth and Retain Your Business",
       desc: "Develop side by side with AI dynamic modules that keep your clients updated, ensuring solid retention and asset management.",
       icon: (
-        <img src="/par1.svg" alt="" srcset="" />
+        <img src="/par1.svg" alt="" />
       )
     },
     {
       title: "Accelerate AI Adoption",
       desc: "Unlock structural framework tools configured directly for fast-paced deployment lifecycle management without ecosystem errors.",
       icon: (
-        <img src="/par2.svg" alt="" srcset="" />
+        <img src="/par2.svg" alt="" />
       )
     },
     {
       title: "Be a Technology Leader",
       desc: "Get initial direct insights on cloud architecture configurations and feature pipelines before they scale out to production clusters.",
       icon: (
-        <img src="/par3.svg" alt="" srcset="" />
+        <img src="/par3.svg" alt="" />
       )
     }
   ];
@@ -69,8 +70,13 @@ export default function PartnerEcosystemPage() {
 
   return (
     <>
+      <SEO
+        title="Our Partners — TechScape AI"
+        description="TechScape AI partners with world-class networks and validated technology providers to deliver real opportunities."
+        canonical="/partners"
+      />
       <div className="w-full text-white space-y-24 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-
+        
         {/* Background Ambient Radial Drops matching screen graphics */}
          <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"

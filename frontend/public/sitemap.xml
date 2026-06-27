@@ -58,3 +58,23 @@
   </url>
 
 </urlset>
+<url>
+  <loc>https://techscapeai.in/privacy-policy</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://techscapeai.in/terms</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://techscapeai.in/accessibility</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+<url>
+  <loc>https://techscapeai.in/trust-center</loc>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>

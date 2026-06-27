@@ -250,5 +250,263 @@ body {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+/* ============================================
+   Tech Scape AI — Legal Pages CSS
+   Append this to the bottom of src/index.css
+   ============================================ */
 
+.legal-page {
+  background-color: #000000;
+  min-height: 100vh;
+  padding: 100px 0 120px;
+  color: #E8EDF5;
+}
+
+.legal-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.legal-header {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.legal-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+}
+
+.legal-header h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+}
+
+.legal-meta {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 24px;
+  font-family: monospace;
+  letter-spacing: 0.03em;
+}
+
+.legal-intro {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 720px;
+}
+
+/* Sections */
+.legal-section {
+  margin-bottom: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.legal-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.legal-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.legal-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 28px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.legal-section p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 16px;
+}
+
+.legal-section ul {
+  padding-left: 18px;
+  margin-bottom: 16px;
+}
+
+.legal-section ul li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+}
+
+.legal-section ul li strong {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.legal-section a {
+  color: #FFFFFF;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.2s;
+}
+
+.legal-section a:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Contact Card */
+.legal-contact-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 24px 0;
+}
+
+.legal-contact-card p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.legal-contact-card p:last-child { margin-bottom: 0; }
+
+.legal-contact-card strong {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Trust Principles */
+.trust-principle {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 10px;
+}
+
+.trust-principle h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 8px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.trust-principle p { margin: 0; font-size: 14px; }
+
+/* Trust Compliance Grid */
+.trust-compliance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.trust-compliance-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.trust-compliance-item h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 8px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.trust-compliance-item p {
+  font-size: 13px;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+
+.trust-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.trust-badge.compliant {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.trust-badge.in-progress {
+  background: rgba(255, 200, 100, 0.08);
+  color: rgba(255, 200, 100, 0.7);
+  border: 1px solid rgba(255, 200, 100, 0.2);
+}
+
+.trust-badge.planned {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Trust Table */
+.trust-table { overflow-x: auto; margin: 20px 0; }
+
+.trust-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.trust-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.trust-table td {
+  padding: 10px 14px;
+  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: top;
+}
+
+.trust-table tr:last-child td { border-bottom: none; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .legal-page { padding: 80px 0 100px; }
+  .legal-container { padding: 0 16px; }
+  .legal-header h1 { font-size: 28px; }
+  .trust-compliance-grid { grid-template-columns: 1fr; }
+}
 

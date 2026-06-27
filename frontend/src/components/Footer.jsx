@@ -3,15 +3,19 @@ import socialTwitter from '../assets/sociallogo1.svg'
 import socialLinkedin from '../assets/sociallogo2.svg'
 import socialInstagram from '../assets/social-instagram.svg'
 import socialFacebook from '../assets/social-facebook.svg'
-import footerWordmark from '../assets/footer-wordmark.svg'
-import logoIcon from '../assets/logo-icon.svg'
-import Typewriter from '../components/Typewriter'
 
 const SOCIALS = [
   { src: socialInstagram, label: 'Instagram', href: 'https://www.instagram.com/techscapeai/' },
   { src: socialLinkedin,  label: 'LinkedIn',  href: 'https://in.linkedin.com/company/techscapeai' },
   { src: socialFacebook,  label: 'Facebook',  href: 'https://www.facebook.com/people/Tech-Scape-AI/61582446062330/' },
   { src: socialTwitter,   label: 'Twitter',   href: 'https://x.com/techscapeai' },
+]
+
+const LEGAL_LINKS = [
+  { label: 'Terms', to: '/terms' },
+  { label: 'Privacy Policy', to: '/privacy-policy' },
+  { label: 'Security', to: '/trust-center' },
+  { label: 'Accessibility', to: '/accessibility' },
 ]
 
 export default function Footer() {
@@ -32,13 +36,15 @@ export default function Footer() {
                 Who Are We
               </span>
               <p className="text-[14px] text-white/80 leading-relaxed max-w-[380px]">
-                Techscape ai is an AI customer service company on a mission to make customer service extraordinary for everyone
+                Tech Scape AI is an AI consulting and technology solutions company on a
+                mission to make intelligent automation accessible and practical for every
+                business.
               </p>
             </div>
             
-            {/* Geometric Logo Icon */}
+            {/* Logo Icon */}
             <div className="mt-10 md:mt-auto pt-6">
-              <img src="icon2.svg" alt="TechScape AI Logo" className="h-20 w-auto object-contain" />
+              <img src="/icon2.svg" alt="Tech Scape AI Logo" className="h-20 w-auto object-contain" />
             </div>
           </div>
 
@@ -65,24 +71,24 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* Horizontal Divider Line */}
+              {/* Divider */}
               <div className="border-t border-white/50 w-full my-1"></div>
 
-              {/* Newsletter Header */}
+              {/* Newsletter */}
               <div className="flex justify-between items-center mt-4 mb-3 text-[13px] text-white/60">
                 <span>Newsletter</span>
                 <span>Stay up to date</span>
               </div>
 
-              {/* Subscription Form Input Box */}
+              {/* Email Input */}
               <div className="border border-white/50 px-4 py-3 flex justify-between items-center w-full mb-8">
                 <input
                   type="email"
-                  placeholder="Business Email Adress*"
+                  placeholder="Business Email Address*"
                   className="bg-transparent text-[14px] text-white/90 placeholder-white/40 outline-none w-full pr-4"
                 />
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className="text-[14px] text-white hover:text-white/70 transition-colors duration-200 font-normal whitespace-nowrap"
                 >
                   Subscribe
@@ -90,26 +96,29 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Bottom Utility Links */}
+            {/* Legal Links */}
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-white/70">
-              <a href="#" className="hover:text-white transition-colors duration-200">Terms</a>
-              <a href="#" className="hover:text-white transition-colors duration-200">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors duration-200">Security</a>
-              <a href="#" className="hover:text-white transition-colors duration-200">Accesibility</a>
-              <a href="#" className="hover:text-white transition-colors duration-200">Status</a>
+              {LEGAL_LINKS.map(({ label, to }) => (
+                <Link
+                  key={label}
+                  to={to}
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
 
           </div>
         </div>
 
-        {/* Bottom Large Wordmark Image */}
+        {/* Bottom Wordmark */}
         <div className="w-full pt-4 text-center select-none overflow-hidden">
-          <img 
-            src="/techscapeai.svg" 
-            alt="Tech Scape AI" 
-            className="w-full h-auto object-contain max-h-[120px] sm:max-h-[180px]" 
+          <img
+            src="/techscapeai.svg"
+            alt="Tech Scape AI"
+            className="w-full h-auto object-contain max-h-[120px] sm:max-h-[180px]"
           />
-          
         </div>
 
       </div>

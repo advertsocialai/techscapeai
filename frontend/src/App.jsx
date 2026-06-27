@@ -12,6 +12,10 @@ import LoginPage from './pages/LoginPage'
 import NotFoundPage from './pages/NotFoundPage'
 import Brand from './pages/Brand'
 import Careers from './pages/Careers'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsAndConditions from './pages/TermsAndConditions'
+import Accessibility from './pages/Accessibility'
+import TrustCenter from './pages/TrustCenter'
 
 const SHOW_WIP_PAGES = import.meta.env.VITE_SHOW_WIP_PAGES === 'true'
 
@@ -28,6 +32,10 @@ export default function App() {
         <Route path="/partners" element={<MainLayout><PartnersPage /></MainLayout>} />
         <Route path="/contact" element={<MainLayout><ContactPage /></MainLayout>} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
+        <Route path="/terms" element={<MainLayout><TermsAndConditions /></MainLayout>} />
+        <Route path="/accessibility" element={<MainLayout><Accessibility /></MainLayout>} />
+        <Route path="/trust-center" element={<MainLayout><TrustCenter /></MainLayout>} />
         {SHOW_WIP_PAGES && (
           <>
             <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />

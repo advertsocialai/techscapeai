@@ -1,0 +1,11 @@
+# Supabase project config — used by the Supabase CLI (supabase link, supabase
+# functions deploy, supabase db push, etc). Replace `project_id` with your
+# project ref from Dashboard → Project Settings → General.
+project_id = "REPLACE_WITH_YOUR_PROJECT_REF"
+
+[functions.send-contact-email]
+# Public contact-form endpoint — no JWT required. The function does its own
+# validation (method, payload schema, field lengths, email format) and CORS.
+# Disabled because Supabase's new sb_publishable_* keys aren't JWTs and the
+# legacy anon JWT route is being deprecated.
+verify_jwt = false

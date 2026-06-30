@@ -1,0 +1,36 @@
+import { Link } from 'react-router-dom'
+
+/* Reusable shell for the routed section pages.
+   Header + footer come from MainLayout — this just renders the page name
+   so every page stays visually consistent until real content is added. */
+export default function PagePlaceholder({ eyebrow, title, description }) {
+  return (
+    <div className="relative min-h-[70vh] flex items-center justify-center px-4 py-24 overflow-hidden">
+      {/* Ambient glow — matches ContactPage */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 50% 40% at 50% 0%, rgba(61,117,243,0.07) 0%, transparent 60%)' }}
+      />
+
+      <div className="relative text-center">
+        <p className="label mb-4">{eyebrow}</p>
+        <h1 className="text-[40px] sm:text-[56px] lg:text-[68px] font-extrabold tracking-[-0.02em] leading-tight mb-5">
+          <span className="grad-text">{title}</span>
+        </h1>
+        {description && (
+          <p className="text-white/45 max-w-md mx-auto text-[15px] leading-relaxed mb-8">
+            {description}
+          </p>
+        )}
+        <Link
+          to="/"
+          className="inline-flex items-center justify-center px-7 h-[44px] text-[14px] font-semibold text-white rounded-[8px]"
+          style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
+        >
+          Back to Home
+        </Link>
+      </div>
+    </div>
+  )
+}

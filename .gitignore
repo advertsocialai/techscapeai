@@ -1,0 +1,50 @@
+# ── Environment ──
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ── Vercel CLI link state (per-clone, never commit) ──
+.vercel
+**/.vercel
+
+# ── Supabase CLI cache (per-clone, never commit) ──
+supabase/.temp/
+supabase/.branches/
+
+# ── Node / Frontend ──
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.cache/
+
+# ── Python / Backend ──
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+backend/venv/
+backend/.venv/
+backend/env/
+backend/.env
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Logs ──
+*.log
+logs/

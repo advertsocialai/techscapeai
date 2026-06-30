@@ -369,7 +369,7 @@ const CareerPage = () => {
           >
             <Typewriter words={['Featured Roles']} speed={100} delay={2500} />
           </h2>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap', paddingTop: '40px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap', paddingTop: '10px' }}>
             {['AI & Engineering', 'Design & Content', 'Marketing', 'Operations'].map((role, index) => (
               <button key={index} style={{
                 padding: '16px 32px', minHeight: '50px', borderRadius: '50px',
@@ -389,7 +389,7 @@ const CareerPage = () => {
       </section>
 
       {/* ── 4. Roles List ───────────────────────────────────────────── */}
-      <section className="py-20 lg:py-28 relative overflow-hidden text-white">
+      <section className="py-20 lg:py-2 relative overflow-hidden text-white">
         <div className="wrap">
           <h2 style={{ fontSize: '23px', marginBottom: '40px' }}>Feature Roles</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(450px, 100%), 1fr))', gap: '20px' }}>
@@ -465,10 +465,10 @@ const CareerPage = () => {
               <Typewriter words={['Ambition of Silicon Valley. ']} speed={100} delay={2500} />
             </span>
             <br />
-            <div className='flex gap-4'>
+            <div className='flex gap-0'>
               <img src={valleyImage} alt="valley" style={{ width: '150px', borderRadius: '15px', marginTop:'-35px' }} />
-              <span style={{ color: '#22C55E', WebkitTextFillColor: '#22C55E' }}>
-                <Typewriter words={['India.']} speed={100} delay={2500} />
+              <span style={{ color: '#22C55E', WebkitTextFillColor: '#22C55E', marginLeft:'-26px' }}>
+                <Typewriter words={['of INDIA..']} speed={100} delay={2500} />
               </span>
             </div>
 

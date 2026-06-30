@@ -119,7 +119,7 @@ export default function Footer() {
         {/* Bottom Wordmark */}
         <div className="w-full pt-4 text-center select-none overflow-hidden">
           <img
-            src="/techscapeai.svg"
+            src="/footerimg.svg"
             alt="Tech Scape AI"
             className="w-full h-auto object-contain max-h-[120px] sm:max-h-[180px]"
           />

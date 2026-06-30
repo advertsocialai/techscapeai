@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import Typewriter from '../components/Typewriter'
@@ -193,7 +193,7 @@ function HeroSection() {
               className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
               style={{
                 backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
-                boxShadow: '0 4px 4px 0 rgba(78,157,255,0.22)',
+                
               }}
             >
               Book a Free consultation
@@ -205,7 +205,15 @@ function HeroSection() {
             className={`relative w-full aspect-[546/474] lg:w-[546px] lg:h-[474px] transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
           >
-            <img src="/globe.svg" alt="" className="animate-float" />
+            <img
+              src="/globe.svg"
+              alt=""
+              width={546}
+              height={474}
+              fetchpriority="high"
+              decoding="async"
+              className="animate-float w-full h-full object-contain"
+            />
           </div>
         </div>
       </div>
@@ -279,7 +287,7 @@ function AboutSection() {
         <div className={`text-center max-w-[1054px] mx-auto mb-6 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-[16px] sm:text-[22px] lg:text-[32px] tracking-[-0.96px] leading-[45px]">
             <span className="text-white">We are a global AI services and training company, </span>
-            <span style={{ color: '#5b5b5b' }}>
+            <span>
               founded by technologists, business builders, and educators who have worked across the USA, Canada, and India. We don&apos;t sell software. We solve problems with AI, with automation, and with the right people behind every solution.
             </span>
           </p>
@@ -303,13 +311,13 @@ function AboutSection() {
       {/* Three illustration frames */}
       <div className="flex flex-row items-stretch justify-center transition-all duration-700 delay-300 bg-[url('/bgframes.svg')] bg-no-repeat bg-center bg-cover w-full max-w-[1440px] mx-auto pt-8 pb-8 lg:pt-16 lg:pb-16">
         <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
-          <img src="/frame1.svg" className="w-full h-full object-contain" alt="Frame 1" />
+          <img src="/frame1.svg" width={480} height={580} loading="lazy" decoding="async" className="w-full h-full object-contain" alt="Frame 1" />
         </div>
         <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
-          <img src="/frame2.svg" className="w-full h-full object-contain" alt="Frame 2" />
+          <img src="/frame2.svg" width={480} height={580} loading="lazy" decoding="async" className="w-full h-full object-contain" alt="Frame 2" />
         </div>
         <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
-          <img src="/frame3.svg" className="w-full h-full object-contain" alt="Frame 3" />
+          <img src="/frame3.svg" width={480} height={580} loading="lazy" decoding="async" className="w-full h-full object-contain" alt="Frame 3" />
         </div>
       </div>
     </section>
@@ -509,7 +517,15 @@ function AIAgentsSection() {
                 <p className="text-sm lg:text-base text-white leading-relaxed font-light">{agent.description}</p>
               </div>
               <div className="shrink-0 order-1 sm:order-2 flex items-center justify-center transition-transform duration-500">
-                <img src={agent.icon} alt={agent.title} className="w-2/2 h-2/2 object-contain" />
+                <img
+                  src={agent.icon}
+                  alt={agent.title}
+                  width={180}
+                  height={180}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-[180px] h-[180px] max-w-full object-contain"
+                />
               </div>
             </div>
           ))}
@@ -537,9 +553,9 @@ function HowItWorksSection() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-5 lg:gap-6 relative">
-          <img src="/Safer.svg" alt="" />
-          <img src="/Faster.svg" alt="" />
-          <img src="/On-cloud.svg" alt="" />
+          <img src="/Safer.svg" alt="Safer" width={400} height={420} loading="lazy" decoding="async" className="w-full h-auto" />
+          <img src="/Faster.svg" alt="Faster" width={400} height={420} loading="lazy" decoding="async" className="w-full h-auto" />
+          <img src="/On-cloud.svg" alt="On cloud" width={400} height={420} loading="lazy" decoding="async" className="w-full h-auto" />
         </div>
       </div>
     </section>
@@ -584,9 +600,9 @@ function CTABandSection() {
  * Team
  * ------------------------------------------------------------------ */
 
-function AccordionItem({ title, content, open, onToggle }) {
+function AccordionItem({ title, content, open, onToggle, innerRef }) {
   return (
-    <div className="border-b border-white/[0.07] last:border-0">
+    <div ref={innerRef} className="border-b border-white/[0.07] last:border-0">
       <button className="w-full flex items-center justify-between gap-[18px] py-6 text-left group" onClick={onToggle}>
         <span className={`text-[18px] lg:text-[20px] font-medium transition-colors ${open ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>
           {title}
@@ -607,8 +623,34 @@ function AccordionItem({ title, content, open, onToggle }) {
 
 function TeamSection() {
   const [openIdx, setOpenIdx] = useState(0)
+  const [imageOffset, setImageOffset] = useState(0)
+  const itemRefs = useRef([])
+  const listRef = useRef(null)
   const { ref, isVisible } = useScrollAnimation()
   const typewriterWords = ['Built By Builders. Led By Practitioners.']
+
+  // Keep the floating character vertically aligned with the open accordion item.
+  // Only on lg+ (where image and accordion sit side by side); 0 otherwise.
+  useEffect(() => {
+    const measure = () => {
+      const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+      const el = itemRefs.current[openIdx]
+      const list = listRef.current
+      if (isDesktop && openIdx >= 0 && el && list) {
+        setImageOffset(el.offsetTop - list.offsetTop)
+      } else {
+        setImageOffset(0)
+      }
+    }
+    measure()
+    // Re-measure after the accordion open/close transition settles.
+    const t = setTimeout(measure, 320)
+    window.addEventListener('resize', measure)
+    return () => {
+      clearTimeout(t)
+      window.removeEventListener('resize', measure)
+    }
+  }, [openIdx])
 
   return (
     <section id="team" className="relative bg-black py-20 lg:py-32 text-white overflow-hidden">
@@ -641,17 +683,24 @@ function TeamSection() {
             </p>
           </div>
 
-          <div className="lg:col-span-2 flex justify-center py-10 lg:py-0">
+          <div
+            className="lg:col-span-2 flex justify-center py-10 lg:py-0 lg:transition-transform lg:duration-500 lg:ease-out"
+            style={{ transform: `translateY(${imageOffset}px)` }}
+          >
             <img
               src={teamCharacter}
               alt="Team icon"
+              width={160}
+              height={160}
+              loading="lazy"
+              decoding="async"
               className="w-32 md:w-40 h-auto object-contain animate-bounce"
               style={{ animationDuration: '3s' }}
             />
           </div>
 
           <div className="lg:col-span-6">
-            <div className="space-y-2">
+            <div className="space-y-2" ref={listRef}>
               {TEAM_ACCORDION.map((item, i) => (
                 <AccordionItem
                   key={item.title}
@@ -659,6 +708,7 @@ function TeamSection() {
                   content={item.content}
                   open={openIdx === i}
                   onToggle={() => setOpenIdx(openIdx === i ? -1 : i)}
+                  innerRef={(el) => (itemRefs.current[i] = el)}
                 />
               ))}
             </div>
@@ -746,7 +796,7 @@ function GetStartedSection() {
 
   return (
 
-    <section id="get-started" className="relative overflow-hidden">
+    <section id="get-started" className="relative overflow-hidden lg:pt-14">
       <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
 
         {/* --- Header Section --- */}
@@ -829,13 +879,16 @@ function GetStartedSection() {
             </p>
 
             {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
-            <button
-              type="button"
-              className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
-              style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #7E85D4 55%, #E39994 100%)' }}
+            <Link
+              to="/researh"
+              className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
+              style={{
+                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
+                
+              }}
             >
               Request A Demo
-            </button>
+            </Link>
 
           </div>
         </div>

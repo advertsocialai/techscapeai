@@ -69,7 +69,7 @@ const ContactPage = () => {
 
 
       {/* Main Container: Hero Text + Glassmorphism Form */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
+      <main className="wrap grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
 
         {/* Left Side: Hero Text */}
         <div className="md:col-span-7 text-center md:text-left space-y-6">
@@ -95,32 +95,32 @@ const ContactPage = () => {
                 {/* Row 1: Names */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">First Name <span className="text-red-500">*</span></label>
-                    <input type="text" name="firstName" required value={formData.firstName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
+                    <label htmlFor="cp-firstName" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">First Name <span className="text-red-500">*</span></label>
+                    <input id="cp-firstName" type="text" name="firstName" required value={formData.firstName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
                   </div>
                   <div>
-                    <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Last Name <span className="text-red-500">*</span></label>
-                    <input type="text" name="lastName" required value={formData.lastName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
+                    <label htmlFor="cp-lastName" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Last Name <span className="text-red-500">*</span></label>
+                    <input id="cp-lastName" type="text" name="lastName" required value={formData.lastName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
                   </div>
                 </div>
 
                 {/* Row 2: Business Email */}
                 <div>
-                  <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Business Email <span className="text-red-500">*</span></label>
-                  <input type="email" name="businessEmail" required value={formData.businessEmail} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
+                  <label htmlFor="cp-businessEmail" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Business Email <span className="text-red-500">*</span></label>
+                  <input id="cp-businessEmail" type="email" name="businessEmail" required value={formData.businessEmail} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
                 </div>
 
                 {/* Row 3: Company Name */}
                 <div>
-                  <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Company Name <span className="text-red-500">*</span></label>
-                  <input type="text" name="companyName" required value={formData.companyName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
+                  <label htmlFor="cp-companyName" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Company Name <span className="text-red-500">*</span></label>
+                  <input id="cp-companyName" type="text" name="companyName" required value={formData.companyName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
                 </div>
 
                 {/* Row 4: Dropdown Option */}
                 <div>
-                  <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">I'm reaching about ? <span className="text-red-500">*</span></label>
+                  <label htmlFor="cp-reason" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">I'm reaching about ? <span className="text-red-500">*</span></label>
                   <div className="relative">
-                    <select name="reason" required value={formData.reason} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-blue-500 appearance-none cursor-pointer">
+                    <select id="cp-reason" name="reason" required value={formData.reason} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-blue-500 appearance-none cursor-pointer">
                       <option value="">Please Select</option>
                       <option value="sales">Sales Inquiry</option>
                       <option value="partnership">Partnership</option>
@@ -134,8 +134,8 @@ const ContactPage = () => {
 
                 {/* Row 5: Textarea Message */}
                 <div>
-                  <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">What can we help you with ? <span className="text-red-500">*</span></label>
-                  <textarea name="message" rows="3" required value={formData.message} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none"></textarea>
+                  <label htmlFor="cp-message" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">What can we help you with ? <span className="text-red-500">*</span></label>
+                  <textarea id="cp-message" name="message" rows="3" required value={formData.message} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none"></textarea>
                 </div>
               </div>
               {/* Let's Talk Button with Exact Fixed Corner Radius */}
@@ -152,7 +152,7 @@ const ContactPage = () => {
       </main>
 
       {/* Grid Cards Section ("Our ways to connect") */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 mt-24 relative z-10 pb-16">
+      <section className="wrap mt-24 relative z-10 pb-16 pt-14">
         <h2 className=" font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[80px] mb-12 text-center md:text-left bg-clip-text text-transparent"
           style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
           <Typewriter words={['Our ways to connect']} speed={100} delay={2500} />
@@ -258,7 +258,7 @@ const ContactPage = () => {
               }`}
             style={{
               backgroundColor: '#050505',
-              backgroundImage: "url('//bggetstarted.svg')",
+              backgroundImage: "url('/bg2.svg')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'

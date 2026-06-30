@@ -75,7 +75,7 @@ export default function PartnerEcosystemPage() {
         description="TechScape AI partners with world-class networks and validated technology providers to deliver real opportunities."
         canonical="/partners"
       />
-      <div className="w-full text-white space-y-24 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="w-full text-white space-y-24 py-16 relative overflow-hidden">
         
         {/* Background Ambient Radial Drops matching screen graphics */}
          <div
@@ -101,7 +101,7 @@ export default function PartnerEcosystemPage() {
       />
 
         {/* ==================== SECTION 1: HERO & FORM WRAPPER ==================== */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="wrap grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1 className="font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[64px] bg-clip-text text-transparent"
               style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
@@ -127,32 +127,32 @@ export default function PartnerEcosystemPage() {
                 {/* Row 1: Names */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">First Name <span className="text-red-500">*</span></label>
-                    <input type="text" name="firstName" required value={formData.firstName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
+                    <label htmlFor="pp-firstName" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">First Name <span className="text-red-500">*</span></label>
+                    <input id="pp-firstName" type="text" name="firstName" required value={formData.firstName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
                   </div>
                   <div>
-                    <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Last Name <span className="text-red-500">*</span></label>
-                    <input type="text" name="lastName" required value={formData.lastName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
+                    <label htmlFor="pp-lastName" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Last Name <span className="text-red-500">*</span></label>
+                    <input id="pp-lastName" type="text" name="lastName" required value={formData.lastName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
                   </div>
                 </div>
 
                 {/* Row 2: Business Email */}
                 <div>
-                  <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Business Email <span className="text-red-500">*</span></label>
-                  <input type="email" name="businessEmail" required value={formData.businessEmail} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
+                  <label htmlFor="pp-businessEmail" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Business Email <span className="text-red-500">*</span></label>
+                  <input id="pp-businessEmail" type="email" name="businessEmail" required value={formData.businessEmail} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
                 </div>
 
                 {/* Row 3: Company Name */}
                 <div>
-                  <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Company Name <span className="text-red-500">*</span></label>
-                  <input type="text" name="companyName" required value={formData.companyName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
+                  <label htmlFor="pp-companyName" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">Company Name <span className="text-red-500">*</span></label>
+                  <input id="pp-companyName" type="text" name="companyName" required value={formData.companyName} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200" />
                 </div>
 
                 {/* Row 4: Dropdown Option */}
                 <div>
-                  <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">I'm reaching about ? <span className="text-red-500">*</span></label>
+                  <label htmlFor="pp-reason" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">I'm reaching about ? <span className="text-red-500">*</span></label>
                   <div className="relative">
-                    <select name="reason" required value={formData.reason} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-blue-500 appearance-none cursor-pointer">
+                    <select id="pp-reason" name="reason" required value={formData.reason} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-gray-400 focus:outline-none focus:border-blue-500 appearance-none cursor-pointer">
                       <option value="">Please Select</option>
                       <option value="sales">Sales Inquiry</option>
                       <option value="partnership">Partnership</option>
@@ -166,8 +166,8 @@ export default function PartnerEcosystemPage() {
 
                 {/* Row 5: Textarea Message */}
                 <div>
-                  <label className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">What can we help you with ? <span className="text-red-500">*</span></label>
-                  <textarea name="message" rows="3" required value={formData.message} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none"></textarea>
+                  <label htmlFor="pp-message" className="block text-[14px] font-medium leading-[20px] text-white mb-1.5">What can we help you with ? <span className="text-red-500">*</span></label>
+                  <textarea id="pp-message" name="message" rows="3" required value={formData.message} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none"></textarea>
                 </div>
               </div>
               {/* Let's Talk Button with Exact Fixed Corner Radius */}
@@ -183,7 +183,7 @@ export default function PartnerEcosystemPage() {
         </div>
 
         {/* ==================== SECTION 2: WHY PARTNER WITH US ==================== */}
-        <div className="max-w-6xl mx-auto space-y-12">
+        <div className="wrap space-y-12 lg:py-16">
           <h2 className=" font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[80px] mb-12 text-center md:text-left bg-clip-text text-transparent"
             style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
             <Typewriter words={['Why Partner with us ?']} speed={100} delay={2500} />
@@ -216,7 +216,7 @@ export default function PartnerEcosystemPage() {
         </div>
 
         {/* ==================== SECTION 3: TECH ALLIANCE PARTNERS ==================== */}
-        <div className="max-w-6xl mx-auto space-y-8">
+        <div className="wrap space-y-8">
           <h2 className=" font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[80px] mb-12 text-center md:text-left bg-clip-text text-transparent"
             style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
             <Typewriter words={['Tech Alliance Partners']} speed={100} delay={2500} />
@@ -255,13 +255,13 @@ export default function PartnerEcosystemPage() {
         </div>
 
       </div>
-      <section className="w-full  text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="w-full  text-white py-20 relative overflow-hidden">
 
         {/* Glow Effects matching image background ambience */}
         <div className="absolute right-[-10%] top-[10%] w-[500px] h-[500px] bg-[#1C68FA]/25 rounded-full blur-[130px] pointer-events-none" />
         <div className="absolute left-[-5%] top-[50%] w-[400px] h-[600px] bg-[#1C68FA]/26 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="max-w-6xl mx-auto space-y-24">
+        <div className="wrap space-y-24">
 
           {/* ==================== TOP: OUR TEAM CAROUSEL SECTION ==================== */}
           <div className="space-y-10 relative">

@@ -1,8 +1,15 @@
+# robots.txt — TechScape AI
+# Allow all search engines to crawl the public site.
+
 User-agent: *
 Allow: /
 
-# Block staging/dev pages
+# Block private / non-indexable routes.
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /login
 Disallow: /blog
 Disallow: /research
 
+# Sitemap location
 Sitemap: https://techscapeai.in/sitemap.xml

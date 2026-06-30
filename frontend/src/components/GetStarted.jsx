@@ -48,10 +48,11 @@ export default function ContactFormOnly() {
       <form className="space-y-10" onSubmit={handleSubmit}>
         {/* Full Name */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
-          <label className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
+          <label htmlFor="gs-fullName" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             Full Name *
           </label>
           <input
+            id="gs-fullName"
             type="text"
             required
             value={form.fullName}
@@ -62,10 +63,11 @@ export default function ContactFormOnly() {
 
         {/* Email */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
-          <label className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
+          <label htmlFor="gs-email" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             Email Address *
           </label>
           <input
+            id="gs-email"
             type="email"
             required
             value={form.email}
@@ -76,10 +78,11 @@ export default function ContactFormOnly() {
 
         {/* Phone */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
-          <label className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
+          <label htmlFor="gs-phone" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             Phone Number
           </label>
           <input
+            id="gs-phone"
             type="tel"
             value={form.phone}
             onChange={update('phone')}
@@ -89,10 +92,11 @@ export default function ContactFormOnly() {
 
         {/* I am a */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
-          <label className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
+          <label htmlFor="gs-iAm" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             I am a
           </label>
           <select
+            id="gs-iAm"
             value={form.iAm}
             onChange={update('iAm')}
             className="bg-transparent w-full text-white outline-none py-1 text-sm md:text-base cursor-pointer"
@@ -107,10 +111,11 @@ export default function ContactFormOnly() {
 
         {/* Interested In */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
-          <label className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
+          <label htmlFor="gs-interestedIn" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             I am interested in
           </label>
           <select
+            id="gs-interestedIn"
             value={form.interestedIn}
             onChange={update('interestedIn')}
             className="bg-transparent w-full text-white outline-none py-1 text-sm md:text-base cursor-pointer"
@@ -126,10 +131,11 @@ export default function ContactFormOnly() {
 
         {/* Message */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
-          <label className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
+          <label htmlFor="gs-message" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             Tell us about your need
           </label>
           <textarea
+            id="gs-message"
             rows={2}
             value={form.message}
             onChange={update('message')}

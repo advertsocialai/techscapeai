@@ -21,7 +21,7 @@ const LEGAL_LINKS = [
 export default function Footer() {
   return (
     <footer
-      className="relative border-t border-white/20 overflow-hidden text-white"
+      className="relative border-t border-white overflow-hidden text-white"
       style={{ background: '#000000' }}
     >
       <div className="relative px-6 sm:px-10 lg:px-[90px] mx-auto max-w-[1440px] pt-12 pb-6">
@@ -32,10 +32,10 @@ export default function Footer() {
           {/* Left Column: Who Are We & Logo */}
           <div className="flex flex-col justify-between pr-0 md:pr-12">
             <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
-              <span className="text-[15px] font-normal tracking-wide text-white whitespace-nowrap min-w-[100px]">
+              <span className="text-[18px] font-normal tracking-wide text-white whitespace-nowrap min-w-[100px]">
                 Who Are We
               </span>
-              <p className="text-[14px] text-white/80 leading-relaxed max-w-[380px]">
+              <p className="text-[16px] text-white leading-relaxed max-w-[380px]">
                 Tech Scape AI is an AI consulting and technology solutions company on a
                 mission to make intelligent automation accessible and practical for every
                 business.
@@ -49,12 +49,12 @@ export default function Footer() {
           </div>
 
           {/* Right Column: Follow Us, Newsletter, Links */}
-          <div className="md:pl-12 border-t md:border-t-0 md:border-l border-white/50 pt-8 md:pt-0 flex flex-col justify-between">
+          <div className="md:pl-12 border-t md:border-t-0 md:border-l border-white pt-8 md:pt-0 flex flex-col justify-between">
             
             <div>
               {/* Follow Us Row */}
               <div className="flex justify-between items-center pb-4">
-                <span className="text-[14px] font-normal text-white">Follow us</span>
+                <span className="text-[16px] font-normal text-white">Follow us</span>
                 <div className="flex gap-2">
                   {SOCIALS.map(({ src, label, href }) => (
                     <a
@@ -72,20 +72,24 @@ export default function Footer() {
               </div>
 
               {/* Divider */}
-              <div className="border-t border-white/50 w-full my-1"></div>
+              <div className="border-t border-white w-full my-1"></div>
 
               {/* Newsletter */}
-              <div className="flex justify-between items-center mt-4 mb-3 text-[13px] text-white/60">
+              <div className="flex justify-between items-center mt-4 mb-3 text-[16px] text-white">
                 <span>Newsletter</span>
                 <span>Stay up to date</span>
               </div>
 
               {/* Email Input */}
-              <div className="border border-white/50 px-4 py-3 flex justify-between items-center w-full mb-8">
+              <div className="border border-white px-4 py-3 flex justify-between items-center w-full mb-8">
+                <label htmlFor="footer-newsletter-email" className="sr-only">
+                  Business email address for newsletter
+                </label>
                 <input
+                  id="footer-newsletter-email"
                   type="email"
                   placeholder="Business Email Address*"
-                  className="bg-transparent text-[14px] text-white/90 placeholder-white/40 outline-none w-full pr-4"
+                  className="bg-transparent text-[14px] text-white placeholder-white outline-none w-full pr-4"
                 />
                 <button
                   type="button"
@@ -97,7 +101,7 @@ export default function Footer() {
             </div>
 
             {/* Legal Links */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-white/70">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-[16px] text-white">
               {LEGAL_LINKS.map(({ label, to }) => (
                 <Link
                   key={label}

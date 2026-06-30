@@ -293,7 +293,16 @@ const CareerPage = () => {
             <p className="text-[14px] lg:text-[18px] text-white leading-relaxed font-light pb-6">
               At Tech Scape AI, we're not maintaining systems we're inventing them. Join a team obsessed with AI agents, autonomous workflows, and technology that makes entire industries smarter. This is where your best work happens.
             </p>
-            <button style={styles.button}>View Open Roles</button>
+            <button
+              style={styles.button}
+              onClick={() =>
+                document
+                  .getElementById('open-positions')
+                  ?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              View Open Roles
+            </button>
           </div>
           <div style={styles.right}>
             <div style={styles.imageCard}>
@@ -308,130 +317,138 @@ const CareerPage = () => {
       </section>
 
       {/* ── 2. What It Takes ────────────────────────────────────────── */}
-      <section style={{ padding: '80px 20px', textAlign: 'center', color: '#fff' }}>
-        <h2
-          className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-          }}
-        >
-          <Typewriter words={['What It Takes']} speed={100} delay={2500} />
-        </h2>
-        <p className="text-[14px] lg:text-[28px] text-white leading-relaxed font-light pb-6">
+      <section className="py-20 lg:py-28 text-center text-white">
+        <div className="wrap">
+          <h2
+            className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
+            }}
+          >
+            <Typewriter words={['What It Takes']} speed={100} delay={2500} />
+          </h2>
+          <p className="text-[14px] lg:text-[28px] text-white leading-relaxed font-light pb-6">
 
-          Visionary teams build legendary companies.
-        </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
-          {whatItTakesData.map((item, index) => (
-            <div key={index} style={{
-              background: item.cardBg, padding: '40px', minHeight: '380px',
-              borderRadius: '30px', border: '1px solid #333', textAlign: 'left'
-            }}>
-              <h3 style={{
-                fontSize: '1.8rem', marginBottom: '20px',
-                background: item.textGradient,
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
+            Visionary teams build legendary companies.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+            {whatItTakesData.map((item, index) => (
+              <div key={index} style={{
+                background: item.cardBg, padding: '40px', minHeight: '380px',
+                borderRadius: '30px', border: '1px solid #333', textAlign: 'left'
               }}>
-                {item.title}
-              </h3>
-              <p style={{ lineHeight: '1.7', fontSize: '18px', whiteSpace: 'pre-line' }}>
-                {item.desc}
-              </p>
-            </div>
-          ))}
+                <h3 style={{
+                  fontSize: '1.8rem', marginBottom: '20px',
+                  background: item.textGradient,
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
+                }}>
+                  {item.title}
+                </h3>
+                <p style={{ lineHeight: '1.7', fontSize: '18px', whiteSpace: 'pre-line' }}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── 3. Filter Buttons ───────────────────────────────────────── */}
-      <section style={{  padding: '80px 20px', textAlign: 'center', color: '#fff' }}>
-        <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
-          Open Positions
-        </p>
-        <h2
-          className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-          }}
-        >
-          <Typewriter words={['Featured Roles']} speed={100} delay={2500} />
-        </h2>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap', paddingTop: '40px' }}>
-          {['AI & Engineering', 'Design & Content', 'Marketing', 'Operations'].map((role, index) => (
-            <button key={index} style={{
-              padding: '16px 32px', minHeight: '50px', borderRadius: '50px',
-              fontSize: '1.1rem', color: '#fff', cursor: 'pointer',
-              border: '1px solid #36504d84',
-              background: 'linear-gradient(90deg, #ff7b001f, #1b2b4a44)',
-              transition: 'transform 0.3s ease'
+      <section id="open-positions" className="py-20 lg:py-28 text-center text-white">
+        <div className="wrap">
+          <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
+            Open Positions
+          </p>
+          <h2
+            className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
             }}
-              onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
-            >
-              {role}
-            </button>
-          ))}
+          >
+            <Typewriter words={['Featured Roles']} speed={100} delay={2500} />
+          </h2>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap', paddingTop: '40px' }}>
+            {['AI & Engineering', 'Design & Content', 'Marketing', 'Operations'].map((role, index) => (
+              <button key={index} style={{
+                padding: '16px 32px', minHeight: '50px', borderRadius: '50px',
+                fontSize: '1.1rem', color: '#fff', cursor: 'pointer',
+                border: '1px solid #36504d84',
+                background: 'linear-gradient(90deg, #ff7b001f, #1b2b4a44)',
+                transition: 'transform 0.3s ease'
+              }}
+                onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+              >
+                {role}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── 4. Roles List ───────────────────────────────────────────── */}
-      <section style={{ color: '#fff', minHeight: '100vh', padding: '5%', position: 'relative', overflow: 'hidden' }}>
-        <h2 style={{ fontSize: '23px', marginBottom: '40px' }}>Feature Roles</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(450px, 100%), 1fr))', gap: '20px' }}>
-          {roles.map((role, index) => (
-            <div key={index} style={{
-              backgroundColor: '#2563eb', padding: '25px', borderRadius: '16px',
-              display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer'
-            }}>
-              <div>
-                <h3 style={{ margin: '0 0 5px 0', fontSize: '24px', fontWeight: '400' }}>{role.title} — {role.dept}</h3>
-                <p style={{ margin: 0, fontSize: '20px' }}>{role.type}</p>
-              </div>
-              <div style={{
-                backgroundColor: 'white', borderRadius: '8px',
-                padding: '6px 12px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+      <section className="py-20 lg:py-28 relative overflow-hidden text-white">
+        <div className="wrap">
+          <h2 style={{ fontSize: '23px', marginBottom: '40px' }}>Feature Roles</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(450px, 100%), 1fr))', gap: '20px' }}>
+            {roles.map((role, index) => (
+              <div key={index} style={{
+                backgroundColor: '#2563eb', padding: '25px', borderRadius: '16px',
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer'
               }}>
-                <span style={{ color: '#2563eb' }}>&gt;</span>
+                <div>
+                  <h3 style={{ margin: '0 0 5px 0', fontSize: '24px', fontWeight: '400' }}>{role.title} — {role.dept}</h3>
+                  <p style={{ margin: 0, fontSize: '20px' }}>{role.type}</p>
+                </div>
+                <div style={{
+                  backgroundColor: 'white', borderRadius: '8px',
+                  padding: '6px 12px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  <span style={{ color: '#2563eb' }}>&gt;</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── 5. Life At TechScape (Accordion) ───────────────────────── */}
-      <section style={{ padding: '80px 5%', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+      <section className="py-20 lg:py-28 relative overflow-hidden text-white">
         <div style={styles.leftGlows}></div>
-        <h2
-          className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-          }}
-        >
-          <Typewriter words={['Life at']} speed={100} delay={2500} />
-          <br />
-          <Typewriter words={['Tech Scape AI']} speed={100} delay={2500} />
-        </h2>
+        <div className="wrap">
+          <h2
+            className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
+            }}
+          >
+            <Typewriter words={['Life at']} speed={100} delay={2500} />
+            <br />
+            <Typewriter words={['Tech Scape AI']} speed={100} delay={2500} />
+          </h2>
 
-        <p style={{ color: 'white', fontSize: '32px', marginBottom: '40px' }}>
-          We take care of the people who take care of our clients.
-        </p>
-        {benefitsData.map((item, index) => (
-          <AccordionItemContent
-            key={index}
-            title={item.title}
-            points={item.points}
-            imgSrc={item.imgSrc}
-            logoSrc={item.logoSrc}
-            isOpen={openBenefit === index}
-            onToggle={() => setOpenBenefit(openBenefit === index ? null : index)}
-          />
-        ))}
+          <p style={{ color: 'white', fontSize: '32px', marginBottom: '40px' }}>
+            We take care of the people who take care of our clients.
+          </p>
+          {benefitsData.map((item, index) => (
+            <AccordionItemContent
+              key={index}
+              title={item.title}
+              points={item.points}
+              imgSrc={item.imgSrc}
+              logoSrc={item.logoSrc}
+              isOpen={openBenefit === index}
+              onToggle={() => setOpenBenefit(openBenefit === index ? null : index)}
+            />
+          ))}
+        </div>
       </section>
 
       {/* ── 6. Vision / Cities Section ──────────────────────────────── */}
-      <section style={{ backgroundColor: '#000', padding: '80px 5%', color: '#fff', minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+      <section className="py-20 lg:py-28 relative overflow-hidden text-white" style={{ backgroundColor: '#000' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2
             className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
@@ -440,13 +457,19 @@ const CareerPage = () => {
                 "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
             }}
           >
-            <Typewriter words={['Precision of ISRO.   ']} speed={100} delay={2500} />
+            <span style={{ color: '#FF7A00', WebkitTextFillColor: '#FF7A00' }}>
+              <Typewriter words={['Precision of ISRO.   ']} speed={100} delay={2500} />
+            </span>
             <br />
-            <Typewriter words={['Ambition of Silicon Valley. ']} speed={100} delay={2500} />
+            <span style={{ color: '#FFFFFF', WebkitTextFillColor: '#FFFFFF' }}>
+              <Typewriter words={['Ambition of Silicon Valley. ']} speed={100} delay={2500} />
+            </span>
             <br />
             <div className='flex gap-4'>
-              <img src={valleyImage} alt="valley" style={{ width: '150px', borderRadius: '15px' }} />
-              <Typewriter words={['India.']} speed={100} delay={2500} />
+              <img src={valleyImage} alt="valley" style={{ width: '150px', borderRadius: '15px', marginTop:'-35px' }} />
+              <span style={{ color: '#22C55E', WebkitTextFillColor: '#22C55E' }}>
+                <Typewriter words={['India.']} speed={100} delay={2500} />
+              </span>
             </div>
 
           </h2>
@@ -530,8 +553,8 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
       </section>
 
       {/* ── 7. Interview Process ─────────────────────────────────────── */}
-      <section className=" text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <section className=" text-white py-20 lg:py-28">
+        <div className="wrap">
           {/* Main Section Header */}
           <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 tracking-tight">
             The Interview Process-3 steps
@@ -576,7 +599,7 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
 
       {/* ── 8. Safety, Accommodation & Contact Form ──────────────────── */}
       <div className=" text-white  p-6 md:p-1 mb-6">
-        <div className="max-w-6xl mx-auto mb-16 space-y-8">
+        <div className="wrap mb-16 space-y-8">
           <div>
             <h2 className="text-2xl lg:text-[40px] font-normal mb-4">Your Safety Matters</h2>
             <p className="text-white lg:text-[18px] text-sm leading-relaxed border-l-2 border-white pl-4 ml-8">

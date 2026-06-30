@@ -109,30 +109,37 @@ export default function BreakthroughSection() {
       id: 1,
       author: "TechScape AI Team",
       date: "May 14, 2026",
-      title: "Why Indian Logistics needs AI Agents in 2026 - Logistics",
+      title: "Morning Signal™ — Why Reactive Content Wins - Marketing",
       imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: 2,
       author: "TechScape AI Team",
       date: "May 14, 2026",
-      title: "The Kora Engine — AI Categorisation for Finance - Product",
+      title: "Anthropic CPN — What It Means to Be a Certified Partner - Company",
       imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: 3,
       author: "TechScape AI Team",
       date: "May 14, 2026",
-      title: "Gati, Vaak, Mukti — The Three Layers of AI Agents - Navratna Tunnels",
+      title: "How We Built a WhatsApp Travel Agent in 3 Weeks - Case Study. ",
       imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: 4,
       author: "TechScape AI Team",
       date: "May 14, 2026",
-      title: "Building Scale: Deploying Robust AI Workflows Securely",
+      title: "Why Indian Logistics Needs AI Agents in 2026 - Logistics",
       imageUrl: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=600&q=80"
-    }
+    },
+    {
+      id: 5,
+      author: "TechScape AI Team",
+      date: "May 14, 2026",
+      title: "The Kloron Engine — AI Categorisation for Finance - Product ",
+      imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80"
+    },
   ];
 
   const handleScroll = (direction) => {
@@ -155,13 +162,13 @@ export default function BreakthroughSection() {
       />
       <section
         ref={heroRef}
-        className={`relative text-white py-20 px-6 sm:px-10 lg:px-[90px] overflow-hidden transition-all duration-700 ${heroSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        className={`relative text-white py-20 lg:py-28 overflow-hidden transition-all duration-700 ${heroSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       >
 
         <div className="absolute top-0 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#FAD4BF]/8 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 right-10 w-[400px] h-[400px] bg-purple-900/5 blur-[150px] rounded-full pointer-events-none" />
 
-        <div className="relative max-w-[1240px] mx-auto flex flex-col items-center text-center">
+        <div className="relative wrap flex flex-col items-center text-center">
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight max-w-3xl leading-tight">
             Your Next Breakthrough, <br />
@@ -178,13 +185,19 @@ export default function BreakthroughSection() {
           </p>
 
           <div className="flex flex-row items-center justify-center gap-8 mt-8">
-            <button className="px-6 py-2.5 rounded-lg text-[14px] font-medium hover:opacity-90 transition-opacity duration-200 text-white"
-              style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
+              style={{
+                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
+                
+              }}
+            >
               Explore Our Services
-            </button>
+            </Link>
 
             <a
-              href="#contact"
+              href="/contact"
               className="text-[14px] font-medium text-white/90 underline underline-offset-4 hover:text-white transition-colors duration-200"
             >
               Contact Us
@@ -251,15 +264,18 @@ export default function BreakthroughSection() {
 
       <section
         ref={researchRef}
-        className={`text-white py-24 px-6 sm:px-10 lg:px-[90px] min-h-screen flex flex-col transition-all duration-700 ${researchSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        className={`text-white py-20 lg:py-28 transition-all duration-700 w-full ${researchSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
       >
+
+        <div className="wrap">
 
         <div className="mb-16 flex flex-col gap-2">
 
           {/* Center only this */}
           <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
-              Our Research
-            </p>
+            Our Research
+          </p>
 
           {/* Left aligned */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-1 text-left">
@@ -271,13 +287,13 @@ export default function BreakthroughSection() {
                   "linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)",
               }}
             >
-              <Typewriter words={['Deploy AI','Study It']} speed={100} delay={2500} />
+              <Typewriter words={['Deploy AI', 'Study It']} speed={100} delay={2500} />
             </span>
           </h2>
 
         </div>
 
-        <div className="w-full max-w-[1200px] flex flex-col gap-6">
+        <div className="w-full flex flex-col gap-6">
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {researchCards.map((card, index) => (
@@ -338,18 +354,19 @@ export default function BreakthroughSection() {
             style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
             className="shadow-none border-0 outline-none px-6 py-3 rounded-lg text-[16px] font-medium tracking-wide text-white hover:opacity-95 transition-opacity duration-200"
           >
-            Collaborate With Us On Research - hi@techscapeai.in
+            Collaborate With Us On Research - info@techscapeai.in
           </button>
+        </div>
+
         </div>
 
       </section>
 
-      <section className="relative min-h-[90vh] text-white overflow-hidden py-24 flex flex-col justify-between">
-
+      <section className="relative text-white overflow-hidden py-20 lg:py-28">
         {/* Premium Ambient Background Elipse Glow (Right Side) */}
         <div className="absolute top-1/2 -right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-blue-600/15 via-cyan-500/5 to-transparent rounded-full blur-[140px] pointer-events-none transform -translate-y-1/2" />
 
-        <div className="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="wrap w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
           {/* Left Side: Dynamic Heading */}
           <div className="lg:col-span-12 pt-4">
@@ -366,7 +383,7 @@ export default function BreakthroughSection() {
 
               {/* Card 1 (Bottom-Left Layer) */}
               <div
-                className={`absolute left-[-160px] top-[70px] z-30 w-[400px] h-[400px] rounded-2xl border border-white/[0.06] bg-[#070c18]/90 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
+                className={`absolute left-[-160px] top-[70px] z-30 w-[400px] h-[400px] rounded-2xl border border-white/[0.06] bg-[#0f1930]/90 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
       flex flex-col items-center justify-center text-center
       ${visibleCards.includes(0) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}`}
               >
@@ -380,7 +397,7 @@ export default function BreakthroughSection() {
 
               {/* Card 2 (Middle Layer) */}
               <div
-                className={`absolute left-[215px] top-[0px] z-20 w-[400px] h-[540px] rounded-2xl border border-white/[0.08] bg-[#0b1324]/90 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
+                className={`absolute left-[215px] top-[0px] z-20 w-[400px] h-[540px] rounded-2xl border border-white/[0.08] bg-[#0f1930]/90 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
       flex flex-col items-center justify-center text-center
       ${visibleCards.includes(1) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}`}
               >
@@ -422,7 +439,7 @@ export default function BreakthroughSection() {
         </div>
 
         {/* Footer Text Subheading */}
-        <div className="max-w-7xl mx-auto px-6 w-full relative z-10 mt-16 lg:mt-0">
+        <div className="wrap w-full relative z-10 mt-16 lg:mt-0 2xl:mt-0">
           <p className="text-[27px] md:text-lg lg:text-[24px] text-white font-light tracking-wide">
             The FUTURE we are building is one where your AI is so capable that your CUSTOMERS genuinely...
           </p>
@@ -433,14 +450,14 @@ export default function BreakthroughSection() {
 
       <section
         ref={careersRef}
-        className={`relative text-white py-20 lg:py-28 px-6 sm:px-10 lg:px-[90px] overflow-hidden transition-all duration-700 ${careersSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        className={`relative text-white py-20 lg:py-28 overflow-hidden transition-all duration-700 ${careersSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       >
-        <div className="relative max-w-[1200px] mx-auto">
+        <div className="relative wrap">
 
           {/* Eyebrow */}
           <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
-              Careers
-            </p>
+            Careers
+          </p>
 
           {/* Heading row: title (left) + pitch (right) */}
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end">
@@ -475,6 +492,10 @@ export default function BreakthroughSection() {
             <img
               src="/about8.svg"
               alt="Join the Tech Scape AI team"
+              width={1280}
+              height={720}
+              loading="lazy"
+              decoding="async"
               className="relative w-full h-full object-contain"
               onError={(e) => { e.target.style.display = 'none' }}
             />
@@ -514,14 +535,14 @@ export default function BreakthroughSection() {
 
 
       <section
-        className="relative min-h-[75vh] text-white py-20 overflow-hidden select-none"
+        className="relative text-white py-20 lg:py-28 overflow-hidden select-none"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Left-Side Ambient Ellipse Glow (Matches the reference image blend) */}
         <div className="absolute top-1/2 -left-[15%] w-[550px] h-[550px] bg-gradient-to-tr from-blue-600/50 via-indigo-600/5 to-transparent rounded-full blur-[110px] pointer-events-none transform -translate-y-1/2" />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="wrap relative z-10">
 
           {/* Header Section */}
           <div className="flex items-baseline justify-between mb-12">
@@ -529,8 +550,8 @@ export default function BreakthroughSection() {
               The Latest News
             </h2>
             <a
-              href="#blog"
-              className="text-xs md:text-sm text-slate-400 hover:text-white underline underline-offset-4 tracking-wide transition-colors duration-200"
+              href="/blog"
+              className="text-xs md:text-sm text-white hover:text-white underline underline-offset-4 tracking-wide transition-colors duration-200"
             >
               See more on the blog
             </a>
@@ -572,23 +593,23 @@ export default function BreakthroughSection() {
               {blogs.map((blog) => (
                 <div
                   key={blog.id}
-                  className="w-[335px] min-h-[380px] shrink-0 bg-[#D9D9D9] text-slate-900 rounded-[28px] p-6 flex flex-col justify-between snap-start shadow-xl transform transition-transform duration-300 hover:scale-[1.01]"
+                  className="w-[335px] min-h-[380px] shrink-0 bg-[#01121F] border border-white text-slate-900 rounded-[28px] p-6 flex flex-col justify-between snap-start shadow-xl transform transition-transform duration-300 hover:scale-[1.01]"
                 >
                   {/* Card Top Meta Row */}
                   <div>
-                    <div className="flex items-center justify-between text-[14px] font-medium text-slate-600 tracking-tight">
+                    <div className="flex items-center justify-between text-[14px] font-medium text-white tracking-tight">
                       <span>{blog.author}</span>
                       <span>{blog.date}</span>
                     </div>
 
                     {/* Card Title Layer */}
-                    <h3 className="text-[16px] font-semibold text-[#2C80FF] mt-3 mb-1 tracking-tight leading-snug min-h-[40px] line-clamp-2">
+                    <h3 className="text-[16px] font-semibold text-[#F7C8B4] mt-3 mb-1 tracking-tight leading-snug min-h-[40px] line-clamp-2">
                       {blog.title}
                     </h3>
 
                     {/* Read More link */}
                     <div className="text-right">
-                      <span className="text-[16px] font-bold text-slate-800 underline underline-offset-2 cursor-pointer hover:text-black">
+                      <span className="text-[16px] font-bold text-white underline underline-offset-2 cursor-pointer hover:text-black">
                         Read More
                       </span>
                     </div>
@@ -599,7 +620,7 @@ export default function BreakthroughSection() {
                     <img
                       src={blog.imageUrl}
                       alt={blog.title}
-                      className="w-full h-full object-cover filter grayscale opacity-90 contrast-125 mix-blend-multiply transition-transform duration-500 hover:scale-105"
+                      className="w-full h-full object-cover  transition-transform duration-500 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -693,13 +714,16 @@ export default function BreakthroughSection() {
               </p>
 
               {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
-              <button
-                type="button"
-                className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
-                style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #7E85D4 55%, #E39994 100%)' }}
-              >
-                Request A Demo
-              </button>
+               <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
+              style={{
+                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
+                
+              }}
+            >
+              Request A Demo
+            </Link>
 
             </div>
           </div>

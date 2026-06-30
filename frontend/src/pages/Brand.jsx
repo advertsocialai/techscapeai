@@ -50,7 +50,7 @@ export default function Brand() {
                         zIndex: 0,
                     }}
                 />
-                <div className="max-w-6xl mx-auto px-6 md:px-12">
+                <div className="wrap">
 
                     {/* --- Top Massive Hero Logo Display --- */}
                     <div className="w-full flex justify-center mb-24 md:mb-32">
@@ -206,7 +206,7 @@ export default function Brand() {
                 {/* Background eclipse glow (brand blue) */}
                 <div className="absolute right-[-20%] top-[15%] w-[700px] h-[900px] bg-gradient-to-b from-[#3D75F3]/55 via-[#1b3a6b]/10 to-transparent rounded-full blur-[140px] pointer-events-none z-0" />
 
-                <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10 space-y-24">
+                <div className="wrap relative z-10 space-y-24">
 
                     {/* =========================================================
                         1. CO-BRANDING

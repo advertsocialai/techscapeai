@@ -37,11 +37,19 @@ export default function LoginPage() {
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }))
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!form.email || !form.password) return
-    setStatus('loading')
-    setTimeout(() => setStatus('idle'), 1500)
-  }
+  e.preventDefault()
+
+  if (!form.email || !form.password) return
+
+  setStatus('loading')
+
+  // simulate API call
+  setTimeout(() => {
+    setStatus('idle')
+
+    navigate('/admin')
+  }, 1500)
+}
 
   return (
     <div className="min-h-screen flex flex-row overflow-hidden">
@@ -72,8 +80,9 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
-              <label className="text-[11px] tracking-[0.3px]" style={{ color: '#333' }}>Login</label>
+              <label htmlFor="login-email" className="text-[11px] tracking-[0.3px]" style={{ color: '#333' }}>Login</label>
               <input
+                id="login-email"
                 type="text" name="email" value={form.email} onChange={handleChange}
                 placeholder="Email or phone number" required
                 className="h-[48px] rounded-[6px] px-4 text-[12px] tracking-[0.3px] outline-none transition-all duration-200"
@@ -84,9 +93,10 @@ export default function LoginPage() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-[11px] tracking-[0.3px]" style={{ color: '#333' }}>Password</label>
+              <label htmlFor="login-password" className="text-[11px] tracking-[0.3px]" style={{ color: '#333' }}>Password</label>
               <div className="relative">
                 <input
+                  id="login-password"
                   type={showPass ? 'text' : 'password'} name="password" value={form.password} onChange={handleChange}
                   placeholder="Enter password" required
                   className="h-[48px] w-full rounded-[6px] px-4 pr-12 text-[12px] tracking-[0.3px] outline-none transition-all duration-200"

@@ -93,7 +93,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-[48px]">
 
             <Link to="/" aria-label="Tech Scape AI — home">
-              <img src="/logotechscapeai.svg" alt="Tech Scape AI" />
+              <img src="/logotechscapeai.svg" alt="Tech Scape AI" width={170} height={32} fetchpriority="high" decoding="async" className="h-8 w-auto" />
             </Link>
 
             <div className="flex items-center gap-3 sm:gap-4">
@@ -125,7 +125,10 @@ export default function Navbar() {
        * ---------------------------------------------------------------- */}
       <div
         className={`fixed inset-0 z-[60] ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}
-        aria-hidden={!open}
+        // When closed, `inert` removes the whole drawer subtree from the tab order
+        // AND the accessibility tree — so its links/buttons are never focusable inside
+        // a hidden container. CSS transforms/opacity still animate the close.
+        inert={!open ? true : undefined}
       >
         {/* Backdrop */}
         <div
@@ -140,7 +143,7 @@ export default function Navbar() {
           >
             {/* Sidebar header */}
             <div className="flex items-center justify-between px-8 md:px-10 pt-6 pb-4 border-b border-white/[0.07]">
-              <img src="/logotechscapeai.svg" alt="Tech Scape AI" className="h-7 w-auto" />
+              <img src="/logotechscapeai.svg" alt="Tech Scape AI" width={170} height={28} decoding="async" className="h-7 w-auto" />
               <button
                 onClick={() => setOpen(false)}
                 className="w-[40px] h-[40px] flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/[0.06] transition-all duration-200"

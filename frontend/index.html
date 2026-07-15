@@ -2,6 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // TEMP DIAGNOSTIC - remove after debugging Safari issue
+      (function () {
+        function showError(msg) {
+          var box = document.getElementById('__diag_box');
+          if (!box) {
+            box = document.createElement('div');
+            box.id = '__diag_box';
+            box.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:#b00;color:#fff;font-family:monospace;font-size:12px;padding:12px;white-space:pre-wrap;max-height:80vh;overflow:auto;';
+            document.body.appendChild(box);
+          }
+          box.textContent += msg + '\n\n';
+        }
+        window.addEventListener('error', function (e) {
+          showError('ERROR: ' + e.message + '\nat ' + e.filename + ':' + e.lineno + ':' + e.colno);
+        });
+        window.addEventListener('unhandledrejection', function (e) {
+          showError('UNHANDLED PROMISE REJECTION: ' + (e.reason && e.reason.stack ? e.reason.stack : e.reason));
+        });
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/faviconlogo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

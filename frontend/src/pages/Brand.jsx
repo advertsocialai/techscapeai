@@ -19,32 +19,32 @@ const CheckIcon = () => (
 export default function Brand() {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 })
     return (
-    <>
-        <SEO
-          title="Brand — TechScape AI"
-          description="Discover TechScape AI's brand story, identity, and the values that drive our AI-first approach to business."
-          canonical="/brand"
-        />
-        {/* ===================================================================
+        <>
+            <SEO
+                title="Brand — TechScape AI"
+                description="Discover TechScape AI's brand story, identity, and the values that drive our AI-first approach to business."
+                canonical="/brand"
+            />
+            {/* ===================================================================
             SECTION 1 — LOGO
                =================================================================== */}
-            <section className="relative bg-black text-white py-20 lg:py-28 overflow-hidden">
+            <section className="relative text-white py-20 lg:py-28 overflow-hidden">
                 <div
                     className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
                     style={{
                         left: '-11.2%', top: '80px', width: '286px', height: '258px',
                         background: '#fad4bf',
-                        filter: 'blur(266.7px)',
+                        filter: 'blur(200px)',
                         borderRadius: '254px 343px 129px 391px',
-                        opacity: 0.55,
+                        opacity: 5,
                     }}
                 />
 
                 <div
                     className="absolute pointer-events-none"
                     style={{
-                        right: '-5%', top: '10%', width: '500px', height: '500px',
-                        background: 'rgba(53, 121, 206, 0.2)',
+                        right: '-10%', top: '30%', width: '300px', height: '500px',
+                        background: 'rgba(53, 121, 206, 2)',
                         filter: 'blur(150px)',
                         borderRadius: '100%',
                         zIndex: 0,
@@ -52,7 +52,6 @@ export default function Brand() {
                 />
                 <div className="wrap">
 
-                    {/* --- Top Massive Hero Logo Display --- */}
                     <div className="w-full flex justify-center mb-24 md:mb-32">
                         <img
                             src="/brand1.svg"
@@ -60,14 +59,16 @@ export default function Brand() {
                             className="w-full max-w-[580px] h-auto object-contain"
                         />
                     </div>
+                    <div>
+                        <p className="label mb-3 text-center">Primary Logo</p>
 
-                    {/* --- Detailed Content Specifications Grid --- */}
+                    </div>
+
                     <div className="w-full grid md:grid-cols-2 gap-12 lg:gap-20 text-left mb-16 items-start">
 
-                        {/* Left Column: Heading, Core Meaning & Symbols */}
                         <div className="space-y-6">
                             <div>
-                                <p className="label mb-3">Primary Logo</p>
+
                                 <h2
                                     className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
                                     style={{
@@ -104,7 +105,6 @@ export default function Brand() {
                             </div>
                         </div>
 
-                        {/* Right Column: Wordmark Attributes */}
                         <div className="space-y-6 md:pt-14">
                             <div>
                                 <h4 className="text-[18px] font-semibold text-white tracking-wide mb-3">
@@ -135,7 +135,6 @@ export default function Brand() {
                         </div>
                     </div>
 
-                    {/* --- Center Section: Technical Alignment Grid --- */}
                     <div className="w-full max-w-xl mx-auto aspect-[2.2/1] rounded-[700px] card flex items-center justify-center p-[10px] mb-16 backdrop-blur-sm">
                         <img
                             src="/brand2.svg"
@@ -144,7 +143,6 @@ export default function Brand() {
                         />
                     </div>
 
-                    {/* --- Bottom Section: Variation Row Container --- */}
                     <div
                         className="w-full rounded-4xl border border-[#1C1C1C] p-4 md:p-6 h-auto md:h-[400px] md:max-h-[400px] flex flex-col justify-between overflow-hidden box-border"
                         style={{
@@ -201,16 +199,12 @@ export default function Brand() {
             {/* ===================================================================
                 SECTION 2 — CO-BRANDING & COLORS
                =================================================================== */}
-            <section className="relative bg-black text-white py-20 lg:py-28 overflow-hidden">
+            <section className="relative text-white py-20 lg:py-28 overflow-hidden">
 
-                {/* Background eclipse glow (brand blue) */}
                 <div className="absolute right-[-20%] top-[15%] w-[700px] h-[900px] bg-gradient-to-b from-[#3D75F3]/55 via-[#1b3a6b]/10 to-transparent rounded-full blur-[140px] pointer-events-none z-0" />
 
                 <div className="wrap relative z-10 space-y-24">
 
-                    {/* =========================================================
-                        1. CO-BRANDING
-                       ========================================================= */}
                     <div className="space-y-8 text-left">
                         <div>
 
@@ -250,7 +244,6 @@ export default function Brand() {
                             This ensures professional, balanced co-branded layouts.
                         </p>
 
-                        {/* Co-Branding Spec Display Card */}
                         <div className="w-full aspect-[3.2/1] sm:aspect-[4/1] rounded-4xl border border-[#1C1C1C] p-6 flex items-center justify-center shadow-xl backdrop-blur-md"
                             style={{
                                 background: "linear-gradient(120deg, rgba(247,191,160,0.15) 0%, rgba(33,36,45,1) 100%)"
@@ -287,7 +280,6 @@ export default function Brand() {
                             </div>
                         </div>
 
-                        {/* Primary Color Palette Block */}
                         <div className="w-full rounded-2xl border border-[#1C1C1C] bg-[#0D0D0D] p-5 md:p-6 shadow-xl backdrop-blur-sm">
                             <div className="grid grid-cols-2 gap-4 md:gap-6">
                                 <div className="w-full h-16 md:h-20 rounded-xl bg-[#3D75F3] shadow-lg shadow-[#3D75F3]/10" />
@@ -295,7 +287,6 @@ export default function Brand() {
                             </div>
                         </div>
 
-                        {/* Secondary Colours Block */}
                         <div className="space-y-6 pt-4">
                             <div>
                                 <h3 className="text-[20px] lg:text-[32px] font-bold text-white mb-2">
@@ -317,9 +308,8 @@ export default function Brand() {
                                 </div>
                             </div>
 
-                            {/* Secondary Color Grid Layout */}
                             <div className="grid sm:grid-cols-2 gap-6">
-                                {/* Left Secondary Card */}
+
                                 <div className="w-full rounded-2xl border border-[#1C1C1C] bg-[#0D0D0D] p-5 shadow-xl">
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="w-full h-14 md:h-16 rounded-xl bg-[#0F1F3A]" />
@@ -327,7 +317,6 @@ export default function Brand() {
                                     </div>
                                 </div>
 
-                                {/* Right Secondary Card */}
                                 <div className="w-full rounded-2xl border border-[#1C1C1C] bg-[#0D0D0D] p-5 shadow-xl">
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="w-full h-14 md:h-16 rounded-xl bg-[#DAD7FF]" />
@@ -395,31 +384,29 @@ export default function Brand() {
             <section id="get-started" className="relative overflow-hidden">
                 <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
 
-                    {/* --- Header Section --- */}
                     <div
                         className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                             }`}
                     >
-                        {/* Premium Capsule Badge (Matches image layout perfectly) */}
-                        <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
-                            <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] font-semibold">
+                        <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.2] mb-8"
+                            style={{
+                                background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
+                            }}>
+                            <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] lg:text-[32px] font-semibold">
                                 Get Started
                             </span>
                         </div>
 
-                        {/* Bold Section Heading */}
                         <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
                             Let's Build Something Together
                         </h2>
 
-                        {/* Balanced Low-Opacity Description Subtext */}
-                         <p className="text-white max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
-              Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
-              The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
-            </p>
+                        <p className="text-white max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
+                            Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
+                            The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
+                        </p>
                     </div>
 
-                    {/* --- Main Content Wrapper with Background Image --- */}
                     <div
                         className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                             }`}
@@ -431,14 +418,13 @@ export default function Brand() {
                             backgroundRepeat: 'no-repeat'
                         }}
                     >
-                        {/* FIXED: Removed -mt-92 from the grid class list below */}
+
                         <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
-                            {/* Left: Glassmorphic Contact Form */}
+
                             <div>
                                 <GetStarted />
                             </div>
 
-                            {/* Right: Booking Info Section */}
                             <div className="lg:pl-6 text-left lg:pt-2">
                                 <h3 className="text-[33px] md:text-[36px] font-semibold text-white mb-6 leading-tight tracking-tight">
                                     Book a Free Consultation Directly
@@ -465,7 +451,6 @@ export default function Brand() {
 
                         <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-                            {/* Premium Bold Image-Matched Heading */}
                             <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
                                 Ready To put AI to work ?
                             </h2>
@@ -474,7 +459,6 @@ export default function Brand() {
                                 Your first discovery call is free. Let's find the workflow we can solve together
                             </p>
 
-                            {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
                             <button
                                 type="button"
                                 className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
@@ -487,8 +471,6 @@ export default function Brand() {
                     </div>
                 </div>
 
-
-                {/* Subtle Bottom Glows */}
                 <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
             </section>

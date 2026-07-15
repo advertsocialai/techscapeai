@@ -130,7 +130,8 @@ const CareerPage = () => {
     section: {
       backgroundColor: '#000', display: 'flex',
       alignItems: 'center', padding: '5%', color: 'white',
-      position: 'relative', overflow: 'hidden'
+      position: 'relative', overflow: 'hidden',
+      flexDirection: 'column'
     },
     leftGlow: {
       position: 'absolute', width: '300px', height: '258px', top: '80px', left: '-150px',
@@ -151,6 +152,12 @@ const CareerPage = () => {
       maxWidth: '1200px', margin: '0 auto', display: 'flex',
       alignItems: 'center', gap: '60px', width: '100%', flexWrap: 'wrap',
       zIndex: 1, position: 'relative'
+    },
+    containercol: {
+      maxWidth: '1200px', margin: '0 auto',
+      alignItems: 'center', gap: '60px', width: '100%', flexWrap: 'wrap',
+      zIndex: 1, position: 'relative',
+      marginTop: '100px'
     },
     left: { flex: '1', minWidth: '320px' },
     right: { flex: '1', minWidth: '320px' },
@@ -278,7 +285,7 @@ const CareerPage = () => {
         <div style={styles.container}>
           <div style={styles.left}>
             <h2
-              className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
+              className="inline-block text-[32px] sm:text-[42px] lg:text-[54px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
               style={{
                 backgroundImage:
                   "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
@@ -314,11 +321,11 @@ const CareerPage = () => {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ── 2. What It Takes ────────────────────────────────────────── */}
-      <section className="py-20 lg:py-28 text-center text-white">
-        <div className="wrap">
+
+        {/* ── 2. What It Takes ────────────────────────────────────────── */}
+
+        <div style={styles.containercol}>
           <h2
             className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
             style={{
@@ -416,7 +423,8 @@ const CareerPage = () => {
 
       {/* ── 5. Life At TechScape (Accordion) ───────────────────────── */}
       <section className="py-20 lg:py-28 relative overflow-hidden text-white">
-        <div style={styles.leftGlows}></div>
+        <div className="absolute top-30 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#FAD4BF]/15 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-40 right-[-100px] w-[400px] h-[300px] bg-[#3579CE]/55 blur-[150px] rounded-full pointer-events-none" />
         <div className="wrap">
           <h2
             className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
@@ -448,7 +456,8 @@ const CareerPage = () => {
       </section>
 
       {/* ── 6. Vision / Cities Section ──────────────────────────────── */}
-      <section className="py-20 lg:py-28 relative overflow-hidden text-white" style={{ backgroundColor: '#000' }}>
+      <section className="py-20 lg:py-28 p-6 relative overflow-hidden text-white">
+        <div className="absolute top-170 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#3579CE]/35 blur-[120px] rounded-full pointer-events-none" />
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2
             className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
@@ -466,8 +475,8 @@ const CareerPage = () => {
             </span>
             <br />
             <div className='flex gap-0'>
-              <img src={valleyImage} alt="valley" style={{ width: '150px', borderRadius: '15px', marginTop:'-35px' }} />
-              <span style={{ color: '#22C55E', WebkitTextFillColor: '#22C55E', marginLeft:'-26px' }}>
+              <img src={valleyImage} alt="valley" style={{ width: '150px', borderRadius: '15px', marginTop: '-35px' }} />
+              <span style={{ color: '#22C55E', WebkitTextFillColor: '#22C55E', marginLeft: '-26px' }}>
                 <Typewriter words={['of INDIA..']} speed={100} delay={2500} />
               </span>
             </div>
@@ -566,7 +575,7 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
               <div
                 key={index}
                 className="card w-full rounded-2xl border border-white/[0.06] p-6 md:p-8 relative overflow-hidden transition-all duration-300 hover:border-white/10"
-                
+
               >
                 {/* Flex wrapper for the internal content indicator timeline */}
                 <div className="flex gap-6 md:gap-8 items-start relative z-10">
@@ -598,7 +607,7 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
       </section>
 
       {/* ── 8. Safety, Accommodation & Contact Form ──────────────────── */}
-      <div className=" text-white  p-6 md:p-1 mb-6">
+      <div className=" text-white  p-2 md:p-1 mb-6">
         <div className="wrap mb-16 space-y-8">
           <div>
             <h2 className="text-2xl lg:text-[40px] font-normal mb-4">Your Safety Matters</h2>
@@ -636,7 +645,7 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
             </h2>
 
             {/* Balanced Low-Opacity Description Subtext */}
-             <p className="text-white max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
+            <p className="text-white max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
               Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
               The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
             </p>
@@ -661,7 +670,6 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
                 <GetStarted />
               </div>
 
-              {/* Right: Booking Info Section */}
               <div className="lg:pl-6 text-left lg:pt-2">
                 <img src="/car13.svg" alt="" />
               </div>
@@ -670,7 +678,6 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
 
             <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-              {/* Premium Bold Image-Matched Heading */}
               <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
                 Ready To put AI to work ?
               </h2>
@@ -679,7 +686,7 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
                 Your first discovery call is free. Let's find the workflow we can solve together
               </p>
 
-              {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
+
               <button
                 type="button"
                 className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
@@ -692,8 +699,6 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
           </div>
         </div>
 
-
-        {/* Subtle Bottom Glows */}
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
       </section>

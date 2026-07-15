@@ -16,6 +16,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
 import Accessibility from './pages/Accessibility'
 import TrustCenter from './pages/TrustCenter'
+import Industries from './pages/Industries'
+import AiAgent from './pages/AI-agents'
 
 const SHOW_WIP_PAGES = import.meta.env.VITE_SHOW_WIP_PAGES === 'true'
 
@@ -36,10 +38,13 @@ export default function App() {
         <Route path="/terms" element={<MainLayout><TermsAndConditions /></MainLayout>} />
         <Route path="/accessibility" element={<MainLayout><Accessibility /></MainLayout>} />
         <Route path="/trust-center" element={<MainLayout><TrustCenter /></MainLayout>} />
+        <Route path="/industries" element={<MainLayout><Industries /></MainLayout>} />
+        <Route path="/ai-agent" element={<MainLayout><AiAgent /></MainLayout>} />
+        <Route path="/research" element={<MainLayout><Research /></MainLayout>} />
         {SHOW_WIP_PAGES && (
           <>
             <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />
-            <Route path="/research" element={<MainLayout><Research /></MainLayout>} />
+
           </>
         )}
         <Route path="*" element={<MainLayout><NotFoundPage /></MainLayout>} />

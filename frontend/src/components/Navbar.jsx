@@ -93,7 +93,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-[48px]">
 
             <Link to="/" aria-label="Tech Scape AI — home">
-              <img src="/logotechscapeai.svg" alt="Tech Scape AI" width={170} height={32} fetchpriority="high" decoding="async" className="h-8 w-auto" />
+              <img src="/logotechscapeai.svg" alt="Tech Scape AI" width={170} height={32} fetchPriority="high" decoding="async" className="h-8 w-auto" />
             </Link>
 
             <div className="flex items-center gap-3 sm:gap-4">

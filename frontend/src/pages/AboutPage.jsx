@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import Typewriter from '../components/Typewriter'
 import GetStarted from '../components/GetStarted'
-
-// Section logos (Partners marquee)
 import partnerNxtwave from '../assets/nxtwave.svg'
 import partnerAsg from '../assets/asg.svg'
 import mmw from '../assets/mmw.svg'
@@ -27,7 +25,6 @@ const CheckIcon = () => (
 )
 
 export default function BreakthroughSection() {
-  // Independent scroll-reveal per section (mirrors HomePage pattern)
   const { ref: heroRef, isVisible: heroSeen } = useScrollAnimation()
   const { ref: partnersRef, isVisible: partnersSeen } = useScrollAnimation()
   const { ref: researchRef, isVisible: researchSeen } = useScrollAnimation()
@@ -72,7 +69,6 @@ export default function BreakthroughSection() {
   ]
   const PARTNER_MARQUEE = [...PARTNER_LOGOS, ...PARTNER_LOGOS];
 
-  // Founders letter — staggered card reveal
   const [visibleCards, setVisibleCards] = useState([]);
 
   useEffect(() => {
@@ -99,11 +95,9 @@ export default function BreakthroughSection() {
     }
   ];
 
-  // Latest news carousel
   const scrollContainerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Hardcoded mock data closely matching your reference text and layouts
   const blogs = [
     {
       id: 1,
@@ -144,7 +138,7 @@ export default function BreakthroughSection() {
 
   const handleScroll = (direction) => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 360; // Card width + gap size
+      const scrollAmount = 360;
       scrollContainerRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -160,17 +154,19 @@ export default function BreakthroughSection() {
         description="Learn about TechScape AI — our mission, team, and vision to make AI work for people across India, USA, and Canada."
         canonical="/about"
       />
+
+      {/* Section 1 */}
       <section
         ref={heroRef}
         className={`relative text-white py-20 lg:py-28 overflow-hidden transition-all duration-700 ${heroSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       >
 
-        <div className="absolute top-0 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#FAD4BF]/8 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 right-10 w-[400px] h-[400px] bg-purple-900/5 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#FAD4BF]/15 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-60 right-0 w-[400px] h-[300px] bg-[#3579CE]/55 blur-[150px] rounded-full pointer-events-none" />
 
         <div className="relative wrap flex flex-col items-center text-center">
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight max-w-3xl leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-[56px] font-bold tracking-tight max-w-3xl leading-tight">
             Your Next Breakthrough, <br />
             <span className="bg-clip-text text-transparent"
               style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
@@ -178,7 +174,7 @@ export default function BreakthroughSection() {
             </span>
           </h2>
 
-          <p className="text-[13px] md:text-[14px]  text-white max-w-2xl mt-6 leading-relaxed font-light tracking-wide">
+          <p className="text-[13px] md:text-[16px]  text-white max-w-3xl mt-6 leading-relaxed font-light tracking-wide">
             We are Tech Scape AI — an AI services and agents company built in India, operating globally. <br className="hidden sm:inline" />
             We help businesses in Travel, Logistics, Finance, and Recruitment automate their most <br className="hidden sm:inline" />
             complex workflows using AI.
@@ -187,10 +183,10 @@ export default function BreakthroughSection() {
           <div className="flex flex-row items-center justify-center gap-8 mt-8">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
+              className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[16px] font-medium text-white rounded-[8px] capitalize"
               style={{
                 backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
-                
+
               }}
             >
               Explore Our Services
@@ -198,7 +194,7 @@ export default function BreakthroughSection() {
 
             <a
               href="/contact"
-              className="text-[14px] font-medium text-white/90 underline underline-offset-4 hover:text-white transition-colors duration-200"
+              className="text-[16px]  text-white underline underline-offset-4 hover:text-white transition-colors duration-200"
             >
               Contact Us
             </a>
@@ -229,15 +225,13 @@ export default function BreakthroughSection() {
         </div>
       </section>
 
-
-      <section id="partners" className="relative bg-black py-16 lg:py-20">
+      {/* Section 2 */}
+      <section id="partners" className="relative py-16 lg:py-20">
         <div className="wrap" ref={partnersRef}>
           <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${partnersSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
+            <p className="capitalize text-[28px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
               Our Partners
             </p>
-
-            {/* Logo marquee */}
             <div className="relative overflow-hidden w-full">
               <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(90deg, #000 0%, transparent 100%)' }} />
               <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(270deg, #000 0%, transparent 100%)' }} />
@@ -261,7 +255,7 @@ export default function BreakthroughSection() {
         </div>
       </section>
 
-
+      {/* Section 3 */}
       <section
         ref={researchRef}
         className={`text-white py-20 lg:py-28 transition-all duration-700 w-full ${researchSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -270,165 +264,155 @@ export default function BreakthroughSection() {
 
         <div className="wrap">
 
-        <div className="mb-16 flex flex-col gap-2">
+          <div className="mb-16 flex flex-col gap-2">
+            <p className="capitalize text-[28px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
+              Our Research
+            </p>
 
-          {/* Center only this */}
-          <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
-            Our Research
-          </p>
-
-          {/* Left aligned */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-1 text-left">
-            We Don't Just{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)",
-              }}
-            >
-              <Typewriter words={['Deploy AI', 'Study It']} speed={100} delay={2500} />
-            </span>
-          </h2>
-
-        </div>
-
-        <div className="w-full flex flex-col gap-6">
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {researchCards.map((card, index) => (
-              <div
-                key={index}
-                className="card flex items-center justify-between gap-4 min-h-[280px] group transition-all duration-300"
+            <h2 className="text-3xl sm:text-4xl md:text-[56px] font-bold tracking-tight mt-1 text-left">
+              We Don't Just{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)",
+                }}
               >
-                <div className="flex flex-col justify-between h-full max-w-[60%] flex-1" style={{ gap: '8px' }}>
-                  <h3 className="text-[24px] font-semibold leading-snug tracking-wide text-white">
-                    {card.title}
-                  </h3>
-                  <p className="text-[14px] text-white leading-relaxed font-light mt-auto">
-                    {card.description}
-                  </p>
-                </div>
+                <Typewriter words={['Deploy AI', 'Study It']} speed={100} delay={2500} />
+              </span>
+            </h2>
 
-                <div className="w-[45%] h-full flex items-center justify-center overflow-hidden rounded-lg">
+          </div>
+
+          <div className="w-full flex flex-col gap-6">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {researchCards.map((card, index) => (
+                <div
+                  key={index}
+                  className="card flex flex-col md:flex-row items-center justify-between gap-4 min-h-[280px] group transition-all duration-300"
+                >
+                  <div className="w-full md:w-[45%] h-full flex items-center justify-center overflow-hidden rounded-lg order-1 md:order-2">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  </div>
+
+                  <div className="flex flex-col justify-between h-full w-full md:max-w-[60%] flex-1 order-2 md:order-1" style={{ gap: '8px' }}>
+                    <h3 className="text-[24px] font-semibold leading-snug tracking-wide text-white">
+                      {card.title}
+                    </h3>
+                    <p className="text-[14px] text-white leading-relaxed font-light mt-auto">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="w-full flex justify-center mt-2">
+              <div
+                className="card w-full md:max-w-[85%] flex flex-col md:flex-row items-center justify-between gap-6 min-h-[280px] group transition-all duration-300"
+              >
+                <div className="w-full md:w-[40%] md:max-w-[240px] h-full flex items-center justify-center overflow-hidden rounded-xl order-1 md:order-2">
                   <img
-                    src={card.image}
-                    alt={card.title}
+                    src={bottomCard.image}
+                    alt={bottomCard.title}
                     className="w-full h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                     onError={(e) => { e.target.style.display = 'none'; }}
                   />
                 </div>
-              </div>
-            ))}
-          </div>
 
-          <div className="w-full flex justify-center mt-2">
-            <div
-              className="card w-full md:max-w-[85%] flex items-center justify-between gap-6 min-h-[280px] group transition-all duration-300"
-            >
-              <div className="flex flex-col justify-between h-full max-w-[55%] flex-1" style={{ gap: '8px' }}>
-                <h3 className="text-[24px] font-semibold leading-snug tracking-wide text-white">
-                  {bottomCard.title}
-                </h3>
-                <p className="text-[14px] text-white leading-relaxed font-light mt-auto">
-                  {bottomCard.description}
-                </p>
-              </div>
-
-              <div className="w-[40%] max-w-[240px] h-full flex items-center justify-center overflow-hidden rounded-xl">
-                <img
-                  src={bottomCard.image}
-                  alt={bottomCard.title}
-                  className="w-full h-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                />
+                <div className="flex flex-col justify-between h-full w-full md:max-w-[55%] flex-1 order-2 md:order-1" style={{ gap: '8px' }}>
+                  <h3 className="text-[24px] font-semibold leading-snug tracking-wide text-white">
+                    {bottomCard.title}
+                  </h3>
+                  <p className="text-[14px] text-white leading-relaxed font-light mt-auto">
+                    {bottomCard.description}
+                  </p>
+                </div>
               </div>
             </div>
+
           </div>
 
-        </div>
-
-        <div className="mt-16 w-full flex justify-center">
-          <button
-            type="button"
-            style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
-            className="shadow-none border-0 outline-none px-6 py-3 rounded-lg text-[16px] font-medium tracking-wide text-white hover:opacity-95 transition-opacity duration-200"
-          >
-            Collaborate With Us On Research - info@techscapeai.in
-          </button>
-        </div>
+          <div className="mt-16 w-full flex justify-center">
+            <button
+              type="button"
+              style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
+              className="shadow-none border-0 outline-none px-6 py-3 rounded-lg text-[16px] font-medium tracking-wide text-white hover:opacity-95 transition-opacity duration-200"
+            >
+              Collaborate With Us On Research - info@techscapeai.in
+            </button>
+          </div>
 
         </div>
 
       </section>
 
+      {/* Section 4 */}
       <section className="relative text-white overflow-hidden py-20 lg:py-28">
-        {/* Premium Ambient Background Elipse Glow (Right Side) */}
-        <div className="absolute top-1/2 -right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-blue-600/15 via-cyan-500/5 to-transparent rounded-full blur-[140px] pointer-events-none transform -translate-y-1/2" />
-
+        <div className="absolute top-1/2 -right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-blue-600/75 via-blue-500/35 to-transparent rounded-full blur-[140px] pointer-events-none transform -translate-y-1/2" />
         <div className="wrap w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-          {/* Left Side: Dynamic Heading */}
           <div className="lg:col-span-12 pt-4">
             <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight text-slate-300 leading-tight uppercase">
               A Letter From Our <br />
-              <span className="text-white block mt-1">FOUNDERS</span>
+              <span className="text-slate-300 block mt-1">FOUNDERS</span>
             </h2>
           </div>
 
-          <div className="lg:col-span-12 relative min-h-[700px] w-full md:mt-12 lg:mt-0 flex items-center justify-center">
+          <div className="lg:col-span-12 relative min-h-auto lg:min-h-[700px] w-full md:mt-12 lg:mt-0 flex items-center justify-center px-4 sm:px-6">
 
-            {/* Cards Wrapper (Maintains relative placement anchors relative to the center) */}
-            <div className="relative w-[830px] h-[540px]">
+            <div className="relative w-full max-w-[400px] lg:max-w-none lg:w-[830px] h-auto lg:h-[540px] flex flex-col lg:block gap-6 py-8 lg:py-0">
 
-              {/* Card 1 (Bottom-Left Layer) */}
               <div
-                className={`absolute left-[-160px] top-[70px] z-30 w-[400px] h-[400px] rounded-2xl border border-white/[0.06] bg-[#0f1930]/90 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
-      flex flex-col items-center justify-center text-center
+                className={`relative lg:absolute lg:left-[-160px] lg:top-[70px] z-30 w-full lg:w-[400px] h-auto lg:h-[400px] rounded-2xl border border-white/[0.06] bg-[#0f1930]/90 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
+      flex flex-col items-center justify-center text-center min-h-[250px] lg:min-h-0
       ${visibleCards.includes(0) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}`}
               >
-                <p className="text-[20px] text-white font-light leading-relaxed mb-4 max-w-[320px]">
+                <p className="text-[18px] lg:text-[20px] text-white font-light leading-relaxed mb-4 max-w-[320px]">
                   {cardsData[0].text}
                 </p>
-                <p className="text-[20px] text-white font-light leading-relaxed max-w-[320px]">
+                <p className="text-[18px] lg:text-[20px] text-white font-light leading-relaxed max-w-[320px]">
                   {cardsData[0].extra}
                 </p>
               </div>
 
-              {/* Card 2 (Middle Layer) */}
               <div
-                className={`absolute left-[215px] top-[0px] z-20 w-[400px] h-[540px] rounded-2xl border border-white/[0.08] bg-[#0f1930]/90 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
-      flex flex-col items-center justify-center text-center
+                className={`relative lg:absolute lg:left-[215px] lg:top-[0px] z-20 w-full lg:w-[400px] h-auto lg:h-[540px] rounded-2xl border border-white/[0.08] bg-[#0f1930]/90 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
+      flex flex-col items-center justify-center text-center min-h-[300px] lg:min-h-0
       ${visibleCards.includes(1) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}`}
               >
-                <p className="text-[20px] text-white font-light leading-relaxed mb-4 max-w-[320px]">
+                <p className="text-[18px] lg:text-[20px] text-white font-light leading-relaxed mb-4 max-w-[320px]">
                   {cardsData[1].text}
                 </p>
-                <p className="text-[20px] text-white font-light leading-relaxed max-w-[320px]">
+                <p className="text-[18px] lg:text-[20px] text-white font-light leading-relaxed max-w-[320px]">
                   {cardsData[1].extra}
                 </p>
               </div>
 
-              {/* Card 3 (Top-Right Layer) */}
               <div
-                className={`absolute left-[590px] top-[-140px] z-30 w-[400px] h-[400px] rounded-2xl border border-white/[0.12] bg-[#0f1930]/95 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
-      flex flex-col items-center justify-center text-center
+                className={`relative lg:absolute lg:left-[590px] lg:top-[-140px] z-30 w-full lg:w-[400px] h-auto lg:h-[400px] rounded-2xl border border-white/[0.12] bg-[#0f1930]/95 p-8 shadow-2xl backdrop-blur-xl transition-all duration-700 ease-out
+      flex flex-col items-center justify-center text-center min-h-[250px] lg:min-h-0
       ${visibleCards.includes(2) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}`}
               >
-                <p className="text-[20px] text-white font-light leading-relaxed mb-4 max-w-[320px]">
+                <p className="text-[18px] lg:text-[20px] text-white font-light leading-relaxed mb-4 max-w-[320px]">
                   {cardsData[2].text}
                 </p>
-                <p className="text-[20px] text-white font-light leading-relaxed max-w-[320px]">
+                <p className="text-[18px] lg:text-[20px] text-white font-light leading-relaxed max-w-[320px]">
                   {cardsData[2].extra}
                 </p>
               </div>
 
-              {/* Signatures / Attribution */}
-              <div className="absolute right-0 -bottom-16 text-right">
-                <p className="text-[18px] text-white font-light tracking-wide">
+              <div className="relative lg:absolute lg:right-[-100px] lg:-bottom-16 text-center lg:text-right mt-6 lg:mt-0 w-full lg:w-auto">
+                <p className="text-[16px] lg:text-[18px] text-white font-light tracking-wide">
                   - Rakesh · Gowtham · Rahul
                 </p>
-                <p className="text-[16px] text-white font-light mt-1">
+                <p className="text-[14px] lg:text-[16px] text-white font-light mt-1">
                   Founding Partners, Tech Scape AI.
                 </p>
               </div>
@@ -438,7 +422,6 @@ export default function BreakthroughSection() {
           </div>
         </div>
 
-        {/* Footer Text Subheading */}
         <div className="wrap w-full relative z-10 mt-16 lg:mt-0 2xl:mt-0">
           <p className="text-[27px] md:text-lg lg:text-[24px] text-white font-light tracking-wide">
             The FUTURE we are building is one where your AI is so capable that your CUSTOMERS genuinely...
@@ -447,20 +430,18 @@ export default function BreakthroughSection() {
 
       </section>
 
-
+      {/* Section 5 */}
       <section
         ref={careersRef}
         className={`relative text-white py-20 lg:py-28 overflow-hidden transition-all duration-700 ${careersSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       >
         <div className="relative wrap">
 
-          {/* Eyebrow */}
           <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
             Careers
           </p>
 
-          {/* Heading row: title (left) + pitch (right) */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end mt-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-bold tracking-tight leading-[1.05]">
               Build <span
                 className="bg-clip-text text-transparent"
@@ -471,19 +452,26 @@ export default function BreakthroughSection() {
               >
                 <Typewriter words={['What Hasn’t']} speed={100} delay={2500} />
               </span><br />
-              <span className='text-[27px]'>Been Built</span>
+              <span className='text-[26px]'>Been Built</span>
             </h2>
 
-            <p className="text-[14px] md:text-[15px] text-white leading-relaxed font-light max-w-md lg:justify-self-end">
-              We&apos;re looking for builders, not employees. If you want to do the best work of your
-              career alongside people who care about craft, ownership, and shipping AI that
-              actually works — this is where you belong.
-            </p>
           </div>
 
-          {/* Hero image */}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end">
+            <h2></h2>
+
+            <p className="text-[14px] md:text-[15px] text-white leading-relaxed font-light max-w-md lg:justify-self-end self-end border border-white/20 backdrop-blur-md  rounded-full p-5 px-12"
+              style={{
+                background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
+              }}>
+
+              We&apos;re a small team doing big things. If you want to work at the edge of AI agents, digital marketing, and global product building, this is where you belong.
+
+            </p>
+
+          </div>
+
           <div className="relative w-full overflow-hidden mt-12 lg:mt-16 aspect-[16/9] md:aspect-[16/7] ">
-            {/* Styled fallback (corridor-of-light look) */}
             <div
               aria-hidden="true"
               className="absolute inset-0"
@@ -502,7 +490,6 @@ export default function BreakthroughSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
           </div>
 
-          {/* CTA buttons */}
           <div className="flex items-center justify-center gap-4 mt-10 lg:mt-12">
             <Link
               to="/contact"
@@ -533,37 +520,33 @@ export default function BreakthroughSection() {
         </div>
       </section>
 
-
+      {/* Section 6 */}
       <section
         className="relative text-white py-20 lg:py-28 overflow-hidden select-none"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Left-Side Ambient Ellipse Glow (Matches the reference image blend) */}
-        <div className="absolute top-1/2 -left-[15%] w-[550px] h-[550px] bg-gradient-to-tr from-blue-600/50 via-indigo-600/5 to-transparent rounded-full blur-[110px] pointer-events-none transform -translate-y-1/2" />
+        <div className="absolute top-1/2 -left-[15%] w-[550px] h-[300px] bg-gradient-to-tr from-blue-600/90 via-blue-600/90 to-transparent rounded-full blur-[110px] pointer-events-none transform -translate-y-1/2" />
 
         <div className="wrap relative z-10">
 
-          {/* Header Section */}
           <div className="flex items-baseline justify-between mb-12">
             <h2 className="text-3xl md:text-[42px] font-medium tracking-tight text-[#F7BFA0]">
               The Latest News
             </h2>
             <a
               href="/blog"
-              className="text-xs md:text-sm text-white hover:text-white underline underline-offset-4 tracking-wide transition-colors duration-200"
+              className="text-xs md:text-[18px] text-white hover:text-white underline underline-offset-4 tracking-wide transition-colors duration-200"
             >
               See more on the blog
             </a>
           </div>
 
-          {/* Carousel Window */}
           <div className="relative group">
 
-            {/* Left Arrow Button */}
             <button
               onClick={() => handleScroll('left')}
-              className={`absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full flex items-center justify-center text-white bg-gradient-to-r from-blue-500/80 to-indigo-500/80 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:scale-105 active:scale-95
+              className={`absolute left-0 top-1/2 -translate-y-2/2 z-30 w-11 h-11 rounded-full flex items-center justify-center text-white bg-gradient-to-r from-blue-500/80 to-indigo-500/80 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:scale-105 active:scale-95
               ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 pointer-events-none'}`}
               aria-label="Scroll Left"
             >
@@ -572,10 +555,9 @@ export default function BreakthroughSection() {
               </svg>
             </button>
 
-            {/* Right Arrow Button */}
             <button
               onClick={() => handleScroll('right')}
-              className={`absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full flex items-center justify-center text-white bg-gradient-to-r from-blue-500/80 to-indigo-500/80 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:scale-105 active:scale-95
+              className={`absolute right-0 top-1/2 -translate-y-2/2 z-30 w-11 h-11 rounded-full flex items-center justify-center text-white bg-gradient-to-r from-blue-500/80 to-indigo-500/80 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:scale-105 active:scale-95
               ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'}`}
               aria-label="Scroll Right"
             >
@@ -584,30 +566,26 @@ export default function BreakthroughSection() {
               </svg>
             </button>
 
-            {/* Draggable/Scrollable Cards Grid Wrapper */}
             <div
               ref={scrollContainerRef}
-              className="flex gap-6 overflow-x-auto overflow-y-hidden scrollbar-none snap-x snap-mandatory pb-8"
+              className="flex gap-10 overflow-x-auto overflow-y-hidden scrollbar-none snap-x snap-mandatory pb-8"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {blogs.map((blog) => (
                 <div
                   key={blog.id}
-                  className="w-[335px] min-h-[380px] shrink-0 bg-[#01121F] border border-white text-slate-900 rounded-[28px] p-6 flex flex-col justify-between snap-start shadow-xl transform transition-transform duration-300 hover:scale-[1.01]"
+                  className="w-[345px] min-h-[380px] shrink-0 bg-[#01121F] border border-white text-slate-900 rounded-[28px] p-6 flex flex-col justify-between snap-start shadow-xl transform transition-transform duration-300 hover:scale-[1.01]"
                 >
-                  {/* Card Top Meta Row */}
                   <div>
                     <div className="flex items-center justify-between text-[14px] font-medium text-white tracking-tight">
                       <span>{blog.author}</span>
                       <span>{blog.date}</span>
                     </div>
 
-                    {/* Card Title Layer */}
                     <h3 className="text-[16px] font-semibold text-[#F7C8B4] mt-3 mb-1 tracking-tight leading-snug min-h-[40px] line-clamp-2">
                       {blog.title}
                     </h3>
 
-                    {/* Read More link */}
                     <div className="text-right">
                       <span className="text-[16px] font-bold text-white underline underline-offset-2 cursor-pointer hover:text-black">
                         Read More
@@ -615,7 +593,6 @@ export default function BreakthroughSection() {
                     </div>
                   </div>
 
-                  {/* Card Inner Gray Core Container Box (Matches exactly) */}
                   <div className="mt-4 w-full h-[180px] rounded-[20px] overflow-hidden bg-slate-500/30">
                     <img
                       src={blog.imageUrl}
@@ -631,34 +608,35 @@ export default function BreakthroughSection() {
         </div>
       </section>
 
+
+      {/* Section 7 */}
       <section id="get-started" className="relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
 
-          {/* --- Header Section --- */}
           <div
             className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
           >
-            {/* Premium Capsule Badge (Matches image layout perfectly) */}
-            <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
-              <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] font-semibold">
+
+            <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.2] mb-8"
+              style={{
+                background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
+              }}>
+              <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] lg:text-[32px] font-semibold">
                 Get Started
               </span>
             </div>
 
-            {/* Bold Section Heading */}
             <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
               Let's Build Something Together
             </h2>
 
-            {/* Balanced Low-Opacity Description Subtext */}
             <p className="text-white max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
               Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
               The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
             </p>
           </div>
 
-          {/* --- Main Content Wrapper with Background Image --- */}
           <div
             className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
@@ -670,14 +648,12 @@ export default function BreakthroughSection() {
               backgroundRepeat: 'no-repeat'
             }}
           >
-            {/* FIXED: Removed -mt-92 from the grid class list below */}
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
-              {/* Left: Glassmorphic Contact Form */}
+
               <div>
                 <GetStarted />
               </div>
 
-              {/* Right: Booking Info Section */}
               <div className="lg:pl-6 text-left lg:pt-2">
                 <h3 className="text-[33px] md:text-[36px] font-semibold text-white mb-6 leading-tight tracking-tight">
                   Book a Free Consultation Directly
@@ -704,7 +680,6 @@ export default function BreakthroughSection() {
 
             <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-              {/* Premium Bold Image-Matched Heading */}
               <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
                 Ready To put AI to work ?
               </h2>
@@ -713,24 +688,21 @@ export default function BreakthroughSection() {
                 Your first discovery call is free. Let's find the workflow we can solve together
               </p>
 
-              {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
-               <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
-              style={{
-                backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
-                
-              }}
-            >
-              Request A Demo
-            </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
+                style={{
+                  backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',
+
+                }}
+              >
+                Request A Demo
+              </Link>
 
             </div>
           </div>
         </div>
 
-
-        {/* Subtle Bottom Glows */}
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
       </section>

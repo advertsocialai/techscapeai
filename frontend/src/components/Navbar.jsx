@@ -54,7 +54,7 @@ const NAV_LINKS = [
   {
     label: 'Partners',
     to: '/partners',
-    desc: 'Backed by the right partners and connected to the right markets — world-class networks, validated technology, and real opportunities.',
+    desc: 'Backed by the right partners and connected to the right markets — world-class networks, validated technology, and real opportunities. ',
   },
 ]
 

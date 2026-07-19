@@ -136,6 +136,7 @@ export default function IndustrySolutionsSection() {
   const phoneChatRef = useRef(null)
   const timerRef = useRef(null)
   const stepRef = useRef(0)
+  const nextRef = useRef(() => {})
 
   useEffect(() => {
     for (const el of [chatBodyRef.current, phoneChatRef.current]) {
@@ -164,7 +165,7 @@ export default function IndustrySolutionsSection() {
         setInputVal('')
         setMessages(prev => [...prev, msg])
         stepRef.current++
-        timerRef.current = setTimeout(next, 600)
+        timerRef.current = setTimeout(() => nextRef.current(), 600)
       })
     } else {
       setIsTyping(true)
@@ -177,19 +178,23 @@ export default function IndustrySolutionsSection() {
           setSuggestions(SUGGESTIONS)
           timerRef.current = setTimeout(() => {
             setMessages([]); setSuggestions([]); stepRef.current = 0
-            timerRef.current = setTimeout(next, 800)
+            timerRef.current = setTimeout(() => nextRef.current(), 800)
           }, 5200)
         } else {
-          timerRef.current = setTimeout(next, 700)
+          timerRef.current = setTimeout(() => nextRef.current(), 700)
         }
       }, 1400 + Math.random() * 900)
     }
   }, [typeInInput])
 
   useEffect(() => {
-    timerRef.current = setTimeout(next, 1200)
-    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
+    nextRef.current = next
   }, [next])
+
+  useEffect(() => {
+    timerRef.current = setTimeout(() => nextRef.current(), 1200)
+    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
+  }, [])
 
 
   const CHECK_ITEMS = [

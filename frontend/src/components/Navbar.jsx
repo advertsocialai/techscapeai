@@ -64,8 +64,6 @@ const NAV_LINKS = [
     label: 'Partners',
     to: '/partners',
     desc: 'Backed by the right partners and connected to the right markets — world-class networks, validated technology, and real opportunities.',
-<<<<<<< Updated upstream
-=======
   },
   {
     label: 'Brand',
@@ -81,7 +79,7 @@ const NAV_LINKS = [
     label: 'Contact us',
     to: '/contact',
     desc: 'Tell us what you are trying to solve. We will come back with a clear, practical path — not a sales pitch.',
->>>>>>> Stashed changes
+
   },
 ]
 

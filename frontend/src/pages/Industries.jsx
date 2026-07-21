@@ -2,11 +2,8 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 
 import Typewriter from '../components/Typewriter';
-import GetStarted from '../components/GetStarted';
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import SEO from '../components/SEO';
 
-// Section logos (Partners marquee)
 import partnerNxtwave from '/in5.png'
 import partnerAsg from '/in6.svg'
 import mmw from '/in7.svg'
@@ -192,18 +189,6 @@ export default function IndustrySolutionsSection() {
   }, [next])
 
 
-  const CHECK_ITEMS = [
-    'No Commitment Required',
-    'Response Within 24 Hours',
-    'Tailored To Your Goals',
-  ]
-
-  const CheckIcon = () => (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#3D75F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M11.5 3.5L5.25 9.75L2.5 7" />
-    </svg>
-  )
-
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 })
   const { ref: partnersRef, isVisible: partnersSeen } = useScrollAnimation()
 
@@ -213,18 +198,6 @@ export default function IndustrySolutionsSection() {
     { value: "2", label: "Research Phases" },
     { value: "India + CA", label: "Operating Markets" }
   ];
-
-  const integrationLogos = [
-    { name: "Slack", url: "/in5.png" },
-    { name: "Claude", url: "/in6.svg" },
-    { name: "Voiceflow", url: "/in7.svg" },
-    { name: "Vapi", url: "/in8.svg" },
-    { name: "Nation", url: "/in9.svg" },
-    { name: "Asana", url: "/in10.svg" },
-    { name: "Mistral", url: "/in11.svg" }
-  ];
-
-  const doubleLogosList = [...integrationLogos, ...integrationLogos];
 
   const industryCards = [
     {
@@ -253,8 +226,6 @@ export default function IndustrySolutionsSection() {
     }
   ];
 
-  const workflowTabs = ["Travel", "Finance", "Recruitment"];
-
   const whyCards = [
     {
       title: "Domain-trained Intelligence",
@@ -282,7 +253,7 @@ export default function IndustrySolutionsSection() {
 
   return (
     <>
-      <section className="w-full  text-white py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col items-center justify-center">
+      <section className="w-full  py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col items-center justify-center">
 
         <div className="absolute right-[-20%] top-[15%] w-[500px] h-[1000px] bg-[#1C68FA]/35 rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute left-[-10%] bottom-[15%] w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[130px] pointer-events-none" />
@@ -295,11 +266,9 @@ export default function IndustrySolutionsSection() {
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[115%]">
               <Typewriter words={['Every Industry has a Problem. ']} speed={100} delay={2500} /><br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2C80FF] via-blue-400 to-[#2C80FF]">
-                <Typewriter words={["we've already started Solving Yours."]} speed={100} delay={2500} />
-              </span>
+              <Typewriter words={["we've already started Solving Yours."]} speed={100} delay={2500} />
             </h2>
-            <p className="text-white text-sm lg:text-[24px] sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm lg:text-[24px] sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
               Techscape AI builds domain-specific AI agents and automation systems for high-friction industries starting where the pain is loudest.
             </p>
           </div>
@@ -313,8 +282,8 @@ export default function IndustrySolutionsSection() {
                   background: "linear-gradient(145deg, rgba(247, 191, 160, 0.5) 0%, rgba(28, 109, 208, 0) 100%)"
                 }}
               >
-                <div className="text-2xl sm:text-3xl  tracking-tight text-white">{stat.value}</div>
-                <div className="text-[11px]  uppercase tracking-wider text-white">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl  tracking-tight">{stat.value}</div>
+                <div className="text-[11px]  uppercase tracking-wider">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -326,7 +295,6 @@ export default function IndustrySolutionsSection() {
                   Our Integrations
                 </p>
 
-                {/* Logo marquee */}
                 <div className="relative overflow-hidden w-full">
                   <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(90deg, #000 0%, transparent 100%)' }} />
                   <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(270deg, #004477DB 0%, transparent 0%)' }} />
@@ -356,9 +324,9 @@ export default function IndustrySolutionsSection() {
                 Where We Work
               </span>
               <h3 className="text-3xl sm:text-4xl lg:text-[70px] font-bold tracking-tight">
-                Pick your <span className="text-[#1C68FA]"> <Typewriter words={['Industry']} speed={100} delay={2500} /></span>
+                Pick your <Typewriter words={['Industry']} speed={100} delay={2500} />
               </h3>
-              <p className="text-white text-xs sm:text-sm lg:text-[20px]">
+              <p className="text-xs sm:text-sm lg:text-[20px]">
                 Three Industries live and running. Two in deep research, click through to see what we've built and what's coming.
               </p>
             </div>
@@ -374,12 +342,10 @@ export default function IndustrySolutionsSection() {
                 >
                   <div className="space-y-5 flex flex-col items-center text-center w-full">
 
-                    {/* Badge - Top Center */}
                     <span className={`px-2.5 py-0.5 rounded-md text-[14px] tracking-wide backdrop-blur-md ${card.badgeClass}`}>
                       {card.badge}
                     </span>
 
-                    {/* Image */}
                     <div className="w-[90%] aspect-[16/10] rounded-3xl overflow-hidden bg-zinc-900">
                       <img
                         src={card.img}
@@ -388,12 +354,11 @@ export default function IndustrySolutionsSection() {
                       />
                     </div>
 
-                    {/* Content */}
                     <div className="space-y-2 flex flex-col items-center">
                       <h4 className="text-xl sm:text-2xl lg:text-[24px] font-bold tracking-tight text-white/95">
                         {card.title}
                       </h4>
-                      <p className="text-white text-xs sm:text-[16px] font-light leading-relaxed min-h-[72px] max-w-[400px]">
+                      <p className="text-xs sm:text-[16px] font-light leading-relaxed min-h-[72px] max-w-[400px]">
                         {card.desc}
                       </p>
                     </div>
@@ -402,17 +367,11 @@ export default function IndustrySolutionsSection() {
 
                   <div className="space-y-4 pt-2 flex flex-col items-center text-center">
 
-                    {/* Text */}
                     <div className="text-[14px] text-[#888888] tracking-wide">
                       {card.anchor}
                     </div>
 
-                    {/* Button */}
-                    <button
-                      type="button"
-                      className="w-[70%] py-2.5 rounded-sm text-xs font-semibold tracking-wide text-white transition-all duration-300 hover:opacity-90 flex items-center justify-center gap-1"
-                      style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
-                    >
+                    <button type="button" className="btn btn-sm w-[70%]">
                       <span>Explore</span>
                     </button>
 
@@ -422,7 +381,6 @@ export default function IndustrySolutionsSection() {
             </div>
           </div>
 
-          {/* ===== AGENT WORKFLOW IN ACTION ===== */}
           <div className="w-full max-w-6xl  space-y-14 pt-12">
             <div className="w-full max-w-5xl mx-start text-start space-y-4">
               <span className="text-[11px] lg:text-[24px] text-[#F7BFA0] block">
@@ -430,17 +388,13 @@ export default function IndustrySolutionsSection() {
               </span>
               <h3 className="text-3xl sm:text-4xl lg:text-[70px] font-bold tracking-tight leading-[115%]">
                 See the Agent <br />
-                <span className="text-[#2C80FF]">
-                  <Typewriter words={['Workflow in Action']} speed={100} delay={2500} />
-
-                </span>
+                <Typewriter words={['Workflow in Action']} speed={100} delay={2500} />
               </h3>
-              <p className="text-white text-xs sm:text-[18px] max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-[18px] max-w-xl leading-relaxed">
                 Each industry runs on its own agent. Drop it into a workflow, watch it read the context, and route the outcome. Select an industry to see it live.
               </p>
             </div>
 
-            {/* Phone mockup stage */}
             <div className="w-full max-w-6xl mx-auto 
   bg-[url('/industrybg.png')] bg-cover bg-center 
   rounded-xl py-20 px-6">
@@ -449,39 +403,30 @@ export default function IndustrySolutionsSection() {
 
                 <WaveCanvas />
 
-                {/* Glows */}
                 <div className="absolute -top-24 -right-20 w-[500px] h-[500px] rounded-full blur-[80px] pointer-events-none bg-[radial-gradient(circle,rgba(59,143,232,0.18)_0%,transparent_70%)]" />
                 <div className="absolute -bottom-20 -left-16 w-[400px] h-[400px] rounded-full blur-[80px] pointer-events-none bg-[radial-gradient(circle,rgba(247,169,124,0.12)_0%,transparent_70%)]" />
 
-                {/* Content */}
                 <div className="relative z-10 flex w-full gap-50">
 
-                  {/* LEFT */}
                   <div className="flex-1 flex flex-col justify-center gap-20   p-8 rounded-2xl  bg-white/0 backdrop-blur-sm border border-white/10 ">
 
-                    <h2 className="text-white text-[40px] font-semibold">Travel</h2>
-                    <h2 className="text-white text-[40px] font-semibold">Finance</h2>
-                    <h2 className="text-white text-[40px] font-semibold">Recruitment</h2>
+                    <h2 className="text-[40px] font-semibold">Travel</h2>
+                    <h2 className="text-[40px] font-semibold">Finance</h2>
+                    <h2 className="text-[40px] font-semibold">Recruitment</h2>
 
                   </div>
 
-                  {/* RIGHT — phone mockup */}
                   <div className="shrink-0 relative mx-auto">
-                    {/* Device frame */}
                     <div className="relative w-[300px] h-[600px] rounded-[46px] bg-[#080808] p-[9px] border border-white/10 shadow-[0_40px_90px_rgba(0,0,0,0.55),inset_0_0_0_2px_rgba(255,255,255,0.04)]">
-                      {/* Side buttons */}
                       <span className="absolute -left-[2px] top-[120px] w-[3px] h-9 rounded-l bg-[#1a1a1a]" />
                       <span className="absolute -left-[2px] top-[170px] w-[3px] h-14 rounded-l bg-[#1a1a1a]" />
                       <span className="absolute -right-[2px] top-[150px] w-[3px] h-16 rounded-r bg-[#1a1a1a]" />
 
-                      {/* Screen */}
                       <div className="relative w-full h-full rounded-[38px] overflow-hidden flex flex-col bg-gradient-to-b from-[#0A2F6E] via-[#2C80FF] to-[#F4D3C4]">
 
-                        {/* Notch */}
                         <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[100px] h-[22px] bg-black rounded-full z-30" />
 
-                        {/* Status bar */}
-                        <div className="flex items-center justify-between px-6 pt-2.5 pb-1 text-white text-[11px] font-semibold shrink-0 z-20">
+                        <div className="flex items-center justify-between px-6 pt-2.5 pb-1 text-[11px] font-semibold shrink-0 z-20">
                           <span>9:41</span>
                           <div className="flex items-center gap-1.5">
                             <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor">
@@ -498,7 +443,6 @@ export default function IndustrySolutionsSection() {
                           </div>
                         </div>
 
-                        {/* Header */}
                         <div className="flex items-center gap-2.5 px-3.5 py-2.5 border-b border-white/10 shrink-0 z-20">
                           <button className="w-6 h-6 flex items-center justify-center text-white/80 hover:text-white transition-colors shrink-0">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -509,7 +453,7 @@ export default function IndustrySolutionsSection() {
                             <KlaraIcon />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="text-[13.5px] font-bold text-white leading-tight truncate">Gogaga AI Assistant</div>
+                            <div className="text-[13.5px] font-bold leading-tight truncate">Gogaga AI Assistant</div>
                             <div className="flex items-center gap-1.5 text-[10.5px] text-white/60 leading-tight">
                               <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
                               Online · Your Trip Assistant
@@ -522,30 +466,26 @@ export default function IndustrySolutionsSection() {
                           </button>
                         </div>
 
-                        {/* Messages — live typing animation */}
                         <div ref={phoneChatRef} className="flex-1 overflow-y-auto px-3 py-3.5 flex flex-col gap-3" style={{ scrollbarWidth: 'none' }}>
 
-                          {/* Day divider */}
                           <div className="flex justify-center">
-                            <span className="px-3 py-0.5 rounded-full bg-black/15 text-white text-[9.5px] font-medium tracking-wide">Today</span>
+                            <span className="px-3 py-0.5 rounded-full bg-black/15 text-[9.5px] font-medium tracking-wide">Today</span>
                           </div>
 
                           {messages.map((msg, i) => <MessageRow key={`${msg.id}-${i}`} msg={msg} />)}
                           {isTyping && <TypingIndicator />}
                         </div>
 
-                        {/* Suggestions */}
                         {suggestions.length > 0 && (
                           <div className="flex gap-1.5 px-3 py-1.5 overflow-x-auto shrink-0" style={{ scrollbarWidth: 'none' }}>
                             {suggestions.map((s, i) => (
-                              <button key={i} className="shrink-0 px-3 py-1.5 rounded-full text-[10.5px] font-semibold bg-[#E8926F] border border-white text-white whitespace-nowrap" style={{ animation: 'chipIn 0.25s ease both', animationDelay: `${i * 0.12}s` }}>
+                              <button key={i} className="shrink-0 px-3 py-1.5 rounded-full text-[10.5px] font-semibold bg-[#E8926F] border border-white whitespace-nowrap" style={{ animation: 'chipIn 0.25s ease both', animationDelay: `${i * 0.12}s` }}>
                                 {s}
                               </button>
                             ))}
                           </div>
                         )}
 
-                        {/* Input */}
                         <div className="flex items-center gap-2 px-3 py-2.5 border-t border-white bg-white/10 backdrop-blur-sm shrink-0">
                           <button className="text-white hover:text-white transition-colors shrink-0">
                             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -575,7 +515,6 @@ export default function IndustrySolutionsSection() {
                           </button>
                         </div>
 
-                        {/* Home indicator */}
                         <div className="flex justify-center py-1.5 shrink-0">
                           <span className="w-28 h-1 rounded-full bg-black" />
                         </div>
@@ -591,16 +530,15 @@ export default function IndustrySolutionsSection() {
             </p>
           </div>
 
-          {/* ===== WHY INDUSTRY-SPECIFIC ===== */}
           <div className="w-full max-w-6xl space-y-14 pt-12 ">
             <div className="w-full max-w-5xl mx-start text-start space-y-4">
               <span className="text-xs lg:text-[24px] text-[#F5A086]">
                 Why Industry-Specific
               </span>
               <h3 className="text-3xl sm:text-4xl lg:text-[70px] font-bold ">
-                Generic AI <span className="text-[#2C80FF]"> <Typewriter words={["doesn't understand"]} speed={100} delay={2500} /></span> your business.
+                Generic AI <Typewriter words={["doesn't understand"]} speed={100} delay={2500} /> your business.
               </h3>
-              <p className="text-white text-xs sm:text-[18px] font-light max-w-2xl">
+              <p className="text-xs sm:text-[18px] font-light max-w-2xl">
                 Bolt-on chatbots break the moment your domain gets specific. Our agents are built for it.
               </p>
             </div>
@@ -620,7 +558,7 @@ export default function IndustrySolutionsSection() {
                     {card.title}
                   </h4>
 
-                  <p className="text-white text-xs sm:text-[16px] font-light leading-relaxed max-w-[400px]">
+                  <p className="text-xs sm:text-[16px] font-light leading-relaxed max-w-[400px]">
                     {card.desc}
                   </p>
                 </div>
@@ -635,26 +573,18 @@ export default function IndustrySolutionsSection() {
               </span>
               <h3 className="text-3xl sm:text-4xl lg:text-[70px] font-bold ">
                 Your industry has a problem <br />
-                <span className="text-[#2C80FF]"> <Typewriter words={['AI can solve. ']} speed={100} delay={2500} /></span>
+                <Typewriter words={['AI can solve. ']} speed={100} delay={2500} />
               </h3>
-              <p className="text-white text-xs sm:text-[18px] font-light max-w-2xl">
+              <p className="text-xs sm:text-[18px] font-light max-w-2xl">
                 Let’s find it together.
                 whether you’re in a live industry or a research phase we want to hear from you.
               </p>
             </div>
             <div className='flex gap-6'>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-4 h-[40px] text-[13px] sm:text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap"
-                style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
-              >
+              <Link to="/contact" className="btn capitalize whitespace-nowrap">
                 Start The conversation
               </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-4 h-[40px] text-[13px] sm:text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap border border-white"
-
-              >
+              <Link to="/contact" className="btn-outline capitalize whitespace-nowrap">
                 View our AI agents
               </Link>
             </div>
@@ -666,7 +596,6 @@ export default function IndustrySolutionsSection() {
       <section id="get-started" className="relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
 
-          {/* --- Main Content Wrapper with Background Image --- */}
           <div
             className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
@@ -681,7 +610,6 @@ export default function IndustrySolutionsSection() {
 
             <div className="w-full bg-transparent py-16 md:pb-60 flex items-center justify-center">
 
-              {/* Container */}
               <div className="w-full max-w-6xl px-4 flex justify-center">
 
                 <div
@@ -694,7 +622,6 @@ export default function IndustrySolutionsSection() {
                   }}
                 >
 
-                  {/* Heading */}
                   <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold] max-w-3xl">
                     Free Your team. <br />
                     Build your {" "}
@@ -704,25 +631,15 @@ export default function IndustrySolutionsSection() {
                     today !
                   </h3>
 
-                  {/* Description */}
-                  <p className="text-white text-xs sm:text-[18px] font-light max-w-2xl leading-relaxed">
+                  <p className="text-xs sm:text-[18px] font-light max-w-2xl leading-relaxed">
                     If you’re exploring relevance AI for the first time or discovering new features, we’ll quickly guide you to start great work immediately.
                   </p>
 
-                  {/* Button */}
                   <div className='flex gap-6'>
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center justify-center px-4 h-[40px] text-[13px] sm:text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap"
-                      style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
-                    >
+                    <Link to="/contact" className="btn capitalize whitespace-nowrap">
                       Try for Free
                     </Link>
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center justify-center px-4 h-[40px] text-[13px] sm:text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap border border-white"
-
-                    >
+                    <Link to="/contact" className="btn-outline capitalize whitespace-nowrap">
                       Get A demo
                     </Link>
                   </div>
@@ -735,7 +652,6 @@ export default function IndustrySolutionsSection() {
         </div>
 
 
-        {/* Subtle Bottom Glows */}
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
       </section>

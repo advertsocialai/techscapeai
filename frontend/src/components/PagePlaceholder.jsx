@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
 
-/* Reusable shell for the routed section pages.
-   Header + footer come from MainLayout — this just renders the page name
-   so every page stays visually consistent until real content is added. */
 export default function PagePlaceholder({ eyebrow, title, description }) {
   return (
     <div className="relative min-h-[70vh] flex items-center justify-center px-4 py-24 overflow-hidden">
-      {/* Ambient glow — matches ContactPage */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
@@ -23,11 +19,7 @@ export default function PagePlaceholder({ eyebrow, title, description }) {
             {description}
           </p>
         )}
-        <Link
-          to="/"
-          className="inline-flex items-center justify-center px-7 h-[44px] text-[14px] font-semibold text-white rounded-[8px]"
-          style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
-        >
+        <Link to="/" className="btn">
           Back to Home
         </Link>
       </div>

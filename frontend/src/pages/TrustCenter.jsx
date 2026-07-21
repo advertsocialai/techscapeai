@@ -15,7 +15,6 @@ export default function TrustCenter() {
       <main className="legal-page">
         <div className="legal-container">
 
-          {/* Header */}
           <div className="legal-header">
             <span className="legal-badge">Trust &amp; Safety</span>
             <h1>Trust Center</h1>
@@ -30,7 +29,6 @@ export default function TrustCenter() {
             </p>
           </div>
 
-          {/* Section 1 — AI Ethics */}
           <section className="legal-section">
             <h2>1. Our AI Ethics Principles</h2>
             <p>
@@ -92,7 +90,6 @@ export default function TrustCenter() {
             </div>
           </section>
 
-          {/* Section 2 — AI Infrastructure */}
           <section className="legal-section">
             <h2>2. AI Infrastructure and Partners</h2>
 
@@ -135,7 +132,6 @@ export default function TrustCenter() {
             </p>
           </section>
 
-          {/* Section 3 — Security */}
           <section className="legal-section">
             <h2>3. Security Practices</h2>
 
@@ -187,7 +183,6 @@ export default function TrustCenter() {
             </p>
           </section>
 
-          {/* Section 4 — Data Governance */}
           <section className="legal-section">
             <h2>4. Data Governance</h2>
 
@@ -242,7 +237,6 @@ export default function TrustCenter() {
             </p>
           </section>
 
-          {/* Section 5 — Compliance */}
           <section className="legal-section">
             <h2>5. Compliance and Certifications</h2>
 
@@ -304,7 +298,6 @@ export default function TrustCenter() {
             </div>
           </section>
 
-          {/* Section 6 — Responsible AI */}
           <section className="legal-section">
             <h2>6. Responsible AI Use Policy</h2>
             <p>
@@ -329,7 +322,6 @@ export default function TrustCenter() {
             </p>
           </section>
 
-          {/* Section 7 — Vulnerability */}
           <section className="legal-section">
             <h2>7. Vulnerability Disclosure</h2>
             <p>
@@ -349,7 +341,6 @@ export default function TrustCenter() {
             </div>
           </section>
 
-          {/* Section 8 — Contact */}
           <section className="legal-section legal-contact">
             <h2>8. Contact Our Trust Team</h2>
             <div className="legal-contact-card">

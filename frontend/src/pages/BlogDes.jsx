@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Typewriter from '../components/Typewriter';
-import GetStarted from '../components/GetStarted';
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
-
 
 export default function ArticleVoiceLayout() {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -13,7 +10,6 @@ export default function ArticleVoiceLayout() {
     const [visibleCount, setVisibleCount] = useState(3);
     const displayedArticles = allArticles.slice(0, visibleCount);
 
-    // Function to gather all clean text strings inside content node
     const getArticleText = () => {
         if (textToReadRef.current) {
             return textToReadRef.current.innerText || textToReadRef.current.textContent;
@@ -24,16 +20,14 @@ export default function ArticleVoiceLayout() {
     const handleVoiceToggle = () => {
         if ('speechSynthesis' in window) {
             if (isPlaying) {
-                // Stop speech stream safely
                 window.speechSynthesis.cancel();
                 setIsPlaying(false);
             } else {
                 const cleanText = getArticleText();
                 if (!cleanText) return;
 
-                // Configuration setup for browser Voice synthesis
                 const utterance = new SpeechSynthesisUtterance(cleanText);
-                utterance.rate = 1.0; // Standard speech tempo pacing
+                utterance.rate = 1.0;
                 utterance.pitch = 1.0;
 
                 utterance.onend = () => {
@@ -53,7 +47,6 @@ export default function ArticleVoiceLayout() {
         }
     };
 
-    // Clean memory leaks if component unmounts mid-speech stream
     useEffect(() => {
         return () => {
             if ('speechSynthesis' in window) {
@@ -64,7 +57,7 @@ export default function ArticleVoiceLayout() {
 
     return (
         <>
-            <section className="w-full  text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+            <section className="w-full py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
                 <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{
@@ -87,13 +80,10 @@ export default function ArticleVoiceLayout() {
         }}
       />
 
-                {/* Background Premium Radial Gradients */}
-                
                 <div className="absolute left-[-10%] top-[40%] w-[400px] h-[400px] bg-[#004477DB]/40 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="max-w-5xl mx-auto space-y-12">
 
-                    {/* Top Breadcrumb Meta row info */}
                     <div className="text-center space-y-2">
                         <span className="text-[16px] font-mono tracking-[0.3em] uppercase text-[#F7BFA0] block">
                             ARTICLE . APRIL 4 2026
@@ -101,15 +91,10 @@ export default function ArticleVoiceLayout() {
                     </div>
                     <div className="w-full max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 text-center px-4">
                         <div className="flex-1 space-y-4 order-2 md:order-1 w-full">
-                            <h2
-                                className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-2 bg-clip-text text-transparent"
-                                style={{
-                                    backgroundImage: "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-                                }}
-                            >
+                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-2">
                                 <Typewriter words={['Borderless AI Blog']} speed={100} delay={2500} />
                             </h2>
-                            <p className="text-white text-sm md:text-[20px] font-light leading-relaxed max-w-xl mx-auto">
+                            <p className="text-sm md:text-[20px] font-light leading-relaxed max-w-xl mx-auto">
                                 Discover how our values shape our mission and foster a culture of respect and collaboration with our customers and partners.
                             </p>
                         </div>
@@ -122,19 +107,6 @@ export default function ArticleVoiceLayout() {
                             />
                         </div>
                     </div>
-                    {/* <div className="flex  gap-3 item-center space-y-2">
-                        <div className="w-8 h-8 rounded-full bg-zinc-800 border border-white/10 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Rakesh Chandra" className="w-full h-full object-cover" />
-                        </div>
-                        <div>
-                            <div className="text-xs font-semibold text-white/90">Rakesh Chandra</div>
-                            <div className="text-[10px] font-mono text-white/40">CEO at NxtWave</div>
-                        </div>
-                    </div> */}
-
-
-
-                    {/* Central Article Banner Image Element */}
                     <div className="w-full aspect-[21/9] rounded-2xl overflow-hidden border border-white/[0.05] relative shadow-2xl group">
                         <img
                             src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&auto=format&fit=crop&q=80"
@@ -149,22 +121,16 @@ export default function ArticleVoiceLayout() {
                         </div>
                     </div>
 
-                    {/* =========================================================
-            AUDIO MEDIA PLAYER PLATFORM INTEGRATION CAPABILITY
-            ========================================================= */}
                     <div className="w-full rounded-full border border-white/[0.08] bg-[#0d0d11] p-3 sm:p-4 flex items-center justify-between px-6 shadow-xl relative group">
 
                         <div className="flex items-center gap-4">
-                            {/* Play Trigger Control Mechanism */}
                             <button
                                 onClick={handleVoiceToggle}
                                 className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1C68FA] to-blue-600 text-white flex items-center justify-center hover:scale-105 transition-all  z-10"
                             >
                                 {isPlaying ? (
-                                    // Stop Matrix Icon
                                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1" /></svg>
                                 ) : (
-                                    // Play Icon
                                     <svg className="w-5 h-5 fill-current translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                                 )}
                             </button>
@@ -173,11 +139,10 @@ export default function ArticleVoiceLayout() {
                                 <span className="text-xs sm:text-sm lg:text-[16px] font-semibold tracking-wide">
                                     {isPlaying ? "Reading Document Stream..." : "Listen to articles"}
                                 </span>
-                                <span className="text-[10px] lg:text-[14px] font-mono text-white">Duration: 5 minutes</span>
+                                <span className="text-[10px] lg:text-[14px] font-mono">Duration: 5 minutes</span>
                             </div>
                         </div>
 
-                        {/* DYNAMIC AUDIO WAVEFLOW SYSTEM (Animate on isPlaying) */}
                         <div className="flex items-center gap-[3px] h-6">
                             {[1.2, 2.3, 1.5, 2.8, 1.1, 2.4, 1.7, 2.1, 1.3, 2.6].map((multiplier, index) => (
                                 <div
@@ -194,33 +159,29 @@ export default function ArticleVoiceLayout() {
                         </div>
                     </div>
 
-                    {/* =========================================================
-            ARTICLE WRITTEN CONTENT zone (Target Node monitored by text-to-speech)
-            ========================================================= */}
                     <div ref={textToReadRef} className="space-y-8 pt-4">
 
                         <div className="space-y-4">
                             <h2 className="text-2xl lg:text-[32px] font-bold tracking-tight text-[#F7C8B4]">About NxtWave AI</h2>
                             <h3 className="text-base lg:text-[22px] font-semibold text-[#F7CBB4]">NxtWave</h3>
-                            <p className="text-white lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
+                            <p className="lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
                                 At NxtWave, we're dedicated to pushing the boundaries of AI technology and its applications. Based in Hyderabad, India, we are committed to developing innovative AI solutions that address real-world challenges and drive meaningful impact across industries.
                             </p>
-                            <p className="text-white lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
+                            <p className="lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
                                 NxtWave has secured significant funding from prominent investors, and we proudly collaborate with industry leaders such as Tata, Reliance, and HDFC Bank.
                             </p>
-                            <p className="text-white lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
+                            <p className="lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
                                 Through strategic alliances within the tech ecosystem, NxtWave has achieved significant product-market fit and is focused on building a sustainable, profitable organization for the future.
                             </p>
                         </div>
 
                         <div className="space-y-3">
                             <h4 className="text-base font-semibold lg:text-[22px] text-[#F7CBB4]">The Opportunity:</h4>
-                            <p className="text-white lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
+                            <p className="lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
                                 We are seeking a motivated AI Blogger to create engaging content on our key initiatives. You will manage content creation, collaborate with cross-functional teams, and ensure timely delivery of high-quality blog posts. This role is perfect for experienced content creators who thrive in a dynamic startup environment.
                             </p>
                         </div>
 
-                        {/* Structured Roles list node fields */}
                         <div className="space-y-4">
                             <h4 className="text-base font-semibold text-[#F7CBB4] lg:text-[22px]">Roles and Responsibilities</h4>
                             <ul className="space-y-3 list-none pl-0">
@@ -233,7 +194,7 @@ export default function ArticleVoiceLayout() {
                                     "Improve processes to enhance efficiency, collaboration, and content outcomes across the organization.",
                                     "Support the creation of impactful content that directly influences NxtWave's customer experience and business growth."
                                 ].map((item, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-white lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
+                                    <li key={idx} className="flex items-start gap-3 lg:text-[18px] text-sm sm:text-base font-light leading-relaxed">
                                         <span className="text-[#1C68FA] mt-1.5 block shrink-0 text-xs">◆</span>
                                         <span>{item}</span>
                                     </li>
@@ -246,16 +207,10 @@ export default function ArticleVoiceLayout() {
                 </div>
                 <div className="space-y-6 mx-auto max-w-6xl mt-12">
 
-                    <h3
-                        className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-                        style={{
-                            backgroundImage: "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-                        }}
-                    >
+                    <h3 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
                         <Typewriter words={['Releted Articles']} speed={100} delay={2500} />
                     </h3>
 
-                    {/* Structured grid constraint tracking exact 3 cards per row rule */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {displayedArticles.map((item, index) => (
                             <div
@@ -271,13 +226,13 @@ export default function ArticleVoiceLayout() {
                                     </div>
                                     <div className="text-[14px] font-mono uppercase tracking-wider text-[#7A7A7A]">ARTICLE • April 4, 2026</div>
                                     <h4 className="text-lg lg:text-[28px] font-bold tracking-tight text-[#F7C8B4] group-hover:text-[#1C68FA] transition-colors">AI Impact</h4>
-                                    <p className="text-white text-[16px] font-light leading-relaxed line-clamp-2">
+                                    <p className="text-[16px] font-light leading-relaxed line-clamp-2">
                                         We govern our products, datacenter infrastructure, and AI assets using responsible pathways to help every person and organization develop algorithms cleanly.
                                     </p>
                                 </div>
 
                                 <div className="flex items-center justify-between pt-6 mt-4">
-                                    <span className="text-[15px] font-medium text-white">
+                                    <span className="text-[15px] font-medium">
                                         Rakesh Chandra <span className="text-[14px] text-white/50 block font-light">CEO of NxtWave</span>
                                     </span>
 
@@ -293,12 +248,11 @@ export default function ArticleVoiceLayout() {
                         ))}
                     </div>
 
-                    {/* Conditional rendering logic: Shows button ONLY if array count exceeds total active target list */}
                     {allArticles.length > visibleCount && (
                         <div className="w-full flex justify-center pt-6">
                             <button
                                 onClick={() => setVisibleCount(prev => prev + 3)}
-                                className="px-6 py-2 rounded-lg bg-[#1C68FA] text-white text-[18px] font-medium tracking-wide hover:bg-[#1C68FA]/90 transition-colors shadow-lg shadow-[#1C68FA]/10"
+                                className="btn btn-sm"
                             >
                                 Load More
                             </button>
@@ -310,9 +264,6 @@ export default function ArticleVoiceLayout() {
             <section id="get-started" className="relative overflow-hidden">
                 <div className="max-w-[1440px] mx-auto relative z-10">
 
-
-
-                    {/* --- Main Content Wrapper with Background Image --- */}
                     <div
                         className={`w-full border border-black/5  transition-all duration-1000 delay-300`}
                         style={{
@@ -327,21 +278,15 @@ export default function ArticleVoiceLayout() {
 
                         <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-                            {/* Premium Bold Image-Matched Heading */}
-                            <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
+                            <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
                                 Ready To put AI to work ?
                             </h2>
-                            <p className="text-white mb-10 text-base md:text-lg leading-relaxed">
+                            <p className="mb-10 text-base md:text-lg leading-relaxed">
 
                                 Your first discovery call is free. Let's find the workflow we can solve together
                             </p>
 
-                            {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
-                            <button
-                                type="button"
-                                className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
-                                style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #7E85D4 55%, #E39994 100%)' }}
-                            >
+                            <button type="button" className="btn">
                                 Request A Demo
                             </button>
 
@@ -350,7 +295,6 @@ export default function ArticleVoiceLayout() {
                 </div>
 
 
-                {/* Subtle Bottom Glows */}
                 <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
                 <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
             </section>

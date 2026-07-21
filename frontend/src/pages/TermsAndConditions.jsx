@@ -15,7 +15,6 @@ export default function TermsAndConditions() {
       <main className="legal-page">
         <div className="legal-container">
 
-          {/* Header */}
           <div className="legal-header">
             <span className="legal-badge">Legal</span>
             <h1>Terms &amp; Conditions</h1>
@@ -31,7 +30,6 @@ export default function TermsAndConditions() {
             </p>
           </div>
 
-          {/* Section 1 */}
           <section className="legal-section">
             <h2>1. Definitions</h2>
             <ul>
@@ -64,7 +62,6 @@ export default function TermsAndConditions() {
             </ul>
           </section>
 
-          {/* Section 2 */}
           <section className="legal-section">
             <h2>2. Acceptance of Terms</h2>
             <p>
@@ -82,7 +79,6 @@ export default function TermsAndConditions() {
             </ul>
           </section>
 
-          {/* Section 3 */}
           <section className="legal-section">
             <h2>3. Services Description</h2>
             <p>Tech Scape AI LLP provides the following categories of services:</p>
@@ -115,7 +111,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 4 */}
           <section className="legal-section">
             <h2>4. AI Agent Usage Terms</h2>
 
@@ -158,7 +153,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 5 */}
           <section className="legal-section">
             <h2>5. Intellectual Property</h2>
 
@@ -193,7 +187,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 6 */}
           <section className="legal-section">
             <h2>6. Confidentiality</h2>
             <p>
@@ -204,7 +197,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 7 */}
           <section className="legal-section">
             <h2>7. Payment Terms</h2>
             <ul>
@@ -227,7 +219,6 @@ export default function TermsAndConditions() {
             </ul>
           </section>
 
-          {/* Section 8 */}
           <section className="legal-section">
             <h2>8. Disclaimer of Warranties</h2>
             <p>
@@ -243,7 +234,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 9 */}
           <section className="legal-section">
             <h2>9. Limitation of Liability</h2>
             <p>
@@ -266,7 +256,6 @@ export default function TermsAndConditions() {
             </ul>
           </section>
 
-          {/* Section 10 */}
           <section className="legal-section">
             <h2>10. Indemnification</h2>
             <p>
@@ -278,7 +267,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 11 */}
           <section className="legal-section">
             <h2>11. Termination</h2>
             <p>
@@ -289,7 +277,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 12 */}
           <section className="legal-section">
             <h2>12. Third-Party Services and Links</h2>
             <p>
@@ -300,7 +287,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 13 */}
           <section className="legal-section">
             <h2>13. Governing Law and Dispute Resolution</h2>
             <p>
@@ -316,7 +302,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 14 */}
           <section className="legal-section">
             <h2>14. Changes to These Terms</h2>
             <p>
@@ -326,7 +311,6 @@ export default function TermsAndConditions() {
             </p>
           </section>
 
-          {/* Section 15 */}
           <section className="legal-section legal-contact">
             <h2>15. Contact Us</h2>
             <div className="legal-contact-card">

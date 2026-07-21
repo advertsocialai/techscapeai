@@ -43,7 +43,6 @@ export default function LoginPage() {
 
   setStatus('loading')
 
-  // simulate API call
   setTimeout(() => {
     setStatus('idle')
 
@@ -54,7 +53,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-row overflow-hidden">
 
-      {/* Left panel - dark with background image */}
       <div
         className="hidden md:flex flex-1 items-center justify-center relative overflow-hidden"
         style={{ background: '#000000' }}
@@ -63,7 +61,6 @@ export default function LoginPage() {
         <img src={loginSphere} alt="3D Sphere" className="relative z-10 max-w-[473px] max-h-[483px] w-[80%]" />
       </div>
 
-      {/* Middle panel - TechScape login (existing) */}
       <div
         className="w-full md:w-[720px] flex-shrink-0 flex flex-col justify-center overflow-y-auto"
         style={{ background: '#FFFFFF', minHeight: '100vh' }}
@@ -128,8 +125,7 @@ export default function LoginPage() {
             {status === 'error' && <p className="text-[12px] text-red-500 text-center">Invalid credentials. Please try again.</p>}
 
             <button type="submit" disabled={status === 'loading'}
-              className="h-[48px] w-full flex items-center justify-center text-[14px] font-semibold text-white disabled:opacity-60 transition-all"
-              style={{ background: 'linear-gradient(97.97deg, #3D75F3 48.08%, #F5A086 100%)', borderRadius: '8px' }}>
+              className="btn w-full h-[48px]">
               {status === 'loading' ? <div className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" /> : 'Log In'}
             </button>
           </form>
@@ -158,19 +154,16 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right panel - GoGaga AI Concierge */}
       <div
         className="hidden lg:flex w-[420px] flex-shrink-0 flex-col justify-center relative overflow-hidden"
         style={{ background: 'linear-gradient(175deg, #0A1628 0%, #142240 20%, #1C3566 38%, #C87850 70%, #D29678 85%, #DCAA8C 100%)' }}
       >
-        {/* Stars */}
         {[[55,18],[140,30],[230,12],[310,45],[78,65],[360,22]].map(([l,t],i) => (
           <div key={i} style={{ position:'absolute', width:2, height:2, borderRadius:'50%', background:'white', opacity:0.7, top:t, left:l }} />
         ))}
 
         <div style={{ padding:'0 32px', position:'relative', zIndex:10 }}>
 
-          {/* GoGaga Logo */}
           <div style={{ display:'flex', alignItems:'center', gap:12, marginBottom:32 }}>
             <div style={{ width:48, height:48, borderRadius:14, background:'rgba(255,255,255,0.12)', border:'1px solid rgba(255,255,255,0.25)', display:'flex', alignItems:'center', justifyContent:'center' }}>
               <svg width="32" height="26" viewBox="0 0 167 134" fill="none">
@@ -186,13 +179,11 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Glass card */}
           <div style={{ background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.22)', borderRadius:24, padding:'28px 24px', backdropFilter:'blur(40px)', WebkitBackdropFilter:'blur(40px)' }}>
 
             <div style={{ fontSize:18, fontWeight:700, color:'#fff', marginBottom:4 }}>GoGaga Admin</div>
             <div style={{ fontSize:13, color:'rgba(255,220,200,0.75)', marginBottom:24 }}>Travel AI Command Center</div>
 
-            {/* Stats */}
             <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10, marginBottom:24 }}>
               {[
                 { label:'Leads Today', value:'24', color:'#60A5FA' },
@@ -207,7 +198,6 @@ export default function LoginPage() {
               ))}
             </div>
 
-            {/* Enter button */}
             <button
               onClick={() => navigate('/gogaga/dashboard')}
               style={{ width:'100%', height:50, background:'linear-gradient(135deg, rgba(200,120,80,0.85), rgba(220,96,56,0.9))', border:'1px solid rgba(255,180,140,0.4)', borderRadius:14, color:'#fff', fontSize:15, fontWeight:700, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:8 }}>
@@ -219,7 +209,6 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Live indicator */}
           <div style={{ display:'flex', alignItems:'center', gap:8, marginTop:20, justifyContent:'center' }}>
             <div style={{ width:7, height:7, borderRadius:'50%', background:'#10B981' }}></div>
             <span style={{ fontSize:12, color:'rgba(255,255,255,0.5)' }}>Agent online · WhatsApp active</span>

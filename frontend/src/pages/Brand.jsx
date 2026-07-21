@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Typewriter from '../components/Typewriter';
 import GetStarted from '../components/GetStarted';
@@ -25,10 +25,7 @@ export default function Brand() {
                 description="Discover TechScape AI's brand story, identity, and the values that drive our AI-first approach to business."
                 canonical="/brand"
             />
-            {/* ===================================================================
-            SECTION 1 — LOGO
-               =================================================================== */}
-            <section className="relative text-white py-20 lg:py-28 overflow-hidden">
+            <section className="relative py-20 lg:py-28 overflow-hidden">
                 <div
                     className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
                     style={{
@@ -69,26 +66,20 @@ export default function Brand() {
                         <div className="space-y-6">
                             <div>
 
-                                <h2
-                                    className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-                                    style={{
-                                        backgroundImage:
-                                            "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-                                    }}
-                                >
+                                <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
                                     <Typewriter words={['Logo']} speed={100} delay={2500} />
                                 </h2>
                             </div>
 
-                            <p className="text-[14px] lg:text-[18px] text-white leading-relaxed font-light">
+                            <p className="text-[14px] lg:text-[18px] leading-relaxed font-light">
                                 The Tech Scape AI logo represents the intersection of human-centered design and intelligent systems.
                             </p>
 
                             <div className="pt-2">
-                                <h4 className="text-[18px] font-semibold text-white tracking-wide mb-3">
+                                <h4 className="text-[18px] font-semibold tracking-wide mb-3">
                                     Symbol Meaning
                                 </h4>
-                                <ul className="space-y-3 text-white text-[18px] font-light leading-relaxed">
+                                <ul className="space-y-3 text-[18px] font-light leading-relaxed">
                                     <li className="flex items-start gap-2.5">
                                         <span className="text-[#3D75F3] font-medium mt-0.5">•</span>
                                         <span>Circles = people, customer touchpoints, connection</span>
@@ -107,13 +98,13 @@ export default function Brand() {
 
                         <div className="space-y-6 md:pt-14">
                             <div>
-                                <h4 className="text-[18px] font-semibold text-white tracking-wide mb-3">
+                                <h4 className="text-[18px] font-semibold tracking-wide mb-3">
                                     Wordmark
                                 </h4>
-                                <p className="text-white text-[14px] lg:text-[18px] font-light leading-relaxed mb-4">
+                                <p className="text-[14px] lg:text-[18px] font-light leading-relaxed mb-4">
                                     The rounded geometric typography communicates:
                                 </p>
-                                <ul className="space-y-2 text-white text-[18px] font-light pl-1">
+                                <ul className="space-y-2 text-[18px] font-light pl-1">
                                     <li className="flex items-center gap-2.5">
                                         <span className="w-1 h-1 rounded-full bg-white/30" /> Approachability
                                     </li>
@@ -129,7 +120,7 @@ export default function Brand() {
                                 </ul>
                             </div>
 
-                            <p className="text-white text-[14px] lg:text-[18px] font-light leading-relaxed pt-2">
+                            <p className="text-[14px] lg:text-[18px] font-light leading-relaxed pt-2">
                                 The logo is engineered to be instantly recognizable, scalable, and timeless.
                             </p>
                         </div>
@@ -196,10 +187,7 @@ export default function Brand() {
                 </div>
             </section>
 
-            {/* ===================================================================
-                SECTION 2 — CO-BRANDING & COLORS
-               =================================================================== */}
-            <section className="relative text-white py-20 lg:py-28 overflow-hidden">
+            <section className="relative py-20 lg:py-28 overflow-hidden">
 
                 <div className="absolute right-[-20%] top-[15%] w-[700px] h-[900px] bg-gradient-to-b from-[#3D75F3]/55 via-[#1b3a6b]/10 to-transparent rounded-full blur-[140px] pointer-events-none z-0" />
 
@@ -208,21 +196,15 @@ export default function Brand() {
                     <div className="space-y-8 text-left">
                         <div>
 
-                            <h2
-                                className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-                                style={{
-                                    backgroundImage:
-                                        "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-                                }}
-                            >
+                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
                                 <Typewriter words={['Co-Branding']} speed={100} delay={2500} />
                             </h2>
-                            <p className="text-[14px] lg:text-[20px] text-white font-light leading-relaxed">
+                            <p className="text-[14px] lg:text-[20px] font-light leading-relaxed">
                                 When appearing alongside partner logos:
                             </p>
                         </div>
 
-                        <ul className="space-y-2.5 text-white text-[18px] font-light pl-1 list-none">
+                        <ul className="space-y-2.5 text-[18px] font-light pl-1 list-none">
                             <li className="flex items-start gap-2">
                                 <span className="text-[#3D75F3]">•</span> Align logos horizontally
                             </li>
@@ -240,7 +222,7 @@ export default function Brand() {
                             </li>
                         </ul>
 
-                        <p className="text-white text-[18px] font-light  pt-2">
+                        <p className="text-[18px] font-light  pt-2">
                             This ensures professional, balanced co-branded layouts.
                         </p>
 
@@ -253,30 +235,21 @@ export default function Brand() {
                     </div>
 
 
-                    {/* =========================================================
-                        2. COLORS
-                       ========================================================= */}
                     <div className="space-y-12 text-left">
                         <div>
-                            <h2
-                                className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-                                style={{
-                                    backgroundImage:
-                                        "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-                                }}
-                            >
+                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
                                 <Typewriter words={['Colors']} speed={100} delay={2500} />
                             </h2>
 
-                            <h3 className="text-[20px] lg:text-[32px] font-bold text-white mb-3">
+                            <h3 className="text-[20px] lg:text-[32px] font-bold mb-3">
                                 Primary Colours
                             </h3>
-                            <p className="text-white text-[18px] font-light max-w-xl leading-relaxed mb-4">
+                            <p className="text-[18px] font-light max-w-xl leading-relaxed mb-4">
                                 These colors reflect emotion-driven CX with a balance of trust and innovation.
                             </p>
-                            <div className="flex flex-wrap gap-x-6 gap-y-1 text-[18px] font-mono tracking-wider text-white">
-                                <span>Tech Blue - <span className="text-white">#3D75F3</span></span>
-                                <span>Peach Glow - <span className="text-white">#F5A086</span></span>
+                            <div className="flex flex-wrap gap-x-6 gap-y-1 text-[18px] font-mono tracking-wider">
+                                <span>Tech Blue - <span>#3D75F3</span></span>
+                                <span>Peach Glow - <span>#F5A086</span></span>
                             </div>
                         </div>
 
@@ -289,21 +262,21 @@ export default function Brand() {
 
                         <div className="space-y-6 pt-4">
                             <div>
-                                <h3 className="text-[20px] lg:text-[32px] font-bold text-white mb-2">
+                                <h3 className="text-[20px] lg:text-[32px] font-bold mb-2">
                                     Secondary Colours
                                 </h3>
-                                <p className="text-white text-[18px] font-light max-w-xl leading-relaxed mb-4">
+                                <p className="text-[18px] font-light max-w-xl leading-relaxed mb-4">
                                     Secondary colors create warmth, dimension, and a more expressive CX storytelling system.
                                 </p>
 
-                                <div className="grid grid-cols-2 gap-4 text-[18px] font-mono tracking-wider text-white">
+                                <div className="grid grid-cols-2 gap-4 text-[18px] font-mono tracking-wider">
                                     <div className="space-x-4">
-                                        <span>Deep Navy - <span className="text-white">#0F1F3A</span></span>
-                                        <span>Muted Teal - <span className="text-white">#4DA7A0</span></span>
+                                        <span>Deep Navy - <span>#0F1F3A</span></span>
+                                        <span>Muted Teal - <span>#4DA7A0</span></span>
                                     </div>
                                     <div className="space-x-4">
-                                        <span>Soft Lilac - <span className="text-white">#DAD7FF</span></span>
-                                        <span>Warm Sand - <span className="text-white">#EADCCB</span></span>
+                                        <span>Soft Lilac - <span>#DAD7FF</span></span>
+                                        <span>Warm Sand - <span>#EADCCB</span></span>
                                     </div>
                                 </div>
                             </div>
@@ -342,13 +315,7 @@ export default function Brand() {
                     <div className="space-y-8 text-left">
                         <div>
 
-                            <h2
-                                className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-                                style={{
-                                    backgroundImage:
-                                        "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-                                }}
-                            >
+                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
                                 <Typewriter words={['Typography']} speed={100} delay={2500} />
                             </h2>
                         </div>
@@ -362,13 +329,7 @@ export default function Brand() {
                     <div className="space-y-8 text-left">
                         <div>
 
-                            <h2
-                                className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-                                style={{
-                                    backgroundImage:
-                                        "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-                                }}
-                            >
+                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
                                 <Typewriter words={['Merchandise']} speed={100} delay={2500} />
                             </h2>
                         </div>
@@ -401,7 +362,7 @@ export default function Brand() {
                             Let's Build Something Together
                         </h2>
 
-                        <p className="text-white max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
+                        <p className="max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
                             Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
                             The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
                         </p>
@@ -426,10 +387,10 @@ export default function Brand() {
                             </div>
 
                             <div className="lg:pl-6 text-left lg:pt-2">
-                                <h3 className="text-[33px] md:text-[36px] font-semibold text-white mb-6 leading-tight tracking-tight">
+                                <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
                                     Book a Free Consultation Directly
                                 </h3>
-                                <p className="text-white mb-10 text-base md:text-lg leading-relaxed max-w-md">
+                                <p className="mb-10 text-base md:text-lg leading-relaxed max-w-md">
                                     Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
                                 </p>
 
@@ -451,19 +412,15 @@ export default function Brand() {
 
                         <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-                            <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
+                            <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
                                 Ready To put AI to work ?
                             </h2>
-                            <p className="text-white mb-10 text-base md:text-lg leading-relaxed">
+                            <p className="mb-10 text-base md:text-lg leading-relaxed">
 
                                 Your first discovery call is free. Let's find the workflow we can solve together
                             </p>
 
-                            <button
-                                type="button"
-                                className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
-                                style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #7E85D4 55%, #E39994 100%)' }}
-                            >
+                            <button type="button" className="btn">
                                 Request A Demo
                             </button>
 

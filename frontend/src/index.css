@@ -1,34 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Outfit', system-ui, sans-serif;
+}
+
 @layer base {
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
-body {
-  background-color: #000000;
-  color: #FFFFFF;
-  font-family: 'Outfit', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
+  body {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  input, textarea, select, button { font-family: inherit; color: inherit; }
 
   ::selection { background: rgba(61,117,243,0.3); color: #fff; }
 
-  /* Global heading typography — consistent white color + a per-level
-     responsive scale, centralized here for uniformity & SEO. Components
-     may still override with explicit text-[..] / font-* utilities. */
+
   h1, h2, h3, h4, h5, h6 {
     color: #FFFFFF;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
   }
-  h1 { font-size: clamp(2.25rem, 1.5rem + 2.5vw, 3.25rem); } /* 36 → 52px */
-  h2 { font-size: clamp(2rem, 1.4rem + 2vw, 3.125rem); }     /* 32 → 50px */
-  h3 { font-size: 1.25rem; }                                  /* 20px */
-  h4 { font-size: 1.125rem; }                                 /* 18px */
-  h5 { font-size: 1rem; }                                     /* 16px */
-  h6 { font-size: 0.875rem; }                                 /* 14px */
+  h1 { font-size: 56px; }
+  h2 { font-size: 44px; }
+  h3 { font-size: 32px; }
+  h4 { font-size: 24px; }
+  h5 { font-size: 20px; }
+  h6 { font-size: 16px; }
+  p  { font-size: 18px; line-height: 1.7; color: #FFFFFF; }
+
+  /* Laptop */
+  @media (max-width: 1280px) {
+    h1 { font-size: 48px; }
+    h2 { font-size: 38px; }
+    h3 { font-size: 28px; }
+    h4 { font-size: 22px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 16px; }
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    h1 { font-size: 40px; }
+    h2 { font-size: 32px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    h5 { font-size: 18px; }
+    h6 { font-size: 15px; }
+    p  { font-size: 16px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 21px; }
+    h4 { font-size: 18px; }
+    h5 { font-size: 16px; }
+    h6 { font-size: 14px; }
+    p  { font-size: 15px; }
+  }
+
+  /* 4K / large desktop */
+  @media (min-width: 1920px) {
+    h1 { font-size: 64px; }
+    h2 { font-size: 52px; }
+    h3 { font-size: 36px; }
+    h4 { font-size: 28px; }
+    h5 { font-size: 22px; }
+    h6 { font-size: 18px; }
+    p  { font-size: 18px; }
+  }
 
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: #000; }
@@ -36,15 +86,6 @@ body {
 }
 
 @layer components {
-  /* ── Standardized card ──
-     One reusable card style used across the whole project:
-     • background  → brand gradient (salmon → near-black)
-     • padding     → 24px (32px on lg)
-     • radius      → 16px, subtle border
-     • sizing      → fluid width (fills grid cell), equal height per row,
-                     min-height floor so short cards stay balanced
-     Placed in the components layer so Tailwind utilities can still
-     override individual cards when genuinely needed. */
   .card,
   .card-hover {
     width: 100%;
@@ -68,7 +109,7 @@ body {
 }
 
 @layer utilities {
-  /* ── Brand gradient: blue → salmon ── */
+
   .grad {
     background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%);
   }
@@ -78,7 +119,7 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  /* Blue-only gradient text (for "We Solve", "We Build", "Work") */
+
   .blue-text {
     background: linear-gradient(97.97deg, #3D75F3 0%, #60A5FA 100%);
     -webkit-background-clip: text;
@@ -86,24 +127,50 @@ body {
     background-clip: text;
   }
 
-  /* Orange label */
   .label { color: #F5A086; font-size: 24px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
 
-  /* CTA button (pill) */
-  .btn {
-    background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%);
-    transition: opacity 0.2s, transform 0.2s;
-    border-radius: 999px;
-  }
-  .btn:hover { opacity: 0.88; transform: translateY(-1px); }
 
-  /* Navbar button (slight radius) */
+  .btn,
+  .btn-outline,
   .btn-nav {
-    background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%);
-    transition: opacity 0.2s;
-    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    color: #FFFFFF;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s, background-color 0.2s, border-color 0.2s;
   }
-  .btn-nav:hover { opacity: 0.88; }
+  .btn,
+  .btn-nav { background: linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%); }
+  .btn:hover,
+  .btn-nav:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-1px);
+  }
+
+  .btn-nav { padding: 10px 22px; border-radius: 6px; font-size: 14px; }
+
+  .btn-sm { padding: 9px 20px; font-size: 14px; }
+  .btn-lg { padding: 15px 36px; font-size: 16px; }
+
+  .btn:disabled,
+  .btn-outline:disabled,
+  .btn-nav:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
   /* Tag pill on service cards */
   .tag {
@@ -161,6 +228,29 @@ body {
   @media (max-width: 1024px) { .wrap { padding-left: 5%; padding-right: 5%; } }
   @media (max-width: 640px)  { .wrap { padding-left: 5%; padding-right: 5%; } }
 
+  /* Carousel track — hides the native bar, arrows drive it instead */
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Why-it-works scroll scene */
+  .wiw-ball {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, #ffd0c0 0%, #af90af 45%, #0050fe 100%);
+    box-shadow: 0 0 40px rgba(91,140,255,0.5), 0 0 80px rgba(175,144,175,0.25);
+    transition: opacity 0.3s ease;
+    will-change: left, top, opacity;
+  }
+  @media (min-width: 768px) {
+    .wiw-ball { width: 56px; height: 56px; }
+  }
+  .wiw-box { transition: padding 0.45s ease, background 0.45s ease; }
+  .wiw-box-inner {
+    transition: background 0.5s ease, color 0.5s ease;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  }
+
   /* Accordion chevron */
   .chev { transition: transform 0.25s; }
   .chev.open { transform: rotate(180deg); }
@@ -211,10 +301,6 @@ body {
     animation: shimmer 3s linear infinite;
   }
 
-  /* Marquee ticker — clients/partners strip.
-     translate3d + will-change promote the track to its own GPU compositor
-     layer so the continuous animation is composited off the main thread —
-     avoids the forced reflow / layout thrash flagged by PageSpeed. */
   @keyframes marquee {
     0%   { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(-50%, 0, 0); }
@@ -227,7 +313,6 @@ body {
   }
   .marquee-track:hover { animation-play-state: paused; }
 
-  /* City showcase — dual-row marquee (left + right) */
   @keyframes marquee-right {
     0%   { transform: translate3d(-50%, 0, 0); }
     100% { transform: translate3d(0, 0, 0); }
@@ -272,8 +357,6 @@ body {
   will-change: transform;
 }
 
-/* Respect users who prefer reduced motion — disables the marquee/float loops
-   that would otherwise run continuously and keep the compositor busy. */
 @media (prefers-reduced-motion: reduce) {
   .marquee-track,
   .city-track-left,
@@ -283,10 +366,7 @@ body {
     animation: none !important;
   }
 }
-/* ============================================
-   Tech Scape AI — Legal Pages CSS
-   Append this to the bottom of src/index.css
-   ============================================ */
+
 
 .legal-page {
   background-color: #000000;
@@ -323,7 +403,6 @@ body {
 }
 
 .legal-header h1 {
-  font-size: clamp(32px, 5vw, 52px);
   font-weight: 700;
   color: #FFFFFF;
   line-height: 1.1;
@@ -359,7 +438,7 @@ body {
 }
 
 .legal-section h2 {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   color: #FFFFFF;
   margin: 0 0 20px;
@@ -367,16 +446,15 @@ body {
 }
 
 .legal-section h3 {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.75);
   margin: 28px 0 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
 }
 
 .legal-section p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.85;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 16px;
@@ -388,7 +466,7 @@ body {
 }
 
 .legal-section ul li {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 8px;
@@ -539,7 +617,10 @@ body {
 @media (max-width: 640px) {
   .legal-page { padding: 80px 0 100px; }
   .legal-container { padding: 0 16px; }
-  .legal-header h1 { font-size: 28px; }
+  .legal-section h2 { font-size: 22px; }
+  .legal-section h3 { font-size: 16px; }
+  .legal-section p,
+  .legal-section ul li { font-size: 15px; }
   .trust-compliance-grid { grid-template-columns: 1fr; }
 }
 

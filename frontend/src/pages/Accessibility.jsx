@@ -15,7 +15,6 @@ export default function Accessibility() {
       <main className="legal-page">
         <div className="legal-container">
 
-          {/* Header */}
           <div className="legal-header">
             <span className="legal-badge">Legal</span>
             <h1>Accessibility Statement</h1>
@@ -30,7 +29,6 @@ export default function Accessibility() {
             </p>
           </div>
 
-          {/* Section 1 */}
           <section className="legal-section">
             <h2>1. Our Commitment</h2>
             <p>
@@ -49,7 +47,6 @@ export default function Accessibility() {
             </p>
           </section>
 
-          {/* Section 2 */}
           <section className="legal-section">
             <h2>2. Conformance Status</h2>
             <p>
@@ -86,7 +83,6 @@ export default function Accessibility() {
             </ul>
           </section>
 
-          {/* Section 3 */}
           <section className="legal-section">
             <h2>3. Technical Specifications</h2>
             <p>
@@ -137,7 +133,6 @@ export default function Accessibility() {
             </p>
           </section>
 
-          {/* Section 4 */}
           <section className="legal-section">
             <h2>4. AI Agent Accessibility</h2>
             <p>
@@ -169,7 +164,6 @@ export default function Accessibility() {
             </ul>
           </section>
 
-          {/* Section 5 */}
           <section className="legal-section">
             <h2>5. Known Limitations</h2>
             <p>
@@ -196,7 +190,6 @@ export default function Accessibility() {
             </p>
           </section>
 
-          {/* Section 6 */}
           <section className="legal-section">
             <h2>6. Formal Complaints</h2>
             <p>
@@ -208,7 +201,6 @@ export default function Accessibility() {
             </p>
           </section>
 
-          {/* Section 7 */}
           <section className="legal-section">
             <h2>7. Assessment Approach</h2>
             <p>
@@ -229,7 +221,6 @@ export default function Accessibility() {
             </p>
           </section>
 
-          {/* Section 8 */}
           <section className="legal-section legal-contact">
             <h2>8. Feedback and Contact</h2>
             <p>

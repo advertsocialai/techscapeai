@@ -5,17 +5,6 @@ import Typewriter from '../components/Typewriter';
 import GetStarted from '../components/GetStarted';
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import SEO from '../components/SEO';
-const CHECK_ITEMS = [
-  'No Commitment Required',
-  'Response Within 24 Hours',
-  'Tailored To Your Goals',
-]
-
-const CheckIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#3D75F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M11.5 3.5L5.25 9.75L2.5 7" />
-  </svg>
-)
 
 const financialImg = '/car2.svg';
 const health = '/car3.svg';
@@ -26,8 +15,6 @@ const valleyImage = '/car7.svg';
 const hyderabadImg = '/car10.svg';
 const st = '/car8.svg';
 const how = '/car12.svg';
-
-// ─── Data defined outside components ─────────────────────────────────────────
 
 const steps = [
   {
@@ -44,7 +31,6 @@ const steps = [
   }
 ];
 
-// ─── Accordion Item ───────────────────────────────────────────────────────────
 const AccordionItemContent = ({ title, points, imgSrc, logoSrc, isOpen, onToggle }) => {
   return (
     <div className="relative py-4 transition-colors duration-300">
@@ -108,7 +94,6 @@ const AccordionItemContent = ({ title, points, imgSrc, logoSrc, isOpen, onToggle
         )}
       </AnimatePresence>
 
-      {/* gradient bottom border */}
       <div
         className="absolute bottom-0 left-0 h-px w-full"
         style={{
@@ -138,11 +123,6 @@ const CareerPage = () => {
       background: 'linear-gradient(135deg, #FAD4BF 0%, #efc297 70%)',
       borderRadius: '50%', filter: 'blur(120px)', opacity: 0.6, zIndex: 0, pointerEvents: 'none'
     },
-    leftGlows: {
-      position: 'absolute', width: '300px', height: '258px', top: '2400px', left: '-150px',
-      background: 'linear-gradient(135deg, #FAD4BF 0%, #efc297 70%)',
-      borderRadius: '50%', filter: 'blur(120px)', opacity: 0.6, zIndex: 0, pointerEvents: 'none'
-    },
     rightGlow: {
       position: 'absolute', width: '286px', height: '380px', top: '450px', right: '-50px',
       background: '#3579CE', borderRadius: '50%', filter: 'blur(120px)', opacity: 0.6,
@@ -161,33 +141,10 @@ const CareerPage = () => {
     },
     left: { flex: '1', minWidth: '320px' },
     right: { flex: '1', minWidth: '320px' },
-    h1: { fontSize: 'clamp(2.2rem, 5vw, 2.5rem)', fontWeight: '600', lineHeight: '1.1', marginBottom: '24px' },
-    p: { color: '#a0a0a0', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '40px', maxWidth: '400px' },
-    button: {
-      width: '207px', height: '42px', borderRadius: '8px', border: 'none',
-      background: 'linear-gradient(90deg, #0050fe 0%, #af90af 66%, #F5A186 100%)',
-      color: 'white', fontWeight: '600', cursor: 'pointer'
-    },
     imageCard: { position: 'relative', borderRadius: '20px', width: '100%', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' },
-    image: { width: '100%', display: 'block', borderRadius: '20px' },
-    gradientHeading: {
-      background: 'linear-gradient(90deg, #3b82f6, #FAD4BF)',
-      WebkitBackgroundClip: 'text', backgroundClip: 'text',
-      WebkitTextFillColor: 'transparent', fontWeight: 'bold',
-      fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '60px', display: 'inline-block'
-    },
-    formButton: {
-      width: '100%', padding: '15px',
-      background: 'linear-gradient(90deg, #3b82f6, #FAD4BF)',
-      border: 'none', borderRadius: '8px', color: '#000', fontWeight: 'bold', cursor: 'pointer'
-    },
-    gradientText: {
-      background: 'linear-gradient(90deg, #3b82f6, #FAD4BF)',
-      WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
-    }
+    image: { width: '100%', display: 'block', borderRadius: '20px' }
   };
 
-  // ── Data ──────────────────────────────────────────────────────────────────
   const roles = [
     { title: 'Junior AI Engineer', dept: 'AI & Engineering', type: 'Full-time | Remote' },
     { title: 'Social Media Manager', dept: 'Design & Content', type: 'Full-time | Remote' },
@@ -270,7 +227,6 @@ const CareerPage = () => {
     position: 'relative', overflow: 'hidden',
   };
 
-  // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <>
       <SEO
@@ -278,30 +234,23 @@ const CareerPage = () => {
         description="Join TechScape AI — we're building the future of AI with engineers, designers, and business operators across India, USA, and Canada."
         canonical="/careers"
       />
-      {/* ── 1. Hero Section ─────────────────────────────────────────── */}
       <section style={styles.section}>
         <div style={styles.leftGlow} />
         <div style={styles.rightGlow} />
         <div style={styles.container}>
           <div style={styles.left}>
-            <h2
-              className="inline-block text-[32px] sm:text-[42px] lg:text-[54px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-              }}
-            >
+            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[54px] font-extrabold tracking-[-0.025em] mb-4">
               <Typewriter
                 words={['Build What the World Hasn\'t Seen Yet']}
                 speed={100}
                 delay={2500}
               />
             </h2>
-            <p className="text-[14px] lg:text-[18px] text-white leading-relaxed font-light pb-6">
+            <p className="text-[14px] lg:text-[18px] leading-relaxed font-light pb-6">
               At Tech Scape AI, we're not maintaining systems we're inventing them. Join a team obsessed with AI agents, autonomous workflows, and technology that makes entire industries smarter. This is where your best work happens.
             </p>
             <button
-              style={styles.button}
+              className="btn"
               onClick={() =>
                 document
                   .getElementById('open-positions')
@@ -322,20 +271,11 @@ const CareerPage = () => {
           </div>
         </div>
 
-
-        {/* ── 2. What It Takes ────────────────────────────────────────── */}
-
         <div style={styles.containercol}>
-          <h2
-            className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-            }}
-          >
+          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
             <Typewriter words={['What It Takes']} speed={100} delay={2500} />
           </h2>
-          <p className="text-[14px] lg:text-[28px] text-white leading-relaxed font-light pb-6">
+          <p className="text-[14px] lg:text-[28px] leading-relaxed font-light pb-6">
 
             Visionary teams build legendary companies.
           </p>
@@ -361,19 +301,12 @@ const CareerPage = () => {
         </div>
       </section>
 
-      {/* ── 3. Filter Buttons ───────────────────────────────────────── */}
-      <section id="open-positions" className="py-20 lg:py-28 text-center text-white">
+      <section id="open-positions" className="py-20 lg:py-28 text-center">
         <div className="wrap">
           <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
             Open Positions
           </p>
-          <h2
-            className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-            }}
-          >
+          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
             <Typewriter words={['Featured Roles']} speed={100} delay={2500} />
           </h2>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap', paddingTop: '10px' }}>
@@ -395,8 +328,7 @@ const CareerPage = () => {
         </div>
       </section>
 
-      {/* ── 4. Roles List ───────────────────────────────────────────── */}
-      <section className="py-20 lg:py-2 relative overflow-hidden text-white">
+      <section className="py-20 lg:py-2 relative overflow-hidden">
         <div className="wrap">
           <h2 style={{ fontSize: '23px', marginBottom: '40px' }}>Feature Roles</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(450px, 100%), 1fr))', gap: '20px' }}>
@@ -421,18 +353,11 @@ const CareerPage = () => {
         </div>
       </section>
 
-      {/* ── 5. Life At TechScape (Accordion) ───────────────────────── */}
-      <section className="py-20 lg:py-28 relative overflow-hidden text-white">
+      <section className="py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute top-30 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#FAD4BF]/15 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-40 right-[-100px] w-[400px] h-[300px] bg-[#3579CE]/55 blur-[150px] rounded-full pointer-events-none" />
         <div className="wrap">
-          <h2
-            className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-            }}
-          >
+          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
             <Typewriter words={['Life at']} speed={100} delay={2500} />
             <br />
             <Typewriter words={['Tech Scape AI']} speed={100} delay={2500} />
@@ -455,28 +380,17 @@ const CareerPage = () => {
         </div>
       </section>
 
-      {/* ── 6. Vision / Cities Section ──────────────────────────────── */}
-      <section className="py-20 lg:py-28 p-6 relative overflow-hidden text-white">
+      <section className="py-20 lg:py-28 p-6 relative overflow-hidden">
         <div className="absolute top-170 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#3579CE]/35 blur-[120px] rounded-full pointer-events-none" />
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2
-            className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-            }}
-          >
-            <span style={{ color: '#FF7A00', WebkitTextFillColor: '#FF7A00' }}>
-              <Typewriter words={['Precision of ISRO.   ']} speed={100} delay={2500} />
-            </span>
+          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+            <Typewriter words={['Precision of ISRO.   ']} speed={100} delay={2500} />
             <br />
-            <span style={{ color: '#FFFFFF', WebkitTextFillColor: '#FFFFFF' }}>
-              <Typewriter words={['Ambition of Silicon Valley. ']} speed={100} delay={2500} />
-            </span>
+            <Typewriter words={['Ambition of Silicon Valley. ']} speed={100} delay={2500} />
             <br />
             <div className='flex gap-0'>
               <img src={valleyImage} alt="valley" style={{ width: '150px', borderRadius: '15px', marginTop: '-35px' }} />
-              <span style={{ color: '#22C55E', WebkitTextFillColor: '#22C55E', marginLeft: '-26px' }}>
+              <span style={{ marginLeft: '-26px' }}>
                 <Typewriter words={['of INDIA..']} speed={100} delay={2500} />
               </span>
             </div>
@@ -484,7 +398,6 @@ const CareerPage = () => {
           </h2>
 
           <div style={glassCard}>
-            {/* Row 1 — scrolls left */}
             <div className="city-marquee">
               <div className="city-track city-track-left">
                 {[...cities, ...cities].map((city, index) => (
@@ -499,7 +412,6 @@ const CareerPage = () => {
               </div>
             </div>
 
-            {/* Row 2 — scrolls right */}
             <div className="city-marquee">
               <div className="city-track city-track-right">
                 {[...citiesRow2, ...citiesRow2].map((city, index) => (
@@ -528,13 +440,7 @@ const CareerPage = () => {
           }}
           ></div>
 
-          <h2
-            className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, #0050fe 0%, #af90af 66%, #ffd0c0 100%)",
-            }}
-          >
+          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
             <Typewriter words={['How We Hire']} speed={100} delay={2500} />
           </h2>
           <p style={{ marginBottom: '40px', fontSize: '1.15rem' }}>
@@ -561,15 +467,12 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
         </div>
       </section>
 
-      {/* ── 7. Interview Process ─────────────────────────────────────── */}
-      <section className=" text-white py-20 lg:py-28">
+      <section className=" py-20 lg:py-28">
         <div className="wrap">
-          {/* Main Section Header */}
           <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 tracking-tight">
             The Interview Process-3 steps
           </h2>
 
-          {/* Vertical Cards Stack Container */}
           <div className="space-y-6">
             {steps.map((step, index) => (
               <div
@@ -577,21 +480,16 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
                 className="card w-full rounded-2xl border border-white/[0.06] p-6 md:p-8 relative overflow-hidden transition-all duration-300 hover:border-white/10"
 
               >
-                {/* Flex wrapper for the internal content indicator timeline */}
                 <div className="flex gap-6 md:gap-8 items-start relative z-10">
 
-                  {/* Left side timeline inside the card itself */}
                   <div className="flex flex-col items-center self-stretch pt-2">
-                    {/* Subtle Connecting Line */}
                     <div className="w-[1px] h-full min-h-[50px] bg-white relative flex justify-center items-end">
-                      {/* Bottom white indicator dot exact to reference template */}
                       <div className="absolute bottom-0 w-2.5 h-2.5 rounded-full bg-white shadow-lg shadow-white/50" />
                     </div>
                   </div>
 
-                  {/* Right side textual wrapper block */}
                   <div className="flex-1 space-y-3">
-                    <h3 className="text-xl md:text-[24px] font-medium text-white tracking-wide">
+                    <h3 className="text-xl md:text-[24px] font-medium tracking-wide">
                       {step.title}
                     </h3>
                     <p className="text-white/90 text-[14px] md:text-[18px] font-light leading-relaxed max-w-5xl">
@@ -606,18 +504,17 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
         </div>
       </section>
 
-      {/* ── 8. Safety, Accommodation & Contact Form ──────────────────── */}
-      <div className=" text-white  p-2 md:p-1 mb-6">
+      <div className="  p-2 md:p-1 mb-6">
         <div className="wrap mb-16 space-y-8">
           <div>
             <h2 className="text-2xl lg:text-[40px] font-normal mb-4">Your Safety Matters</h2>
-            <p className="text-white lg:text-[18px] text-sm leading-relaxed border-l-2 border-white pl-4 ml-8">
+            <p className="lg:text-[18px] text-sm leading-relaxed border-l-2 border-white pl-4 ml-8">
               To protect yourself from scams, TechScape AI recruiters will only contact you from @techscapeai.in email addresses. We will never ask for money, fees or any payment before or during the hiring process. If you receive a suspicious message claiming to be from us, do not click any links. Contact us directly at hr@techscapeai.in to verify.
             </p>
           </div>
           <div>
             <h2 className="text-2xl lg:text-[40px] font-normal mb-4">Accommodation</h2>
-            <p className="text-white text-sm lg:text-[18px] leading-relaxed border-l-2 border-white pl-4 ml-8">
+            <p className="text-sm lg:text-[18px] leading-relaxed border-l-2 border-white pl-4 ml-8">
               We are committed to an inclusive hiring experience. If you need any accommodation to participate fully in our process, please mention it in your application email or reach out directly to hr@techscapeai.in. All requests are kept confidential.
             </p>
           </div>
@@ -627,31 +524,26 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
       <section id="get-started" className="relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
 
-          {/* --- Header Section --- */}
           <div
             className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
           >
-            {/* Premium Capsule Badge (Matches image layout perfectly) */}
             <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
               <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] font-semibold">
                 Get Started
               </span>
             </div>
 
-            {/* Bold Section Heading */}
             <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
               Let's Build Something Together
             </h2>
 
-            {/* Balanced Low-Opacity Description Subtext */}
-            <p className="text-white max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
+            <p className="max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
               Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
               The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
             </p>
           </div>
 
-          {/* --- Main Content Wrapper with Background Image --- */}
           <div
             className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
@@ -663,9 +555,7 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
               backgroundRepeat: 'no-repeat'
             }}
           >
-            {/* FIXED: Removed -mt-92 from the grid class list below */}
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
-              {/* Left: Glassmorphic Contact Form */}
               <div>
                 <GetStarted />
               </div>
@@ -678,20 +568,16 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
 
             <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-              <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
+              <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
                 Ready To put AI to work ?
               </h2>
-              <p className="text-white mb-10 text-base md:text-lg leading-relaxed">
+              <p className="mb-10 text-base md:text-lg leading-relaxed">
 
                 Your first discovery call is free. Let's find the workflow we can solve together
               </p>
 
 
-              <button
-                type="button"
-                className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
-                style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #7E85D4 55%, #E39994 100%)' }}
-              >
+              <button type="button" className="btn">
                 Request A Demo
               </button>
 

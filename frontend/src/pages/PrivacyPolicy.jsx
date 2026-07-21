@@ -15,7 +15,6 @@ export default function PrivacyPolicy() {
       <main className="legal-page">
         <div className="legal-container">
 
-          {/* Header */}
           <div className="legal-header">
             <span className="legal-badge">Legal</span>
             <h1>Privacy Policy</h1>
@@ -32,7 +31,6 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          {/* Section 1 */}
           <section className="legal-section">
             <h2>1. Applicable Law and Jurisdiction</h2>
             <p>
@@ -57,7 +55,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 2 */}
           <section className="legal-section">
             <h2>2. Who We Are</h2>
             <p>
@@ -80,7 +77,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 3 */}
           <section className="legal-section">
             <h2>3. Personal Data We Collect</h2>
             <p>
@@ -132,7 +128,6 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          {/* Section 4 */}
           <section className="legal-section">
             <h2>4. How We Collect Personal Data</h2>
 
@@ -162,7 +157,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 5 */}
           <section className="legal-section">
             <h2>5. Why We Process Your Personal Data</h2>
             <ul>
@@ -201,7 +195,6 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          {/* Section 6 */}
           <section className="legal-section">
             <h2>6. AI and Data Processing</h2>
             <p>
@@ -238,7 +231,6 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          {/* Section 7 */}
           <section className="legal-section">
             <h2>7. Legal Basis for Processing</h2>
             <ul>
@@ -263,7 +255,6 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          {/* Section 8 */}
           <section className="legal-section">
             <h2>8. Cross-Border Data Transfers</h2>
             <p>
@@ -295,7 +286,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 9 */}
           <section className="legal-section">
             <h2>9. Data Sharing With Third Parties</h2>
             <p>We do not sell your personal data. We may share personal data only as follows:</p>
@@ -324,7 +314,6 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          {/* Section 10 */}
           <section className="legal-section">
             <h2>10. Your Data Protection Rights</h2>
             <p>Under the DPDP Act 2023, as a Data Principal you have the following rights:</p>
@@ -361,7 +350,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 11 */}
           <section className="legal-section">
             <h2>11. Children's Data</h2>
             <p>
@@ -373,7 +361,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 12 */}
           <section className="legal-section">
             <h2>12. Cookie Policy</h2>
             <p>Our website uses the following types of cookies:</p>
@@ -397,7 +384,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 13 */}
           <section className="legal-section">
             <h2>13. Data Security</h2>
             <p>
@@ -412,7 +398,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 14 */}
           <section className="legal-section">
             <h2>14. Data Retention</h2>
             <ul>
@@ -424,7 +409,6 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          {/* Section 15 */}
           <section className="legal-section">
             <h2>15. Changes to This Policy</h2>
             <p>
@@ -435,7 +419,6 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* Section 16 — Grievance Officer */}
           <section className="legal-section legal-contact">
             <h2>16. Grievance Officer</h2>
             <p>

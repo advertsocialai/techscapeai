@@ -1,38 +1,49 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { useEffect, useRef, useState } from "react";
 import Typewriter from '../components/Typewriter'
-import GetStarted from '../components/GetStarted'
 
 const STAGE_W = 920;
 const STAGE_H = 600;
-const CX = STAGE_W / 2;
-const CY = STAGE_H / 2;
-const RX = 390;
-const RY = 232;
-const DURATION = 60; // seconds per lap
-
-const ELLIPSE_PATH = `M ${CX - RX} ${CY} a ${RX} ${RY} 0 1 0 ${2 * RX} 0 a ${RX} ${RY} 0 1 0 ${-2 * RX} 0`;
 
 const IMAGES = [
-  { src: "/re1.svg", size: 104 },
-  { src: "/re2.svg", size: 84 },
-  { src: "/re3.svg", size: 116 },
-  { src: "/re4.svg", size: 90 },
-  { src: "/re1.svg", size: 100 },
-  { src: "/re2.svg", size: 80 },
-  { src: "/re3.svg", size: 118 },
-  { src: "/re4.svg", size: 88 },
-  { src: "/re1.svg", size: 108 },
-  { src: "/re2.svg", size: 82 },
-  { src: "/re3.svg", size: 112 },
-  { src: "/re4.svg", size: 94 },
+  { src: "/re1.svg", size: 104, name: "Air Freight" },
+  { src: "/re2.svg", size: 84, name: "Ocean Freight" },
+  { src: "/re3.svg", size: 116, name: "Warehousing" },
+  { src: "/re4.svg", size: 90, name: "Last Mile Delivery" },
+  { src: "/re1.svg", size: 100, name: "Fleet Management" },
+  { src: "/re2.svg", size: 80, name: "Customs Clearance" },
+  { src: "/re3.svg", size: 118, name: "Cold Chain" },
+  { src: "/re4.svg", size: 88, name: "Rail Freight" },
+  { src: "/re1.svg", size: 108, name: "Cargo Tracking" },
+  { src: "/re2.svg", size: 82, name: "Route Optimization" },
+  { src: "/re3.svg", size: 112, name: "Inventory Management" },
+  { src: "/re4.svg", size: 94, name: "Supply Chain Analytics" },
 ];
 
-export default function AIHero() {
-  const stageWrapRef = useRef(null);
-  const [scale, setScale] = useState(1);
+const ORBIT_MS = 18000;
+const MIN_SCALE = 0.55;
+const MAX_SCALE = 1.25;
+const MIN_OPACITY = 0.55;
+const MAX_OPACITY = 1;
+const HOVER_BOOST = 1.2;
 
-  // Scale the fixed-size stage down to fit its container (never up past 1).
+export default function Hero() {
+  const stageWrapRef = useRef(null);
+  const cardRefs = useRef([]);
+  const [scale, setScale] = useState(1);
+  const [hoveredIdx, setHoveredIdx] = useState(null);
+  const hoveredIdxRef = useRef(null);
+  const rafRef = useRef(null);
+  const startRef = useRef(null);
+  const boostRef = useRef([]);
+
+  const isPausedRef = useRef(false);
+  const pausedElapsedRef = useRef(0);
+  const pauseStartedAtRef = useRef(null);
+
+  useEffect(() => {
+    hoveredIdxRef.current = hoveredIdx;
+  }, [hoveredIdx]);
+
   useEffect(() => {
     const el = stageWrapRef.current;
     if (!el) return;
@@ -42,6 +53,77 @@ export default function AIHero() {
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  useEffect(() => {
+    const centerX = STAGE_W / 2;
+    const centerY = STAGE_H / 2;
+    const radiusX = STAGE_W * 0.4;
+    const radiusY = STAGE_H * 0.4;
+
+    boostRef.current = IMAGES.map(() => 0);
+
+    const tick = (ts) => {
+      if (startRef.current === null) startRef.current = ts;
+
+      let elapsed;
+      if (isPausedRef.current) {
+        elapsed = pausedElapsedRef.current;
+      } else {
+        elapsed = ts - startRef.current;
+      }
+
+      IMAGES.forEach((img, i) => {
+        const node = cardRefs.current[i];
+        if (!node) return;
+
+        const offset = (i / IMAGES.length) * ORBIT_MS;
+        const progress = ((elapsed + offset) % ORBIT_MS) / ORBIT_MS;
+        const angle = progress * Math.PI * 2;
+
+        const x = centerX + radiusX * Math.sin(angle);
+        const y = centerY - radiusY * Math.cos(angle);
+
+        const depth = (1 - Math.cos(angle)) / 2;
+        let depthScale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * depth;
+        const opacity = MIN_OPACITY + (MAX_OPACITY - MIN_OPACITY) * depth;
+
+        const targetBoost = hoveredIdxRef.current === i ? HOVER_BOOST - 1 : 0;
+        boostRef.current[i] += (targetBoost - boostRef.current[i]) * 0.15;
+        depthScale += boostRef.current[i];
+
+        const z = hoveredIdxRef.current === i
+          ? 999
+          : Math.round(depth * 100);
+
+        node.style.transform =
+          `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) scale(${depthScale})`;
+        node.style.zIndex = z;
+        node.style.opacity = opacity;
+      });
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  const handleStageMouseEnter = () => {
+    if (isPausedRef.current) return;
+    isPausedRef.current = true;
+    pauseStartedAtRef.current = performance.now();
+    pausedElapsedRef.current = pauseStartedAtRef.current - (startRef.current ?? pauseStartedAtRef.current);
+  };
+
+  const handleStageMouseLeave = () => {
+    if (!isPausedRef.current) return;
+    isPausedRef.current = false;
+
+    const now = performance.now();
+    startRef.current = now - pausedElapsedRef.current;
+  };
+
+  const hoveredName = hoveredIdx !== null ? IMAGES[hoveredIdx].name : null;
 
   const workflowSteps = [
     {
@@ -58,7 +140,6 @@ export default function AIHero() {
     }
   ];
 
-  // Bottom 4 Image Cards Placeholder Metadata configuration array
   const coreValues = [
     { title: "Focus", desc: "one problem, one agent, no scope creep.", img: "/re5.svg" },
     { title: "Proven", desc: "You see it working before you scale it.", img: "/re6.svg" },
@@ -70,7 +151,6 @@ export default function AIHero() {
 
   const filterTabs = ['All', 'Publications', 'Milestone', 'Release'];
 
-  // Exact data structured matching your image cards matrix grid
   const researchCards = [
     {
       badge: "Release",
@@ -128,7 +208,6 @@ export default function AIHero() {
     }
   ];
 
-  // Filtering Logic
   const filteredCards = activeFilter === 'All'
     ? researchCards
     : researchCards.filter(card => card.tag === activeFilter);
@@ -136,33 +215,31 @@ export default function AIHero() {
   return (
     <>
       <div
-        className="relative min-h-screen overflow-x-hidden text-white px-5 sm:px-12 lg:px-20 pt-8 sm:pt-14 pb-16
-                transparent_60%),radial-gradient(700px_500px_at_-5%_110%,rgba(40,55,110,0.12),transparent_60%),#050507]"
+        className="relative min-h-screen overflow-x-hidden px-5 sm:px-12 lg:px-0 pt-8 sm:pt-14 pb-16 min-[2000px]:pb-0"
       >
-        <style>{css}</style>
-
-        {/* ── Top hero ─────────────────────────────────────────── */}
-        <header className="max-w-5xl">
-          <p className="capitalize text-[32px] font-medium leading-[25px] text-start tracking-[-0.72px] mb-12" style={{ color: '#f7bfa0' }}>
+        <header className="max-w-5xl mx-auto flex flex-col items-center justify-center text-center px-4">
+          <p className="capitalize text-[24px] sm:text-[28px] md:text-[32px] font-medium leading-snug tracking-[-0.72px] mb-8 sm:mb-12" style={{ color: '#f7bfa0' }}>
             Research & Development
           </p>
 
-          <h2 className=" font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[80px] mb-12 text-center md:text-left bg-clip-text text-transparent"
-            style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
-            <Typewriter words={['The difference between AI ']} speed={100} delay={2500} />
+          <h2 className="font-bold tracking-tight leading-[100%] text-[36px] sm:text-[60px] md:text-[80px] mb-8 sm:mb-12">
+            The difference between AI
             <br />
-            <Typewriter words={['and useful AI is research.']} speed={100} delay={2500} />
+            and{" "}
+            <Typewriter words={['useful AI ']} speed={100} delay={2500} />
+            is research.
           </h2>
-          <p className="mb-7 max-w-md text-sm lg:text-[18px] leading-relaxed text-white">
+
+          <p className="mb-7 max-w-md text-sm lg:text-[18px] leading-relaxed mx-auto">
             We don&apos;t pitch AI. We prove it first. Every agent we deploy starts
             as a problem we&apos;ve already solved.
           </p>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3 w-full">
             {["POC in 2–4 weeks", "Purpose built agents", "India & Canada"].map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-white/10 bg-[#120b08]/60 px-[18px] py-[9px] text-[13px] lg:text-[18px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,210,165,0.07),0_1px_2px_rgba(0,0,0,0.4)]"
+                className="rounded-full border border-white/10 bg-[#120b08]/60 px-[18px] py-[9px] text-[13px] lg:text-[18px] font-medium shadow-[inset_0_1px_0_rgba(255,210,165,0.07),0_1px_2px_rgba(0,0,0,0.4)]"
               >
                 {t}
               </span>
@@ -170,8 +247,7 @@ export default function AIHero() {
           </div>
         </header>
 
-        {/* ── Orbiting image ring ──────────────────────────────── */}
-        <section className="mt-12 flex justify-center sm:mt-24">
+        <section className="mt-12 flex justify-center sm:mt-24 min-[2000px]:mt-6">
           <div
             ref={stageWrapRef}
             className="w-full max-w-[920px]"
@@ -180,69 +256,80 @@ export default function AIHero() {
             <div
               className="aih-stage relative origin-top-left"
               style={{ width: STAGE_W, height: STAGE_H, transform: `scale(${scale})` }}
+              onMouseEnter={handleStageMouseEnter}
+              onMouseLeave={handleStageMouseLeave}
             >
               {IMAGES.map((img, i) => (
                 <div
                   key={i}
+                  ref={(el) => (cardRefs.current[i] = el)}
+                  onMouseEnter={() => setHoveredIdx(i)}
+                  onMouseLeave={() => setHoveredIdx(null)}
                   className="aih-card group absolute left-0 top-0 cursor-pointer overflow-hidden rounded-2xl border border-white/10
-                           bg-neutral-900 shadow-[0_14px_40px_rgba(0,0,0,0.55)] transition-[transform,box-shadow,border-color] duration-300
-                           will-change-transform hover:z-20 hover:scale-110 hover:border-[#5b8cff]/60
-                           hover:shadow-[0_18px_50px_rgba(0,0,0,0.6),0_0_22px_rgba(91,140,255,0.25)]"
-                  style={{
-                    width: img.size,
-                    height: img.size,
-                    marginLeft: -img.size / 2,
-                    marginTop: -img.size / 2,
-                    animationDelay: `${-(i / IMAGES.length) * DURATION}s`,
-                  }}
+                       bg-neutral-900 shadow-[0_14px_40px_rgba(0,0,0,0.55)] transition-[box-shadow,border-color] duration-300
+                       hover:border-[#5b8cff]/60
+                       hover:shadow-[0_18px_50px_rgba(0,0,0,0.6),0_0_22px_rgba(91,140,255,0.25)]"
+                  style={{ width: img.size, height: img.size }}
                 >
                   <img
                     src={img.src}
-                    alt=""
+                    alt={img.name}
                     loading="lazy"
                     draggable="false"
                     className="block h-full w-full object-cover transition-[filter] duration-300
-                             [filter:saturate(0.95)_brightness(0.92)] group-hover:[filter:saturate(1.05)_brightness(1.05)]"
+                         [filter:saturate(0.95)_brightness(0.92)] group-hover:[filter:saturate(1.05)_brightness(1.05)]"
                   />
                 </div>
               ))}
 
-              {/* Centered headline */}
               <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[540px] max-w-[80%] -translate-x-1/2 -translate-y-1/2 text-center">
-                <p className="m-0 text-[50px] font-normal leading-[1.08] tracking-[-0.02em] text-zinc-100 max-[560px]:text-[9.6vw]">
-                  Artificial Intelligence
-                </p>
-                <p className="m-0 text-[50px] font-normal leading-[1.08] tracking-[-0.02em] text-zinc-100 max-[560px]:text-[9.6vw]">
-                  Real <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>Logistics</span>
-                </p>
-
+                {hoveredName ? (
+                  <p className="m-0 text-[50px] font-normal leading-[1.08] tracking-[-0.02em] text-zinc-100 max-[560px]:text-[9.6vw]">
+                    <span
+                      className="bg-clip-text text-transparent"
+                      style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}
+                    >
+                      {hoveredName}
+                    </span>
+                  </p>
+                ) : (
+                  <>
+                    <p className="m-0 text-[50px] font-normal leading-[1.08] tracking-[-0.02em] text-zinc-100 max-[560px]:text-[9.6vw]">
+                      Artificial Intelligence
+                    </p>
+                    <p className="m-0 text-[50px] font-normal leading-[1.08] tracking-[-0.02em] text-zinc-100 max-[560px]:text-[9.6vw]">
+                      Real{" "}
+                      <span
+                        className="bg-clip-text text-transparent"
+                        style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}
+                      >
+                        Logistics
+                      </span>
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>
         </section>
       </div>
 
-      <section className="w-full text-white py-4 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="w-full py-0 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-[2000px]:-mt-20">
+        <div className="max-w-6xl mx-auto space-y-20 min-[2000px]:space-y-10">
 
-
-        <div className="max-w-6xl mx-auto space-y-20">
-
-          {/* Top Header Selector Pills Toggle Row */}
           <div className="flex flex-wrap gap-3">
             {["POC Built ", "Agent Development"].map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-white/10 bg-[#120b08]/60 px-[18px] py-[9px] text-[13px] lg:text-[18px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,210,165,0.07),0_1px_2px_rgba(0,0,0,0.4)]"
+                className="rounded-full border border-white/10 px-[18px] py-[9px] text-[13px] lg:text-[18px] font-medium shadow-[inset_0_1px_0_rgba(255,210,165,0.07),0_1px_2px_rgba(0,0,0,0.4)]"
               >
                 {t}
               </span>
             ))}
           </div>
 
-          {/* Master Row Layout Split Frame Structure */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-            {/* LEFT SIDE BLOCK: Copywritten Statements & Action CTAs */}
             <div className="lg:col-span-7 space-y-6">
               <p className="capitalize text-[32px] font-medium leading-[25px] text-start tracking-[-0.72px] mb-12" style={{ color: '#f7bfa0' }}>
                 Proof of concept
@@ -250,18 +337,16 @@ export default function AIHero() {
               <h2 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[115%] max-w-xl text-white/95">
                 One problem. Two to four weeks. Working proof before you commit.
               </h2>
-              <p className="text-white text-sm sm:text-base lg:text-[18px] font-light leading-relaxed max-w-lg pt-2">
+              <p className="text-sm sm:text-base lg:text-[18px] font-light leading-relaxed max-w-lg pt-2">
                 We Identify One High-Impact Problem In Your Business, Build A Focused Proof-Of-Concept Around It, And Put It In Front Of You While It's Still Small Enough To Pivot. No Six-Month Implementations. No Bloated Budgets.
               </p>
               <div className="pt-4">
-                <button className="px-6 py-3 rounded-sm  text-white text-xs lg:text-[16px] font-semibold tracking-wide  hover:opacity-95 transition-all"
-                  style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }} >
+                <button className="btn">
                   Start A POC Conversation
                 </button>
               </div>
             </div>
 
-            {/* RIGHT SIDE BLOCK: Process Tracking Column Timeline Rows */}
             <div className="lg:col-span-5 space-y-4 w-full">
               {workflowSteps.map((step, idx) => (
                 <div
@@ -272,7 +357,7 @@ export default function AIHero() {
                   <h3 className="text-base lg:text-[22px] font-semibold tracking-wide text-[#FAD4BF] group-hover:text-[#1C68FA] transition-colors">
                     {step.title}
                   </h3>
-                  <p className="text-white text-xs lg:text-[16px] font-light leading-relaxed">
+                  <p className="text-xs lg:text-[16px] font-light leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -281,14 +366,11 @@ export default function AIHero() {
 
           </div>
 
-          {/* =========================================================
-            BOTTOM SEGMENT: 4 IMAGE CONTAINER MATRIX (FULLY REPLACEABLE)
-            ========================================================= */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-10 min-[2000px]:pt-4">
             {coreValues.map((card, idx) => (
               <div
                 key={idx}
-                className="w-full aspect-[4/5] rounded-2xl overflow-hidden relative group p-0 flex flex-col justify-end transition-all duration-500 hover:scale-[1.01] "
+                className="w-full aspect-[4/5] rounded-2xl overflow-hidden relative group p-0 flex flex-col justify-end transition-all duration-500 hover:scale-[1.01]"
               >
                 <img src={card.img} alt="" />
               </div>
@@ -298,158 +380,118 @@ export default function AIHero() {
         </div>
       </section>
 
-      <section className="w-full text-white py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-
-        {/* Background Subtle Premium Blurs */}
+      <section className="w-full py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute right-[-10%] top-[25%] w-[450px] h-[450px] bg-[#1C68FA]/30 rounded-full blur-[130px] pointer-events-none" />
         <div className="absolute left-[-5%] bottom-[20%] w-[500px] h-[500px] bg-[#F7CBB4]/5 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto space-y-28">
 
-          {/* =========================================================
-            BLOCK 1: EARLY GROWTH SEGMENT
-            ========================================================= */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left Layout Column: Heading Matrix and Mini-cards */}
             <div className="lg:col-span-6 space-y-8">
               <div className="space-y-3">
                 <p className="capitalize text-[32px] font-medium leading-[25px] text-start tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
                   Our Partners
                 </p>
 
-                <h2 className="lg:text-[64px] sm:text-[46px] font-bold tracking-tight leading-[110%] text-white">
-                  Four Rounds. <span className=" font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[64px] mb-12 text-center md:text-left bg-clip-text text-transparent"
-                    style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
+                <h2 className="lg:text-[64px] sm:text-[46px] font-bold tracking-tight leading-[110%]">
+                  Four Rounds. <span className="font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[64px] mb-12 text-center md:text-left">
                     <Typewriter words={['One Direction.']} speed={100} delay={2500} />
                   </span> Always Forward.
                 </h2>
               </div>
 
-              {/* Side-by-side Numerical Stats Cards Row */}
               <div className="grid grid-cols-2 gap-4">
-
                 <div className="p-12 rounded-2xl border border-white/[0.05]  
                   min-h-[300px] flex flex-col justify-center items-center text-center"style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
-
                   <div className="text-5xl font-bold tracking-tight">
                     4 <span className="text-[#2C80FF]">+</span>
                   </div>
-
-                  <p className="text-white text-xs lg:text-[18px] font-light leading-snug">
+                  <p className="text-xs lg:text-[18px] font-light leading-snug">
                     Funding rounds secured between 2021-2024
                   </p>
-
                 </div>
 
                 <div className="p-12 rounded-2xl border border-white/[0.05] 
                   min-h-[300px] flex flex-col justify-center items-center text-center" style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
-
                   <div className="text-5xl font-bold tracking-tight">
                     <span className="text-[#2C80FF]">$</span>1B
                   </div>
-
-                  <p className="text-white text-xs lg:text-[18px] font-light leading-snug">
+                  <p className="text-xs lg:text-[18px] font-light leading-snug">
                     Raised to scale teams and build cutting edge models
                   </p>
-
                 </div>
-
               </div>
             </div>
 
-            {/* Right Layout Column: Detailed Copywrite Paragraphs */}
-            <div className="lg:col-span-6 text-white text-sm sm:text-base lg:text-[18px] font-light leading-relaxed space-y-4 lg:pt-12">
+            <div className="lg:col-span-6 text-sm sm:text-base lg:text-[18px] font-light leading-relaxed space-y-4 lg:pt-12">
               <p>
                 Between 2021 and 2024, we secured four major funding rounds Series A through D raising nearly $1 billion. This support enabled us to scale our teams, expand globally, and continually develop cutting-edge models that power practical AI applications for the world's leading enterprises.
               </p>
-              <p className="text-white text-sm lg:text-[18px]">
+              <p className="text-sm lg:text-[18px]">
                 Every round was a vote of confidence not just in our technology but in the belief that AI built with intent and rigour is the only AI worth building.
               </p>
             </div>
           </div>
 
-
-          {/* =========================================================
-            BLOCK 2: RESEARCH FOCUS SEGMENT
-            ========================================================= */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left Layout Column: Heading Matrix and Mini-cards */}
             <div className="lg:col-span-6 space-y-8">
               <div className="space-y-3">
                 <p className="capitalize text-[32px] font-medium leading-[25px] text-start tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
                   RESEARCH FOCUS
                 </p>
 
-                <h2 className="lg:text-[64px] sm:text-[46px] font-bold tracking-tight leading-[110%] text-white">
-                  Open science for  <span className=" font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[64px] mb-12 text-center md:text-left bg-clip-text text-transparent"
-                    style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
+                <h2 className="lg:text-[64px] sm:text-[46px] font-bold tracking-tight leading-[110%]">
+                  Open science for  <span className="font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[64px] mb-12 text-center md:text-left">
                     <Typewriter words={['real problems.']} speed={100} delay={2500} />
                   </span>
                 </h2>
               </div>
 
-              {/* Side-by-side Numerical Stats Cards Row */}
               <div className="grid grid-cols-2 gap-4">
-
                 <div className="p-12 rounded-2xl border border-white/[0.05]  
                   min-h-[300px] flex flex-col justify-center items-center text-center"style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
-
                   <div className="text-5xl font-bold tracking-tight">
                     4,500 <span className="text-[#2C80FF]">+</span>
                   </div>
-
-                  <p className="text-white text-xs lg:text-[18px] font-light leading-snug">
-
+                  <p className="text-xs lg:text-[18px] font-light leading-snug">
                     Community members in Tech Scape Labs
                   </p>
-
                 </div>
 
                 <div className="p-12 rounded-2xl border border-white/[0.05] 
                   min-h-[300px] flex flex-col justify-center items-center text-center" style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
-
                   <div className="text-5xl font-bold tracking-tight">100
                     <span className="text-[#2C80FF]">+</span>
                   </div>
-
-                  <p className="text-white text-xs lg:text-[18px] font-light leading-snug">
+                  <p className="text-xs lg:text-[18px] font-light leading-snug">
                     Research papers published since 2022
                   </p>
-
                 </div>
-
               </div>
             </div>
 
-            {/* Right Layout Column: Detailed Copywrite Paragraphs */}
-            <div className="lg:col-span-6 text-white text-sm sm:text-base lg:text-[18px] font-light leading-relaxed space-y-4 lg:pt-12">
+            <div className="lg:col-span-6 text-sm sm:text-base lg:text-[18px] font-light leading-relaxed space-y-4 lg:pt-12">
               <p>
                 In 2022, we launched Tech Scape Labs — our open science initiative for solving complex machine learning problems. Today, it has grown to over 4,500 community members and has published more than 100 research papers.
                 Our research isn't academic for the sake of it. Every paper, every experiment, every model we test feeds directly back into the agents we build and the businesses we serve.
               </p>
-
             </div>
           </div>
 
         </div>
       </section>
 
-      <section className="w-full  text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-
-        {/* Background radial soft light blur matching design ambient shadows */}
+      <section className="w-full py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute right-[-15%] top-[-10%] w-[500px] h-[500px] bg-[#1C68FA]/5 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute left-[-10%] bottom-[-10%] w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto space-y-12">
 
-          {/* Main Title Header Layout */}
           <div className="space-y-6">
-            <h2 className=" font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[80px] mb-12 text-center md:text-left bg-clip-text text-transparent"
-              style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
+            <h2 className="font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[80px] mb-12 text-center md:text-left">
               <Typewriter words={['Research ']} speed={100} delay={2500} />
             </h2>
 
-            {/* Horizontal Filters Pill Controls List */}
             <div className="flex flex-wrap gap-3 items-center pt-2">
               {filterTabs.map((tab) => (
                 <button
@@ -466,7 +508,6 @@ export default function AIHero() {
             </div>
           </div>
 
-          {/* ==================== 3x2 METRICS CARDS MATRIX GRID ==================== */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
             {filteredCards.map((card, idx) => (
               <div
@@ -475,15 +516,13 @@ export default function AIHero() {
                 style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}
               >
                 <div className="space-y-5">
-                  {/* Card Top Meta Bar info */}
                   <div className="flex justify-between items-center text-[11px] font-mono tracking-wider">
                     <span className={`px-2.5 py-0.5 rounded-md border text-[14px] font-medium tracking-normal ${card.badgeColor}`}>
                       {card.badge}
                     </span>
-                    <span className="text-white text-[14px]">{card.date}</span>
+                    <span className="text-[14px]">{card.date}</span>
                   </div>
 
-                  {/* Main Content Info Headings */}
                   <div className="space-y-3">
                     <h2 className=" font-bold tracking-tight leading-[120%] text-[44px] sm:text-[24px] md:text-[28px] mb-12 text-center md:text-left bg-clip-text text-transparent"
                       style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
@@ -495,13 +534,11 @@ export default function AIHero() {
                   </div>
                 </div>
 
-                {/* Bottom Footer Separator Layout Details */}
                 <div className="pt-5 border-t border-white flex justify-between items-center mt-6">
-                  <span className="text-[14px] font-mono text-white tracking-wide">
+                  <span className="text-[14px] font-mono tracking-wide">
                     {card.category}
                   </span>
 
-                  {/* Arrow link matrix hover design detail */}
                   <div className="text-white group-hover:text-white/80 transition-colors duration-300">
                     <svg className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
@@ -518,12 +555,8 @@ export default function AIHero() {
 
       <section id="get-started" className="relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto relative z-10">
-
-
-
-          {/* --- Main Content Wrapper with Background Image --- */}
           <div
-            className={`w-full border border-black/5  transition-all duration-1000 delay-300`} 
+            className={`w-full border border-black/5  transition-all duration-1000 delay-300`}
             style={{
               backgroundColor: '#050505',
               backgroundImage: "url('/bg2.svg')",
@@ -532,57 +565,24 @@ export default function AIHero() {
               backgroundRepeat: 'no-repeat'
             }}
           >
-
-
             <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
-
-              {/* Premium Bold Image-Matched Heading */}
-              <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
-                Ready To put AI to work ?
+              <h2 className="text-3xl md:text-6xl lg:text-[70px] font-bold tracking-tight leading-[1.15] max-w-5xl mx-auto mb-10">
+                "Intelligence scales when it's built with intent."
               </h2>
-              <p className="text-white mb-10 text-base md:text-lg leading-relaxed">
-
-                Your first discovery call is free. Let's find the workflow we can solve together
+              <p className="mb-10 text-base md:text-[32px] leading-relaxed">
+                India's growth story needs AI that actually works
               </p>
 
-              {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
-              <button
-                type="button"
-                className="px-8 py-3 rounded-xl font-medium text-xs md:text-sm text-white shadow-lg transition-all duration-300 hover:opacity-90 active:scale-[0.98] tracking-wide backdrop-blur-sm border border-white/10"
-                style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #7E85D4 55%, #E39994 100%)' }}
-              >
+              <button type="button" className="btn">
                 Request A Demo
               </button>
-
             </div>
           </div>
         </div>
 
-
-        {/* Subtle Bottom Glows */}
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
       </section>
     </>
   );
 }
-
-/* Only the bits Tailwind can't express: the orbit keyframes + the shared
-   elliptical track, plus hover-to-pause and reduced-motion handling. */
-const css = `
-.aih-card {
-  offset-path: path('${ELLIPSE_PATH}');
-  offset-rotate: 0deg;
-  offset-distance: 0%;
-  animation: aih-orbit ${DURATION}s linear infinite;
-}
-@keyframes aih-orbit { to { offset-distance: 100%; } }
-
-/* Pause the ring while hovering the stage */
-.aih-stage:hover .aih-card { animation-play-state: paused; }
-
-/* Freeze (still evenly distributed) for reduced-motion users */
-@media (prefers-reduced-motion: reduce) {
-  .aih-card { animation-play-state: paused !important; }
-}
-`;

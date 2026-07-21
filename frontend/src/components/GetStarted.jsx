@@ -41,12 +41,11 @@ export default function ContactFormOnly() {
 
   return (
     <div className="w-full max-w-xl mx-auto card backdrop-blur-xl bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 md:p-10 shadow-2xl">
-      <h3 className="text-2xl md:text-3xl font-semibold text-white mb-10 tracking-tight">
+      <h3 className="text-2xl md:text-3xl font-semibold mb-10 tracking-tight">
         Send Us a Message
       </h3>
 
       <form className="space-y-10" onSubmit={handleSubmit}>
-        {/* Full Name */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
           <label htmlFor="gs-fullName" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             Full Name *
@@ -61,7 +60,6 @@ export default function ContactFormOnly() {
           />
         </div>
 
-        {/* Email */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
           <label htmlFor="gs-email" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             Email Address *
@@ -76,7 +74,6 @@ export default function ContactFormOnly() {
           />
         </div>
 
-        {/* Phone */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
           <label htmlFor="gs-phone" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             Phone Number
@@ -90,7 +87,6 @@ export default function ContactFormOnly() {
           />
         </div>
 
-        {/* I am a */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
           <label htmlFor="gs-iAm" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             I am a
@@ -109,7 +105,6 @@ export default function ContactFormOnly() {
           </select>
         </div>
 
-        {/* Interested In */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
           <label htmlFor="gs-interestedIn" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             I am interested in
@@ -129,7 +124,6 @@ export default function ContactFormOnly() {
           </select>
         </div>
 
-        {/* Message */}
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
           <label htmlFor="gs-message" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
             Tell us about your need
@@ -143,7 +137,6 @@ export default function ContactFormOnly() {
           />
         </div>
 
-        {/* Alerts / Status */}
         {status === 'success' && (
           <div className="rounded-xl px-4 py-3 text-sm text-emerald-300 bg-emerald-500/10 border border-emerald-500/30">
             Thanks — we received your message and will get back within 24 hours.
@@ -155,12 +148,10 @@ export default function ContactFormOnly() {
           </div>
         )}
 
-        {/* Submit Button */}
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="w-full py-4 rounded-xl font-bold text-white shadow-lg transition-transform hover:scale-[1.01] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
-          style={{ background: 'linear-gradient(90deg, #3D75F3 0%, #A396FF 50%, #F5A086 100%)' }}
+          className="btn w-full"
         >
           {status === 'loading' ? 'Sending…' : 'Send Message'}
         </button>

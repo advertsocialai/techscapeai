@@ -2,6 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // TEMP DIAGNOSTIC - remove after debugging Safari issue
+      (function () {
+        function showError(msg) {
+          var box = document.getElementById('__diag_box');
+          if (!box) {
+            box = document.createElement('div');
+            box.id = '__diag_box';
+            box.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:#b00;color:#fff;font-family:monospace;font-size:12px;padding:12px;white-space:pre-wrap;max-height:80vh;overflow:auto;';
+            document.body.appendChild(box);
+          }
+          box.textContent += msg + '\n\n';
+        }
+        window.addEventListener('error', function (e) {
+          showError('ERROR: ' + e.message + '\nat ' + e.filename + ':' + e.lineno + ':' + e.colno);
+        });
+        window.addEventListener('unhandledrejection', function (e) {
+          showError('UNHANDLED PROMISE REJECTION: ' + (e.reason && e.reason.stack ? e.reason.stack : e.reason));
+        });
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/faviconlogo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -78,8 +99,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-DnQdK5Tj.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-f2723N9V.css">
+    <script type="module" crossorigin src="/assets/index-CML8eDAx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CxjlX_y8.css">
   </head>
   <body>
     <div id="root"></div>

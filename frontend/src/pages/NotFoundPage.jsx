@@ -32,22 +32,21 @@ export default function NotFoundPage() {
         >
           404
         </div>
-        <h1 className="text-2xl font-bold text-white mb-3">Page not found</h1>
+        <h1 className="text-2xl font-bold mb-3">Page not found</h1>
         <p className="text-white/40 mb-8 max-w-md mx-auto text-[15px] leading-relaxed">
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="flex items-center justify-center gap-4">
           <button
             onClick={() => window.history.back()}
-            className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white/50 rounded-xl hover:text-white hover:bg-white/[0.05] transition-all"
-            style={{ border: '1px solid rgba(255,255,255,0.12)' }}
+            className="btn-outline"
           >
             <ArrowLeftIcon />
             Go Back
           </button>
           <Link
             to="/"
-            className="btn flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white"
+            className="btn"
           >
             <HomeIcon />
             Home

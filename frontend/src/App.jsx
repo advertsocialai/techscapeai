@@ -19,10 +19,10 @@ import Accessibility from './pages/Accessibility'
 import TrustCenter from './pages/TrustCenter'
 import Industries from './pages/Industries'
 import AiAgent from './pages/AI-agents'
-import Travel from './pages/travel'
-import AdTechMarketing from './pages/AdTechMarketing'
-import FinanceAI from './pages/FinanceAI'
-import RecruitmentAI from './pages/RecruitmentAI'
+// import Travel from './pages/travel'
+// import AdTechMarketing from './pages/AdTechMarketing'
+// import FinanceAI from './pages/FinanceAI'
+// import RecruitmentAI from './pages/RecruitmentAI'
 
 export default function App() {
   return (
@@ -45,10 +45,10 @@ export default function App() {
         <Route path="/industries" element={<MainLayout><Industries /></MainLayout>} />
         <Route path="/ai-agent" element={<MainLayout><AiAgent /></MainLayout>} />
         <Route path="/research" element={<MainLayout><Research /></MainLayout>} />
-        <Route path="/travel" element={<MainLayout><Travel /></MainLayout>} />
+        {/* <Route path="/travel" element={<MainLayout><Travel /></MainLayout>} />
         <Route path="/ad-tech-marketing" element={<MainLayout><AdTechMarketing /></MainLayout>} />
         <Route path="/finance-ai" element={<MainLayout><FinanceAI /></MainLayout>} />
-        <Route path="/recruitment-ai" element={<MainLayout><RecruitmentAI /></MainLayout>} />
+        <Route path="/recruitment-ai" element={<MainLayout><RecruitmentAI /></MainLayout>} /> */}
         {/* Blog hidden: no /blog route so it falls through to the 404 catch-all below */}
         <Route path="*" element={<MainLayout><NotFoundPage /></MainLayout>} />
       </Routes>

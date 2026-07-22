@@ -19,7 +19,7 @@ const IMAGES = [
   { src: "/re4.svg", size: 94, name: "Supply Chain Analytics" },
 ];
 
-const ORBIT_MS = 18000;
+const ORBIT_MS = 32000;
 const MIN_SCALE = 0.55;
 const MAX_SCALE = 1.25;
 const MIN_OPACITY = 0.55;
@@ -32,6 +32,8 @@ export default function Hero() {
   const [scale, setScale] = useState(1);
   const [hoveredIdx, setHoveredIdx] = useState(null);
   const hoveredIdxRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(null);
+  const activeIdxRef = useRef(null);
   const rafRef = useRef(null);
   const startRef = useRef(null);
   const boostRef = useRef([]);
@@ -72,6 +74,9 @@ export default function Hero() {
         elapsed = ts - startRef.current;
       }
 
+      let frontIdx = 0;
+      let frontDepth = -1;
+
       IMAGES.forEach((img, i) => {
         const node = cardRefs.current[i];
         if (!node) return;
@@ -84,6 +89,11 @@ export default function Hero() {
         const y = centerY - radiusY * Math.cos(angle);
 
         const depth = (1 - Math.cos(angle)) / 2;
+
+        if (depth > frontDepth) {
+          frontDepth = depth;
+          frontIdx = i;
+        }
         let depthScale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * depth;
         const opacity = MIN_OPACITY + (MAX_OPACITY - MIN_OPACITY) * depth;
 
@@ -100,6 +110,11 @@ export default function Hero() {
         node.style.zIndex = z;
         node.style.opacity = opacity;
       });
+
+      if (frontIdx !== activeIdxRef.current) {
+        activeIdxRef.current = frontIdx;
+        setActiveIdx(frontIdx);
+      }
 
       rafRef.current = requestAnimationFrame(tick);
     };
@@ -123,7 +138,8 @@ export default function Hero() {
     startRef.current = now - pausedElapsedRef.current;
   };
 
-  const hoveredName = hoveredIdx !== null ? IMAGES[hoveredIdx].name : null;
+  const displayIdx = hoveredIdx !== null ? hoveredIdx : activeIdx;
+  const hoveredName = displayIdx !== null ? IMAGES[displayIdx].name : null;
 
   const workflowSteps = [
     {
@@ -217,12 +233,13 @@ export default function Hero() {
       <div
         className="relative min-h-screen overflow-x-hidden px-5 sm:px-12 lg:px-0 pt-8 sm:pt-14 pb-16 min-[2000px]:pb-0"
       >
+        <div className="absolute bottom-70 right-[-20px] w-[300px] h-[400px] bg-[#3579CE]/75 blur-[150px] rounded-full pointer-events-none" />
         <header className="max-w-5xl mx-auto flex flex-col items-center justify-center text-center px-4">
-          <p className="capitalize text-[24px] sm:text-[28px] md:text-[32px] font-medium leading-snug tracking-[-0.72px] mb-8 sm:mb-12" style={{ color: '#f7bfa0' }}>
-            Research & Development
+          <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+            Research & Devlopment
           </p>
 
-          <h2 className="font-bold tracking-tight leading-[100%] text-[36px] sm:text-[60px] md:text-[80px] mb-8 sm:mb-12">
+          <h2 className="font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px] mb-8 sm:mb-12">
             The difference between AI
             <br />
             and{" "}
@@ -230,7 +247,7 @@ export default function Hero() {
             is research.
           </h2>
 
-          <p className="mb-7 max-w-md text-sm lg:text-[18px] leading-relaxed mx-auto">
+          <p className="mb-7 max-w-md text-[16px] lg:text-[20px] leading-relaxed mx-auto">
             We don&apos;t pitch AI. We prove it first. Every agent we deploy starts
             as a problem we&apos;ve already solved.
           </p>
@@ -314,8 +331,8 @@ export default function Hero() {
         </section>
       </div>
 
-      <section className="w-full py-0 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-[2000px]:-mt-20">
-        <div className="max-w-6xl mx-auto space-y-20 min-[2000px]:space-y-10">
+      <section className="w-full py-0 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-[2000px]:-mt-0">
+        <div className="max-w-6xl mx-auto lg:space-y-20 space-y-10 min-[2000px]:space-y-10">
 
           <div className="flex flex-wrap gap-3">
             {["POC Built ", "Agent Development"].map((t) => (
@@ -328,16 +345,21 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-12 gap-4 items-start">
+
+            <div className="lg:col-span-12 space-y-6">
+              <p className="text-[26px] lg:text-[36px] text-center font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+                Proof of Concept
+              </p>
+
+
+            </div>
 
             <div className="lg:col-span-7 space-y-6">
-              <p className="capitalize text-[32px] font-medium leading-[25px] text-start tracking-[-0.72px] mb-12" style={{ color: '#f7bfa0' }}>
-                Proof of concept
-              </p>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[115%] max-w-xl text-white/95">
+              <h2 className="text-[36px] lg::text-[56px] md:text-[46px] font-bold tracking-tight leading-[115%] max-w-xl text-white/95">
                 One problem. Two to four weeks. Working proof before you commit.
               </h2>
-              <p className="text-sm sm:text-base lg:text-[18px] font-light leading-relaxed max-w-lg pt-2">
+              <p className="text-[16px] sm:text-base lg:text-[20px] font-light leading-relaxed max-w-lg pt-2">
                 We Identify One High-Impact Problem In Your Business, Build A Focused Proof-Of-Concept Around It, And Put It In Front Of You While It's Still Small Enough To Pivot. No Six-Month Implementations. No Bloated Budgets.
               </p>
               <div className="pt-4">
@@ -354,10 +376,10 @@ export default function Hero() {
                   className="p-6 rounded-xl border border-white/[0.05] space-y-2 group hover:border-white/10 transition-all duration-300"
                   style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}
                 >
-                  <h3 className="text-base lg:text-[22px] font-semibold tracking-wide text-[#FAD4BF] group-hover:text-[#1C68FA] transition-colors">
+                  <h3 className="text-[20px] lg:text-[24px] font-semibold tracking-wide text-[#FAD4BF] group-hover:text-[#1C68FA] transition-colors">
                     {step.title}
                   </h3>
-                  <p className="text-xs lg:text-[16px] font-light leading-relaxed">
+                  <p className="text-[16px] lg:text-[20px] font-light leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -366,7 +388,7 @@ export default function Hero() {
 
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-10 min-[2000px]:pt-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:pt-10 min-[2000px]:pt-4">
             {coreValues.map((card, idx) => (
               <div
                 key={idx}
@@ -387,22 +409,40 @@ export default function Hero() {
         <div className="max-w-6xl mx-auto space-y-28">
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-12 space-y-8">
+              <div className="space-y-3">
+                <p className="capitalize text-[26px] lg:text-[36px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#F5A086' }}>
+                  Our Partners 
+                </p>
+              </div>
+            </div>
+
             <div className="lg:col-span-6 space-y-8">
               <div className="space-y-3">
-                <p className="capitalize text-[32px] font-medium leading-[25px] text-start tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
-                  Our Partners
-                </p>
 
-                <h2 className="lg:text-[64px] sm:text-[46px] font-bold tracking-tight leading-[110%]">
-                  Four Rounds. <span className="font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[64px] mb-12 text-center md:text-left">
+                <h2 className="lg:text-[62px] md:text-[46px] text-[36px]  font-bold tracking-tight leading-[110%]">
+                  Four Rounds. <br /> <span className="font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[64px] mb-12 text-center md:text-left">
                     <Typewriter words={['One Direction.']} speed={100} delay={2500} />
+                    <br />
                   </span> Always Forward.
                 </h2>
               </div>
+            </div>
+
+            <div className="lg:col-span-6 text-sm sm:text-base lg:text-[18px] leading-relaxed space-y-4 lg:pt-0">
+              <p>
+                Between 2021 and 2024, we secured four major funding rounds Series A through D raising nearly $1 billion. This support enabled us to scale our teams, expand globally, and continually develop cutting-edge models that power practical AI applications for the world's leading enterprises.
+              </p>
+              <p className="text-sm lg:text-[18px]">
+                Every round was a vote of confidence not just in our technology but in the belief that AI built with intent and rigour is the only AI worth building.
+              </p>
+            </div>
+
+            <div className="lg:col-span-12 space-y-8">
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-12 rounded-2xl border border-white/[0.05]  
-                  min-h-[300px] flex flex-col justify-center items-center text-center"style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
+                <div className="lg:p-12 p-2 rounded-2xl border border-white/[0.05]  
+                  min-h-[150px] lg:min-h-[300px] flex flex-col gap-3 justify-center items-center text-center"style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
                   <div className="text-5xl font-bold tracking-tight">
                     4 <span className="text-[#2C80FF]">+</span>
                   </div>
@@ -411,8 +451,8 @@ export default function Hero() {
                   </p>
                 </div>
 
-                <div className="p-12 rounded-2xl border border-white/[0.05] 
-                  min-h-[300px] flex flex-col justify-center items-center text-center" style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
+                <div className="lg:p-12 p-2 rounded-2xl border border-white/[0.05] 
+                 min-h-[150px] lg:min-h-[300px] flex flex-col gap-3 justify-center items-center text-center" style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
                   <div className="text-5xl font-bold tracking-tight">
                     <span className="text-[#2C80FF]">$</span>1B
                   </div>
@@ -422,44 +462,55 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-
-            <div className="lg:col-span-6 text-sm sm:text-base lg:text-[18px] font-light leading-relaxed space-y-4 lg:pt-12">
-              <p>
-                Between 2021 and 2024, we secured four major funding rounds Series A through D raising nearly $1 billion. This support enabled us to scale our teams, expand globally, and continually develop cutting-edge models that power practical AI applications for the world's leading enterprises.
-              </p>
-              <p className="text-sm lg:text-[18px]">
-                Every round was a vote of confidence not just in our technology but in the belief that AI built with intent and rigour is the only AI worth building.
-              </p>
-            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-6 space-y-8">
+            <div className="lg:col-span-12 space-y-8">
               <div className="space-y-3">
-                <p className="capitalize text-[32px] font-medium leading-[25px] text-start tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
-                  RESEARCH FOCUS
+                <p className="capitalize text-[26px] lg:text-[36px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#F5A086' }}>
+                  Research Focus
                 </p>
 
-                <h2 className="lg:text-[64px] sm:text-[46px] font-bold tracking-tight leading-[110%]">
-                  Open science for  <span className="font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[64px] mb-12 text-center md:text-left">
+              </div>
+
+            </div>
+            <div className="lg:col-span-6 space-y-8">
+              <div className="space-y-3">
+
+
+                <h2 className="lg:text-[62px] sm:text-[46px] text-[36px] font-bold tracking-tight leading-[110%]">
+                  Open science for  <span className="font-bold tracking-tight leading-[100%]  text-[36px] sm:text-[46px] md:text-[62px] mb-12 text-center md:text-left">
                     <Typewriter words={['real problems.']} speed={100} delay={2500} />
                   </span>
                 </h2>
               </div>
 
+            </div>
+
+            <div className="lg:col-span-6 text-sm sm:text-base lg:text-[18px] font-light leading-relaxed space-y-4 lg:pt-0">
+              <p>
+                In 2022, we launched Tech Scape Labs — our open science initiative for solving complex machine learning problems. Today, it has grown to over 4,500 community members and has published more than 100 research papers.
+                Our research isn't academic for the sake of it. Every paper, every experiment, every model we test feeds directly back into the agents we build and the businesses we serve.
+              </p>
+            </div>
+
+
+            <div className="lg:col-span-12 space-y-8">
+
+
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-12 rounded-2xl border border-white/[0.05]  
-                  min-h-[300px] flex flex-col justify-center items-center text-center"style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
+                <div className="lg:p-12 p-2 rounded-2xl border border-white/[0.05]  
+                  min-h-[150px] lg:min-h-[300px] flex flex-col gap-3 justify-center items-center text-center"style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
                   <div className="text-5xl font-bold tracking-tight">
-                    4,500 <span className="text-[#2C80FF]">+</span>
+                    450 <span className="text-[#2C80FF]">+</span>
                   </div>
                   <p className="text-xs lg:text-[18px] font-light leading-snug">
                     Community members in Tech Scape Labs
                   </p>
                 </div>
 
-                <div className="p-12 rounded-2xl border border-white/[0.05] 
-                  min-h-[300px] flex flex-col justify-center items-center text-center" style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
+                <div className="lg:p-12 p-2 rounded-2xl border border-white/[0.05] 
+                  min-h-[150px] lg:min-h-[300px] flex flex-col gap-3 justify-center items-center text-center" style={{ background: "linear-gradient(45deg, rgba(200,147,114,0.2) 0%, rgba(6,6,8,1) 100%)" }}>
                   <div className="text-5xl font-bold tracking-tight">100
                     <span className="text-[#2C80FF]">+</span>
                   </div>
@@ -469,19 +520,12 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-
-            <div className="lg:col-span-6 text-sm sm:text-base lg:text-[18px] font-light leading-relaxed space-y-4 lg:pt-12">
-              <p>
-                In 2022, we launched Tech Scape Labs — our open science initiative for solving complex machine learning problems. Today, it has grown to over 4,500 community members and has published more than 100 research papers.
-                Our research isn't academic for the sake of it. Every paper, every experiment, every model we test feeds directly back into the agents we build and the businesses we serve.
-              </p>
-            </div>
           </div>
 
         </div>
       </section>
 
-      <section className="w-full py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="w-full lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute right-[-15%] top-[-10%] w-[500px] h-[500px] bg-[#1C68FA]/5 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute left-[-10%] bottom-[-10%] w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -492,12 +536,12 @@ export default function Hero() {
               <Typewriter words={['Research ']} speed={100} delay={2500} />
             </h2>
 
-            <div className="flex flex-wrap gap-3 items-center pt-2">
+            <div className="flex flex-nowrap gap-3 items-center pt-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {filterTabs.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveFilter(tab)}
-                  className={`px-10 py-4 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border ${activeFilter === tab
+                  className={`shrink-0 whitespace-nowrap px-10 py-4 rounded-full text-xs font-medium tracking-wide transition-all duration-300 border ${activeFilter === tab
                     ? 'bg-[#120b08]/90 border-white/20 text-white shadow-lg text-[16px]'
                     : 'bg-[#120b08]/90 border-white/[0.04] text-white hover:text-white/80 hover:border-white/10 text-[16px]'
                     }`}
@@ -524,11 +568,11 @@ export default function Hero() {
                   </div>
 
                   <div className="space-y-3">
-                    <h2 className=" font-bold tracking-tight leading-[120%] text-[44px] sm:text-[24px] md:text-[28px] mb-12 text-center md:text-left bg-clip-text text-transparent"
+                    <h2 className=" font-bold tracking-tight leading-[120%] text-[26px] sm:text-[24px] md:text-[28px] lg:mb-12 text-center md:text-left bg-clip-text text-transparent"
                       style={{ backgroundImage: 'linear-gradient(90deg, #0050fe 0%, #af90af 66.351%, #ffd0c0 100%)' }}>
                       {card.title}
                     </h2>
-                    <p className="text-white/90 text-xs sm:text-[16px] font-light leading-relaxed">
+                    <p className="text-white/90 text-[16px] sm:text-[16px] font-light leading-relaxed">
                       {card.desc}
                     </p>
                   </div>
@@ -553,7 +597,7 @@ export default function Hero() {
         </div>
       </section>
 
-      <section id="get-started" className="relative overflow-hidden">
+      <section id="get-started" className="relative overflow-hidden ">
         <div className="max-w-[1440px] mx-auto relative z-10">
           <div
             className={`w-full border border-black/5  transition-all duration-1000 delay-300`}
@@ -565,8 +609,8 @@ export default function Hero() {
               backgroundRepeat: 'no-repeat'
             }}
           >
-            <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
-              <h2 className="text-3xl md:text-6xl lg:text-[70px] font-bold tracking-tight leading-[1.15] max-w-5xl mx-auto mb-10">
+            <div className="w-full bg-transparent text-center px-4 py-16 md:py-24 flex flex-col items-center justify-center">
+              <h2 className="text-[30px] md:text-[46px] lg:text-[62px] font-bold tracking-tight leading-[1.15] max-w-5xl mx-auto mb-10">
                 "Intelligence scales when it's built with intent."
               </h2>
               <p className="mb-10 text-base md:text-[32px] leading-relaxed">

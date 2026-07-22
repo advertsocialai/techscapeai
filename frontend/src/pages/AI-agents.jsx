@@ -40,10 +40,10 @@ const AIRLINE_METRICS = [
 ]
 
 const CORE_VALUES = [
-    { title: 'Focus', desc: 'One problem, one agent, no scope creep.', img: '/re5.svg' },
-    { title: 'Proven', desc: 'You see it working before you scale it.', img: '/re6.svg' },
-    { title: 'Fast', desc: 'POC in 2–4 weeks, not 6 months.', img: '/re7.svg' },
-    { title: 'Scalable', desc: 'Once it works, we build it into your operations.', img: '/re8.svg' },
+    { title: 'Focus', desc: 'One problem, one agent, no scope creep.', img: '/aiagent14.svg' },
+    { title: 'Proven', desc: 'You see it working before you scale it.', img: '/aiagent15.svg' },
+    { title: 'Fast', desc: 'POC in 2–4 weeks, not 6 months.', img: '/aiagent17.svg' },
+    // { title: 'Scalable', desc: 'Once it works, we build it into your operations.', img: '/re8.svg' },
 ]
 
 const CTA_CARDS = [
@@ -300,16 +300,16 @@ export default function AiAgent() {
 
                     <div className="mt-16 lg:mt-24">
                         <h1 className="mt-0 max-w-6xl text-center">
-                            Discover how the phillippines’ largest airline transformed its customer experience
+                            Inside the AI transformation helping a top Indian travel agency 
                             <span className="block">
-                                <Typewriter words={["with Techscape AI"]} speed={100} delay={2500} />
+                                <Typewriter words={["turn every call into a customer."]} speed={100} delay={2500} />
                             </span>
                         </h1>
 
 
 
 
-                        <div className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                        <div className="mt-6 grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                             {CORE_VALUES.map((card) => (
                                 <div
                                     key={card.title}

@@ -23,6 +23,27 @@ const PARTNER_LOGOS = [
 ]
 const PARTNER_MARQUEE = [...PARTNER_LOGOS, ...PARTNER_LOGOS]
 
+const ABOUT_CARDS = [
+  {
+    id: 'build',
+    text: 'We build solutions that reduce manual work and unlock human potential',
+    background: 'linear-gradient(160deg, #101012 0%, #050506 100%)',
+    transform: 'lg:translate-y-12 lg:-rotate-[6deg]',
+  },
+  {
+    id: 'train',
+    text: 'We train talent that is job-ready from day one',
+    background: 'linear-gradient(160deg, #1a2740 0%, #0a0f1c 100%)',
+    transform: 'lg:-translate-y-4 lg:rotate-0',
+  },
+  {
+    id: 'partner',
+    text: 'We partner with businesses to make AI adoption simple, fast, and affordable',
+    background: 'linear-gradient(160deg, #121214 0%, #050506 100%)',
+    transform: 'lg:translate-y-12 lg:rotate-[6deg]',
+  },
+]
+
 const SERVICES = [
   {
     title: 'AI Agents & Intelligent Automation',
@@ -143,7 +164,7 @@ function HeroSection() {
   const typewriterWords = ['AI Solutions', 'Automation', 'Smart Agents', 'Future Tech']
 
   return (
-    <section className="relative bg-black overflow-hidden flex items-center">
+    <section className="relative  overflow-hidden flex items-center">
       <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{
@@ -159,7 +180,7 @@ function HeroSection() {
         <div className="grid lg:grid-cols-[667px_546px] gap-10 lg:gap-[61px] items-center lg:h-[474px] max-w-[1274px] mx-auto">
 
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="capitalize text-[36px] sm:text-[46px] lg:text-[52px] font-semibold tracking-[-1.56px] leading-[1.1] mb-5 max-w-[667px]">
+            <h1 className="capitalize text-[36px] sm:text-[46px] lg:text-[62px] font-semibold tracking-[-1.56px] leading-[1.1] mb-5 max-w-[667px]">
               We Build{' '}
               <span className="font-bold inline-block min-w-[280px]">
                 <Typewriter words={typewriterWords} speed={100} delay={2500} />
@@ -170,7 +191,7 @@ function HeroSection() {
               That Move Your Business Forward
             </h1>
 
-            <p className="text-[16px] font-light leading-[25px] text-[#e5e7eb] tracking-[-0.48px] max-w-[619px] mb-10">
+            <p className="text-[16px] lg:text-[20px] font-light leading-[25px] text-[#e5e7eb] tracking-[-0.48px] max-w-[619px] mb-10">
               Tech Scape AI is a global AI services company delivering intelligent automation, custom AI agents, digital transformation, and world-class technology training trusted by businesses across the USA, Canada, and India.
             </p>
 
@@ -204,7 +225,7 @@ function AboutSection() {
   const typewriterWords = [' We Are Not Just Another Tech Company']
 
   return (
-    <section id="about" className="relative bg-black py-20 lg:py-28 overflow-hidden">
+    <section id="about" className="relative  py-0 lg:py-2 overflow-hidden">
       <div
         aria-hidden="true"
         className="absolute pointer-events-none"
@@ -247,7 +268,7 @@ function AboutSection() {
 
       <div className="wrap relative" ref={ref}>
         <div className={`text-center max-w-[422px] mx-auto mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-[32px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+          <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
             About
           </p>
           <p className="text-[22px] font-medium leading-[25px] tracking-[-0.48px] text-white/70">
@@ -256,7 +277,7 @@ function AboutSection() {
         </div>
 
         <div className={`text-center max-w-[1054px] mx-auto mb-6 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-[16px] sm:text-[22px] lg:text-[32px] tracking-[-0.96px] leading-[45px]">
+          <p className="text-[16px] sm:text-[22px] lg:text-[32px] lg:tracking-[-0.96px] lg:leading-[45px]">
             <span>We are a global AI services and training company, </span>
             <span>
               founded by technologists, business builders, and educators who have worked across the USA, Canada, and India. We don&apos;t sell software. We solve problems with AI, with automation, and with the right people behind every solution.
@@ -265,27 +286,34 @@ function AboutSection() {
         </div>
 
         <div className={`text-center max-w-[932px] mx-auto mb-14 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-[16px] sm:text-[22px] lg:text-[24px] tracking-[-0.72px] leading-[38px]" style={{ color: '#FFFFFF' }}>
+          <p className="text-[16px] sm:text-[22px] lg:text-[24px] lg:tracking-[-0.72px] lg:leading-[38px]" style={{ color: '#FFFFFF' }}>
             From building intelligent AI agents for small businesses to training the next generation of engineers and analysts, everything we do is designed to create real, measurable impact.
           </p>
         </div>
 
         <div className={`text-center max-w-[932px] mx-auto mb-10 md:mb-14 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-[32px] sm:text-[48px] lg:text-[64px] leading-[1.1] tracking-[-1px] lg:tracking-[-1.72px] lg:leading-[75px] font-bold">
+          <h2 className="text-[32px] sm:text-[46px] lg:text-[62px] leading-[1.1] tracking-[-1px] lg:tracking-[-1.72px] lg:leading-[75px] font-bold">
             <Typewriter words={typewriterWords} speed={100} delay={2500} />
           </h2>
         </div>
       </div>
 
-      <div className="flex flex-row items-stretch justify-center transition-all duration-700 delay-300 bg-[url('/bgframes.svg')] bg-no-repeat bg-center bg-cover w-full max-w-[1440px] mx-auto pt-8 pb-8 lg:pt-16 lg:pb-16">
-        <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
-          <img src="/frame1.svg" width={480} height={580} loading="lazy" decoding="async" className="w-full h-full object-contain" alt="Frame 1" />
-        </div>
-        <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
-          <img src="/frame2.svg" width={480} height={580} loading="lazy" decoding="async" className="w-full h-full object-contain" alt="Frame 2" />
-        </div>
-        <div className="flex-1 min-w-0 h-[200px] sm:h-[400px] lg:h-[580px]">
-          <img src="/frame3.svg" width={480} height={580} loading="lazy" decoding="async" className="w-full h-full object-contain" alt="Frame 3" />
+      <div className="bg-[url('/bgframes.svg')] bg-no-repeat bg-center bg-cover w-full max-w-[1440px] mx-auto pt-8 pb-8 lg:pt-16 lg:pb-16">
+        <div className="flex flex-col md:flex-row items-center lg:items-end justify-center gap-6 lg:gap-8">
+          {ABOUT_CARDS.map((card, i) => (
+            <div
+              key={card.id}
+              className={`shrink-0 w-[300px] sm:w-[360px] md:w-[230px] lg:w-[400px] h-[300px] sm:h-[440px] md:h-[300px] lg:h-[500px] rounded-[40px] p-8 lg:p-10 flex items-center  z-10 ease-out ${card.transform} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              style={{
+                background: card.background,
+                transitionDelay: `${300 + i * 250}ms`,
+              }}
+            >
+              <p className="text-white text-[26px] md:text-[22px] lg:text-[42px] font-semibold leading-[1.25] tracking-[-0.5px]">
+                {card.text}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -296,27 +324,28 @@ function PartnersSection() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section id="partners" className="relative bg-black py-16 lg:py-20">
+    <section id="partners" className="relative  py-1 lg:py-20">
       <div className="wrap" ref={ref}>
         <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
-            In Partnership With
+          <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+         In Partnership With
           </p>
+
 
           <div className="relative overflow-hidden w-full">
             <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(90deg, #000 0%, transparent 100%)' }} />
             <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(270deg, #000 0%, transparent 100%)' }} />
 
-            <div className="flex items-center gap-[120px] marquee-track" style={{ width: 'max-content' }}>
+            <div className="flex items-center gap-[48px] sm:gap-[72px] lg:gap-[120px] marquee-track" style={{ width: 'max-content' }}>
               {PARTNER_MARQUEE.map(({ key, src, alt, w, h }, i) => (
-                <div key={`${key}-${i}`} className="flex items-center justify-center shrink-0" style={{ minHeight: '56px' }}>
+                <div key={`${key}-${i}`} className="flex items-center justify-center shrink-0 min-h-[36px] lg:min-h-[56px]">
                   <img
                     src={src}
                     alt={alt}
                     width={w}
                     height={h}
-                    className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-                    style={{ width: `${w}px`, height: `${h}px` }}
+                    className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300 w-[calc(var(--logo-w)*0.6)] h-[calc(var(--logo-h)*0.6)] sm:w-[calc(var(--logo-w)*0.8)] sm:h-[calc(var(--logo-h)*0.8)] lg:w-[var(--logo-w)] lg:h-[var(--logo-h)]"
+                    style={{ '--logo-w': `${w}px`, '--logo-h': `${h}px` }}
                   />
                 </div>
               ))}
@@ -333,7 +362,7 @@ function PartnersSection() {
               background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
             }}
           >
-            <p className="text-[24px] font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px] text-center">
+            <p className="lg:text-[24px] text-[16px]  font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px] text-center">
               This is not the future. This is happening now and Tech Scape AI is leading it.
             </p>
           </div>
@@ -348,10 +377,10 @@ function ServicesSection() {
   const typewriterWords = ['What We Deliver.']
 
   return (
-    <section id="services" className="relative bg-black py-20 lg:py-28 overflow-hidden">
+    <section id="services" className="relative py-20 lg:py-28 overflow-hidden">
       <div className="wrap" ref={ref}>
         <div className={`text-center max-w-[900px] mx-auto mb-14 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] leading-tight mb-5">
+          <h2 className="text-[36px] sm:text-[46px] lg:text-[62px] font-semibold tracking-[-0.025em] leading-tight mb-5">
             What We Build. <Typewriter words={typewriterWords} speed={100} delay={2500} />
           </h2>
           <p className="text-[16px] lg:text-[18px] leading-[26px] tracking-[-0.48px] max-w-[493px] mx-auto">
@@ -377,8 +406,8 @@ function ServicesSection() {
               </div>
 
               <h3 className="text-[22px] lg:text-[28px] font-bold leading-[1.25] mb-2">{svc.title}</h3>
-              <p className="text-[14px] lg:text-[16px] font-medium mb-5" style={{ color: svc.accent }}>{svc.subtitle}</p>
-              <p className="text-[14px] lg:text-[16px] leading-[25px] tracking-[-0.42px] flex-1">{svc.body}</p>
+              <p className="text-[16px] lg:text-[16px] font-medium mb-5" style={{ color: svc.accent }}>{svc.subtitle}</p>
+              <p className="text-[16px] lg:text-[16px] leading-[25px] tracking-[-0.42px] flex-1">{svc.body}</p>
 
               <div className="flex flex-wrap gap-2 mt-6">
                 {svc.tags.map((tag) => (
@@ -400,7 +429,7 @@ function AIAgentsSection() {
   const buildWords = ['We Build']
 
   return (
-    <section id="ai-agents" className="relative py-20 lg:py-16 overflow-hidden bg-black">
+    <section id="ai-agents" className="relative py-0 lg:py-16 overflow-hidden bg-black">
       <div
         className="absolute pointer-events-none"
         style={{
@@ -414,8 +443,11 @@ function AIAgentsSection() {
 
       <div className="max-w-[1280px] mx-auto px-6 relative z-10" ref={ref}>
         <div className={`text-center mb-24 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-[#C58E75] uppercase tracking-[0.2em] text-sm lg:text-[20px] font-bold mb-4">AI Agents &amp; POCs</p>
-          <h2 className="text-3xl md:text-5xl lg:text-[54px] font-semibold leading-tight mb-8 tracking-tight">
+            <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+            AI Agents &amp; POCs
+          </p>
+
+          <h2 className="text-[36px] md:text-[46] lg:text-[62px] font-semibold leading-tight mb-8 tracking-tight">
             <Typewriter words={headlineWords} speed={100} delay={2500} />
           </h2>
           <p className="max-w-3xl mx-auto text-base md:text-lg leading-relaxed font-light">
@@ -423,20 +455,20 @@ function AIAgentsSection() {
           </p>
         </div>
 
-        <div className="pt-20 mb-32">
+        <div className="lg:pt-20 pt-0 lg:mb-32 mb-15">
           <div className={`flex flex-col lg:flex-row justify-between items-start gap-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="lg:w-1/2">
-              <h3 className="text-[44px] md:text-[64px] lg:text-[72px] font-semibold leading-[0.9] tracking-tighter">
+              <h3 className="text-[36px] md:text-[46px] lg:text-[62px] font-semibold leading-[0.9] tracking-tighter">
                 The Problem <br />
                 <Typewriter words={problemWords} speed={100} delay={2500} />
               </h3>
             </div>
             <div className="lg:w-1/2 flex flex-col gap-6">
-              <p className="text-lg leading-relaxed">
+              <p className="text-[16px] ">
                 "Most businesses know AI can help them. Very few know where to start. Fewer still can afford a six-month enterprise implementation."
               </p>
-              <p className="text-lg leading-relaxed font-medium">We built a different model.</p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-[16px] font-medium">We built a different model.</p>
+              <p className="text-[16px] ">
                 We identify one high-impact problem in your business, build a focused AI agent around it, prove it works — and then scale it. No bloated projects. No wasted budgets. Just results you can see.
               </p>
             </div>
@@ -444,17 +476,18 @@ function AIAgentsSection() {
         </div>
 
         <div className={`mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-4xl md:text-7xl font-bold tracking-tighter mb-4">
+          <h3 className="text-[36px] md:text-[46px] lg:text-[62px] font-bold tracking-tighter mb-4">
             What <Typewriter words={buildWords} speed={100} delay={2500} />
           </h3>
-          <p className="text-xl md:text-2xl font-medium tracking-tight">Purpose-built automation for every department</p>
+          <p className="text-[16px] md:text-[20px] font-medium tracking-tight">Purpose-built automation for every department</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {AGENTS.map((agent, i) => (
             <div
               key={agent.title}
-              className={`card group flex flex-col sm:flex-row items-center gap-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`card group flex flex-col lg:flex-row items-center gap-8 transition-all duration-700 
+  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
               <div className="flex-1 order-2 sm:order-1 text-center sm:text-left">
@@ -487,15 +520,15 @@ function HowItWorksSection() {
   const typewriterWords = ['How It Works']
 
   return (
-    <section id="how-it-works" className="relative bg-black py-20 lg:py-28">
+    <section id="how-it-works" className="relative  pt-7 lg:py-28">
       <div className="wrap" ref={ref}>
         <div className={`mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-[40px] sm:text-[60px] lg:text-[80px] font-semibold tracking-[-2.4px] leading-[77px]">
+          <h2 className="text-[32px] sm:text-[46px] lg:text-[62px] font-semibold tracking-[-2.4px] leading-[77px]">
             <Typewriter words={typewriterWords} speed={100} delay={2500} />
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-5 lg:gap-6 relative">
+        <div className="grid md:grid-cols-3 gap-5 lg:gap-6 relative">
           <img src="/Safer.svg" alt="Safer" width={400} height={420} loading="lazy" decoding="async" className="w-full h-auto" />
           <img src="/Faster.svg" alt="Faster" width={400} height={420} loading="lazy" decoding="async" className="w-full h-auto" />
           <img src="/On-cloud.svg" alt="On cloud" width={400} height={420} loading="lazy" decoding="async" className="w-full h-auto" />
@@ -535,7 +568,7 @@ function AccordionItem({ title, content, open, onToggle, innerRef }) {
   return (
     <div ref={innerRef} className="border-b border-white/[0.07] last:border-0">
       <button className="w-full flex items-center justify-between gap-[18px] py-6 text-left group" onClick={onToggle}>
-        <span className={`text-[18px] lg:text-[20px] font-medium transition-colors ${open ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>
+        <span className={`text-[16px] lg:text-[20px] font-medium transition-colors ${open ? 'text-white' : 'text-white/80 group-hover:text-white'}`}>
           {title}
         </span>
         <svg
@@ -584,7 +617,7 @@ function TeamSection() {
   }, [openIdx])
 
   return (
-    <section id="team" className="relative bg-black py-20 lg:py-32 overflow-hidden">
+    <section id="team" className="relative py-0 lg:py-32 overflow-hidden">
       <div
         className="absolute pointer-events-none"
         style={{
@@ -598,16 +631,18 @@ function TeamSection() {
       />
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10" ref={ref}>
-        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-[#C58E75] uppercase tracking-[0.2em] text-[24px] font-bold mb-4">Our Team</p>
-          <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
+        <div className={`text-center lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+ <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+            Our Team
+          </p>
+          <h2 className="text-[36px] md:text-[46] lg:text-[62px] font-semibold leading-tight">
             <Typewriter words={typewriterWords} speed={100} delay={2500} />
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 items-start mb-24">
+        <div className="grid lg:grid-cols-12 gap-12 items-start lg:mb-24 mb-5">
           <div className="lg:col-span-4 pt-4">
-            <p className="text-lg leading-relaxed font-light">
+            <p className="text-[16px] lg:text-[20px] lg:leading-relaxed">
               The Tech Scape AI Team Is Not A Group Of Consultants Who Talk About Technology.
               We Are Engineers, Designers, Educators, And Business Operators Who Build It
               Every Day Across India, The USA, And Canada.
@@ -615,7 +650,7 @@ function TeamSection() {
           </div>
 
           <div
-            className="lg:col-span-2 flex justify-center py-10 lg:py-0 lg:transition-transform lg:duration-500 lg:ease-out"
+            className="lg:col-span-2 flex justify-center py-0 lg:py-0 lg:transition-transform lg:duration-500 lg:ease-out"
             style={{ transform: `translateY(${imageOffset}px)` }}
           >
             <img
@@ -648,7 +683,7 @@ function TeamSection() {
 
         <div className="flex justify-center">
           <div className="card h-auto min-h-0 text-center max-w-4xl">
-            <p className="text-sm md:text-[24px] leading-relaxed">
+            <p className="text-[16px] md:text-[24px] leading-relaxed">
               "We are a lean, global, high-output team. Every person here owns their work and
               every piece of work we deliver reflects that."
             </p>
@@ -667,12 +702,14 @@ function PartnersDetailedSection() {
     <section id="partners-detailed" className="relative bg-black py-20 lg:py-10">
       <div className="wrap" ref={ref}>
         <div className={`text-center max-w-[900px] mx-auto mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="label mb-4 lg:text-[32px]">Partners</p>
-          <h2 className="text-[28px] sm:text-[36px] lg:text-[44px] font-semibold tracking-[-1.32px] leading-[1.2] mb-6">
+           <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+            Partners
+          </p>
+          <h2 className="text-[36px] sm:text-[46px] lg:text-[62px] font-semibold tracking-[-1.32px] leading-[1.2] mb-6">
             Backed by the Right Partners.<br className="hidden sm:block" />
             <Typewriter words={typewriterWords} speed={100} delay={2500} />
           </h2>
-          <p className="text-[15px] lg:text-[18px] leading-[25px] tracking-[-0.48px] max-w-[813px] mx-auto">
+          <p className="text-[16px] lg:text-[20px] lg:leading-[25px] tracking-[-0.48px] max-w-[813px] mx-auto">
             Tech Scape AI operates at the intersection of global technology ecosystems. Our partnerships give our clients and students access to world-class networks, validated technology, and market-ready opportunities.
           </p>
         </div>
@@ -692,8 +729,8 @@ function PartnersDetailedSection() {
                 </svg>
               </div>
 
-              <h3 className="text-[20px] lg:text-[22px] font-bold leading-[1.3] mb-4">{p.name}</h3>
-              <p className="text-[14px] lg:text-[15px] leading-[25px] tracking-[-0.42px]">{p.body}</p>
+              <h3 className="text-[22px] lg:text-[26px] font-bold leading-[1.3] mb-4">{p.name}</h3>
+              <p className="text-[16px] lg:text-[20px] lg:leading-[25px] tracking-[-0.42px]">{p.body}</p>
             </div>
           ))}
         </div>
@@ -727,21 +764,21 @@ function GetStartedSection() {
       <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
 
         <div
-          className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`text-center mb-0 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
         >
           <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
-            <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] font-semibold">
+            <span className="text-[#F7BFA0] uppercase lg:tracking-[0.22em] text-[22px] font-semibold">
               Get Started
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
+          <h2 className="text-[26px] md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
             Let's Build Something Together
           </h2>
 
-          <p className="max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
-            Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
+          <p className="max-w-2xl mx-auto text-[16px] md:text-[20px]  leading-relaxed font-light tracking-wide px-4">
+            Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration
             The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
           </p>
         </div>
@@ -763,7 +800,7 @@ function GetStartedSection() {
             </div>
 
             <div className="lg:pl-6 text-left lg:pt-2">
-              <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
+              <h3 className="text-[32px] md:text-[46px] font-semibold mb-6 leading-tight tracking-tight">
                 Book a Free Consultation Directly
               </h3>
               <p className="mb-10 text-base md:text-lg leading-relaxed max-w-md">

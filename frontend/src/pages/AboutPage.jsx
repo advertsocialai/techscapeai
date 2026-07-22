@@ -164,14 +164,14 @@ export default function BreakthroughSection() {
 
         <div className="relative wrap flex flex-col items-center text-center">
 
-          <h2 className="text-3xl sm:text-4xl md:text-[56px] font-bold tracking-tight max-w-3xl leading-tight">
+          <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] font-bold tracking-tight max-w-3xl leading-tight">
             Your Next Breakthrough, <br />
             <Typewriter words={['Powered By AI']} speed={100} delay={2500} />
           </h2>
 
-          <p className="text-[13px] md:text-[16px] max-w-3xl mt-6 leading-relaxed font-light tracking-wide">
-            We are Tech Scape AI — an AI services and agents company built in India, operating globally. <br className="hidden sm:inline" />
-            We help businesses in Travel, Logistics, Finance, and Recruitment automate their most <br className="hidden sm:inline" />
+          <p className="text-[16px] md:text-[20px] max-w-3xl mt-6 leading-relaxed font-light tracking-wide">
+            We are Tech Scape AI — an AI services and agents company built in India, operating globally.
+            We help businesses in Travel, Logistics, Finance, and Recruitment automate their most
             complex workflows using AI.
           </p>
 
@@ -213,30 +213,47 @@ export default function BreakthroughSection() {
         </div>
       </section>
 
-      <section id="partners" className="relative py-16 lg:py-20">
-        <div className="wrap" ref={partnersRef}>
-          <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${partnersSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="capitalize text-[28px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
+      <section id="partners" className="relative  py-1 lg:py-20">
+        <div className="wrap" ref={ref}>
+          <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
               Our Partners
             </p>
+
+
             <div className="relative overflow-hidden w-full">
               <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(90deg, #000 0%, transparent 100%)' }} />
               <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(270deg, #000 0%, transparent 100%)' }} />
 
-              <div className="flex items-center gap-[120px] marquee-track" style={{ width: 'max-content' }}>
+              <div className="flex items-center gap-[48px] sm:gap-[72px] lg:gap-[120px] marquee-track" style={{ width: 'max-content' }}>
                 {PARTNER_MARQUEE.map(({ key, src, alt, w, h }, i) => (
-                  <div key={`${key}-${i}`} className="flex items-center justify-center shrink-0" style={{ minHeight: '56px' }}>
+                  <div key={`${key}-${i}`} className="flex items-center justify-center shrink-0 min-h-[36px] lg:min-h-[56px]">
                     <img
                       src={src}
                       alt={alt}
                       width={w}
                       height={h}
-                      className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-                      style={{ width: `${w}px`, height: `${h}px` }}
+                      className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300 w-[calc(var(--logo-w)*0.6)] h-[calc(var(--logo-h)*0.6)] sm:w-[calc(var(--logo-w)*0.8)] sm:h-[calc(var(--logo-h)*0.8)] lg:w-[var(--logo-w)] lg:h-[var(--logo-h)]"
+                      style={{ '--logo-w': `${w}px`, '--logo-h': `${h}px` }}
                     />
                   </div>
                 ))}
               </div>
+            </div>
+
+            <div
+              className="inline-flex items-center justify-center rounded-full max-w-[600px]"
+              style={{
+                width: '900px',
+                maxWidth: '100%',
+                minHeight: '73px',
+                padding: '24px',
+                background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
+              }}
+            >
+              <p className="lg:text-[24px] text-[16px]  font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px] text-center">
+                This is not the future. This is happening now and Tech Scape AI is leading it.
+              </p>
             </div>
           </div>
         </div>
@@ -251,11 +268,11 @@ export default function BreakthroughSection() {
         <div className="wrap">
 
           <div className="mb-16 flex flex-col gap-2">
-            <p className="capitalize text-[28px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
+            <p className="text-[26px] lg:text-[36px] text-center font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
               Our Research
             </p>
 
-            <h2 className="text-3xl sm:text-4xl md:text-[56px] font-bold tracking-tight mt-1 text-left">
+            <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] font-bold tracking-tight mt-1 text-left">
               We Don't Just{" "}
               <Typewriter words={['Deploy AI', 'Study It']} speed={100} delay={2500} />
             </h2>
@@ -317,22 +334,32 @@ export default function BreakthroughSection() {
 
           </div>
 
-          <div className="mt-16 w-full flex justify-center">
-            <button type="button" className="btn btn-lg tracking-wide">
-              Collaborate With Us On Research - info@techscapeai.in
+          <div className="mt-16 w-full flex justify-center px-4">
+            <button
+              type="button"
+              className="btn btn-lg tracking-wide 
+    w-full sm:w-auto 
+    text-sm sm:text-base md:text-lg 
+    px-4 sm:px-6 md:px-8 
+    py-3 sm:py-4 
+    text-center whitespace-normal break-words"
+            >
+              <span className="hidden sm:inline">
+                Collaborate With Us On Research -
+              </span>{" "}
+              info@techscapeai.in
             </button>
           </div>
-
         </div>
 
       </section>
 
-      <section className="relative overflow-hidden py-20 lg:py-28">
+      <section className="relative overflow-hidden py-2 lg:py-28">
         <div className="absolute top-1/2 -right-1/4 w-[700px] h-[700px] bg-gradient-to-br from-blue-600/75 via-blue-500/35 to-transparent rounded-full blur-[140px] pointer-events-none transform -translate-y-1/2" />
         <div className="wrap w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
           <div className="lg:col-span-12 pt-4">
-            <h2 className="text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight text-slate-300 leading-tight uppercase">
+            <h2 className="text-[36px] md:text-[46px] lg:text-[62px] font-bold tracking-tight text-slate-300 leading-tight uppercase">
               A Letter From Our <br />
               <span className="text-slate-300 block mt-1">FOUNDERS</span>
             </h2>
@@ -396,7 +423,7 @@ export default function BreakthroughSection() {
         </div>
 
         <div className="wrap w-full relative z-10 mt-16 lg:mt-0 2xl:mt-0">
-          <p className="text-[27px] md:text-lg lg:text-[24px] font-light tracking-wide">
+          <p className="text-[20px] md:text-lg lg:text-[24px] font-light tracking-wide">
             The FUTURE we are building is one where your AI is so capable that your CUSTOMERS genuinely...
           </p>
         </div>
@@ -409,14 +436,14 @@ export default function BreakthroughSection() {
       >
         <div className="relative wrap">
 
-          <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
+          <p className="capitalize text-[26px] lg:text-[36px]  font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
             Careers
           </p>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end mt-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-bold tracking-tight leading-[1.05]">
+            <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] font-bold tracking-tight leading-[1.05]">
               Build <Typewriter words={['What Hasn’t']} speed={100} delay={2500} /><br />
-              <span className='text-[26px]'>Been Built</span>
+              <span className='text-[36px]  md:text-[46px] lg:text-[62px]'>Been Built</span>
             </h2>
 
           </div>
@@ -574,7 +601,7 @@ export default function BreakthroughSection() {
               style={{
                 background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
               }}>
-              <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] lg:text-[32px] font-semibold">
+              <span className="text-[#F7BFA0] uppercase lg:tracking-[0.22em] text-[22px] lg:text-[32px] font-semibold">
                 Get Started
               </span>
             </div>
@@ -583,8 +610,8 @@ export default function BreakthroughSection() {
               Let's Build Something Together
             </h2>
 
-            <p className="max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
-              Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
+            <p className="max-w-2xl mx-auto text-[16px] md:text-[20px]  leading-relaxed font-light tracking-wide px-4">
+              Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration 
               The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
             </p>
           </div>

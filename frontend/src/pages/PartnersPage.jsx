@@ -60,10 +60,11 @@ export default function PartnerEcosystemPage() {
   ];
 
   const teamMembers = [
-    { name: "Member 1", role: "Founder", img: "/partnerimg1.png", linkedin: "#" },
-    { name: "Member 2", role: "Co-Founder", img: "/partnerimg3.png", linkedin: "#" },
-    { name: "Member 3", role: "Lead AI", img: "/partnerimg2.png", linkedin: "#" },
-    { name: "Member 4", role: "Research Head", img: "/partnerimg4.jpeg", linkedin: "#" },
+    { name: "Gautam", role: "Founder", img: "/partnerimg1.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
+    { name: "Rakesh Chandra", role: "Co-Founder", img: "/partnerimg3.png", linkedin: "www.linkedin.com/in/rakesh-chandra-talakaturi" },
+    { name: "Rahul Richards", role: "Lead AI", img: "/partnerimg2.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
+    { name: "Harshita Hooda", role: "Research Head", img: "/partnerimg4.jpeg", linkedin: "www.linkedin.com/in/createwithharshitahooda" },
+    { name: "Sahil Singh", role: "Devloper", img: "/partnerimg5.png", linkedin: "https://www.linkedin.com/in/sahil-singh-4646a21b2/" },
   ];
 
   const teamScrollerRef = useRef(null);
@@ -294,7 +295,7 @@ export default function PartnerEcosystemPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${member.name} on LinkedIn`}
-                        className="flex items-center justify-center w-14 h-14 rounded-full bg-[#0A66C2] text-white transition-transform duration-300 hover:scale-110"
+                        className="flex items-center justify-center w-14 h-14 rounded-[10px] bg-[#ffffff] text-blue-900 transition-transform duration-300 hover:scale-110"
                       >
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                           <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.24 8.25h4.5V24H.24V8.25zM8.5 8.25h4.3v2.15h.06c.6-1.13 2.06-2.32 4.24-2.32 4.54 0 5.38 2.99 5.38 6.87V24h-4.5v-6.98c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V24H8.5V8.25z" />

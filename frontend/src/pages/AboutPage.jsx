@@ -214,8 +214,8 @@ export default function BreakthroughSection() {
       </section>
 
       <section id="partners" className="relative  py-1 lg:py-20">
-        <div className="wrap" ref={ref}>
-          <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="wrap" ref={partnersRef}>
+          <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${partnersSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
               Our Partners
             </p>

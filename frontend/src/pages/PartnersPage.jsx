@@ -60,11 +60,11 @@ export default function PartnerEcosystemPage() {
   ];
 
   const teamMembers = [
-    { name: "Gautam", role: "Founder", img: "/partnerimg1.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
-    { name: "Rakesh Chandra", role: "Co-Founder", img: "/partnerimg3.png", linkedin: "www.linkedin.com/in/rakesh-chandra-talakaturi" },
-    { name: "Rahul Richards", role: "Lead AI", img: "/partnerimg2.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
-    { name: "Harshita Hooda", role: "Research Head", img: "/partnerimg4.jpeg", linkedin: "www.linkedin.com/in/createwithharshitahooda" },
-    { name: "Sahil Singh", role: "Devloper", img: "/partnerimg5.png", linkedin: "https://www.linkedin.com/in/sahil-singh-4646a21b2/" },
+    { name: "Chaitanya Gowtham Rudraraju", role: "Co- Founder - CGO", img: "/partnerimg1.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
+    { name: "⁠Rakesh Chandra Talakaturi", role: "Co- Founder - CFO", img: "/partnerimg3.png", linkedin: "www.linkedin.com/in/rakesh-chandra-talakaturi" },
+    { name: "Rahul Richards Ganta", role: "Co- Founder - COO", img: "/partnerimg2.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
+    { name: "Harshita Hooda", role: "Jr. UX & UI Designer", img: "/partnerimg4.jpeg", linkedin: "www.linkedin.com/in/createwithharshitahooda" },
+    { name: "Sahil Singh", role: "Jr. AI Research Engineer", img: "/partnerimg5.png", linkedin: "https://www.linkedin.com/in/sahil-singh-4646a21b2/" },
   ];
 
   const teamScrollerRef = useRef(null);

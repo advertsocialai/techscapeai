@@ -12,6 +12,7 @@ import abs from '../assets/abs.svg'
 import bidqon_logo from '../assets/bidqon_logo.svg'
 import teamCharacter from '../assets/team-character.svg'
 import SEO from '../components/SEO'
+import AnniversaryCelebration from '../components/AnniversaryCelebration'
 
 const PARTNER_LOGOS = [
   { key: 'nxt-1', src: partnerNxtwave, alt: 'NXT Wave', w: 234, h: 44 },
@@ -854,6 +855,7 @@ export default function HomePage() {
         description="TechScape AI builds intelligent AI agents, automation systems, and data-driven solutions for businesses ready to scale with technology."
         canonical="/"
       />
+      <AnniversaryCelebration />
       <HeroSection />
       <AboutSection />
       <PartnersSection />

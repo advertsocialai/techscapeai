@@ -62,9 +62,9 @@ export default function BreakthroughSection() {
     { key: 'nxt-1', src: partnerNxtwave, alt: 'NXT Wave', w: 234, h: 44 },
     { key: 'asg-1', src: partnerAsg, alt: 'American Software Group', w: 103, h: 54 },
     { key: 'nxt-2', src: mmw, alt: 'NXT Wave', w: 234, h: 44 },
-    { key: 'asg-2', src: goga, alt: 'American Software Group', w: 220, h: 54 },
+    // { key: 'asg-2', src: goga, alt: 'American Software Group', w: 220, h: 54 },
     { key: 'asg-3', src: abs, alt: 'American Software Group', w: 230, h: 54 },
-    { key: 'asg-4', src: bidqon_logo, alt: 'American Software Group', w: 230, h: 54 },
+    // { key: 'asg-4', src: bidqon_logo, alt: 'American Software Group', w: 230, h: 54 },
   ]
   const PARTNER_MARQUEE = [...PARTNER_LOGOS, ...PARTNER_LOGOS];
 

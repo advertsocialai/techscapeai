@@ -28,7 +28,7 @@ export default function Blog() {
           background: '#fad4bf',
           filter: 'blur(266.7px)',
           borderRadius: '254px 343px 129px 391px',
-          opacity: 1.55,
+          opacity: 0.55,
         }}
       />
 
@@ -254,7 +254,7 @@ export default function Blog() {
             background: '#004477DB',
             filter: 'blur(306.7px)',
             borderRadius: '254px 343px 129px 3px',
-            opacity: 1.55,
+            opacity: 0.55,
           }}
         />
         <div className="space-y-6 text-left">

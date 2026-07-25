@@ -207,11 +207,15 @@ export default function LoginPage() {
               ))}
             </div>
 
-            {/* Enter button */}
+            {/* Enter button — GoGaga Command Center is a separate deployment
+                (techscapeai-platform) with no public URL wired here yet, so
+                this stays disabled rather than linking to a 404 or guessing
+                a destination. */}
             <button
-              onClick={() => navigate('/gogaga/dashboard')}
-              style={{ width:'100%', height:50, background:'linear-gradient(135deg, rgba(200,120,80,0.85), rgba(220,96,56,0.9))', border:'1px solid rgba(255,180,140,0.4)', borderRadius:14, color:'#fff', fontSize:15, fontWeight:700, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:8 }}>
-              Launch Command Center →
+              disabled
+              title="Coming soon"
+              style={{ width:'100%', height:50, background:'linear-gradient(135deg, rgba(200,120,80,0.85), rgba(220,96,56,0.9))', border:'1px solid rgba(255,180,140,0.4)', borderRadius:14, color:'#fff', fontSize:15, fontWeight:700, cursor:'not-allowed', display:'flex', alignItems:'center', justifyContent:'center', gap:8, opacity:0.6 }}>
+              Launch Command Center — Coming Soon
             </button>
 
             <div style={{ textAlign:'center', marginTop:16, fontSize:11, color:'rgba(255,255,255,0.35)' }}>

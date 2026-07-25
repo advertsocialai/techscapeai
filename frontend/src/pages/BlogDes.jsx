@@ -72,7 +72,7 @@ export default function ArticleVoiceLayout() {
           background: '#fad4bf',
           filter: 'blur(266.7px)',
           borderRadius: '254px 343px 129px 391px',
-          opacity: 3.55,
+          opacity: 0.55,
         }}
       />
 

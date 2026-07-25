@@ -3,6 +3,16 @@ import Typewriter from '../components/Typewriter'
 import GetStarted from '../components/GetStarted';
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import SEO from '../components/SEO';
+import { submitContactForm } from '../lib/contact'
+
+const INITIAL_FORM_DATA = {
+  firstName: '',
+  lastName: '',
+  businessEmail: '',
+  companyName: '',
+  reason: '',
+  message: ''
+}
 
 const CHECK_ITEMS = [
   'No Commitment Required',
@@ -17,22 +27,34 @@ const CheckIcon = () => (
 )
 
 export default function PartnerEcosystemPage() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    businessEmail: '',
-    companyName: '',
-    reason: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Submitted Data:', formData);
+    if (status === 'loading') return;
+    setStatus('loading');
+    setErrorMsg('');
+    try {
+      await submitContactForm({
+        full_name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.businessEmail,
+        interested_in: formData.reason,
+        message: formData.companyName
+          ? `Company: ${formData.companyName}\n\n${formData.message}`
+          : formData.message,
+      });
+      setStatus('success');
+      setFormData(INITIAL_FORM_DATA);
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err?.message ?? 'Something went wrong. Please try again.');
+    }
   };
 
   const partnerReasons = [
@@ -85,7 +107,7 @@ export default function PartnerEcosystemPage() {
           background: '#fad4bf',
           filter: 'blur(266.7px)',
           borderRadius: '254px 343px 129px 391px',
-          opacity: 3.55,
+          opacity: 0.55,
         }}
       />
 
@@ -170,11 +192,23 @@ export default function PartnerEcosystemPage() {
                   <textarea id="pp-message" name="message" rows="3" required value={formData.message} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none"></textarea>
                 </div>
               </div>
+
+              {status === 'success' && (
+                <div className="rounded-xl px-4 py-3 text-sm text-emerald-300 bg-emerald-500/10 border border-emerald-500/30">
+                  Thanks — we received your message and will get back within 24 hours.
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="rounded-xl px-4 py-3 text-sm text-red-300 bg-red-500/10 border border-red-500/30">
+                  {errorMsg}
+                </div>
+              )}
+
               {/* Let's Talk Button with Exact Fixed Corner Radius */}
               <div className="flex justify-center mt-4">
-                <button type="submit" className="text-white  font-medium py-2.5 px-10 rounded-[8px] text-base tracking-wide shadow-lg hover:opacity-90 transition-all duration-200"
+                <button type="submit" disabled={status === 'loading'} className="text-white  font-medium py-2.5 px-10 rounded-[8px] text-base tracking-wide shadow-lg hover:opacity-90 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                   style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}>
-                  Let’s Talk
+                  {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
                 </button>
               </div>
             </form>

@@ -5,8 +5,14 @@ export default function Typewriter({ words, speed = 150, delay = 2000 }) {
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
 
+  // Depend on the word's *text* rather than the `words` array's identity —
+  // callers pass a fresh array literal on every render, and depending on
+  // the reference would clear + reschedule the in-flight timeout on every
+  // unrelated parent re-render, stuttering the animation mid-type.
+  const currentWord = words[index % words.length] || '';
+
   useEffect(() => {
-    if (subIndex === words[index].length + 1 && !reverse) {
+    if (subIndex === currentWord.length + 1 && !reverse) {
       setTimeout(() => setReverse(true), delay);
       return;
     }
@@ -22,11 +28,11 @@ export default function Typewriter({ words, speed = 150, delay = 2000 }) {
     }, reverse ? speed / 2 : speed);
 
     return () => clearTimeout(timeout);
-  }, [subIndex, index, reverse, words, speed, delay]);
+  }, [subIndex, currentWord, reverse, speed, delay, words.length]);
 
   return (
     <span>
-      {words[index].substring(0, subIndex)}
+      {currentWord.substring(0, subIndex)}
       <span className="animate-pulse border-r-2 border-current ml-1"></span>
     </span>
   );

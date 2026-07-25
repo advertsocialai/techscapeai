@@ -36,7 +36,7 @@ export default function Brand() {
                         background: '#fad4bf',
                         filter: 'blur(200px)',
                         borderRadius: '254px 343px 129px 391px',
-                        opacity: 5,
+                        opacity: 0.55,
                     }}
                 />
 
@@ -44,7 +44,7 @@ export default function Brand() {
                     className="absolute pointer-events-none"
                     style={{
                         right: '-10%', top: '30%', width: '300px', height: '500px',
-                        background: 'rgba(53, 121, 206, 2)',
+                        background: 'rgba(53, 121, 206, 0.3)',
                         filter: 'blur(150px)',
                         borderRadius: '100%',
                         zIndex: 0,
@@ -335,7 +335,7 @@ export default function Brand() {
                             background: '#1C6BFA',
                             filter: 'blur(266.7px)',
                             borderRadius: '254px 343px 129px 391px',
-                            opacity: 3.55,
+                            opacity: 0.55,
                         }}
                     />
 

@@ -18,6 +18,16 @@ import Accessibility from './pages/Accessibility'
 import TrustCenter from './pages/TrustCenter'
 import Industries from './pages/Industries'
 import AiAgent from './pages/AI-agents'
+import AdminLayout from './admin/AdminLayout'
+import AdminDashboard from './admin/Dashboard'
+import AdminContacts from './admin/pages/Contacts'
+import AdminSubscribers from './admin/pages/Subscribers'
+import AdminCareer from './admin/pages/Career'
+import AdminCareerPost from './admin/pages/CareerPost'
+import AdminSettings from './admin/pages/Settings'
+import AdminBlogCategory from './admin/pages/BlogCategory'
+import AdminCreateBlog from './admin/pages/CreateBlog'
+import AdminBlogs from './admin/pages/Blogs'
 
 const SHOW_WIP_PAGES = import.meta.env.VITE_SHOW_WIP_PAGES === 'true'
 
@@ -41,6 +51,17 @@ export default function App() {
         <Route path="/industries" element={<MainLayout><Industries /></MainLayout>} />
         <Route path="/ai-agent" element={<MainLayout><AiAgent /></MainLayout>} />
         <Route path="/research" element={<MainLayout><Research /></MainLayout>} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="contacts" element={<AdminContacts />} />
+          <Route path="subscribers" element={<AdminSubscribers />} />
+          <Route path="career" element={<AdminCareer />} />
+          <Route path="career/new" element={<AdminCareerPost />} />
+          <Route path="settings" element={<AdminSettings />} />
+          <Route path="blog/category" element={<AdminBlogCategory />} />
+          <Route path="blog/create" element={<AdminCreateBlog />} />
+          <Route path="blog/list" element={<AdminBlogs />} />
+        </Route>
         {SHOW_WIP_PAGES && (
           <>
             <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />

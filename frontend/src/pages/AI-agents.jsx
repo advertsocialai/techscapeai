@@ -13,22 +13,22 @@ export default function AIAgentsHeroSection() {
         {
             title: "Travel AI Agent",
             desc: "Expand your portfolio with our native product. Seamless user client management for travel agencies to build a fast-moving enterprise.",
-            icon: "aiagent6.svg"
+            icon: "/aiagent6.svg"
         },
         {
             title: "Finance AI Agent",
             desc: "Guide your custom automated workflows easily with dedicated bookkeeping automation. Fast, intelligent workflows customized for industry scales.",
-            icon: "aiagent7.svg"
+            icon: "/aiagent7.svg"
         },
         {
             title: "Recruitment AI Agent",
             desc: "Build Techscapes into high-level design systems with customized check ins for your team and position your firm at the forefront of the AI era.",
-            icon: "aiagent8.svg"
+            icon: "/aiagent8.svg"
         },
         {
             title: "Logistics AI Agent",
             desc: "Automate delivery matching, routing protocols, and predictive workflow tracking to maintain optimal load capacity across channels.",
-            icon: "aiagent9.png"
+            icon: "/aiagent9.png"
         }
     ];
 
@@ -74,7 +74,7 @@ export default function AIAgentsHeroSection() {
                     <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
 
                         <img
-                            src="aiagent1.svg"
+                            src="/aiagent1.svg"
                             alt="AI Face Core Background"
                             className="w-full h-full object-cover opacity-25 mix-blend-screen scale-105 pointer-events-none"
                         />

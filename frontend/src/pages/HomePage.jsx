@@ -880,7 +880,7 @@ function GetStartedSection() {
 
             {/* Dynamic Request A Demo Gradient Button (Matches image_430f2d.png) */}
             <Link
-              to="/researh"
+              to="/research"
               className="inline-flex items-center justify-center gap-2 w-[218px] h-[44px] text-[14px] font-medium text-white rounded-[8px] capitalize"
               style={{
                 backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)',

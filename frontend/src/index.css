@@ -251,6 +251,95 @@
     box-shadow: 0 12px 30px rgba(0,0,0,0.25);
   }
 
+  /* Travel hero — floating category pills.
+     Two nested elements: the outer drops the pill in (staggered), the inner
+     starts its idle float only after every pill has landed. */
+  @keyframes pill-drop {
+    from { opacity: 0; transform: translate3d(0, -22px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  @keyframes pill-float {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50%      { transform: translate3d(0, -9px, 0); }
+  }
+  .pill-drop  { animation: pill-drop 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .pill-float { animation: pill-float 4.5s ease-in-out infinite; will-change: transform; }
+
+  /* Personalization orbit — a ring spins; each item counter-spins by the same
+     duration so the photo/label stays perfectly upright while it revolves. */
+  @keyframes orbit-cw  { to { transform: rotate(360deg); } }
+  @keyframes orbit-ccw { to { transform: rotate(-360deg); } }
+  .orbit-spin-cw  { animation: orbit-cw  var(--dur, 46s) linear infinite; }
+  .orbit-spin-ccw { animation: orbit-ccw var(--dur, 46s) linear infinite; }
+  .orbit-ring:hover .orbit-spin-cw,
+  .orbit-ring:hover .orbit-spin-ccw { animation-play-state: paused; }
+
+  /* Orbit sizing tokens. --ring is the stage diameter, --img the photo width,
+     and the two radii are fractions of --ring (bigger = more space between
+     items). The 1440px+ tier grows the whole scene and spreads it wider. */
+  .orbit-stage {
+    --ring: min(90vw, 620px);
+    --img: clamp(84px, 21vw, 132px);
+    --r-outer: 0.4;
+    --r-inner: 0.2;
+    width: var(--ring);
+    height: var(--ring);
+  }
+  @media (min-width: 1440px) {
+    .orbit-stage {
+      --ring: 820px;
+      --img: 200px;
+      --r-outer: 0.42;
+      --r-inner: 0.19;
+    }
+  }
+
+  .travel-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.92);
+    background: linear-gradient(135deg, rgba(46, 34, 28, 0.95) 0%, rgba(10, 10, 12, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  /* Keep the pills scattered around the artwork on phones — just smaller,
+     so the five of them still clear the image edges. */
+  @media (max-width: 640px) {
+    .travel-pill { gap: 6px; padding: 6px 11px; font-size: 10.5px; }
+  }
+
+  .travel-stat {
+    padding: 14px 26px;
+    min-width: 168px;
+    border-radius: 18px;
+    text-align: center;
+    background: linear-gradient(150deg, rgba(80, 56, 44, 0.5) 0%, rgba(10, 10, 12, 0.92) 62%);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Voice-agent phone — animated transcript waveform */
+  @keyframes voice-wave {
+    0%, 100% { transform: scaleY(0.35); }
+    50%      { transform: scaleY(1); }
+  }
+  .voice-bar {
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #6fa0ff 0%, #3D75F3 100%);
+    transform-origin: center;
+    animation: voice-wave 1s ease-in-out infinite;
+  }
+
   /* Accordion chevron */
   .chev { transition: transform 0.25s; }
   .chev.open { transform: rotate(180deg); }
@@ -362,6 +451,11 @@
   .city-track-left,
   .city-track-right,
   .animate-float,
+  .pill-drop,
+  .pill-float,
+  .orbit-spin-cw,
+  .orbit-spin-ccw,
+  .voice-bar,
   .shimmer {
     animation: none !important;
   }

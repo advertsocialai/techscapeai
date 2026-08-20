@@ -60,9 +60,9 @@ export default function PartnerEcosystemPage() {
   ];
 
   const teamMembers = [
-    { name: "Chaitanya Gowtham Rudraraju", role: "Co- Founder - CGO", img: "/partnerimg1.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
+    { name: "Chaitanya Gowtham Rudraraju", role: "Co- Founder - CGO", img: "/partnerimg7.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
     { name: "⁠Rakesh Chandra Talakaturi", role: "Co- Founder - CFO", img: "/partnerimg3.png", linkedin: "www.linkedin.com/in/rakesh-chandra-talakaturi" },
-    { name: "Rahul Richards Ganta", role: "Co- Founder - COO", img: "/partnerimg2.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
+    { name: "Rahul Richards Ganta", role: "Co- Founder - COO", img: "/partnerimg8.png", linkedin: "www.linkedin.com/in/rahul-richards-ganta" },
     { name: "Harshita Hooda", role: "Jr. UX & UI Designer", img: "/partnerimg4.jpeg", linkedin: "www.linkedin.com/in/createwithharshitahooda" },
     { name: "Sahil Singh", role: "Jr. AI Research Engineer", img: "/partnerimg5.png", linkedin: "https://www.linkedin.com/in/sahil-singh-4646a21b2/" },
   ];

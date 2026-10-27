@@ -295,7 +295,7 @@ function AboutSection() {
 
       <div className="wrap relative" ref={ref}>
         <div className={`text-center max-w-[550px] mx-auto mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="Smallheading">
+          <p className="label">
             About
           </p>
           <p >
@@ -376,7 +376,7 @@ function PartnersSection() {
     <section id="partners" className="relative  py-1 lg:py-20">
       <div className="wrap" ref={ref}>
         <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="Smallheading" >
+          <p className="label" >
             In Partnership With
           </p>
 
@@ -492,7 +492,7 @@ function AIAgentsSection() {
 
       <div className="max-w-[1280px] mx-auto px-6 relative z-10" ref={ref}>
         <div className={`text-center mb-24 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="Smallheading">
+          <p className="label">
             AI Agents &amp; POCs
           </p>
 
@@ -681,7 +681,7 @@ function TeamSection() {
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10" ref={ref}>
         <div className={`text-center lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="Smallheading">
+          <p className="label">
             Our Team
           </p>
           <h1>
@@ -751,7 +751,7 @@ function PartnersDetailedSection() {
     <section id="partners-detailed" className="relative bg-black py-20 lg:py-10">
       <div className="wrap" ref={ref}>
         <div className={`text-center max-w-[900px] mx-auto mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className='Smallheading'>
+          <p className='label'>
             Partners
           </p>
           <h1>

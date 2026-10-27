@@ -215,9 +215,9 @@
   }
 }
 
-.Smallheading {
+.label {
   color: #F7BFA0;
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -278,13 +278,7 @@
     background-clip: text;
   }
 
-  .label {
-    color: #F5A086;
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+
 
 
   .btn,

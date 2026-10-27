@@ -216,7 +216,7 @@ export default function BreakthroughSection() {
       <section id="partners" className="relative  py-1 lg:py-20">
         <div className="wrap" ref={partnersRef}>
           <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${partnersSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="Smallheading">
+            <p className="label">
               Our Partners
             </p>
 
@@ -268,7 +268,7 @@ export default function BreakthroughSection() {
         <div className="wrap">
 
           <div className="mb-16 flex flex-col gap-2">
-            <p className="Smallheading">
+            <p className="label">
               Our Research
             </p>
 
@@ -436,7 +436,7 @@ export default function BreakthroughSection() {
       >
         <div className="relative wrap">
 
-          <p className="Smallheading">
+          <p className="label">
             Careers
           </p>
 

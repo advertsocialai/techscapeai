@@ -235,7 +235,7 @@ export default function Hero() {
       >
         <div className="absolute bottom-70 right-[-20px] w-[300px] h-[400px] bg-[#3579CE]/75 blur-[150px] rounded-full pointer-events-none" />
         <header className="max-w-5xl mx-auto flex flex-col items-center justify-center text-center px-4">
-          <p className="Smallheading">
+          <p className="label">
             Research & Devlopment
           </p>
 
@@ -348,7 +348,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-12 gap-4 items-start">
 
             <div className="lg:col-span-12 space-y-6">
-              <p className="Smallheading text-center mb-3">
+              <p className="label text-center mb-3">
                 Proof of Concept
               </p>
 
@@ -411,7 +411,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-12 space-y-8">
               <div className="space-y-3">
-                <p className="Smallheading text-center">
+                <p className="label text-center">
                   Our Partners 
                 </p>
               </div>
@@ -467,7 +467,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-12 space-y-8">
               <div className="space-y-3">
-                <p className="Smallheading text-center">
+                <p className="label text-center">
                   Research Focus
                 </p>
 

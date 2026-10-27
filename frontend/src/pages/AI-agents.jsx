@@ -212,7 +212,7 @@ export default function AiAgent() {
                     </h1>
 
                     <p className="mt-6 max-w-2xl mx-auto">
-                        Techscape AI builds domain-specific agents — voice, chat, and workflow — trained on how
+                        Techscape AI builds domain-specific agents voice, chat, and workflow trained on how
                         your industry actually works. Not general AI. Industry AI.
                     </p>
 
@@ -237,7 +237,7 @@ export default function AiAgent() {
                                 <div className="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight leading-tight">
                                     {stat.value}
                                 </div>
-                                <div className="mt-1 text-sm sm:text-base text-white/70 leading-snug">
+                                <div className="mt-1 ">
                                     {stat.label}
                                 </div>
                             </div>
@@ -260,7 +260,7 @@ export default function AiAgent() {
                             </span>
                         </h1>
                         <p className="mt-4 text-white">
-                            Three agents in production. One in deep research. Every one built domain-first — not
+                            Three agents in production. One in deep research. Every one built domain-first not
                             retrofitted from a generic model.
                         </p>
                     </div>
@@ -289,8 +289,8 @@ export default function AiAgent() {
                             </span>
                         </h1>
                         <p className="mt-6 max-w-2xl">
-                            Resolve high-volume, repetitive inquiries — booking modifications, tracking updates,
-                            multi-lingual support — instantly. Cut overhead costs, reduce wait times, and free your
+                            Resolve high-volume, repetitive inquiries booking modifications, tracking updates,
+                            multi-lingual support instantly. Cut overhead costs, reduce wait times, and free your
                             teams to focus on what matters.
                         </p>
                         <button type="button" className="btn mt-8">
@@ -340,7 +340,7 @@ export default function AiAgent() {
                                     <span className="block">Common Inquiries</span>
                                 </h1>
                                 <p className="mt-4  max-w-md">
-                                    Handle refunds, baggage status, seat selections, and more — reducing costs
+                                    Handle refunds, baggage status, seat selections, and more reducing costs
                                     and improving traveller satisfaction at scale.
                                 </p>
                             </div>
@@ -412,7 +412,7 @@ export default function AiAgent() {
                         </button>
                     </div>
 
-                    <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6">
+                    {/* <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6">
                         {CTA_CARDS.map((card) => {
                             const align = NAV_ALIGN[card.nav]
                             return (
@@ -425,7 +425,7 @@ export default function AiAgent() {
                                             'linear-gradient(145deg, rgba(247, 191, 160, 0.5) 0%, rgba(28,109,208,0.30) 60%)',
                                     }}
                                 >
-                                    {/* Warm bloom bleeding in from the top edge */}
+                                  
                                     <span
                                         aria-hidden="true"
                                         className="pointer-events-none absolute -top-16 left-1/2 h-40 w-[130%] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(197,142,117,0.30),transparent_70%)] transition-opacity duration-300 group-hover:opacity-80 opacity-60"
@@ -452,22 +452,23 @@ export default function AiAgent() {
                                 </Link>
                             )
                         })}
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
             {/* -------------------------------------------------------------- GET STARTED */}
             <section id="get-started" className="relative overflow-hidden">
-                <div className="max-w-[1440px] mx-auto relative z-10">
-                    <div
-                        className="w-full border border-black/5"
-                        style={{
+                <div className="max-w-[18000px] mx-auto relative z-10"
+                style={{
                             backgroundColor: '#050505',
                             backgroundImage: "url('/bg2.svg')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeat',
-                        }}
+                        }}>
+                    <div
+                        className="w-full border border-black/5"
+                        
                     >
                         <div className="wrap text-center py-16 md:py-24">
                             <h2 className="max-w-4xl mx-auto">

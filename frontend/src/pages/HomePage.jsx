@@ -51,7 +51,7 @@ const SERVICES = [
   {
     title: 'AI Agents & Intelligent Automation',
     subtitle: 'For businesses that want to work smarter',
-    body: "We design and deploy custom AI agents that handle repetitive workflows, automate operations, and free your team to focus on what matters. From customer interactions to back-office automation — if it's manual, we can make it intelligent.",
+    body: "We design and deploy custom AI agents that handle repetitive workflows, automate operations, and free your team to focus on what matters. From customer interactions to back-office automation if it's manual, we can make it intelligent.",
     tags: ['Fewer manual hours', 'Faster operations', 'Real ROI.'],
     accent: '#3D75F3',
     icon: (
@@ -66,7 +66,7 @@ const SERVICES = [
   {
     title: 'Digital Services & Transformation',
     subtitle: 'For businesses ready to grow online',
-    body: 'We deliver end-to-end digital solutions — web, content, SEO, social media, and marketing automation — built for businesses that want a strong digital presence and a system that keeps working.',
+    body: 'We deliver end-to-end digital solutions web, content, SEO, social media, and marketing automation built for businesses that want a strong digital presence and a system that keeps working.',
     tags: ['More visibility', 'More leads', 'More revenue'],
     accent: '#F5A086',
     icon: (
@@ -94,7 +94,7 @@ const SERVICES = [
   {
     title: 'CRM & SaaS for Small Business',
     subtitle: 'For small businesses that need enterprise tools at startup prices',
-    body: 'We adapt and deploy ready-built CRM and business software solutions — customised for your workflow, priced for your budget. No bloat. No complexity. Just tools that work.',
+    body: 'We adapt and deploy ready-built CRM and business software solutions customised for your workflow, priced for your budget. No bloat. No complexity. Just tools that work.',
     tags: ['Organised operations', 'Better customer relationships', 'Business clarity'],
     accent: '#F5A086',
     icon: (
@@ -110,25 +110,25 @@ const AGENTS = [
   {
     title: 'Customer Support Agent',
     description:
-      'Intelligent bots trained on your knowledge base that handle queries 24/7, resolve issues instantly, and escalate complex cases to your team — no downtime, no wait time.',
+      'Intelligent bots trained on your knowledge base that handle queries 24/7, resolve issues instantly, and escalate complex cases to your team no downtime, no wait time.',
     icon: '/Ai1.svg',
   },
   {
     title: 'Data & Reporting Agent',
     description:
-      'Pull from multiple sources, auto-generate reports, and surface insights on demand — no more manual Excel grind or waiting on the analytics team for weekly numbers.',
+      'Pull from multiple sources, auto-generate reports, and surface insights on demand no more manual Excel grind or waiting on the analytics team for weekly numbers.',
     icon: '/Ai2.svg',
   },
   {
     title: 'Outreach & Follow-Up Agent',
     description:
-      'Automated lead nurturing via email and WhatsApp — personalised messages, timely follow-ups, and CRM sync, all without lifting a finger or losing a prospect.',
+      'Automated lead nurturing via email and WhatsApp personalised messages, timely follow-ups, and CRM sync, all without lifting a finger or losing a prospect.',
     icon: '/Ai13.svg',
   },
   {
     title: 'Operations & Workflow Agent',
     description:
-      'End-to-end process automation connecting your tools — Slack, Notion, Sheets, HubSpot. Eliminate manual handoffs and keep work moving 24/7 across departments.',
+      'End-to-end process automation connecting your tools Slack, Notion, Sheets, HubSpot. Eliminate manual handoffs and keep work moving 24/7 across departments.',
     icon: '/Ai4.svg',
   },
 ]
@@ -147,17 +147,17 @@ const TEAM_ACCORDION = [
 const DETAILED_PARTNERS = [
   {
     name: 'NxtWave Accounting & Finance',
-    body: 'In collaboration with NxtWave, Tech Scape AI brings structured financial systems, accounting intelligence, and finance-aligned technology solutions — bridging the gap between business operations and smart financial management.',
+    body: 'In collaboration with NxtWave, Tech Scape AI brings structured financial systems, accounting intelligence, and finance-aligned technology solutions bridging the gap between business operations and smart financial management.',
     accent: '#3D75F3',
   },
   {
     name: 'ASG Recruitment & Automation',
-    body: 'Partnering with ASG, Tech Scape AI powers intelligent recruitment workflows and hiring automation — helping businesses find, screen, and onboard talent faster with AI-driven processes.',
+    body: 'Partnering with ASG, Tech Scape AI powers intelligent recruitment workflows and hiring automation helping businesses find, screen, and onboard talent faster with AI-driven processes.',
     accent: '#F5A086',
   },
   {
     name: 'Bhorx AI — Quantum AI',
-    body: 'In partnership with Bhorx AI, Tech Scape AI is at the frontier of Quantum AI research and development — bringing next-generation computing intelligence into real-world business applications.',
+    body: 'In partnership with Bhorx AI, Tech Scape AI is at the frontier of Quantum AI research and development bringing next-generation computing intelligence into real-world business applications.',
     accent: '#a78bfa',
   },
 ]
@@ -299,7 +299,7 @@ function AboutSection() {
             About
           </p>
           <p >
-            Tech Scape AI was built with one belief — that Artificial Intelligence should work for people, not replace them.
+            Tech Scape AI was built with one belief that Artificial Intelligence should work for people, not replace them.
           </p>
         </div>
 
@@ -518,7 +518,7 @@ function AIAgentsSection() {
               </p>
               <p >We built a different model.</p>
               <p >
-                We identify one high-impact problem in your business, build a focused AI agent around it, prove it works — and then scale it. No bloated projects. No wasted budgets. Just results you can see.
+                We identify one high-impact problem in your business, build a focused AI agent around it, prove it works and then scale it. No bloated projects. No wasted budgets. Just results you can see.
               </p>
             </div>
           </div>

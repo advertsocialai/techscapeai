@@ -235,19 +235,19 @@ export default function Hero() {
       >
         <div className="absolute bottom-70 right-[-20px] w-[300px] h-[400px] bg-[#3579CE]/75 blur-[150px] rounded-full pointer-events-none" />
         <header className="max-w-5xl mx-auto flex flex-col items-center justify-center text-center px-4">
-          <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+          <p className="Smallheading">
             Research & Devlopment
           </p>
 
-          <h2 className="font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px] mb-8 sm:mb-12">
+          <h1>
             The difference between AI
             <br />
             and{" "}
-            <Typewriter words={['useful AI ']} speed={100} delay={2500} />
+            <Typewriter words={['useful AI ']} speed={100} delay={2500} />{" "}
             is research.
-          </h2>
+          </h1>
 
-          <p className="mb-7 max-w-md text-[16px] lg:text-[20px] leading-relaxed mx-auto">
+          <p className="mb-7 max-w-md mt-5">
             We don&apos;t pitch AI. We prove it first. Every agent we deploy starts
             as a problem we&apos;ve already solved.
           </p>
@@ -348,7 +348,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-12 gap-4 items-start">
 
             <div className="lg:col-span-12 space-y-6">
-              <p className="text-[26px] lg:text-[36px] text-center font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+              <p className="Smallheading text-center mb-3">
                 Proof of Concept
               </p>
 
@@ -356,7 +356,7 @@ export default function Hero() {
             </div>
 
             <div className="lg:col-span-7 space-y-6">
-              <h2 className="text-[36px] lg::text-[56px] md:text-[46px] font-bold tracking-tight leading-[115%] max-w-xl text-white/95">
+              <h2>
                 One problem. Two to four weeks. Working proof before you commit.
               </h2>
               <p className="text-[16px] sm:text-base lg:text-[20px] font-light leading-relaxed max-w-lg pt-2">
@@ -411,7 +411,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-12 space-y-8">
               <div className="space-y-3">
-                <p className="capitalize text-[26px] lg:text-[36px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#F5A086' }}>
+                <p className="Smallheading text-center">
                   Our Partners 
                 </p>
               </div>
@@ -420,12 +420,12 @@ export default function Hero() {
             <div className="lg:col-span-6 space-y-8">
               <div className="space-y-3">
 
-                <h2 className="lg:text-[62px] md:text-[46px] text-[36px]  font-bold tracking-tight leading-[110%]">
+                <h1>
                   Four Rounds. <br /> <span className="font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[64px] mb-12 text-center md:text-left">
                     <Typewriter words={['One Direction.']} speed={100} delay={2500} />
                     <br />
                   </span> Always Forward.
-                </h2>
+                </h1>
               </div>
             </div>
 
@@ -433,7 +433,7 @@ export default function Hero() {
               <p>
                 Between 2021 and 2024, we secured four major funding rounds Series A through D raising nearly $1 billion. This support enabled us to scale our teams, expand globally, and continually develop cutting-edge models that power practical AI applications for the world's leading enterprises.
               </p>
-              <p className="text-sm lg:text-[18px]">
+              <p >
                 Every round was a vote of confidence not just in our technology but in the belief that AI built with intent and rigour is the only AI worth building.
               </p>
             </div>
@@ -446,7 +446,7 @@ export default function Hero() {
                   <div className="text-5xl font-bold tracking-tight">
                     4 <span className="text-[#2C80FF]">+</span>
                   </div>
-                  <p className="text-xs lg:text-[18px] font-light leading-snug">
+                  <p >
                     Funding rounds secured between 2021-2024
                   </p>
                 </div>
@@ -456,7 +456,7 @@ export default function Hero() {
                   <div className="text-5xl font-bold tracking-tight">
                     <span className="text-[#2C80FF]">$</span>1B
                   </div>
-                  <p className="text-xs lg:text-[18px] font-light leading-snug">
+                  <p >
                     Raised to scale teams and build cutting edge models
                   </p>
                 </div>
@@ -467,7 +467,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-12 space-y-8">
               <div className="space-y-3">
-                <p className="capitalize text-[26px] lg:text-[36px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#F5A086' }}>
+                <p className="Smallheading text-center">
                   Research Focus
                 </p>
 
@@ -478,18 +478,18 @@ export default function Hero() {
               <div className="space-y-3">
 
 
-                <h2 className="lg:text-[62px] sm:text-[46px] text-[36px] font-bold tracking-tight leading-[110%]">
-                  Open science for  <span className="font-bold tracking-tight leading-[100%]  text-[36px] sm:text-[46px] md:text-[62px] mb-12 text-center md:text-left">
+                <h1>
+                  Open science for 
                     <Typewriter words={['real problems.']} speed={100} delay={2500} />
-                  </span>
-                </h2>
+             
+                </h1>
               </div>
 
             </div>
 
             <div className="lg:col-span-6 text-sm sm:text-base lg:text-[18px] font-light leading-relaxed space-y-4 lg:pt-0">
               <p>
-                In 2022, we launched Tech Scape Labs — our open science initiative for solving complex machine learning problems. Today, it has grown to over 4,500 community members and has published more than 100 research papers.
+                In 2022, we launched Tech Scape Labs our open science initiative for solving complex machine learning problems. Today, it has grown to over 4,500 community members and has published more than 100 research papers.
                 Our research isn't academic for the sake of it. Every paper, every experiment, every model we test feeds directly back into the agents we build and the businesses we serve.
               </p>
             </div>
@@ -504,7 +504,7 @@ export default function Hero() {
                   <div className="text-5xl font-bold tracking-tight">
                     450 <span className="text-[#2C80FF]">+</span>
                   </div>
-                  <p className="text-xs lg:text-[18px] font-light leading-snug">
+                  <p >
                     Community members in Tech Scape Labs
                   </p>
                 </div>
@@ -514,7 +514,7 @@ export default function Hero() {
                   <div className="text-5xl font-bold tracking-tight">100
                     <span className="text-[#2C80FF]">+</span>
                   </div>
-                  <p className="text-xs lg:text-[18px] font-light leading-snug">
+                  <p >
                     Research papers published since 2022
                   </p>
                 </div>
@@ -532,9 +532,9 @@ export default function Hero() {
         <div className="max-w-6xl mx-auto space-y-12">
 
           <div className="space-y-6">
-            <h2 className="font-bold tracking-tight leading-[100%] text-[44px] sm:text-[60px] md:text-[80px] mb-12 text-center md:text-left">
+            <h1>
               <Typewriter words={['Research ']} speed={100} delay={2500} />
-            </h2>
+            </h1>
 
             <div className="flex flex-nowrap gap-3 items-center pt-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {filterTabs.map((tab) => (
@@ -598,16 +598,17 @@ export default function Hero() {
       </section>
 
       <section id="get-started" className="relative overflow-hidden ">
-        <div className="max-w-[1440px] mx-auto relative z-10">
-          <div
-            className={`w-full border border-black/5  transition-all duration-1000 delay-300`}
-            style={{
+        <div className="max-w-[1800px] mx-auto relative z-10"
+        style={{
               backgroundColor: '#050505',
               backgroundImage: "url('/bg2.svg')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
-            }}
+            }}>
+          <div
+            className={`w-full border border-black/5  transition-all duration-1000 delay-300`}
+            
           >
             <div className="w-full bg-transparent text-center px-4 py-16 md:py-24 flex flex-col items-center justify-center">
               <h2 className="text-[30px] md:text-[46px] lg:text-[62px] font-bold tracking-tight leading-[1.15] max-w-5xl mx-auto mb-10">

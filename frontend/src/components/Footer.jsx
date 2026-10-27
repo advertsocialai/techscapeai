@@ -29,7 +29,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0 pb-12">
 
           <div className="flex flex-col justify-between pr-0 md:pr-12">
-            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
+            <div className="">
+              <img src="/icon2.svg" alt="Tech Scape AI Logo" className="h-20 w-auto object-contain" />
+            </div>
+            {/* <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-12">
               <span className="text-[18px] font-normal tracking-wide whitespace-nowrap min-w-[100px]">
                 Who Are We
               </span>
@@ -38,11 +41,9 @@ export default function Footer() {
                 mission to make intelligent automation accessible and practical for every
                 business.
               </p>
-            </div>
+            </div> */}
 
-            <div className="mt-10 md:mt-auto pt-6">
-              <img src="/icon2.svg" alt="Tech Scape AI Logo" className="h-20 w-auto object-contain" />
-            </div>
+            
           </div>
 
           <div className="md:pl-12 border-t md:border-t-0 md:border-l border-white pt-8 md:pt-0 flex flex-col justify-between">

@@ -14,6 +14,8 @@ import teamCharacter from '../assets/team-character.svg'
 import SEO from '../components/SEO'
 import AnniversaryCelebration from '../components/AnniversaryCelebration'
 
+
+
 const PARTNER_LOGOS = [
   { key: 'nxt-1', src: partnerNxtwave, alt: 'NXT Wave', w: 234, h: 44 },
   { key: 'asg-1', src: partnerAsg, alt: 'American Software Group', w: 103, h: 54 },
@@ -171,7 +173,7 @@ function HeroSection() {
         style={{
           left: '-11.2%', top: '80px', width: '286px', height: '258px',
           background: '#fad4bf',
-          filter: 'blur(266.7px)',
+          filter: 'blur(216.7px)',
           borderRadius: '254px 343px 129px 391px',
           opacity: 0.55,
         }}
@@ -181,18 +183,17 @@ function HeroSection() {
         <div className="grid lg:grid-cols-[667px_546px] gap-10 lg:gap-[61px] items-center lg:h-[474px] max-w-[1274px] mx-auto">
 
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="capitalize text-[36px] sm:text-[46px] lg:text-[62px] font-semibold tracking-[-1.56px] leading-[1.1] mb-5 max-w-[667px]">
+            <h1 className=" mb-4">
               We Build{' '}
-              <span className="font-bold inline-block min-w-[280px]">
+              <span >
                 <Typewriter words={typewriterWords} speed={100} delay={2500} />
               </span>
-              {/* Keep "That…" on its own line so the headline shape stays stable
-                  while the typewriter cycles through words of varying length. */}
+
               <br />
               That Move Your Business Forward
             </h1>
 
-            <p className="text-[16px] lg:text-[20px] font-light leading-[25px] text-[#e5e7eb] tracking-[-0.48px] max-w-[619px] mb-10">
+            <p className=" max-w-[619px] mb-8">
               Tech Scape AI is a global AI services company delivering intelligent automation, custom AI agents, digital transformation, and world-class technology training trusted by businesses across the USA, Canada, and India.
             </p>
 
@@ -224,6 +225,31 @@ function HeroSection() {
 function AboutSection() {
   const { ref, isVisible } = useScrollAnimation()
   const typewriterWords = [' We Are Not Just Another Tech Company']
+
+  const cardsRef = useRef(null);
+  const [cardsVisible, setCardsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = cardsRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setCardsVisible(true), 250);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="about" className="relative  py-0 lg:py-2 overflow-hidden">
@@ -268,11 +294,11 @@ function AboutSection() {
       />
 
       <div className="wrap relative" ref={ref}>
-        <div className={`text-center max-w-[422px] mx-auto mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+        <div className={`text-center max-w-[550px] mx-auto mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="Smallheading">
             About
           </p>
-          <p className="text-[22px] font-medium leading-[25px] tracking-[-0.48px] text-white/70">
+          <p >
             Tech Scape AI was built with one belief — that Artificial Intelligence should work for people, not replace them.
           </p>
         </div>
@@ -292,29 +318,51 @@ function AboutSection() {
           </p>
         </div>
 
-        <div className={`text-center max-w-[932px] mx-auto mb-10 md:mb-14 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-[32px] sm:text-[46px] lg:text-[62px] leading-[1.1] tracking-[-1px] lg:tracking-[-1.72px] lg:leading-[75px] font-bold">
+        <div className={`text-center mx-auto mb-10 md:mb-14 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1>
             <Typewriter words={typewriterWords} speed={100} delay={2500} />
-          </h2>
+          </h1>
         </div>
       </div>
 
-      <div className="bg-[url('/bgframes.svg')] bg-no-repeat bg-center bg-cover w-full max-w-[1440px] mx-auto pt-8 pb-8 lg:pt-16 lg:pb-16">
+      <div
+        ref={cardsRef}
+        className="bg-[url('/bgframes.svg')] bg-no-repeat bg-center bg-cover w-full mx-auto pt-8 pb-8 lg:pt-16 lg:pb-16"
+      >
         <div className="flex flex-col md:flex-row items-center lg:items-end justify-center gap-6 lg:gap-8">
-          {ABOUT_CARDS.map((card, i) => (
-            <div
-              key={card.id}
-              className={`shrink-0 w-[300px] sm:w-[360px] md:w-[230px] lg:w-[400px] h-[300px] sm:h-[440px] md:h-[300px] lg:h-[500px] rounded-[40px] p-8 lg:p-10 flex items-center  z-10 ease-out ${card.transform} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-              style={{
-                background: card.background,
-                transitionDelay: `${300 + i * 250}ms`,
-              }}
-            >
-              <p className="text-white text-[26px] md:text-[22px] lg:text-[42px] font-semibold leading-[1.25] tracking-[-0.5px]">
-                {card.text}
-              </p>
-            </div>
-          ))}
+          {ABOUT_CARDS.map((card, i) => {
+            const animationClass =
+              i === 0
+                ? cardsVisible
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-24 opacity-0"
+                : i === 2
+                  ? cardsVisible
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-24 opacity-0"
+                  : cardsVisible
+                    ? "opacity-100"
+                    : "opacity-0";
+
+            return (
+              <div
+                key={card.id}
+                className={`shrink-0 w-[300px] sm:w-[360px] md:w-[230px] lg:w-[400px]
+            h-[300px] sm:h-[440px] md:h-[300px] lg:h-[500px]
+            rounded-[40px] p-8 lg:p-10 flex items-center z-10
+            transition-all duration-700 ease-out
+            ${card.transform} ${animationClass}`}
+                style={{
+                  background: card.background,
+                  transitionDelay: `${i * 180}ms`,
+                }}
+              >
+                <p className="text-white text-[26px] md:text-[22px] lg:text-[42px] font-semibold leading-[1.25] tracking-[-0.5px]">
+                  {card.text}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -328,8 +376,8 @@ function PartnersSection() {
     <section id="partners" className="relative  py-1 lg:py-20">
       <div className="wrap" ref={ref}>
         <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
-         In Partnership With
+          <p className="Smallheading" >
+            In Partnership With
           </p>
 
 
@@ -363,7 +411,7 @@ function PartnersSection() {
               background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
             }}
           >
-            <p className="lg:text-[24px] text-[16px]  font-medium text-[#e5e7eb] leading-[25px] tracking-[-0.48px] text-center">
+            <p >
               This is not the future. This is happening now and Tech Scape AI is leading it.
             </p>
           </div>
@@ -378,14 +426,14 @@ function ServicesSection() {
   const typewriterWords = ['What We Deliver.']
 
   return (
-    <section id="services" className="relative py-20 lg:py-28 overflow-hidden">
+    <section id="services" className="relative py-20 lg:py-20 overflow-hidden">
       <div className="wrap" ref={ref}>
-        <div className={`text-center max-w-[900px] mx-auto mb-14 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-[36px] sm:text-[46px] lg:text-[62px] font-semibold tracking-[-0.025em] leading-tight mb-5">
-            What We Build. <Typewriter words={typewriterWords} speed={100} delay={2500} />
-          </h2>
-          <p className="text-[16px] lg:text-[18px] leading-[26px] tracking-[-0.48px] max-w-[493px] mx-auto">
-            From intelligent automation to digital growth — Tech Scape AI brings four core capabilities to every business we work with.
+        <div className={`text-center  mx-auto mb-14 lg:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1>
+            What We Build. <Typewriter words={typewriterWords} speed={100} delay={2500}  onLoopDone={() => setShowCursor(false)} />
+          </h1>
+          <p className="pt-5 max-w-[600px] mx-auto">
+            From intelligent automation to digital growth Tech Scape AI brings four core capabilities to every business we work with.
           </p>
         </div>
 
@@ -444,32 +492,32 @@ function AIAgentsSection() {
 
       <div className="max-w-[1280px] mx-auto px-6 relative z-10" ref={ref}>
         <div className={`text-center mb-24 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+          <p className="Smallheading">
             AI Agents &amp; POCs
           </p>
 
-          <h2 className="text-[36px] md:text-[46] lg:text-[62px] font-semibold leading-tight mb-8 tracking-tight">
+          <h1>
             <Typewriter words={headlineWords} speed={100} delay={2500} />
-          </h2>
-          <p className="max-w-3xl mx-auto text-base md:text-lg leading-relaxed font-light">
-            Stop reading about AI. Start using it. Tech Scape AI builds small, powerful, purpose-built AI agents and proof-of-concept solutions that solve specific business problems — fast, affordable, and ready to deploy.
+          </h1>
+          <p className="max-w-3xl mx-auto pt-5">
+            Stop reading about AI. Start using it. Tech Scape AI builds small, powerful, purpose-built AI agents and proof-of-concept solutions that solve specific business problems fast, affordable, and ready to deploy.
           </p>
         </div>
 
         <div className="lg:pt-20 pt-0 lg:mb-32 mb-15">
           <div className={`flex flex-col lg:flex-row justify-between items-start gap-12 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="lg:w-1/2">
-              <h3 className="text-[36px] md:text-[46px] lg:text-[62px] font-semibold leading-[0.9] tracking-tighter">
+              <h1>
                 The Problem <br />
                 <Typewriter words={problemWords} speed={100} delay={2500} />
-              </h3>
+              </h1>
             </div>
             <div className="lg:w-1/2 flex flex-col gap-6">
-              <p className="text-[16px] ">
+              <p >
                 "Most businesses know AI can help them. Very few know where to start. Fewer still can afford a six-month enterprise implementation."
               </p>
-              <p className="text-[16px] font-medium">We built a different model.</p>
-              <p className="text-[16px] ">
+              <p >We built a different model.</p>
+              <p >
                 We identify one high-impact problem in your business, build a focused AI agent around it, prove it works — and then scale it. No bloated projects. No wasted budgets. Just results you can see.
               </p>
             </div>
@@ -477,10 +525,10 @@ function AIAgentsSection() {
         </div>
 
         <div className={`mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-[36px] md:text-[46px] lg:text-[62px] font-bold tracking-tighter mb-4">
+          <h1>
             What <Typewriter words={buildWords} speed={100} delay={2500} />
-          </h3>
-          <p className="text-[16px] md:text-[20px] font-medium tracking-tight">Purpose-built automation for every department</p>
+          </h1>
+          <p className='pt-5'>Purpose built automation for every department</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -524,9 +572,9 @@ function HowItWorksSection() {
     <section id="how-it-works" className="relative  pt-7 lg:py-28">
       <div className="wrap" ref={ref}>
         <div className={`mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-[32px] sm:text-[46px] lg:text-[62px] font-semibold tracking-[-2.4px] leading-[77px]">
+          <h1>
             <Typewriter words={typewriterWords} speed={100} delay={2500} />
-          </h2>
+          </h1>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 lg:gap-6 relative">
@@ -633,17 +681,17 @@ function TeamSection() {
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10" ref={ref}>
         <div className={`text-center lg:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
- <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+          <p className="Smallheading">
             Our Team
           </p>
-          <h2 className="text-[36px] md:text-[46] lg:text-[62px] font-semibold leading-tight">
+          <h1>
             <Typewriter words={typewriterWords} speed={100} delay={2500} />
-          </h2>
+          </h1>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-start lg:mb-24 mb-5">
           <div className="lg:col-span-4 pt-4">
-            <p className="text-[16px] lg:text-[20px] lg:leading-relaxed">
+            <p >
               The Tech Scape AI Team Is Not A Group Of Consultants Who Talk About Technology.
               We Are Engineers, Designers, Educators, And Business Operators Who Build It
               Every Day Across India, The USA, And Canada.
@@ -703,14 +751,14 @@ function PartnersDetailedSection() {
     <section id="partners-detailed" className="relative bg-black py-20 lg:py-10">
       <div className="wrap" ref={ref}>
         <div className={`text-center max-w-[900px] mx-auto mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-           <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+          <p className='Smallheading'>
             Partners
           </p>
-          <h2 className="text-[36px] sm:text-[46px] lg:text-[62px] font-semibold tracking-[-1.32px] leading-[1.2] mb-6">
+          <h1>
             Backed by the Right Partners.<br className="hidden sm:block" />
             <Typewriter words={typewriterWords} speed={100} delay={2500} />
-          </h2>
-          <p className="text-[16px] lg:text-[20px] lg:leading-[25px] tracking-[-0.48px] max-w-[813px] mx-auto">
+          </h1>
+          <p className="pt-5 max-w-[813px] mx-auto">
             Tech Scape AI operates at the intersection of global technology ecosystems. Our partnerships give our clients and students access to world-class networks, validated technology, and market-ready opportunities.
           </p>
         </div>
@@ -762,7 +810,14 @@ function GetStartedSection() {
   return (
 
     <section id="get-started" className="relative overflow-hidden lg:pt-14">
-      <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
+      <div className="max-w-[1800px] mx-auto relative z-10 pt-4" ref={ref}
+      style={{
+            backgroundColor: '#050505',
+            backgroundImage: "url('/bg2.svg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}>
 
         <div
           className={`text-center mb-0 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -778,7 +833,7 @@ function GetStartedSection() {
             Let's Build Something Together
           </h2>
 
-          <p className="max-w-2xl mx-auto text-[16px] md:text-[20px]  leading-relaxed font-light tracking-wide px-4">
+          <p className="max-w-2xl mx-auto ">
             Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration
             The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
           </p>
@@ -787,13 +842,7 @@ function GetStartedSection() {
         <div
           className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}
-          style={{
-            backgroundColor: '#050505',
-            backgroundImage: "url('/bg2.svg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
+          
         >
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
             <div>

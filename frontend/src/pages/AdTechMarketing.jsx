@@ -264,16 +264,18 @@ function SolutionHero() {
 
       <div className="wrap w-full pt-[100px] pb-16 relative">
         <div className="max-w-[860px] mx-auto text-center">
-          <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+          <p className="label">
             Solutions Ad Tech
           </p>
-          <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] ">
-            Your Ad spend is leaking.  <br />
-            <Typewriter words={['Programmatic AI stops it.']} speed={100} delay={2500} />
-          </h2>
-
-          <p className="text-[16px] md:text-[20px] mt-6">
-            Techscape AI brings performance-driven programmatic advertising to your business powered by
+          <h1 className="mt-5 max-w-4xl mx-auto">
+            Your Ad spend is leaking.{' '}
+            <span className="block">
+              <Typewriter words={["Programmatic AI stops it."]} speed={100} delay={2500} />
+            </span>
+          </h1>
+          
+          <p className=" mt-6">
+            Techscape AI brings performance driven programmatic advertising to your business powered by
             real-time bidding, AI yield optimization, and the MultiTag engine.
           </p>
 
@@ -301,15 +303,15 @@ function SolutionHero() {
       </div>
 
       <div className="wrap w-full pt-10 pb-24">
-        <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3 text-center" style={{ color: '#F5A086' }}>
+        <p className="label">
           Two Sides One Network
         </p>
-        <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] ">
+        <h1 className="mt-5 max-w-4xl">
           Publisher side. Advertiser side.  <br />
           <Typewriter words={['We Run Both.']} speed={100} delay={2500} />
-        </h2>
+        </h1>
 
-        <p className="text-[16px] md:text-[20px] mt-6 max-w-3xl">
+        <p className=" mt-6 max-w-3xl">
           The programmatic ad network connects two audiences publishers who have traffic and advertisers
           who want it. Tech Scape AI sits in the middle, optimizing for both.
         </p>
@@ -324,15 +326,15 @@ function SolutionHero() {
 
                 <div class="text-center mb-8">
                   <div class="flex justify-center items-center gap-3 mb-2">
-        
+
                     <img src="/aiagen9.svg" alt="Publisher Icon" class="w-10 h-10 object-contain" />
                     <h2 class="text-2xl sm:text-3xl font-bold tracking-wide text-white">For Publisher</h2>
                   </div>
-       
+
                   <span class="inline-block text-[16px] font-medium px-4 py-1 rounded-full text-[#4B4EFC] border border-blue-500/30 backdrop-blur-md"
-                  style={{
-              background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
-            }}>
+                    style={{
+                      background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
+                    }}>
                     Monetize your traffic
                   </span>
                 </div>
@@ -385,15 +387,15 @@ function SolutionHero() {
 
                 <div class="text-center mb-8">
                   <div class="flex justify-center items-center gap-3 mb-2">
-            
+
                     <img src="/aiagen8.svg" alt="Advertisers Icon" class="w-10 h-10 object-contain" />
                     <h2 class="text-2xl sm:text-3xl font-bold tracking-wide text-white">For Advertisers</h2>
                   </div>
 
                   <span class="inline-block text-[16px] font-medium px-4 py-1 rounded-full  text-[#4B4EFC] border border-blue-500/30 backdrop-blur-md"
-                      style={{
-              background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
-            }}>
+                    style={{
+                      background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
+                    }}>
                     Buy targeted performance
                   </span>
                 </div>
@@ -450,22 +452,22 @@ function RtbAndMultitag() {
   return (
     <section className="relative overflow-hidden">
       <div className="wrap w-full py-20">
-        <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3 text-center" style={{ color: '#F5A086' }}>
+        <p className="label text-center">
           How RTB Works
         </p>
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
 
-            <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] ">
+            <h1>
               100 milliseconds. <br />
               One {" "}
               <Typewriter words={['auction.']} speed={100} delay={2500} /> <br />
               One {" "}
               <Typewriter words={['winner.']} speed={100} delay={2500} /> <br />
-            </h2>
+            </h1>
 
-            <p className="text-[16px] md:text-[20px] mt-6 max-w-3xl">
+            <p className=" mt-6 max-w-3xl">
               Every time a user loads a page on a publisher site, an entire auction runs in the
               background faster than a blink.
             </p>
@@ -479,16 +481,16 @@ function RtbAndMultitag() {
       </div>
 
       <div className="wrap w-full pb-24">
-        <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3 text-center" style={{ color: '#F5A086' }}>
+        <p className="label text-center">
           The MultiTag Engine
         </p>
-        <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] ">
+        <h1>
           One Tag. Three formats. <br />
           <Typewriter words={['AI decides.']} speed={100} delay={2500} /> <br />
-        </h2>
+        </h1>
 
 
-        <p className="text-[16px] md:text-[20px] mt-6 max-w-3xl">
+        <p className=" mt-6 max-w-3xl">
           Publishers paste one JavaScript snippet. The MultiTag AI picks the highest-earning format for
           every unique visitor in real time.
         </p>
@@ -519,16 +521,16 @@ function RevenueAndCta() {
   return (
     <section className="relative overflow-hidden">
       <div className="wrap w-full py-20 text-center mx-auto">
-        <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3 text-center" style={{ color: '#F5A086' }}>
+        <p className="label text-center" >
           The Recurring Revenue Model
         </p>
-        <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] ">
+        <h1 >
           How the money flows-
           <Typewriter words={['24/7/365']} speed={100} delay={2500} /> <br />
-        </h2>
+        </h1>
 
 
-        <p className="text-[16px] md:text-[20px] mt-6 max-w-3xl text-center mx-auto">
+        <p className=" mt-6 max-w-3xl text-center mx-auto">
           Programmatic is a take-rate business. Once both sides are live, revenue runs automatically on
           every single auction.
         </p>
@@ -561,16 +563,16 @@ function RevenueAndCta() {
       </div>
 
       <div className="wrap w-full pb-28 text-center">
-        <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3 text-center" style={{ color: '#F5A086' }}>
+        <p className="label mb-3 text-center">
           Join The Network
         </p>
-        <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] ">
+        <h1>
           Publisher or Advertiser <br />
           <Typewriter words={['Lets talk numbers.']} speed={100} delay={2500} /> <br />
-        </h2>
+        </h1>
 
 
-        <p className="text-[16px] md:text-[20px] mt-6 max-w-3xl text-center mx-auto">
+        <p className=" mt-6 max-w-3xl text-center mx-auto">
           Whether your traffic to monetize or budgets to deploy we want to hear from you first.
         </p>
 
@@ -605,7 +607,14 @@ function GetStartedSection() {
   return (
 
     <section id="get-started" className="relative overflow-hidden lg:pt-14">
-      <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
+      <div className="max-w-[1800px] mx-auto relative z-10" ref={ref}
+      style={{
+            backgroundColor: '#050505',
+            backgroundImage: "url('/bg2.svg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}>
 
         <div
           className={`text-center mb-0 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -630,13 +639,7 @@ function GetStartedSection() {
         <div
           className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}
-          style={{
-            backgroundColor: '#050505',
-            backgroundImage: "url('/bg2.svg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
+          
         >
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
             <div>

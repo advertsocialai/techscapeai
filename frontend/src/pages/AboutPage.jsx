@@ -150,7 +150,7 @@ export default function BreakthroughSection() {
     <>
       <SEO
         title="About Us — TechScape AI"
-        description="Learn about TechScape AI — our mission, team, and vision to make AI work for people across India, USA, and Canada."
+        description="Learn about TechScape AI our mission, team, and vision to make AI work for people across India, USA, and Canada."
         canonical="/about"
       />
 
@@ -164,13 +164,13 @@ export default function BreakthroughSection() {
 
         <div className="relative wrap flex flex-col items-center text-center">
 
-          <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] font-bold tracking-tight max-w-3xl leading-tight">
+          <h1>
             Your Next Breakthrough, <br />
             <Typewriter words={['Powered By AI']} speed={100} delay={2500} />
-          </h2>
+          </h1>
 
-          <p className="text-[16px] md:text-[20px] max-w-3xl mt-6 leading-relaxed font-light tracking-wide">
-            We are Tech Scape AI — an AI services and agents company built in India, operating globally.
+          <p className="max-w-4xl mt-6 ">
+            We are Tech Scape AI an AI services and agents company built in India, operating globally.
             We help businesses in Travel, Logistics, Finance, and Recruitment automate their most
             complex workflows using AI.
           </p>
@@ -180,12 +180,12 @@ export default function BreakthroughSection() {
               Explore Our Services
             </Link>
 
-            <a
+            {/* <a
               href="/contact"
               className="text-[16px]  text-white underline underline-offset-4 hover:text-white transition-colors duration-200"
             >
               Contact Us
-            </a>
+            </a> */}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-16">
@@ -216,7 +216,7 @@ export default function BreakthroughSection() {
       <section id="partners" className="relative  py-1 lg:py-20">
         <div className="wrap" ref={partnersRef}>
           <div className={`flex flex-col items-center gap-[44px] transition-all duration-700 ${partnersSeen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+            <p className="Smallheading">
               Our Partners
             </p>
 
@@ -268,14 +268,14 @@ export default function BreakthroughSection() {
         <div className="wrap">
 
           <div className="mb-16 flex flex-col gap-2">
-            <p className="text-[26px] lg:text-[36px] text-center font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+            <p className="Smallheading">
               Our Research
             </p>
 
-            <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] font-bold tracking-tight mt-1 text-left">
+            <h1>
               We Don't Just{" "}
               <Typewriter words={['Deploy AI', 'Study It']} speed={100} delay={2500} />
-            </h2>
+            </h1>
 
           </div>
 
@@ -436,15 +436,15 @@ export default function BreakthroughSection() {
       >
         <div className="relative wrap">
 
-          <p className="capitalize text-[26px] lg:text-[36px]  font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
+          <p className="Smallheading">
             Careers
           </p>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end mt-4">
-            <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] font-bold tracking-tight leading-[1.05]">
+            <h1>
               Build <Typewriter words={['What Hasn’t']} speed={100} delay={2500} /><br />
               <span className='text-[36px]  md:text-[46px] lg:text-[62px]'>Been Built</span>
-            </h2>
+            </h1>
 
           </div>
 
@@ -489,10 +489,9 @@ export default function BreakthroughSection() {
             <Link
               to="/contact"
               aria-label="Explore open roles"
-              className="w-18 h-12 flex items-center justify-center rounded-[8px] border border-white/15 text-white hover:text-white hover:border-white/30 hover:bg-white/[0.04] transition-all duration-200"
-              style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
+              className="btn capitalize whitespace-nowrap"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="20" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
@@ -590,10 +589,17 @@ export default function BreakthroughSection() {
 
 
       <section id="get-started" className="relative overflow-hidden">
-        <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
+        <div className="max-w-[1800px] mx-auto relative z-10" ref={ref}
+          style={{
+            backgroundColor: '#050505',
+            backgroundImage: "url('/bg2.svg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}>
 
           <div
-            className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            className={`pt-8 text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
           >
 
@@ -611,7 +617,7 @@ export default function BreakthroughSection() {
             </h2>
 
             <p className="max-w-2xl mx-auto text-[16px] md:text-[20px]  leading-relaxed font-light tracking-wide px-4">
-              Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration 
+              Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration
               The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
             </p>
           </div>
@@ -619,13 +625,7 @@ export default function BreakthroughSection() {
           <div
             className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
-            style={{
-              backgroundColor: '#050505',
-              backgroundImage: "url('/bg2.svg')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
+
           >
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
 

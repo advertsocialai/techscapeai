@@ -26,16 +26,16 @@ export default function FinanceAI() {
 
 
         <div class="max-w-4xl w-full text-center relative z-10 flex flex-col items-center">
-          <p className="text-[26px] lg:text-[36px] font-medium capitalize tracking-[-0.72px] mb-3" style={{ color: '#F5A086' }}>
+          <p className="label">
             Building In Progress
           </p>
-          <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] ">
+          <h1>
 
             <Typewriter words={['Finance AI Agents']} speed={100} delay={2500} /><br />
             is on the way.
-          </h2>
+          </h1>
 
-          <p className="text-[16px] md:text-[20px] mt-6">
+          <p className=" mt-6">
             This page is still being built . Leave your email and we'll notify you the moment it's live.
           </p>
 

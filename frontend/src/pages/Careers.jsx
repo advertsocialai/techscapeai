@@ -239,14 +239,16 @@ const CareerPage = () => {
         <div style={styles.rightGlow} />
         <div style={styles.container}>
           <div style={styles.left}>
-            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[54px] font-extrabold tracking-[-0.025em] mb-4">
+            <h1 className=" mb-4">
+              Build What the
+              <br />
               <Typewriter
-                words={['Build What the World Hasn\'t Seen Yet']}
+                words={['World Hasn\'t Seen Yet']}
                 speed={100}
                 delay={2500}
               />
-            </h2>
-            <p className="text-[14px] lg:text-[18px] leading-relaxed font-light pb-6">
+            </h1>
+            <p className=" pb-6">
               At Tech Scape AI, we're not maintaining systems we're inventing them. Join a team obsessed with AI agents, autonomous workflows, and technology that makes entire industries smarter. This is where your best work happens.
             </p>
             <button
@@ -272,10 +274,10 @@ const CareerPage = () => {
         </div>
 
         <div style={styles.containercol}>
-          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+          <h1 className=" mb-4">
             <Typewriter words={['What It Takes']} speed={100} delay={2500} />
-          </h2>
-          <p className="text-[14px] lg:text-[28px] leading-relaxed font-light pb-6">
+          </h1>
+          <p className="pb-6">
 
             Visionary teams build legendary companies.
           </p>
@@ -292,7 +294,7 @@ const CareerPage = () => {
                 }}>
                   {item.title}
                 </h3>
-                <p style={{ lineHeight: '1.7', fontSize: '18px', whiteSpace: 'pre-line' }}>
+                <p style={{ lineHeight: '1.7', whiteSpace: 'pre-line' }}>
                   {item.desc}
                 </p>
               </div>
@@ -303,17 +305,17 @@ const CareerPage = () => {
 
       <section id="open-positions" className="py-20 lg:py-28 text-center">
         <div className="wrap">
-          <p className="capitalize text-[32px] font-medium leading-[25px] text-center tracking-[-0.72px]" style={{ color: '#f7bfa0' }}>
+          <p className="label">
             Open Positions
           </p>
-          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+          <h1 className=" mb-4">
             <Typewriter words={['Featured Roles']} speed={100} delay={2500} />
-          </h2>
+          </h1>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap', paddingTop: '10px' }}>
             {['AI & Engineering', 'Design & Content', 'Marketing', 'Operations'].map((role, index) => (
               <button key={index} style={{
                 padding: '16px 32px', minHeight: '50px', borderRadius: '50px',
-                fontSize: '1.1rem', color: '#fff', cursor: 'pointer',
+                fontSize: '18px', color: '#fff', cursor: 'pointer',
                 border: '1px solid #36504d84',
                 background: 'linear-gradient(90deg, #ff7b001f, #1b2b4a44)',
                 transition: 'transform 0.3s ease'
@@ -330,7 +332,7 @@ const CareerPage = () => {
 
       <section className="py-20 lg:py-2 relative overflow-hidden">
         <div className="wrap">
-          <h2 style={{ fontSize: '23px', marginBottom: '40px' }}>Feature Roles</h2>
+          <h4 style={{ marginBottom: '40px' }}>Feature Roles</h4>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(450px, 100%), 1fr))', gap: '20px' }}>
             {roles.map((role, index) => (
               <div key={index} style={{
@@ -357,11 +359,11 @@ const CareerPage = () => {
         <div className="absolute top-30 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#FAD4BF]/15 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-40 right-[-100px] w-[400px] h-[300px] bg-[#3579CE]/55 blur-[150px] rounded-full pointer-events-none" />
         <div className="wrap">
-          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+          <h1 className="mb-4">
             <Typewriter words={['Life at']} speed={100} delay={2500} />
             <br />
             <Typewriter words={['Tech Scape AI']} speed={100} delay={2500} />
-          </h2>
+          </h1>
 
           <p style={{ color: 'white', fontSize: '32px', marginBottom: '40px' }}>
             We take care of the people who take care of our clients.
@@ -383,8 +385,8 @@ const CareerPage = () => {
       <section className="py-20 lg:py-28 p-6 relative overflow-hidden">
         <div className="absolute top-170 left-0 -translate-x-1/2 w-[800px] h-[400px] bg-[#3579CE]/35 blur-[120px] rounded-full pointer-events-none" />
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
-            <Typewriter words={['Precision of ISRO.   ']} speed={100} delay={2500} />
+          <h1 className=" mb-4">
+            <Typewriter words={['Precision of ISRO.   ']} speed={100} delay={2500} className="color:red" />
             <br />
             <Typewriter words={['Ambition of Silicon Valley. ']} speed={100} delay={2500} />
             <br />
@@ -395,7 +397,7 @@ const CareerPage = () => {
               </span>
             </div>
 
-          </h2>
+          </h1>
 
           <div style={glassCard}>
             <div className="city-marquee">
@@ -440,10 +442,10 @@ const CareerPage = () => {
           }}
           ></div>
 
-          <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+          <h1 className=" mb-4">
             <Typewriter words={['How We Hire']} speed={100} delay={2500} />
-          </h2>
-          <p style={{ marginBottom: '40px', fontSize: '1.15rem' }}>
+          </h1>
+          <p style={{ marginBottom: '40px' }}>
             Our process is designed to find driven people with real skills and genuine curiosity. Here's exactly what to expect — no surprises.
           </p>
 
@@ -454,8 +456,8 @@ const CareerPage = () => {
               style={{ flex: '1', minWidth: '50px', borderRadius: '20px', minHeight: '80px' }}
             />
             <div style={{ flex: '1', minWidth: '300px' }}>
-              <h3 style={{ fontSize: '1.8rem', marginBottom: '15px' }}>What We Look For:</h3>
-              <p style={{ whiteSpace: 'pre-line', lineHeight: '1.6', color: '#fff' }}>
+              <h3 style={{ marginBottom: '15px' }}>What We Look For:</h3>
+              <p style={{ whiteSpace: 'pre-line' }}>
                 {`We care about what you can do — not where you learned to do it.
 
 We don't filter by college names or years of experience. If you've built something interesting, shipped a real project, written a thoughtful post about AI, or contributed to open source — put that at the top.
@@ -469,7 +471,7 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
 
       <section className=" py-20 lg:py-28">
         <div className="wrap">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 tracking-tight">
+          <h2 className="text-center mb-12 ">
             The Interview Process-3 steps
           </h2>
 
@@ -489,10 +491,10 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
                   </div>
 
                   <div className="flex-1 space-y-3">
-                    <h3 className="text-xl md:text-[24px] font-medium tracking-wide">
+                    <h4 >
                       {step.title}
-                    </h3>
-                    <p className="text-white/90 text-[14px] md:text-[18px] font-light leading-relaxed max-w-5xl">
+                    </h4>
+                    <p >
                       {step.desc}
                     </p>
                   </div>
@@ -507,14 +509,14 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
       <div className="  p-2 md:p-1 mb-6">
         <div className="wrap mb-16 space-y-8">
           <div>
-            <h2 className="text-2xl lg:text-[40px] font-normal mb-4">Your Safety Matters</h2>
-            <p className="lg:text-[18px] text-sm leading-relaxed border-l-2 border-white pl-4 ml-8">
+            <h3 className="mb-4">Your Safety Matters</h3>
+            <p className="border-l-2 border-white pl-4 ml-8">
               To protect yourself from scams, TechScape AI recruiters will only contact you from @techscapeai.in email addresses. We will never ask for money, fees or any payment before or during the hiring process. If you receive a suspicious message claiming to be from us, do not click any links. Contact us directly at hr@techscapeai.in to verify.
             </p>
           </div>
           <div>
-            <h2 className="text-2xl lg:text-[40px] font-normal mb-4">Accommodation</h2>
-            <p className="text-sm lg:text-[18px] leading-relaxed border-l-2 border-white pl-4 ml-8">
+            <h3 className="mb-4">Accommodation</h3>
+            <p className="border-l-2 border-white pl-4 ml-8">
               We are committed to an inclusive hiring experience. If you need any accommodation to participate fully in our process, please mention it in your application email or reach out directly to hr@techscapeai.in. All requests are kept confidential.
             </p>
           </div>
@@ -522,10 +524,17 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
       </div>
 
       <section id="get-started" className="relative overflow-hidden">
-        <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
+        <div className="max-w-[1800px] mx-auto relative z-10 pt-2" ref={ref}
+          style={{
+            backgroundColor: '#050505',
+            backgroundImage: "url('/bg2.svg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}>
 
           <div
-            className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            className={`text-center lg:mb-0 mb-2 mt-10 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
           >
             <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
@@ -538,8 +547,8 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
               Let's Build Something Together
             </h2>
 
-            <p className="max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
-              Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
+            <p className="max-w-3xl mx-auto ">
+              Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration
               The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
             </p>
           </div>
@@ -547,13 +556,7 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
           <div
             className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
-            style={{
-              backgroundColor: '#050505',
-              backgroundImage: "url('/bg2.svg')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
+
           >
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
               <div>
@@ -568,14 +571,13 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
 
             <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-              <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
+              <h1 className=" max-w-4xl mx-auto mb-10">
                 Ready To put AI to work ?
-              </h2>
-              <p className="mb-10 text-base md:text-lg leading-relaxed">
+              </h1>
+              <p className="mb-10">
 
                 Your first discovery call is free. Let's find the workflow we can solve together
               </p>
-
 
               <button type="button" className="btn">
                 Request A Demo
@@ -585,9 +587,12 @@ If you're curious enough to learn across boundaries, you'll thrive here. For non
           </div>
         </div>
 
+
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
       </section>
+
+
     </>
   );
 };

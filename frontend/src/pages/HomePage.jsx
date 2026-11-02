@@ -111,25 +111,25 @@ const AGENTS = [
     title: 'Customer Support Agent',
     description:
       'Intelligent bots trained on your knowledge base that handle queries 24/7, resolve issues instantly, and escalate complex cases to your team no downtime, no wait time.',
-    icon: '/Ai1.svg',
+    icon: '/Imageupdated1.svg',
   },
   {
     title: 'Data & Reporting Agent',
     description:
       'Pull from multiple sources, auto-generate reports, and surface insights on demand no more manual Excel grind or waiting on the analytics team for weekly numbers.',
-    icon: '/Ai2.svg',
+    icon: '/Imageupdated2.svg',
   },
   {
     title: 'Outreach & Follow-Up Agent',
     description:
       'Automated lead nurturing via email and WhatsApp personalised messages, timely follow-ups, and CRM sync, all without lifting a finger or losing a prospect.',
-    icon: '/Ai13.svg',
+    icon: '/Imageupdated3.svg',
   },
   {
     title: 'Operations & Workflow Agent',
     description:
       'End-to-end process automation connecting your tools Slack, Notion, Sheets, HubSpot. Eliminate manual handoffs and keep work moving 24/7 across departments.',
-    icon: '/Ai4.svg',
+    icon: '/Imageupdated4.svg',
   },
 ]
 

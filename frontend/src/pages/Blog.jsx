@@ -40,15 +40,15 @@ export default function Blog() {
 
         <div className="w-full max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 text-center px-4">
           <div className="flex-1 space-y-4 order-2 md:order-1 w-full">
-            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-2">
+            <h1 className=" mb-2">
               <Typewriter words={['Borderless AI Blog']} speed={100} delay={2500} />
-            </h2>
-            <p className="text-sm md:text-[20px] font-light leading-relaxed max-w-xl mx-auto">
+            </h1>
+            <p className=" max-w-xl mx-auto">
               Discover how our values shape our mission and foster a culture of respect and collaboration with our customers and partners.
             </p>
           </div>
 
-          <div className="flex-shrink-0 order-1 md:order-2 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex items-center justify-center mx-auto md:mx-0">
+          <div className="flex-shrink-0 order-1 md:order-2 w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 flex items-center justify-center mx-auto md:mx-0">
             <img
               src="/blog1.svg"
               alt="Borderless AI Blog Decorative Pattern Asset"
@@ -60,21 +60,21 @@ export default function Blog() {
         <div className="w-full rounded-3xl border border-white/[0.06] bg-gradient-to-r from-[#AF88721A] to-[#AF88721A]/30 p-6 md:p-0 hover:border-white/10 transition-all duration-300">
           <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-center">
             <div className="md:col-span-5 aspect-[16/10]  rounded-2xl overflow-hidden border border-white/5">
-              <img src="/blog1.svg" alt="Featured Post Visual Banner" className="w-full h-full object-cover" />
+              <img src="/blog10.png" alt="Featured Post Visual Banner" className="w-full h-full object-cover" />
             </div>
             <div className="md:col-span-7 space-y-4 text-left">
-              <div className="text-[12px] font-mono uppercase tracking-widest text-[#B2B3B5]">
+              <div className="text-[14px] font-mono uppercase tracking-widest text-[#B2B3B5]">
                 Featured • April 4, 2026
               </div>
-              <h2 className="text-xl md:text-[24px] font-bold tracking-tight text-[#F7C8B4] hover:text-[#1C68FA] transition-colors cursor-pointer">
+              <h4 className=" text-[#F7C8B4] hover:text-[#1C68FA] transition-colors cursor-pointer">
                 Borderless AI Achieves SOC-2 Type II Compliance
-              </h2>
-              <p className="text-xs md:text-[15px] font-light leading-relaxed line-clamp-3">
+              </h4>
+              <p className="text-xs md:text-[16px] font-light leading-relaxed line-clamp-3">
                 Borderless AI proudly SOC-2 Type II certified and adheres to the world's most stringent data privacy regulations, including GDPR, CCPA, California, and PIPEDA (Canada). Security is treated as a core product competency, not a back-office function, and is embedded into metadata structures seamlessly.
               </p>
               <div className="flex items-center gap-3 pt-2">
-                <div className="w-8 h-8 rounded-full bg-white/10 overflow-hidden">
-                  <img src="" alt="Author Avatar" className="w-full h-full object-cover" />
+                <div className="w-12 h-12 rounded-full bg-white/10 overflow-hidden">
+                  <img src="/rakeshimgicon.svg" alt="Author Avatar" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <div className="text-[14px] font-semibold text-[#F7C8B4]">Rakesh Chandra</div>
@@ -86,9 +86,9 @@ export default function Blog() {
         </div>
 
         <div className="space-y-6 text-left">
-          <h3 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+          <h1 className=" mb-4">
             <Typewriter words={['Editor pickes']} speed={100} delay={2500} />
-          </h3>
+          </h1>
 
           <div className="grid lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7 rounded-2xl border border-white/[0.05]  p-5 flex flex-col justify-between hover:border-white/10 transition-all group"
@@ -98,24 +98,25 @@ export default function Blog() {
             >
               <div className="space-y-4">
                 <div className="w-full aspect-[16/9] bg-white/[0.01] rounded-xl overflow-hidden border border-white/5">
-                  <img src="" alt="Editors Choice Visual 1" className="w-full h-full object-cover" />
+                  <img src="/blog11.svg" alt="Editors Choice Visual 1" className="w-full h-full object-cover" />
                 </div>
-                <div className="text-[14px] font-mono uppercase tracking-wider text-[#7A7A7A]">ARTICLE • April 4, 2026</div>
-                <h4 className="text-lg lg:text-[28px] font-bold tracking-tight text-[#F7C8B4] group-hover:text-[#1C68FA] transition-colors">AI Impact</h4>
+                <div className="text-[14px] font-mono uppercase tracking-widest text-[#B2B3B5]">ARTICLE • April 4, 2026</div>
+                <h4 className=" text-[#F7C8B4] hover:text-[#1C68FA] transition-colors cursor-pointer">AI Impact</h4>
                 <p className="text-[16px] font-light leading-relaxed line-clamp-2">
                   We govern our products, datacenter infrastructure, and AI assets using responsible pathways to help every person and organization develop algorithms cleanly.
                 </p>
               </div>
               <div className="flex items-center justify-between pt-6 mt-4">
-                <span className="text-[15px] font-medium">
-                  Rakesh Chandra <span className="text-[14px] text-white/50 block font-light">CEO of NxtWave</span>
-                </span>
+                <div>
+                  <div className="text-[14px] font-semibold text-[#F7C8B4]">Rakesh Chandra</div>
+                  <div className="text-[14px]">CEO of NxtWave</div>
+                </div>
 
-                <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/[0.1] transition-all duration-300">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/[0.1] transition-all duration-300">
                   <img
                     src="/play.svg"
                     alt="Play"
-                    className="w-8 h-8 object-contain"
+                    className="w-10 h-10 object-contain"
                   />
                 </div>
               </div>
@@ -130,7 +131,7 @@ export default function Blog() {
               >
                 <div className="w-28 sm:w-36 md:w-44 self-stretch flex-shrink-0 bg-white/[0.02]">
                   <img
-                    src="/brand1.svg"
+                    src="/blog12.svg"
                     alt="Editors Row Thumbnail 1"
                     className="w-full h-full object-cover"
                   />
@@ -138,28 +139,26 @@ export default function Blog() {
 
                 <div className="flex-1 flex flex-col justify-between py-4 pr-4 min-w-0">
                   <div>
-                    <div className="text-[12px] font-mono text-white/50 uppercase tracking-wider">
+                    <div className="text-[14px] font-mono uppercase tracking-widest text-[#B2B3B5]">
                       ARTICLE • April 4, 2026
                     </div>
-                    <h5 className="text-sm lg:text-[22px] font-bold text-[#F7C8B4] group-hover:text-[#1C68FA] transition-colors mt-1 line-clamp-2 leading-tight">
-                      AI impact
-                    </h5>
-                    <p className="text-white/70 text-[14px] font-light line-clamp-3 mt-2 leading-relaxed">
-                      We govern assets using responsible system mechanics across clusters.
+                    <h4 className=" text-[#F7C8B4] hover:text-[#1C68FA] transition-colors cursor-pointer mt-2">AI Impact</h4>
+                    <p className="text-[16px] font-light leading-relaxed line-clamp-2 mt-2">
+                      We govern our products, datacenter infrastructure, and AI assets using responsible pathways to help every person and organization develop algorithms cleanly.
                     </p>
                   </div>
 
                   <div className="flex items-center justify-between pt-3 mt-4 border-t border-white/[0.03]">
-                    <span className="text-[13px] font-medium leading-tight">
-                      Rakesh Chandra
-                      <span className="text-[12px] text-white/40 block font-light mt-0.5">CEO of NxtWave</span>
-                    </span>
+                    <div>
+                      <div className="text-[14px] font-semibold text-[#F7C8B4]">Rakesh Chandra</div>
+                      <div className="text-[14px]">CEO of NxtWave</div>
+                    </div>
 
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/[0.1] transition-all duration-300 flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/[0.1] transition-all duration-300 flex-shrink-0">
                       <img
                         src="/play.svg"
                         alt="Play"
-                        className="w-8 h-8 object-contain"
+                        className="w-10 h-10 object-contain"
                       />
                     </div>
                   </div>
@@ -173,7 +172,7 @@ export default function Blog() {
               >
                 <div className="w-28 sm:w-36 md:w-44 self-stretch flex-shrink-0 bg-white/[0.02]">
                   <img
-                    src="/brand1.svg"
+                    src="/blog13.svg"
                     alt="Editors Row Thumbnail 1"
                     className="w-full h-full object-cover"
                   />
@@ -181,28 +180,26 @@ export default function Blog() {
 
                 <div className="flex-1 flex flex-col justify-between py-4 pr-4 min-w-0">
                   <div>
-                    <div className="text-[12px] font-mono text-white/50 uppercase tracking-wider">
+                    <div className="text-[14px] font-mono uppercase tracking-widest text-[#B2B3B5]">
                       ARTICLE • April 4, 2026
                     </div>
-                    <h5 className="text-sm lg:text-[22px] font-bold text-[#F7C8B4] group-hover:text-[#1C68FA] transition-colors mt-1 line-clamp-2 leading-tight">
-                      AI impact
-                    </h5>
-                    <p className="text-white/70 text-[14px] font-light line-clamp-3 mt-2 leading-relaxed">
-                      We govern assets using responsible system mechanics across clusters.
+                    <h4 className=" text-[#F7C8B4] hover:text-[#1C68FA] transition-colors cursor-pointer mt-2">AI Impact</h4>
+                    <p className="text-[16px] font-light leading-relaxed line-clamp-2 mt-2">
+                      We govern our products, datacenter infrastructure, and AI assets using responsible pathways to help every person and organization develop algorithms cleanly.
                     </p>
                   </div>
 
                   <div className="flex items-center justify-between pt-3 mt-4 border-t border-white/[0.03]">
-                    <span className="text-[13px] font-medium leading-tight">
-                      Rakesh Chandra
-                      <span className="text-[12px] text-white/40 block font-light mt-0.5">CEO of NxtWave</span>
-                    </span>
+                    <div>
+                      <div className="text-[14px] font-semibold text-[#F7C8B4]">Rakesh Chandra</div>
+                      <div className="text-[14px]">CEO of NxtWave</div>
+                    </div>
 
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/[0.1] transition-all duration-300 flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/[0.1] transition-all duration-300 flex-shrink-0">
                       <img
                         src="/play.svg"
                         alt="Play"
-                        className="w-8 h-8 object-contain"
+                        className="w-10 h-10 object-contain"
                       />
                     </div>
                   </div>
@@ -224,9 +221,9 @@ export default function Blog() {
         />
         <div className="space-y-6 text-left">
 
-          <h3 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+          <h1 className=" mb-4">
             <Typewriter words={['Recent Articles']} speed={100} delay={2500} />
-          </h3>
+          </h1>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayedArticles.map((item, index) => (
@@ -239,25 +236,26 @@ export default function Blog() {
               >
                 <div className="space-y-4">
                   <div className="w-full aspect-[16/9] bg-white/[0.01] rounded-xl overflow-hidden border border-white/5">
-                    <img src="" alt="Editors Choice Visual 1" className="w-full h-full object-cover" />
+                    <img src="/blog14.svg" alt="Editors Choice Visual 1" className="w-full h-full object-cover" />
                   </div>
-                  <div className="text-[14px] font-mono uppercase tracking-wider text-[#7A7A7A]">ARTICLE • April 4, 2026</div>
-                  <h4 className="text-lg lg:text-[28px] font-bold tracking-tight text-[#F7C8B4] group-hover:text-[#1C68FA] transition-colors">AI Impact</h4>
+                  <div className="text-[14px] font-mono uppercase tracking-widest text-[#B2B3B5]">ARTICLE • April 4, 2026</div>
+                  <h4 className=" text-[#F7C8B4] group-hover:text-[#1C68FA] transition-colors">AI Impact</h4>
                   <p className="text-[16px] font-light leading-relaxed line-clamp-2">
                     We govern our products, datacenter infrastructure, and AI assets using responsible pathways to help every person and organization develop algorithms cleanly.
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between pt-6 mt-4">
-                  <span className="text-[15px] font-medium">
-                    Rakesh Chandra <span className="text-[14px] text-white/50 block font-light">CEO of NxtWave</span>
-                  </span>
+                  <div>
+                      <div className="text-[14px] font-semibold text-[#F7C8B4]">Rakesh Chandra</div>
+                      <div className="text-[14px]">CEO of NxtWave</div>
+                    </div>
 
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/[0.1] transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/[0.1] transition-all duration-300">
                     <img
                       src="/play.svg"
                       alt="Play"
-                      className="w-8 h-8 object-contain"
+                      className="w-10 h-10 object-contain"
                     />
                   </div>
                 </div>
@@ -307,74 +305,30 @@ export default function Blog() {
 
 
       <section id="get-started" className="relative overflow-hidden">
-        <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
-
-          <div
-            className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-          >
-            <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
-              <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] font-semibold">
-                Get Started
-              </span>
-            </div>
-
-            <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
-              Let's Build Something Together
-            </h2>
-
-            <p className="text-white/45 max-w-2xl mx-auto text-[13px] md:text-[14px] leading-relaxed font-light tracking-wide px-4">
-              Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
-              The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
-            </p>
-          </div>
-
-          <div
-            className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-              }`}
-            style={{
+        <div className="max-w-[1800px] mx-auto relative z-10" ref={ref}
+        style={{
               backgroundColor: '#050505',
               backgroundImage: "url('/bg2.svg')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
-            }}
+            }}>
+
+          
+
+          <div
+            className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              }`}
+            
           >
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
-              <div>
-                <GetStarted />
-              </div>
-
-              <div className="lg:pl-6 text-left lg:pt-2">
-                <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
-                  Book a Free Consultation Directly
-                </h3>
-                <p className="text-white/40 mb-10 text-base md:text-lg leading-relaxed max-w-md">
-                  Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
-                </p>
-
-                <ul className="space-y-5">
-                  {CHECK_ITEMS.map((item) => (
-                    <li key={item} className="flex items-center gap-4 group">
-                      <span className="flex-shrink-0 p-1 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
-                        <CheckIcon />
-                      </span>
-                      <span className="text-white/70 group-hover:text-white transition-colors text-xs md:text-sm font-semibold uppercase tracking-widest">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-            </div>
+            
 
             <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-              <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
+              <h1 className=" mx-auto mb-10">
                 Ready To put AI to work ?
-              </h2>
-              <p className="mb-10 text-base md:text-lg leading-relaxed">
+              </h1>
+              <p className="mb-10  leading-relaxed">
 
                 Your first discovery call is free. Let's find the workflow we can solve together
               </p>

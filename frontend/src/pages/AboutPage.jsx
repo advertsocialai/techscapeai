@@ -33,29 +33,29 @@ export default function BreakthroughSection() {
     {
       title: "Travel Workflow Automation Models",
       description: "AI Agents That Handle FAQs, Ticket Routing, And First-Level Customer Interactions 24/7, Without A Team.",
-      image: "/about3.svg"
+      image: "/Imageupdated5.svg"
     },
     {
       title: "Morning Signal™ Content Intelligence Methodology",
       description: "AI Agents That Handle FAQs, Ticket Routing, And First-Level Customer Interactions 24/7, Without A Team.",
-      image: "/about4.svg"
+      image: "/Imageupdated6.svg"
     },
     {
       title: "Recruitment Screening Accuracy Benchmarks",
       description: "AI Agents That Handle FAQs, Ticket Routing, And First-Level Customer Interactions 24/7, Without A Team.",
-      image: "/about5.svg"
+      image: "/Imageupdated7.svg"
     },
     {
       title: "Logistics Exception Handling Agents",
       description: "AI Agents That Handle FAQs, Ticket Routing, And First-Level Customer Interactions 24/7, Without A Team.",
-      image: "/about6.svg"
+      image: "/Imageupdated8.svg"
     }
   ];
 
   const bottomCard = {
     title: "Finance Transaction Categorisation (Kloron Engine)",
     description: "AI Agents That Handle FAQs, Ticket Routing, And First-Level Customer Interactions 24/7, Without A Team.",
-    image: "/about7.svg"
+    image: "/Imageupdated9.svg"
   };
 
   const PARTNER_LOGOS = [
@@ -300,7 +300,7 @@ export default function BreakthroughSection() {
                     <h3 className="text-[24px] font-semibold leading-snug tracking-wide">
                       {card.title}
                     </h3>
-                    <p className="text-[14px] leading-relaxed font-light mt-auto">
+                    <p className="text-[16px]  mt-auto">
                       {card.description}
                     </p>
                   </div>
@@ -325,7 +325,7 @@ export default function BreakthroughSection() {
                   <h3 className="text-[24px] font-semibold leading-snug tracking-wide">
                     {bottomCard.title}
                   </h3>
-                  <p className="text-[14px] leading-relaxed font-light mt-auto">
+                  <p className="text-[16px] mt-auto">
                     {bottomCard.description}
                   </p>
                 </div>
@@ -616,7 +616,7 @@ export default function BreakthroughSection() {
               Let's Build Something Together
             </h2>
 
-            <p className="max-w-2xl mx-auto text-[16px] md:text-[20px]  leading-relaxed font-light tracking-wide px-4">
+            <p className="max-w-3xl mx-auto">
               Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration
               The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
             </p>
@@ -637,7 +637,7 @@ export default function BreakthroughSection() {
                 <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
                   Book a Free Consultation Directly
                 </h3>
-                <p className="mb-10 text-base md:text-lg leading-relaxed max-w-md">
+                <p className="mb-10 max-w-md">
                   Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
                 </p>
 
@@ -659,9 +659,9 @@ export default function BreakthroughSection() {
 
             <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-              <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
+              <h1 className=" max-w-4xl mx-auto mb-10">
                 Ready To put AI to work ?
-              </h2>
+              </h1>
               <p className="mb-10 text-base md:text-lg leading-relaxed">
 
                 Your first discovery call is free. Let's find the workflow we can solve together

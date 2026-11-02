@@ -1,5 +1,6 @@
 ﻿import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { supabase, isAdmin, setRememberMe } from '../lib/supabase'
 import loginBg from '../assets/login-bg.png'
 import loginSphere from '../assets/login-sphere.png'
 import loginBrand from '../assets/login-brand.svg'
@@ -32,23 +33,49 @@ export default function LoginPage() {
   const [showPass, setShowPass] = useState(false)
   const [remember, setRemember] = useState(false)
   const [status, setStatus]     = useState('idle')
+  const [errorMsg, setErrorMsg] = useState('')
   const navigate = useNavigate()
 
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }))
 
   const handleSubmit = async (e) => {
-  e.preventDefault()
+    e.preventDefault()
+    if (!form.email || !form.password || status === 'loading') return
 
-  if (!form.email || !form.password) return
+    if (!supabase) {
+      setStatus('error')
+      setErrorMsg('Login is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env.local.')
+      return
+    }
 
-  setStatus('loading')
+    setStatus('loading')
+    setErrorMsg('')
+    setRememberMe(remember)
 
-  setTimeout(() => {
-    setStatus('idle')
+    // Supabase returns the same "invalid credentials" error for an unknown
+    // email and for a wrong password, so both show as "user not found".
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: form.email.trim(),
+      password: form.password,
+    })
 
-    navigate('/admin')
-  }, 1500)
-}
+    if (error) {
+      setStatus('error')
+      setErrorMsg(error.code === 'invalid_credentials' || error.status === 400
+        ? 'User not found. Please check your email and password.'
+        : error.message)
+      return
+    }
+
+    if (!isAdmin(data.user)) {
+      await supabase.auth.signOut()
+      setStatus('error')
+      setErrorMsg('User not found. This account does not have admin access.')
+      return
+    }
+
+    navigate('/admin', { replace: true })
+  }
 
   return (
     <div className="min-h-screen flex flex-row overflow-hidden">
@@ -122,7 +149,7 @@ export default function LoginPage() {
               <a href="#" className="text-[12px] tracking-[0.3px] font-medium" style={{ color: '#007aff', fontFamily: 'Inter, sans-serif' }}>Forgot password?</a>
             </div>
 
-            {status === 'error' && <p className="text-[12px] text-red-500 text-center">Invalid credentials. Please try again.</p>}
+            {status === 'error' && <p role="alert" className="text-[12px] text-red-500 text-center">{errorMsg}</p>}
 
             <button type="submit" disabled={status === 'loading'}
               className="btn w-full h-[48px]">

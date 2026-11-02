@@ -9,3 +9,7 @@ project_id = "REPLACE_WITH_YOUR_PROJECT_REF"
 # Disabled because Supabase's new sb_publishable_* keys aren't JWTs and the
 # legacy anon JWT route is being deprecated.
 verify_jwt = false
+
+[functions.newsletter-subscribe]
+# Public newsletter sign-up endpoint — same reasoning as send-contact-email.
+verify_jwt = false

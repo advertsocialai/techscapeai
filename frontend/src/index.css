@@ -289,10 +289,9 @@
     justify-content: center;
     gap: 8px;
     padding: 12px 28px;
-    border: 1px solid transparent;
-    border-radius: 7px;
-    font-size: 15px;
-    font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 1;
     color: #FFFFFF;
     white-space: nowrap;
@@ -314,12 +313,10 @@
 
   .btn-outline {
     background: transparent;
-    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .btn-outline:hover {
     background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.45);
     transform: translateY(-1px);
   }
 
@@ -331,12 +328,12 @@
 
   .btn-sm {
     padding: 9px 20px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .btn-lg {
     padding: 15px 36px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .btn:disabled,

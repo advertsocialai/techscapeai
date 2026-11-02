@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { subscribeToNewsletter } from '../lib/newsletter'
 import socialTwitter from '../assets/sociallogo1.svg'
 import socialLinkedin from '../assets/sociallogo2.svg'
 import socialInstagram from '../assets/social-instagram.svg'
@@ -19,6 +21,26 @@ const LEGAL_LINKS = [
 ]
 
 export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [message, setMessage] = useState('')
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault()
+    if (status === 'loading') return
+    setStatus('loading')
+    setMessage('')
+    try {
+      const res = await subscribeToNewsletter(email)
+      setStatus('success')
+      setMessage(res?.alreadySubscribed ? "You're already subscribed." : 'Thanks for subscribing!')
+      setEmail('')
+    } catch (err) {
+      setStatus('error')
+      setMessage(err?.message ?? 'Something went wrong. Please try again.')
+    }
+  }
+
   return (
     <footer
       className="relative border-t border-white overflow-hidden"
@@ -75,23 +97,38 @@ export default function Footer() {
                 <span>Stay up to date</span>
               </div>
 
-              <div className="border border-white px-4 py-3 flex justify-between items-center w-full mb-8">
+              <form
+                onSubmit={handleSubscribe}
+                className={`border border-white px-4 py-3 flex justify-between items-center w-full ${message ? 'mb-2' : 'mb-8'}`}
+              >
                 <label htmlFor="footer-newsletter-email" className="sr-only">
                   Business email address for newsletter
                 </label>
                 <input
                   id="footer-newsletter-email"
                   type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Business Email Address*"
                   className="bg-transparent text-[14px] text-white placeholder-white outline-none w-full pr-4"
                 />
                 <button
-                  type="button"
-                  className="text-[14px] text-white hover:text-white/70 transition-colors duration-200 font-normal whitespace-nowrap"
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="text-[14px] text-white hover:text-white/70 transition-colors duration-200 font-normal whitespace-nowrap disabled:opacity-60"
                 >
-                  Subscribe
+                  {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
                 </button>
-              </div>
+              </form>
+              {message && (
+                <p
+                  role="status"
+                  className={`text-[13px] mb-6 ${status === 'error' ? 'text-red-300' : 'text-emerald-300'}`}
+                >
+                  {message}
+                </p>
+              )}
             </div>
 
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-[16px]">

@@ -4,7 +4,7 @@ import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
-// import Blog from './pages/Blog' // Blog hidden — route removed, shows 404
+import Blog from './pages/Blog'
 import HowItWorksPage from './pages/HowItWorksPage'
 import Research from './pages/ResearchPage'
 import PartnersPage from './pages/PartnersPage'
@@ -23,6 +23,17 @@ import Travel from './pages/travel'
 import AdTechMarketing from './pages/AdTechMarketing'
 import FinanceAI from './pages/FinanceAI'
 import RecruitmentAI from './pages/RecruitmentAI'
+import RequireAdmin from './admin/RequireAdmin'
+import AdminLayout from './admin/AdminLayout'
+import Dashboard from './admin/Dashboard'
+import Contacts from './admin/pages/Contacts'
+import Subscribers from './admin/pages/Subscribers'
+import Career from './admin/pages/Career'
+import CareerPost from './admin/pages/CareerPost'
+import Settings from './admin/pages/Settings'
+import BlogCategory from './admin/pages/BlogCategory'
+import CreateBlog from './admin/pages/CreateBlog'
+import Blogs from './admin/pages/Blogs'
 
 export default function App() {
   return (
@@ -31,6 +42,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainLayout><HomePage /></MainLayout>} />
         <Route path="/about" element={<MainLayout><AboutPage /></MainLayout>} />
+        <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />
         <Route path="/services" element={<MainLayout><ServicesPage /></MainLayout>} />
         <Route path="/how-it-works" element={<MainLayout><HowItWorksPage /></MainLayout>} />
         <Route path="/brand" element={<MainLayout><Brand /></MainLayout>} />
@@ -38,6 +50,17 @@ export default function App() {
         <Route path="/partners" element={<MainLayout><PartnersPage /></MainLayout>} />
         <Route path="/contact" element={<MainLayout><ContactPage /></MainLayout>} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
+          <Route index element={<Dashboard />} />
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="subscribers" element={<Subscribers />} />
+          <Route path="career" element={<Career />} />
+          <Route path="career/new" element={<CareerPost />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="blog/category" element={<BlogCategory />} />
+          <Route path="blog/create" element={<CreateBlog />} />
+          <Route path="blog/list" element={<Blogs />} />
+        </Route>
         <Route path="/privacy-policy" element={<MainLayout><PrivacyPolicy /></MainLayout>} />
         <Route path="/terms" element={<MainLayout><TermsAndConditions /></MainLayout>} />
         <Route path="/accessibility" element={<MainLayout><Accessibility /></MainLayout>} />

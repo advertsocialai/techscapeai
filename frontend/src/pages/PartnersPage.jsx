@@ -114,14 +114,14 @@ export default function PartnerEcosystemPage() {
 
         <div className="wrap grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h1 className="font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px]">
+            <h1>
 
               Join <br /> Techscape AI,
               <br />
               <Typewriter words={['Partner Ecosystem']} speed={100} delay={2500} />
 
             </h1>
-            <p className="text-base sm:text-lg font-light leading-relaxed max-w-lg">
+            <p>
               Grow your capabilities with absolute tech integration across high-performance clusters by partnering with us.
             </p>
           </div>
@@ -184,11 +184,11 @@ export default function PartnerEcosystemPage() {
         </div>
 
         <div className="wrap lg:space-y-12 space-y-12 lg:py-16 pt-12">
-          <h2 className=" font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px] mb-5 text-center md:text-left">
+          <h1>
             Why Partner {" "}
             <Typewriter words={[' with us ?']} speed={100} delay={2500} />
-          </h2>
-          <p className="text-[14px] lg:text-[18px] leading-relaxed font-light">
+          </h1>
+          <p>
             Join a growing ecosystem of businesses building smarter with AI-native products <br /> from accounting intelligence to marketing automation.
 
           </p>
@@ -199,13 +199,13 @@ export default function PartnerEcosystemPage() {
                 key={idx}
                 className="card p-6 rounded-2xl border border-white/[0.05] flex flex-col justify-between group hover:border-white/10 transition-all lg:min-h-[400px] min-h-[300px]"
               >
-                <div className="p-3 w-fit  rounded-xl lg:mb-4 mb-0">
+                <div className="p-3 w-fit  rounded-xl lg:mb-2 mb-0">
                   {reason.icon}
                 </div>
                 <div className="space-y-2 lg:mt-auto mt-0">
-                  <h3 className="text-[22px] lg:text-[26px] font-semibold bg-gradient-to-r from-[#F7BFA0] to-[#1C6DD0] bg-clip-text text-transparent transition-all duration-300 group-hover:from-[#1619e7] group-hover:to-[#1C68FA]">
+                  <h2 className="text-[22px] lg:text-[30px] font-semibold bg-gradient-to-r from-[#F7BFA0] to-[#1C6DD0] bg-clip-text text-transparent transition-all duration-300 group-hover:from-[#1619e7] group-hover:to-[#1C68FA]">
                     {reason.title}
-                  </h3>
+                  </h2>
                   <p className="text-[16px] font-light leading-relaxed">
                     {reason.desc}
                   </p>
@@ -216,10 +216,10 @@ export default function PartnerEcosystemPage() {
         </div>
 
         <div className="wrap space-y-8">
-          <h2 className=" font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px] mb-12 text-center md:text-left mt-8">
+          <h1>
             Tech Alliance{" "}
             <Typewriter words={[' Partners']} speed={100} delay={2500} />
-          </h2>
+          </h1>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             <div
@@ -230,12 +230,12 @@ export default function PartnerEcosystemPage() {
             </div>
 
             <div className="space-y-6">
-              <p className="lg:text-[18px] text-base font-light leading-relaxed">
+              <p>
                 Techscape AI Alliance program is a network of best in class software solutions that help our shared customers operate more efficiently.
               </p>
               <div className="space-y-3">
-                <h4 className="text-[22px] lg:text-[26px]  text-[#F7CBB4] uppercase tracking-widest">Benefits Include:</h4>
-                <ul className="space-y-2 text-sm lg:text-[18px] font-light">
+                <h4 className="label">Benefits Include:</h4>
+                <ul className="space-y-2 ">
                   <li className="flex items-center gap-2">
                     <span className="w-1 h-1 rounded-full bg-[#1C68FA]" /> Access to the Techscape AI developer team.
                   </li>
@@ -262,10 +262,10 @@ export default function PartnerEcosystemPage() {
 
           <div className="space-y-10 relative">
             <div className="flex justify-between items-center">
-              <h2 className=" font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px] mb-12 text-center md:text-left">
+              <h1>
                 Our {" "}
                 <Typewriter words={['Team']} speed={100} delay={2500} />
-              </h2>
+              </h1>
             </div>
 
             <div
@@ -340,10 +340,10 @@ export default function PartnerEcosystemPage() {
                 <h3 className=" font-bold tracking-tight leading-[100%] text-[36px] sm:text-[60px] md:text-[40px] mb-12 text-center md:text-left">
                   <Typewriter words={['Early Growth']}  />
                 </h3>
-                <p className="text-sm sm:text-base md:text-[18px] font-light leading-relaxed">
+                <p>
                   Between 2021 and 2024, we secured four major funding rounds (Series A through D), raising nearly $1 Billion.
                 </p>
-                <p className="text-sm md:text-[18px] font-light leading-relaxed">
+                <p>
                   This support has enabled us to scale our teams, expand globally, and continually develop cutting-edge models that power practical AI applications for the world's leading enterprises.
                 </p>
               </div>
@@ -360,10 +360,10 @@ export default function PartnerEcosystemPage() {
                 <h3 className=" font-bold tracking-tight leading-[100%] text-[36px] sm:text-[60px] md:text-[40px] mb-12 text-center md:text-left">
                   <Typewriter words={['Research Focus']} />
                 </h3>
-                <p className="md:text-[18px] text-sm sm:text-base font-light leading-relaxed">
+                <p>
                   In 2022, we launched cohere Labs, our open science initiative for solving complex machine learning problems.
                 </p>
-                <p className="md:text-[18px] text-sm font-light leading-relaxed">
+                <p>
                   Today, Cohere Labs 4,500+ community members and has published over 100 research papers.
                 </p>
                 <button className="btn btn-sm mt-2">
@@ -379,15 +379,15 @@ export default function PartnerEcosystemPage() {
 
 
           <div className="w-full lg:py-10  space-y-6">
-            <h2 className=" font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px] mb-12 text-center md:text-left">
+            <h1>
               <Typewriter words={['Agentic AI for the Enterprise']}/>
-            </h2>
+            </h1>
 
             <div className="max-w-3xl space-y-4">
-              <p className="text-sm md:text-[18px] sm:text-base font-light leading-relaxed">
+              <p>
                 In 2026, we launched North, Our Turnkey AI platform for workplace productivity.
               </p>
-              <p className="text-sm md:text-[18px] sm:text-base font-light leading-relaxed">
+              <p>
                 North's agentic capabilities and advanced retrieval allow teams to auto-routine tasks, accelerate complex workflows, and surface insights securely grounded in enterprise data.
               </p>
 
@@ -403,7 +403,14 @@ export default function PartnerEcosystemPage() {
       </section>
 
       <section id="get-started" className="relative overflow-hidden">
-        <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
+        <div className="max-w-[1800px] mx-auto relative z-10 pt-2" ref={ref}
+         style={{
+              backgroundColor: '#050505',
+              backgroundImage: "url('/bg2.svg')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}>
 
           <div
             className={`text-center lg:mb-0 mb-2 mt-10 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -415,12 +422,12 @@ export default function PartnerEcosystemPage() {
               </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
+           <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
               Let's Build Something Together
             </h2>
 
-            <p className="max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
-              Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
+            <p className="max-w-3xl mx-auto ">
+              Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration
               The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
             </p>
           </div>
@@ -428,13 +435,7 @@ export default function PartnerEcosystemPage() {
           <div
             className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               }`}
-            style={{
-              backgroundColor: '#050505',
-              backgroundImage: "url('/bg2.svg')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
+           
           >
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
               <div>
@@ -442,10 +443,11 @@ export default function PartnerEcosystemPage() {
               </div>
 
               <div className="lg:pl-6 text-left lg:pt-2">
+                
                 <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
                   Book a Free Consultation Directly
                 </h3>
-                <p className="mb-10 text-base md:text-lg leading-relaxed max-w-md">
+                <p className="mb-10 max-w-md">
                   Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
                 </p>
 
@@ -467,10 +469,10 @@ export default function PartnerEcosystemPage() {
 
             <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
 
-              <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
+              <h1 className=" max-w-4xl mx-auto mb-10">
                 Ready To put AI to work ?
-              </h2>
-              <p className="mb-10 text-base md:text-lg leading-relaxed">
+              </h1>
+              <p className="mb-10">
 
                 Your first discovery call is free. Let's find the workflow we can solve together
               </p>

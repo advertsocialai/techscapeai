@@ -126,11 +126,12 @@ export default function ContactFormOnly() {
 
         <div className="relative border-b border-white/60 pb-2 focus-within:border-white/40 transition-all">
           <label htmlFor="gs-message" className="text-[14px] uppercase tracking-widest text-[#c5c5c5] block mb-1">
-            Tell us about your need
+            Tell us about your need *
           </label>
           <textarea
             id="gs-message"
             rows={2}
+            required
             value={form.message}
             onChange={update('message')}
             className="bg-transparent w-full text-white outline-none py-1 resize-none placeholder:text-white/10 text-sm"

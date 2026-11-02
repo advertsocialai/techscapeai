@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { supabase } from '../lib/supabase'
 
 /* ──────────────────────────────────────────────
    Admin shell — fixed gradient sidebar + scrollable
@@ -34,6 +35,16 @@ export default function AdminLayout() {
   const navigate = useNavigate()
   const location = useLocation()
   const [blogOpen, setBlogOpen] = useState(location.pathname.startsWith('/admin/blog'))
+  const [userEmail, setUserEmail] = useState('')
+
+  useEffect(() => {
+    supabase?.auth.getUser().then(({ data }) => setUserEmail(data.user?.email ?? ''))
+  }, [])
+
+  const handleLogout = async () => {
+    await supabase?.auth.signOut()
+    navigate('/login', { replace: true })
+  }
 
   const linkClass = ({ isActive }) =>
     `flex items-center gap-3 px-4 py-2.5 rounded-[10px] text-[14px] font-medium transition-all duration-200 ${
@@ -90,14 +101,16 @@ export default function AdminLayout() {
       {/* User + logout */}
       <div className="border-t border-[#1C1C1C] p-4">
         <div className="flex items-center gap-3 px-1 pb-3">
-          <span className="grid place-items-center h-9 w-9 rounded-full grad text-white text-[14px] font-bold">T</span>
-          <div className="leading-tight">
-            <p className="text-[14px] font-semibold text-white">Test User</p>
+          <span className="grid place-items-center h-9 w-9 rounded-full grad text-white text-[14px] font-bold">
+            {(userEmail[0] ?? 'A').toUpperCase()}
+          </span>
+          <div className="leading-tight min-w-0">
+            <p className="text-[14px] font-semibold text-white truncate">{userEmail || 'Admin'}</p>
             <p className="text-[11px] text-white">Admin</p>
           </div>
         </div>
         <button
-          onClick={() => navigate('/login')}
+          onClick={handleLogout}
           className="w-full rounded-[10px] border border-[#2a2a2a] py-2.5 text-[13px] font-semibold text-white/70 transition-colors hover:border-white/30 hover:text-white"
         >
           Logout

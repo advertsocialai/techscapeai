@@ -30,6 +30,7 @@ interface ContactPayload {
   phone?: string
   i_am?: string
   interested_in?: string
+  company_name?: string
   message: string
 }
 
@@ -91,6 +92,7 @@ serve(async (req) => {
     phone: body.phone?.trim() || null,
     i_am: body.i_am?.trim() || null,
     interested_in: body.interested_in?.trim() || null,
+    company_name: body.company_name?.trim().slice(0, 200) || null,
     message,
     ip_address: ip,
     user_agent: userAgent,
@@ -118,6 +120,7 @@ serve(async (req) => {
       <table style="border-collapse: collapse; line-height: 1.7; font-size: 14px; margin-bottom: 16px;">
         <tr><td style="color: #999; padding-right: 16px;">Name</td><td style="color: #fff;">${escapeHtml(fullName)}</td></tr>
         <tr><td style="color: #999; padding-right: 16px;">Email</td><td><a href="mailto:${escapeHtml(email)}" style="color: #3D75F3;">${escapeHtml(email)}</a></td></tr>
+        ${row.company_name ? `<tr><td style="color: #999; padding-right: 16px;">Company</td><td style="color: #fff;">${escapeHtml(row.company_name)}</td></tr>` : ''}
         ${row.phone ? `<tr><td style="color: #999; padding-right: 16px;">Phone</td><td style="color: #fff;">${escapeHtml(row.phone)}</td></tr>` : ''}
         ${row.i_am ? `<tr><td style="color: #999; padding-right: 16px;">I am a</td><td style="color: #fff;">${escapeHtml(row.i_am)}</td></tr>` : ''}
         ${row.interested_in ? `<tr><td style="color: #999; padding-right: 16px;">Interested in</td><td style="color: #fff;">${escapeHtml(row.interested_in)}</td></tr>` : ''}

@@ -3,12 +3,28 @@ import Typewriter from '../components/Typewriter'
 import GetStarted from '../components/GetStarted'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import SEO from '../components/SEO'
+import { submitContactForm } from '../lib/contact'
 
 const CHECK_ITEMS = [
   'No Commitment Required',
   'Response Within 24 Hours',
   'Tailored To Your Goals',
 ]
+
+const INITIAL_FORM = {
+  firstName: '',
+  lastName: '',
+  businessEmail: '',
+  companyName: '',
+  reason: '',
+  message: ''
+}
+
+const REASON_LABELS = {
+  sales: 'Sales Inquiry',
+  partnership: 'Partnership',
+  support: 'Tech Support',
+}
 
 const CheckIcon = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#3D75F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -18,22 +34,33 @@ const CheckIcon = () => (
 
 const ContactPage = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 })
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    businessEmail: '',
-    companyName: '',
-    reason: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState(INITIAL_FORM);
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Submitted Data:', formData);
+    if (status === 'loading') return;
+    setStatus('loading');
+    setErrorMsg('');
+    try {
+      await submitContactForm({
+        full_name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
+        email: formData.businessEmail,
+        company_name: formData.companyName,
+        interested_in: REASON_LABELS[formData.reason] ?? formData.reason,
+        message: formData.message,
+      });
+      setStatus('success');
+      setFormData(INITIAL_FORM);
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err?.message ?? 'Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -71,14 +98,14 @@ const ContactPage = () => {
         <main className="wrap grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
 
           <div className="md:col-span-7 text-center md:text-left space-y-6">
-            <h1 className="font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px]">
+            <h1>
 
               Get in touch with
               <br />
               <Typewriter words={[' Techscape AI']} speed={100} delay={2500} />
 
             </h1>
-            <p className=" lg:text-[24px] text-[18px] leading-[100%] text-[#FFFFFF] max-w-[699px] mx-auto md:mx-0 pt-2">
+            <p >
               Whether you're exploring our products, looking to partner, or want to join the team . we'd love to hear from you.
             </p>
           </div>
@@ -129,9 +156,19 @@ const ContactPage = () => {
                     <textarea id="cp-message" name="message" rows="3" required value={formData.message} onChange={handleChange} className="w-full bg-[#1b1c22] border border-gray-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none"></textarea>
                   </div>
                 </div>
+                {status === 'success' && (
+                  <div className="rounded-xl px-4 py-3 text-sm text-emerald-300 bg-emerald-500/10 border border-emerald-500/30">
+                    Thanks — we received your message and will get back within 24 hours.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="rounded-xl px-4 py-3 text-sm text-red-300 bg-red-500/10 border border-red-500/30">
+                    {errorMsg}
+                  </div>
+                )}
                 <div className="flex justify-center mt-4">
-                  <button type="submit" className="btn shadow-lg">
-                    Let’s Talk
+                  <button type="submit" disabled={status === 'loading'} className="btn shadow-lg">
+                    {status === 'loading' ? 'Sending…' : 'Let’s Talk'}
                   </button>
                 </div>
               </form>
@@ -141,10 +178,10 @@ const ContactPage = () => {
         </main>
 
         <section className="wrap mt-24 relative z-10 pb-16 pt-14">
-          <h2 className=" font-bold tracking-tight leading-[100%] text-[36px] sm:text-[46px] md:text-[62px] mb-12 text-center md:text-left">
+          <h1 className=" mb-12 ">
             Our ways to{" "}
             <Typewriter words={[' connect']} speed={100} delay={2500} />
-          </h2>
+          </h1>
           <div className=" grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 
             <div className="bg-gradient-to-r from-[#FF7A00]/[0.15] via-[#0A0A0C] to-[#1B2B4A]/[0.25] border border-white/[0.04] rounded-xl p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 hover:border-white/[0.08] transition-all duration-300 group shadow-2xl min-h-[200px]">
@@ -207,91 +244,93 @@ const ContactPage = () => {
         </section>
 
 
-      <section id="get-started" className="relative overflow-hidden">
-        <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
-
-          <div
-            className={`text-center lg:mb-0 mb-15 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-          >
-            <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
-              <span className="text-[#F7BFA0] uppercase lg:tracking-[0.22em] text-[22px] font-semibold">
-                Get Started
-              </span>
-            </div>
-
-            <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
-              Let's Build Something Together
-            </h2>
-
-             <p className="max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
-              Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
-              The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
-            </p>
-          </div>
-
-          <div
-            className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-              }`}
+        <section id="get-started" className="relative overflow-hidden">
+          <div className="max-w-[1800px] mx-auto relative z-10 pt-2" ref={ref}
             style={{
               backgroundColor: '#050505',
               backgroundImage: "url('/bg2.svg')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
-            }}
-          >
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
-              <div>
-                <GetStarted />
+            }}>
+
+            <div
+              className={`text-center lg:mb-0 mb-2 mt-10 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+            >
+              <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
+                <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] font-semibold">
+                  Get Started
+                </span>
               </div>
 
-              <div className="lg:pl-6 text-left lg:pt-2">
-                <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
-                  Book a Free Consultation Directly
-                </h3>
-                <p className="mb-10 text-base md:text-lg leading-relaxed max-w-md">
-                  Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
-                </p>
-
-                <ul className="space-y-5">
-                  {CHECK_ITEMS.map((item) => (
-                    <li key={item} className="flex items-center gap-4 group">
-                      <span className="flex-shrink-0 p-1 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
-                        <CheckIcon />
-                      </span>
-                      <span className="text-white/70 group-hover:text-white transition-colors text-xs md:text-sm font-semibold uppercase tracking-widest">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-            </div>
-
-            <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
-
-              <h2 className="text-3xl md:text-6xl lg:text-[56px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
-                Ready To Join The AI Revolution <br className="hidden md:inline" />
-                With Techscape AI?
+              <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
+                Let's Build Something Together
               </h2>
 
-              <button
-                type="button"
-                className="btn shadow-lg active:scale-[0.98]"
-              >
-                Request A Demo
-              </button>
+              <p className="max-w-3xl mx-auto ">
+                Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration
+                The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
+              </p>
+            </div>
 
+            <div
+              className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                }`}
+
+            >
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
+                <div>
+                  <GetStarted />
+                </div>
+
+                <div className="lg:pl-6 text-left lg:pt-2">
+
+                  <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
+                    Book a Free Consultation Directly
+                  </h3>
+                  <p className="mb-10 max-w-md">
+                    Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
+                  </p>
+
+                  <ul className="space-y-5">
+                    {CHECK_ITEMS.map((item) => (
+                      <li key={item} className="flex items-center gap-4 group">
+                        <span className="flex-shrink-0 p-1 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
+                          <CheckIcon />
+                        </span>
+                        <span className="text-white/70 group-hover:text-white transition-colors text-xs md:text-sm font-semibold uppercase tracking-widest">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+              </div>
+
+              <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
+
+                <h1 className=" max-w-4xl mx-auto mb-10">
+                  Ready To put AI to work ?
+                </h1>
+                <p className="mb-10">
+
+                  Your first discovery call is free. Let's find the workflow we can solve together
+                </p>
+
+                <button type="button" className="btn">
+                  Request A Demo
+                </button>
+
+              </div>
             </div>
           </div>
-        </div>
 
 
-        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-      </section>
+          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+        </section>
 
 
 

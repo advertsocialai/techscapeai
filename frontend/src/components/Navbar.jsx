@@ -127,8 +127,8 @@ export default function Navbar() {
             <div className="flex items-center gap-2 sm:gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-4 h-[40px] text-[13px] sm:text-[14px] font-medium text-white rounded-[4px] capitalize whitespace-nowrap"
-                style={{ backgroundImage: 'linear-gradient(97.97deg, #3D75F3 0%, #F5A086 100%)' }}
+                className="btn"
+
               >
                 Contact us
               </Link>

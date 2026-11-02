@@ -27,13 +27,13 @@ export default function RecruitmentAI() {
 
         <div class="max-w-4xl w-full text-center relative z-10 flex flex-col items-center">
 
-          <h2 className="text-[36px]  md:text-[46px] lg:text-[62px] ">
+          <h1>
 
             <Typewriter words={['Swipe to meet ']} speed={100} delay={2500} /><br />
             your next founder
-          </h2>
+          </h1>
 
-          <p className="text-[16px] md:text-[20px] mt-6">
+          <p className=" mt-6">
             Match with a role in seconds, not weeks
           </p>
 

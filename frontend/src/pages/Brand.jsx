@@ -66,31 +66,31 @@ export default function Brand() {
                         <div className="space-y-6">
                             <div>
 
-                                <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+                                <h1 className=" mb-4">
                                     <Typewriter words={['Logo']} speed={100} delay={2500} />
-                                </h2>
+                                </h1>
                             </div>
 
-                            <p className="text-[14px] lg:text-[18px] leading-relaxed font-light">
+                            <p >
                                 The Tech Scape AI logo represents the intersection of human-centered design and intelligent systems.
                             </p>
 
                             <div className="pt-2">
-                                <h4 className="text-[18px] font-semibold tracking-wide mb-3">
+                                <h4 className=" mb-3">
                                     Symbol Meaning
                                 </h4>
                                 <ul className="space-y-3 text-[18px] font-light leading-relaxed">
                                     <li className="flex items-start gap-2.5">
                                         <span className="text-[#3D75F3] font-medium mt-0.5">•</span>
-                                        <span>Circles = people, customer touchpoints, connection</span>
+                                        <p>Circles = people, customer touchpoints, connection</p>
                                     </li>
                                     <li className="flex items-start gap-2.5">
-                                        <span className="text-[#A396FF] font-medium mt-0.5">•</span>
-                                        <span>Rounded rectangles = structured journeys, pathways, AI support</span>
+                                        <span className="text-[#3D75F3] font-medium mt-0.5">•</span>
+                                        <p>Rounded rectangles = structured journeys, pathways, AI support</p>
                                     </li>
                                     <li className="flex items-start gap-2.5">
-                                        <span className="text-[#F5A086] font-medium mt-0.5">•</span>
-                                        <span>Combined shapes = the "experience landscape" (the Scape)</span>
+                                        <span className="text-[#3D75F3] font-medium mt-0.5">•</span>
+                                        <p>Combined shapes = the "experience landscape" (the Scape)</p>
                                     </li>
                                 </ul>
                             </div>
@@ -98,29 +98,33 @@ export default function Brand() {
 
                         <div className="space-y-6 md:pt-14">
                             <div>
-                                <h4 className="text-[18px] font-semibold tracking-wide mb-3">
+                                <h4 className=" mb-3">
                                     Wordmark
                                 </h4>
-                                <p className="text-[14px] lg:text-[18px] font-light leading-relaxed mb-4">
+                                <p className=" mb-4">
                                     The rounded geometric typography communicates:
                                 </p>
-                                <ul className="space-y-2 text-[18px] font-light pl-1">
+                                <ul className="space-y-2  pl-1">
                                     <li className="flex items-center gap-2.5">
-                                        <span className="w-1 h-1 rounded-full bg-white/30" /> Approachability
+                                        <span className="w-1 h-1 rounded-full bg-white/30" /> 
+                                        <p>Approachability</p>
                                     </li>
                                     <li className="flex items-center gap-2.5">
-                                        <span className="w-1 h-1 rounded-full bg-white/30" /> Modernity
+                                        <span className="w-1 h-1 rounded-full bg-white/30" /> 
+                                        <p>Modernity</p>
                                     </li>
                                     <li className="flex items-center gap-2.5">
-                                        <span className="w-1 h-1 rounded-full bg-white/30" /> Accessibility
+                                        <span className="w-1 h-1 rounded-full bg-white/30" /> 
+                                        <p>Accessibility</p>
                                     </li>
                                     <li className="flex items-center gap-2.5">
-                                        <span className="w-1 h-1 rounded-full bg-white/30" /> Trust
+                                        <span className="w-1 h-1 rounded-full bg-white/30" />
+                                        <p>Trust</p> 
                                     </li>
                                 </ul>
                             </div>
 
-                            <p className="text-[14px] lg:text-[18px] font-light leading-relaxed pt-2">
+                            <p className=" pt-2">
                                 The logo is engineered to be instantly recognizable, scalable, and timeless.
                             </p>
                         </div>
@@ -196,10 +200,10 @@ export default function Brand() {
                     <div className="space-y-8 text-left">
                         <div>
 
-                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+                            <h1 className=" mb-4">
                                 <Typewriter words={['Co-Branding']} speed={100} delay={2500} />
-                            </h2>
-                            <p className="text-[14px] lg:text-[20px] font-light leading-relaxed">
+                            </h1>
+                            <p >
                                 When appearing alongside partner logos:
                             </p>
                         </div>
@@ -222,7 +226,7 @@ export default function Brand() {
                             </li>
                         </ul>
 
-                        <p className="text-[18px] font-light  pt-2">
+                        <p className=" pt-2">
                             This ensures professional, balanced co-branded layouts.
                         </p>
 
@@ -237,14 +241,14 @@ export default function Brand() {
 
                     <div className="space-y-12 text-left">
                         <div>
-                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+                            <h1 className=" mb-4">
                                 <Typewriter words={['Colors']} speed={100} delay={2500} />
-                            </h2>
+                            </h1>
 
                             <h3 className="text-[20px] lg:text-[32px] font-bold mb-3">
                                 Primary Colours
                             </h3>
-                            <p className="text-[18px] font-light max-w-xl leading-relaxed mb-4">
+                            <p className=" mb-4">
                                 These colors reflect emotion-driven CX with a balance of trust and innovation.
                             </p>
                             <div className="flex flex-wrap gap-x-6 gap-y-1 text-[18px] font-mono tracking-wider">
@@ -265,7 +269,7 @@ export default function Brand() {
                                 <h3 className="text-[20px] lg:text-[32px] font-bold mb-2">
                                     Secondary Colours
                                 </h3>
-                                <p className="text-[18px] font-light max-w-xl leading-relaxed mb-4">
+                                <p className=" mb-4">
                                     Secondary colors create warmth, dimension, and a more expressive CX storytelling system.
                                 </p>
 
@@ -315,9 +319,9 @@ export default function Brand() {
                     <div className="space-y-8 text-left">
                         <div>
 
-                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+                            <h1 className=" mb-4">
                                 <Typewriter words={['Typography']} speed={100} delay={2500} />
-                            </h2>
+                            </h1>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-6 items-center justify-center w-full">
                             <img src="/brand7.svg" alt="img" className="max-h-[300px] w-full sm:w-1/2 object-contain" />
@@ -329,9 +333,9 @@ export default function Brand() {
                     <div className="space-y-8 text-left">
                         <div>
 
-                            <h2 className="inline-block text-[32px] sm:text-[42px] lg:text-[50px] font-extrabold tracking-[-0.025em] mb-4">
+                            <h1 className=" mb-4">
                                 <Typewriter words={['Merchandise']} speed={100} delay={2500} />
-                            </h2>
+                            </h1>
                         </div>
                         <div className='flex'>
                             <img src="/brand9.svg" alt="img" className='max-h-[600px] w-full' />
@@ -342,95 +346,93 @@ export default function Brand() {
                 </div>
             </section>
 
-            <section id="get-started" className="relative overflow-hidden">
-                <div className="max-w-[1440px] mx-auto relative z-10" ref={ref}>
-
-                    <div
-                        className={`text-center mb-20 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                            }`}
-                    >
-                        <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.2] mb-8"
-                            style={{
-                                background: 'linear-gradient(to right, rgba(255,122,0,0.1), rgba(27,43,74,0.1))',
-                            }}>
-                            <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] lg:text-[32px] font-semibold">
-                                Get Started
-                            </span>
-                        </div>
-
-                        <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
-                            Let's Build Something Together
-                        </h2>
-
-                        <p className="max-w-2xl mx-auto text-[13px] md:text-[16px]  leading-relaxed font-light tracking-wide px-4">
-                            Whether You're A Business Looking To Automate, <br /> A Student Ready To Upskill, Or A Partner Exploring Collaboration <br className="hidden md:inline" />
-                            The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
-                        </p>
-                    </div>
-
-                    <div
-                        className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                            }`}
-                        style={{
-                            backgroundColor: '#050505',
-                            backgroundImage: "url('/bg2.svg')",
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat'
-                        }}
-                    >
-
-                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
-
-                            <div>
-                                <GetStarted />
-                            </div>
-
-                            <div className="lg:pl-6 text-left lg:pt-2">
-                                <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
-                                    Book a Free Consultation Directly
-                                </h3>
-                                <p className="mb-10 text-base md:text-lg leading-relaxed max-w-md">
-                                    Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
-                                </p>
-
-                                <ul className="space-y-5">
-                                    {CHECK_ITEMS.map((item) => (
-                                        <li key={item} className="flex items-center gap-4 group">
-                                            <span className="flex-shrink-0 p-1 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
-                                                <CheckIcon />
-                                            </span>
-                                            <span className="text-white/70 group-hover:text-white transition-colors text-xs md:text-sm font-semibold uppercase tracking-widest">
-                                                {item}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                        </div>
-
-                        <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
-
-                            <h2 className="text-3xl md:text-6xl lg:text-[72px] font-bold tracking-tight leading-[1.15] max-w-4xl mx-auto mb-10">
-                                Ready To put AI to work ?
-                            </h2>
-                            <p className="mb-10 text-base md:text-lg leading-relaxed">
-
-                                Your first discovery call is free. Let's find the workflow we can solve together
-                            </p>
-
-                            <button type="button" className="btn">
-                                Request A Demo
-                            </button>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-            </section>
+           <section id="get-started" className="relative overflow-hidden">
+                   <div className="max-w-[1800px] mx-auto relative z-10 pt-2" ref={ref}
+                    style={{
+                         backgroundColor: '#050505',
+                         backgroundImage: "url('/bg2.svg')",
+                         backgroundSize: 'cover',
+                         backgroundPosition: 'center',
+                         backgroundRepeat: 'no-repeat'
+                       }}>
+           
+                     <div
+                       className={`text-center lg:mb-0 mb-2 mt-10 transition-all duration-1000 ease-out flex flex-col items-center justify-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                         }`}
+                     >
+                       <div className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/[0.06] bg-[#120b08]/60 shadow-[inset_0_1px_12px_rgba(245,160,134,0.06)] mb-8 backdrop-blur-sm">
+                         <span className="text-[#F7BFA0] uppercase tracking-[0.22em] text-[22px] font-semibold">
+                           Get Started
+                         </span>
+                       </div>
+           
+                      <h2 className="text-3xl md:text-4xl lg:text-[24px] font-medium text-[#FDFDFD] mb-6 tracking-tight">
+                         Let's Build Something Together
+                       </h2>
+           
+                       <p className="max-w-3xl mx-auto ">
+                         Whether You're A Business Looking To Automate, A Student Ready To Upskill, Or A Partner Exploring Collaboration
+                         The First Conversation Is Always Free. Tell Us What You Need And We'll Tell You Exactly How We Can Help.
+                       </p>
+                     </div>
+           
+                     <div
+                       className={`w-full border border-black/5  transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                         }`}
+                      
+                     >
+                       <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 p-8 md:p-16 lg:p-20 items-start z-20">
+                         <div>
+                           <GetStarted />
+                         </div>
+           
+                         <div className="lg:pl-6 text-left lg:pt-2">
+                           
+                           <h3 className="text-[33px] md:text-[36px] font-semibold mb-6 leading-tight tracking-tight">
+                             Book a Free Consultation Directly
+                           </h3>
+                           <p className="mb-10 max-w-md">
+                             Skip the form. Pick a time that works for you and get on a call with our team within 24 hours.
+                           </p>
+           
+                           <ul className="space-y-5">
+                             {CHECK_ITEMS.map((item) => (
+                               <li key={item} className="flex items-center gap-4 group">
+                                 <span className="flex-shrink-0 p-1 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition-colors">
+                                   <CheckIcon />
+                                 </span>
+                                 <span className="text-white/70 group-hover:text-white transition-colors text-xs md:text-sm font-semibold uppercase tracking-widest">
+                                   {item}
+                                 </span>
+                               </li>
+                             ))}
+                           </ul>
+                         </div>
+           
+                       </div>
+           
+                       <div className="w-full bg-transparent text-center py-16 md:py-24 flex flex-col items-center justify-center">
+           
+                         <h1 className=" max-w-4xl mx-auto mb-10">
+                           Ready To put AI to work ?
+                         </h1>
+                         <p className="mb-10">
+           
+                           Your first discovery call is free. Let's find the workflow we can solve together
+                         </p>
+           
+                         <button type="button" className="btn">
+                           Request A Demo
+                         </button>
+           
+                       </div>
+                     </div>
+                   </div>
+           
+           
+                   <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none" />
+                   <div className="absolute -bottom-20 -right-20 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+                 </section>
         </>
     );
 }

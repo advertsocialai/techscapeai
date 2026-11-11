@@ -513,12 +513,6 @@ export default function BreakthroughSection() {
             <h2 className="text-3xl md:text-[42px] font-medium tracking-tight text-[#F7BFA0]">
               The Latest News
             </h2>
-            <a
-              href="/blog"
-              className="text-xs md:text-[18px] text-white hover:text-white underline underline-offset-4 tracking-wide transition-colors duration-200"
-            >
-              See more on the blog
-            </a>
           </div>
 
           <div className="relative group">

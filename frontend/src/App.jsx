@@ -4,7 +4,7 @@ import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
-import Blog from './pages/Blog'
+// import Blog from './pages/Blog'
 import HowItWorksPage from './pages/HowItWorksPage'
 import Research from './pages/ResearchPage'
 import PartnersPage from './pages/PartnersPage'
@@ -20,9 +20,9 @@ import TrustCenter from './pages/TrustCenter'
 import Industries from './pages/Industries'
 import AiAgent from './pages/AI-agents'
 import Travel from './pages/travel'
-import AdTechMarketing from './pages/AdTechMarketing'
-import FinanceAI from './pages/FinanceAI'
-import RecruitmentAI from './pages/RecruitmentAI'
+// import AdTechMarketing from './pages/AdTechMarketing'
+// import FinanceAI from './pages/FinanceAI'
+// import RecruitmentAI from './pages/RecruitmentAI'
 import RequireAdmin from './admin/RequireAdmin'
 import AdminLayout from './admin/AdminLayout'
 import Dashboard from './admin/Dashboard'
@@ -34,6 +34,8 @@ import Settings from './admin/pages/Settings'
 import BlogCategory from './admin/pages/BlogCategory'
 import CreateBlog from './admin/pages/CreateBlog'
 import Blogs from './admin/pages/Blogs'
+import CRTPage from './pages/crt/CRTPage'
+import CRTRegisterPage from './pages/crt/CRTRegisterPage'
 
 export default function App() {
   return (
@@ -42,7 +44,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainLayout><HomePage /></MainLayout>} />
         <Route path="/about" element={<MainLayout><AboutPage /></MainLayout>} />
-        <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} />
+        {/* <Route path="/blog" element={<MainLayout><Blog /></MainLayout>} /> */}
         <Route path="/services" element={<MainLayout><ServicesPage /></MainLayout>} />
         <Route path="/how-it-works" element={<MainLayout><HowItWorksPage /></MainLayout>} />
         <Route path="/brand" element={<MainLayout><Brand /></MainLayout>} />
@@ -69,11 +71,13 @@ export default function App() {
         <Route path="/ai-agent" element={<MainLayout><AiAgent /></MainLayout>} />
         <Route path="/research" element={<MainLayout><Research /></MainLayout>} />
         {/* <Route path="/travel" element={<MainLayout><Travel /></MainLayout>} /> */}
-        <Route path="/ad-tech-marketing" element={<MainLayout><AdTechMarketing /></MainLayout>} />
-        <Route path="/finance-ai" element={<MainLayout><FinanceAI /></MainLayout>} />
+        {/* <Route path="/ad-tech-marketing" element={<MainLayout><AdTechMarketing /></MainLayout>} /> */}
+        {/* <Route path="/finance-ai" element={<MainLayout><FinanceAI /></MainLayout>} /> */}
      
-        <Route path="/recruitment-ai" element={<MainLayout><RecruitmentAI /></MainLayout>} /> 
+        {/* <Route path="/recruitment-ai" element={<MainLayout><RecruitmentAI /></MainLayout>} /> */}
         {/* Blog hidden: no /blog route so it falls through to the 404 catch-all below */}
+        <Route path="/crt" element={<MainLayout><CRTPage /></MainLayout>} />
+        <Route path="/crt/register" element={<MainLayout><CRTRegisterPage /></MainLayout>} />
         <Route path="*" element={<MainLayout><NotFoundPage /></MainLayout>} />
       </Routes>
     </BrowserRouter>

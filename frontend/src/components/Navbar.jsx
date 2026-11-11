@@ -49,16 +49,7 @@ const NAV_LINKS = [
     desc: 'Small, powerful, purpose-built AI agents and industry solutions that solve specific business problems — fast, affordable, ready to deploy.',
     children: [
       { label: 'AI Agent', to: '/ai-agent' },
-      { label: 'Ad Tech Marketing', to: '/ad-tech-marketing' },
-      { label: 'Travel AI', to: '/travel' },
-      { label: 'Finance AI', to: '/finance-ai' },
-      { label: 'Recruitment AI', to: '/recruitment-ai' },
     ],
-  },
-  {
-    label: 'Insights',
-    to: '/blog',
-    desc: 'Field notes, research write-ups, and practical lessons from building and deploying AI systems in production.',
   },
   {
     label: 'Partners',
@@ -71,9 +62,9 @@ const NAV_LINKS = [
     desc: 'Four core capabilities — AI agents, digital transformation, technology training, and CRM/SaaS — brought to every business we work with.',
   },
   {
-    label: 'Careers',
-    to: '/careers',
-    desc: 'A simple path from idea to impact — a discovery call, a working POC in 2–4 weeks, then deploy and scale into your operations.',
+    label: 'CRT',
+    to: '/crt',
+    desc: 'A 12-week online Campus Recruitment & Training program covering AI, Python, business analysis and interview prep. First pilot cohort: 25 seats.',
   },
   {
     label: 'Contact us',
@@ -125,6 +116,9 @@ export default function Navbar() {
             </Link>
 
             <div className="flex items-center gap-2 sm:gap-3">
+              <span className="hidden sm:block">
+                <Link to="/crt" className="btn">Apply Now</Link>
+              </span>
               <Link
                 to="/contact"
                 className="btn"
@@ -246,6 +240,7 @@ export default function Navbar() {
             </nav>
 
             <div className="px-8 md:px-10 pb-8 pt-4 border-t border-white/[0.07]">
+              <Link to="/crt" onClick={() => setOpen(false)} className="btn w-full mb-3">Apply Now</Link>
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
